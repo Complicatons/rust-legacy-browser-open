@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roadmap · Rust Legacy Browser</title>
+<meta name="description" content="The story of Rust Legacy Browser from the first build, with pictures and clips of every step, and what's coming next.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/roadmap.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/roadmap.mjs"></script>
+</head>
+<body data-page="roadmap">
+<!--#header-->
+<main id="main" class="rm">
+ <section class="rm-progress" id="rm-progress" aria-labelledby="rm-progress-h">
+  <div class="rm-progress-head">
+   <div class="rm-progress-figure"><b id="rm-pct">0%</b><span id="rm-progress-h">Overall progress</span></div>
+   <div class="rm-progress-links">
+    <a class="rm-link-gh" href="https://github.com/OWNER/rust-legacy-browser" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.6 3.3-1.2 3.3-1.2.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg><span>Follow on GitHub</span></a>
+    <a class="rm-link-dc" href="https://discord.gg/your-invite" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg><span>Join the Discord</span></a>
+   </div>
+  </div>
+  <div class="rm-bar" id="rm-bar" role="progressbar" aria-labelledby="rm-progress-h" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+  <p class="rm-progress-src" id="rm-progress-src"></p>
+  <ul class="rm-areas" id="rm-areas"></ul>
+ </section>
+ <header class="rm-hero">
+  <div class="rm-intro">
+   <p class="rm-eyebrow">Development log</p>
+   <h1>Roadmap</h1>
+   <p class="rm-lede">How the port got here, one step at a time, with pictures and clips from the game in your browser. What's next is at the end.</p>
+   <p class="rm-jump"><a href="#coming">What's coming</a></p>
+  </div>
+  <dl class="rm-totals" id="rm-totals"></dl>
+ </header>
+ <div class="rm-search" role="search">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <input id="rm-q" type="search" placeholder="Search the roadmap" aria-label="Search the roadmap" autocomplete="off" spellcheck="false">
+  <span class="rm-search-count" id="rm-search-count" aria-live="polite"></span>
+ </div>
+ <nav class="rm-days" id="rm-days" aria-label="Days"></nav>
+ <div class="rm-body">
+  <nav class="rm-nav" id="rm-nav" aria-label="Roadmap entries"></nav>
+  <div class="rm-main">
+   <p class="rm-none" id="rm-none" hidden>Nothing on the roadmap matches <b></b>. Try fewer or different words.</p>
+   <ol class="rm-line" id="rm-line" aria-busy="true"></ol>
+   <section class="rm-coming" id="coming" aria-labelledby="coming-h" hidden></section>
+  </div>
+ </div>
+ <dialog class="rm-view" id="rm-view" aria-label="Picture or clip">
+  <form method="dialog"><button class="icon-btn" type="submit" aria-label="Close">✕</button></form>
+  <div class="rm-view-media"></div>
+  <p></p>
+ </dialog>
+</main>
+<!--#footer-->
+</body>
+</html>

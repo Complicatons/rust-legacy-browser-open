@@ -1,0 +1,38 @@
+--- Casper.cs
++++ Casper.cs
+@@ -4,7 +4,6 @@
+ using System.Data;
+ using UnityEngine;
+ using Oxide.Core;
+-using Oxide.RustLegacy;
+ using Oxide.Core.Plugins;
+ using RustProto;
+ 
+@@ -24,18 +23,20 @@
+ 
+         List<HumanController> caspers = new List<HumanController>();
+         Dictionary<HumanController,Vector3> teleported = new Dictionary<HumanController, Vector3>();
+-        object OnGetClientMove(HumanController human, Vector3 origin, int encoded, ushort stateFlags, uLink.NetworkMessageInfo info)
+-        { 
+-            if(!caspers.Contains(human)) return null;
++        // Ported to Oxide for Rust Legacy 2.0 (2018): GetClientMove reaches plugins as OnPlayerMove(NetUser, Vector3);
++        // a non-null return skips the server's own move handling. The first move after /casper parks the character 500 m
++        // up for everyone else; later moves are ignored until /casper again teleports it back.
++        object OnPlayerMove(NetUser netuser, Vector3 origin)
++        {
++            if (netuser == null || netuser.playerClient == null || netuser.playerClient.rootControllable == null) return null;
++            var human = netuser.playerClient.rootControllable.GetComponent<HumanController>();
++            if (human == null || !caspers.Contains(human)) return null;
+             if (teleported.ContainsKey(human)) return false;
+             if (human.dead) return null;
+             if (human.networkView.viewID == uLink.NetworkViewID.unassigned) return null;
+-            Angle2 ang = new Angle2 { encoded = encoded };
+             teleported.Add(human, origin);
+             human.idMain.origin = origin + VectorAway;
+-            human.idMain.eyesAngles = ang;
+-            human.idMain.stateFlags.flags = stateFlags;
+-            object[] args = new object[] { origin + VectorAway, ang.encoded, stateFlags, (float)(NetCull.time - info.timestamp) };
++            object[] args = new object[] { origin + VectorAway, human.idMain.eyesAngles.encoded, human.idMain.stateFlags.flags, 0f };
+             human.networkView.RPC("ReadClientMove", uLink.RPCMode.Others, args);
+             human.ServerFrame();
+             return false;

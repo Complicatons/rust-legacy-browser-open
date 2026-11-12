@@ -1,0 +1,46 @@
+{
+ "overall": 93,
+ "date": "2026-10-23",
+ "areas": [
+  {
+   "name": "Original world and graphics",
+   "pct": 95
+  },
+  {
+   "name": "Survival, gathering and wildlife",
+   "pct": 97
+  },
+  {
+   "name": "Building and raiding",
+   "pct": 96
+  },
+  {
+   "name": "Weapons and combat",
+   "pct": 96
+  },
+  {
+   "name": "Menus, HUD and social",
+   "pct": 99
+  },
+  {
+   "name": "Online play",
+   "pct": 95
+  },
+  {
+   "name": "First real server",
+   "pct": 75
+  },
+  {
+   "name": "Website, accounts and server list",
+   "pct": 90
+  },
+  {
+   "name": "Anti-cheat and admin tools",
+   "pct": 85
+  },
+  {
+   "name": "Performance and release polish",
+   "pct": 88
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "Owner": {
+    "Prefix": "",
+    "MessageColor": "[color #ff5555]",
+    "Permission": "owner_chat"
+  },
+  "Moderator": {
+    "Prefix": "",
+    "MessageColor": "[color #ffd24d]",
+    "Permission": "mod_chat"
+  },
+  "VIP": {
+    "Prefix": "",
+    "MessageColor": "[color #55ddff]",
+    "Permission": "vip_chat"
+  }
+}

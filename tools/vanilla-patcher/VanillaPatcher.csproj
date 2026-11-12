@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Operator tool. Run: dotnet run (project tools/vanilla-patcher), arguments check|patch|verify|restore <rust_server_Data/Managed>. See README.md. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <!-- Switched from Mono.Cecil to dnlib 2026-10-30: Cecil's writer corrupts the NestedClass table on at least one
+       real-world build (genuine Fougerite 1.9.91 premade server) even on a zero-edit read+write round-trip; dnlib
+       round-trips the same file cleanly (confirmed on a throwaway VM against the real file, and here against our
+       own stock reference). See OFFSHOOT-COMPATIBILITY-PLAN.md work item 4. -->
+  <ItemGroup>
+    <PackageReference Include="dnlib" Version="4.4.0" />
+  </ItemGroup>
+  <!-- tests/fixture holds its own .csproj files (the synthetic Assembly-CSharp/uLink/Hooks stand-ins the
+       admission-hook fix is verified against); the default **/*.cs glob would otherwise also compile them in here. -->
+  <ItemGroup>
+    <Compile Remove="tests/**/*.cs" />
+  </ItemGroup>
+</Project>

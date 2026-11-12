@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to play · Rust Legacy Browser</title>
+<meta name="description" content="How to play Rust Legacy in your browser: requirements, getting started, controls and your first night.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/content.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/guide.mjs"></script>
+</head>
+<body data-page="guide">
+<!--#header-->
+<main id="main" class="content guide">
+ <header class="content-hero"><h1 class="h">How to play</h1></header>
+ <nav class="guide-toc mono" aria-label="On this page"><a href="#requirements">Requirements</a><a href="#start">Get started</a><a href="#controls">Controls</a><a href="#first-night">First night</a><a href="#trouble">Troubleshooting</a></nav>
+
+ <section id="requirements" class="guide-sec">
+  <h2 class="h">Requirements</h2>
+  <dl class="req" id="req">
+   <div><dt class="mono">Device</dt><dd>Desktop or laptop</dd><span class="req-state mono" id="req-device"></span></div>
+   <div><dt class="mono">Controls</dt><dd>Keyboard and mouse</dd><span class="req-state mono" id="req-input"></span></div>
+   <div><dt class="mono">Graphics</dt><dd>WebGL 2</dd><span class="req-state mono" id="req-webgl"></span></div>
+   <div><dt class="mono">Install</dt><dd>Nothing</dd><span class="req-state mono ok">Browser only</span></div>
+  </dl>
+  <p class="muted">Phones and tablets can browse the site, register and read the wiki. Playing needs a desktop.</p>
+ </section>
+
+ <section id="start" class="guide-sec">
+  <h2 class="h">Get started</h2>
+  <ol class="steps">
+   <li><b class="mono">01</b><h3>Register</h3><p>Email, username and password, or Steam.</p><a class="btn small" href="/register">Register</a></li>
+   <li><b class="mono">02</b><h3>Pick a server</h3><p>Filter by region and players.</p><a class="btn small" href="/servers">Servers</a></li>
+   <li><b class="mono">03</b><h3>Join</h3><p>The game loads in this tab. Click into it to take the mouse.</p><a class="btn small" href="/">Play</a></li>
+  </ol>
+ </section>
+
+ <section id="controls" class="guide-sec">
+  <h2 class="h">Controls</h2>
+  <p class="muted">The original defaults. Change them in Options in the game.</p>
+  <div class="keys-table" id="controls-table"></div>
+ </section>
+
+ <section id="first-night" class="guide-sec">
+  <h2 class="h">Your first night</h2>
+  <p class="muted">Nights are nearly black. Get a fire and a roof before dark.</p>
+  <ol class="night" id="night"></ol>
+ </section>
+
+ <section id="trouble" class="guide-sec">
+  <h2 class="h">Troubleshooting</h2>
+  <dl class="faq">
+   <div><dt>The mouse won't turn the camera</dt><dd>Click the game once to capture the mouse. Esc gives it back.</dd></div>
+   <div><dt>I want the mouse back</dt><dd>Esc always gives it back. You can also pick F2, F3 or F4 as a release key in Options.</dd></div>
+   <div><dt>WebGL is off</dt><dd>Turn on hardware acceleration in the browser settings and restart the browser.</dd></div>
+   <div><dt>Ctrl+W closed the tab</dt><dd>The browser keeps shortcuts like Ctrl+W and Ctrl+T, and the game can't block them. Crouch is Ctrl, so moving forward while crouched can close the tab: rebind Crouch in Options.</dd></div>
+   <div><dt>I want fullscreen</dt><dd>Alt+Enter, or tick Fullscreen in Options.</dd></div>
+  </dl>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

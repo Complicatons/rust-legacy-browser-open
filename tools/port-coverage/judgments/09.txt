@@ -1,0 +1,142 @@
+@Assembly-CSharp
+TreeColliderAdd|N|Adds tree colliders near the player (not on shipped content)|
+TreeExplosion|N|Debug Fire1 tree explosion script|debug:
+TreePack|P|Packed tree meshes per level|tools/export_world.py, browser/trees.mjs
+TreeUnpack|P|Unpacks tree meshes/colliders over frames|browser/trees.mjs, tools/export_resources.py
+TreeUnpackGroup|P|Tree unpack group (tag, layer, spherical)|with: browser/trees.mjs
+TweenColor|P|NGUI colour tween|browser/rpos-sounds.mjs
+TweenNotification|N|Tween notification delegate|empty: delegate type with no shipped subscriber
+TweenPosition|P|NGUI position tween (button offset)|browser/rpos-sounds.mjs
+TweenRotation|N|NGUI rotation tween|
+TweenScale|P|NGUI scale tween (button scale)|browser/rpos-sounds.mjs
+TweenTransform|N|NGUI transform tween|
+TweenVolume|N|NGUI volume tween|
+TypeUtility|N|Assembly-qualified type name parsing|engine:
+UIActionProgress|N|Action progress widget (not reached)|
+UIAnchor|P|NGUI screen anchors for RPOS widgets|browser/rpos-layout.mjs, tools/export_rpos.py
+UIAtlas|P|NGUI sprite atlas|tools/export_rpos.py, tools/export_hud.py, browser/rpos.mjs
+UIBorderedAnchor|P|Anchor with pixel border|browser/rpos-layout.mjs
+UIBoxHotSpot|P|NGUI box hit area|engine: DOM hit testing on exported rectangles (browser/rpos.mjs)
+UIBrushHotSpot|N|Brush hot spot kind|engine: DOM hit testing
+UIButton|P|NGUI button colours (hover/pressed/disabled)|browser/rpos-sounds.mjs
+UIButtonColor|P|Button colour tween on hover/press|browser/rpos-sounds.mjs
+UIButtonKeys|N|Keyboard button navigation (not reached)|
+UIButtonMessage|N|Button message sender (not reached)|
+UIButtonOffset|P|Button offset tween on hover/press|browser/rpos-sounds.mjs
+UIButtonPlayAnimation|N|Button animation player (not reached)|
+UIButtonRotation|N|Button rotation tween (not reached)|
+UIButtonScale|P|Button scale tween on hover/press|browser/rpos-sounds.mjs
+UIButtonSound|P|Button click sound|browser/rpos-sounds.mjs
+UIButtonTween|N|Button tween trigger (not reached)|
+UICamera|P|NGUI input dispatch: hover, press, drag, scroll, tooltip|browser/rpos-scroll.mjs, browser/inventory-interactions.mjs
+UICheckbox|N|NGUI checkbox (not reached)|
+UICheckboxControlledComponent|N|Checkbox-controlled component|
+UICheckboxControlledObject|N|Checkbox-controlled object|
+UICircleHotSpot|N|Circle hot spot kind|engine: DOM hit testing
+UIConvexHotSpot|N|Convex hot spot kind|engine: DOM hit testing
+UIDragCamera|N|Drag camera|
+UIDraggableCamera|N|Draggable camera|
+UIDraggablePanel|P|Scrollable clipped panel with momentum|browser/rpos-scroll.mjs
+UIDragObject|N|Draggable window (only on unused window templates; scene RPOS windows are fixed)|only on unused window templates (RPOSWindowTemplate, RPOSWindow, workbench, info); scene RPOS windows are fixed
+UIDragPanelContents|N|Panel content dragging (none in the shipped panels)|
+UIDrawCall|N|NGUI draw call batching|engine: DOM/canvas rendering
+UIEventListener|P|NGUI event callbacks (close buttons, scroll)|with: browser/rpos-layout.mjs, browser/inventory-ui.mjs
+UIFilledSprite|P|Filled sprite (progress bars, vitals bars)|browser/hud.mjs, tools/export_hud.py
+UIFont|P|NGUI bitmap font printing|browser/rpos.mjs, browser/hud.mjs, tools/export_hud.py
+UIForwardEvents|N|Event forwarder (not reached)|
+UIGeometricSprite|P|Sliced sprite geometry base|browser/rpos.mjs
+UIGeometry|N|Widget geometry buffers|engine: DOM/canvas rendering
+UIGlobal|N|NGUI global update hook|engine:
+UIGrid|N|NGUI grid (not reached)|
+UIHighlight|N|Text highlight span|engine: DOM text
+UIHotSpot|P|NGUI hit areas and raycasts|engine: DOM hit testing (browser/rpos.mjs)
+UIImageButton|N|Image button (not reached)|
+UIInput|N|NGUI text input (no shipped NGUI input field; the craft amount box is handled in browser/inventory-ui.mjs)|engine: DOM input
+UIInputMode|N|Input mode enum|engine:
+UIInputSaved|N|Saved input|
+UIInputValidator|N|Input validator|
+UILabel|P|NGUI label: text, colour, effect, alignment|browser/rpos.mjs, browser/hud.mjs
+UILocalize|N|Localisation label|
+UIMaterial|N|NGUI material clipping variants|engine: DOM/canvas rendering
+UINode|N|Panel node change tracking|engine:
+UIOrthoCamera|N|Ortho camera sizing|engine:
+UIPanel|P|NGUI panel: clipping, depth, widgets|browser/rpos.mjs, browser/rpos-scroll.mjs
+UIPanelMaterialPropertyBlock|N|Panel material properties|engine:
+UIPopupList|N|Popup list (not reached)|
+UIRectHotSpot|P|NGUI rectangle hit area|engine: DOM hit testing (browser/rpos.mjs)
+UIRoot|P|UI scale (automatic/manual height)|browser/rpos-scroll.mjs, browser/rpos-layout.mjs
+UISavedOption|N|Saved option|
+UIScrollBar|P|NGUI scroll bar|browser/rpos-scroll.mjs
+UISlicedSprite|P|Nine-sliced sprite|browser/rpos.mjs, tools/export_rpos.py
+UISlider|P|NGUI slider (progress bars)|browser/hud.mjs, browser/inventory-ui.mjs
+UISliderColors|N|Slider colours|
+UISphereHotSpot|N|Sphere hot spot kind|engine: DOM hit testing
+UISprite|P|NGUI sprite|browser/rpos.mjs, browser/hud.mjs
+UISpriteAnimation|N|Sprite animation|
+UISpriteWheel|N|Sprite wheel|
+UIStretch|N|Stretch widget|
+UITable|N|NGUI table layout (only TweenScale's optional table, unset)|only an optional TweenScale field, unset in shipped data
+UITextHighlight|N|Text highlight sprite|
+UITextList|N|Text list|
+UITextMarkup|N|Text markup struct|engine: DOM text
+UITextMarkupUtility|N|Markup helpers|
+UITextMod|N|Text mod enum|engine: DOM text
+UITextPosition|N|Text caret position|engine: DOM text
+UITextRegion|N|Text region enum|engine: DOM text
+UITextSelection|N|Text selection|engine: DOM text
+UITexture|P|NGUI texture widget|browser/rpos.mjs, browser/combat-feedback.mjs
+UITiledSprite|N|Tiled sprite|
+UITooltip|N|NGUI tooltip (not reached; item tooltips use ItemToolTip)|
+UITweener|P|NGUI tween base (method, style, duration)|browser/rpos-sounds.mjs
+UIUnityEvents|N|Text editing through Unity GUI events|engine: DOM input
+UIViewport|N|Viewport camera|
+UIWidget|P|NGUI widget base (colour, depth, pivot)|browser/rpos.mjs, tools/export_rpos.py
+uLinkAngle2Extensions|P|Angle2 BitStream codec|bridge/ulink/rust.mjs
+uLinkExtentions|N|BitStream helpers (not reached)|
+uLinkUserTypeCodes|N|uLink user type codes|
+UpdateManager|N|Update manager (not reached)|
+Useable|P|Use state machine: enter/exit, checks, eject|browser/loot.mjs, browser/context-ui.mjs
+UseableUtility|P|Use result helpers|with: browser/loot.mjs
+UseCheck|P|Use check enum|with: browser/loot.mjs
+UseEnterRequest|P|Use enter request enum|with: browser/loot.mjs
+UseExitReason|P|Use exit reason enum|with: browser/loot.mjs
+UseResponse|P|Use response codes|with: browser/loot.mjs
+UseUpdateFlags|P|Use update flags|with: browser/loot.mjs
+USpeakCodecManager|P|Voice codec registry|browser/uspeak.mjs, tools/export_voice.py
+USpeaker|P|Voice capture/playback, gain, send rate|browser/voice.mjs, browser/uspeak.mjs, bridge/voice.mjs
+VectorExtensions|N|Vector helpers|
+ViewModel|P|First-person view model: pose, sockets, animations, bob, recoil, perspective, idle mixer|browser/viewmodel.mjs, browser/animation-blender.mjs
+ViewModelAttachment|P|Mod attachment renderers bound to a view model|browser/item-mods.mjs
+ViewModelTester|N|Test script|debug:
+Vis|N|AI visibility system|server: VisNode is destroyed on clients (BasicWildLifeAI.Awake); offline AI in browser/animals.mjs
+VisAction|N|Vis action asset|server: VisNode
+VisActionMessageEnter|N|Vis action|server: VisNode
+VisActionMessageEnterExit|N|Vis action|server: VisNode
+VisActionMessageExit|N|Vis action|server: VisNode
+VisClass|N|Vis class asset|server: VisNode
+VisEval|N|Vis evaluation asset|server: VisNode
+VisGizmosUtility|N|Vis gizmos|editor:
+VisManager|N|Vis update manager|server: VisNode
+VisMessageInfo|N|Vis message info|server: VisNode
+VisMessageReactor|N|Vis message reactor (destroyed on clients)|server: VisNode
+VisNode|N|AI vision node (destroyed on clients by BasicWildLifeAI.Awake)|server: offline AI senses in browser/animals.mjs
+VisQuery|N|Vis query asset|server: VisNode
+VisReactor|N|Vis reactor base|server: VisNode
+VMAttachmentSocketOverride|P|Socket override for silencer/holo sight on view models|tools/export_item_mods.py, browser/item-mods.mjs
+VMOptics|N|Optics gizmo|editor:
+voice|N|Empty console system|empty:
+VoiceChatIcon|P|Voice icon on the HUD|browser/voice.mjs
+VoiceCom|P|Player voice component: serialise/play, push to talk|browser/voice.mjs, browser/net-client.mjs
+water|P|Console system water.level / reflection|browser/render-convars.mjs, browser/convars.mjs
+WaterColor|P|Water colour by time of day|browser/water4.mjs, browser/sky-model.mjs
+WaterLine|P|Global water height|browser/water4.mjs, browser/survival.mjs
+WaterMesh|N|Water mesh helper|
+WaterMesher|N|Water mesher|
+WaterSettings|P|Water quality/reflection settings|browser/render-convars.mjs, browser/water4.mjs
+WeaponDataBlock|P|Weapon: semi-auto, fire rate, deploy length, damage, hit notify|browser/combat.mjs, browser/combat-feedback.mjs
+WeaponImpact|N|Weapon impact record|
+WeaponItem|P|Held weapon: attack timing, reload, deploy, sprint|browser/combat.mjs
+WeaponModRep|P|Weapon mod representation on remote items (attach, on/off)|browser/weapon-mod-effects.mjs, browser/remote-weapon.mjs
+WeightSelection|P|Weighted random pick|browser/loot.mjs
+WildlifeManager|N|Empty wildlife manager|empty:
+WolfAI|P|Wolf AI: attack animation, materials|browser/animals.mjs

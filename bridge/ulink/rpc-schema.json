@@ -1,0 +1,1150 @@
+{
+"A": [
+{
+"class": "Context",
+"direction": "to-server",
+"params": [
+"NetEntityID"
+]
+},
+{
+"class": "NGC",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"Action1": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"uLink.BitStream"
+]
+}
+],
+"Action1B": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"Action2": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"uLink.BitStream"
+]
+}
+],
+"Action2B": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"Action3": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"uLink.BitStream"
+]
+}
+],
+"Action3B": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"AdjustOwnerPos": [
+{
+"class": "uLinkStrictCharacter",
+"direction": "both",
+"params": [
+"Vector3"
+]
+},
+{
+"class": "uLinkStrictPlatformer",
+"direction": "both",
+"params": [
+"Vector3"
+]
+}
+],
+"ArmorData": [
+{
+"class": "EquipmentWearer",
+"direction": "to-client",
+"params": [
+"byte[]"
+]
+}
+],
+"B": [
+{
+"class": "Context",
+"direction": "to-server",
+"params": []
+}
+],
+"C": [
+{
+"class": "Context",
+"direction": "to-server",
+"params": [
+"int"
+]
+},
+{
+"class": "NGC",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"CFAR": [
+{
+"class": "Inventory",
+"direction": "both",
+"params": [
+"uLink.BitStream"
+]
+}
+],
+"CLD": [
+{
+"class": "Controllable",
+"direction": "to-server",
+"params": []
+}
+],
+"CLEV": [
+{
+"class": "Inventory",
+"direction": "to-client",
+"params": [
+"byte",
+"int"
+]
+}
+],
+"CLR": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"CL_Attack": [
+{
+"class": "HostileWildlifeAI",
+"direction": "to-client",
+"params": []
+}
+],
+"CL_ConsoleCommand": [
+{
+"class": "ConsoleNetworker",
+"direction": "to-client",
+"params": [
+"string"
+]
+}
+],
+"CL_ConsoleMessage": [
+{
+"class": "ConsoleNetworker",
+"direction": "to-client",
+"params": [
+"string"
+]
+}
+],
+"CL_UpdateSkyState": [
+{
+"class": "EnvironmentControlCenter",
+"direction": "to-client",
+"params": [
+"uLink.BitStream"
+]
+}
+],
+"CRFC": [
+{
+"class": "CraftingInventory",
+"direction": "to-client",
+"params": []
+}
+],
+"CRFS": [
+{
+"class": "CraftingInventory",
+"direction": "to-server",
+"params": [
+"int",
+"int"
+]
+}
+],
+"CRFU": [
+{
+"class": "CraftingInventory",
+"direction": "to-client",
+"params": [
+"float",
+"float",
+"float",
+"float",
+"int",
+"int"
+]
+}
+],
+"CRFX": [
+{
+"class": "CraftingInventory",
+"direction": "to-server",
+"params": []
+}
+],
+"Chat": [
+{
+"class": "uLinkChatGUI",
+"direction": "both",
+"params": [
+"string"
+]
+}
+],
+"ClearLooter": [
+{
+"class": "LootableObject",
+"direction": "both",
+"params": []
+}
+],
+"ClientBounce": [
+{
+"class": "SignalGrenade",
+"direction": "to-client",
+"params": []
+},
+{
+"class": "TimedGrenade",
+"direction": "to-client",
+"params": []
+}
+],
+"ClientDeath": [
+{
+"class": "BasicWildLifeAI",
+"direction": "to-client",
+"params": [
+"Vector3",
+"uLink.NetworkViewID"
+]
+}
+],
+"ClientExplode": [
+{
+"class": "TimedExplosive",
+"direction": "both",
+"params": []
+}
+],
+"ClientFirstReady": [
+{
+"class": "ServerManagement",
+"direction": "to-server",
+"params": []
+}
+],
+"ClientHealthChange": [
+{
+"class": "BasicWildLifeAI",
+"direction": "to-client",
+"params": [
+"float"
+]
+}
+],
+"ClientHealthUpdate": [
+{
+"class": "DeployableObject",
+"direction": "to-client",
+"params": [
+"float"
+]
+},
+{
+"class": "StructureComponent",
+"direction": "to-client",
+"params": [
+"float"
+]
+}
+],
+"ClientKilled": [
+{
+"class": "StructureComponent",
+"direction": "to-client",
+"params": []
+}
+],
+"Client_OnKilled": [
+{
+"class": "DeathTransfer",
+"direction": "to-client",
+"params": []
+},
+{
+"class": "DeployableObject",
+"direction": "to-client",
+"params": []
+}
+],
+"Client_OnKilledBy": [
+{
+"class": "DeathTransfer",
+"direction": "to-client",
+"params": [
+"uLink.NetworkViewID"
+]
+}
+],
+"Client_OnKilledShot": [
+{
+"class": "DeathTransfer",
+"direction": "to-client",
+"params": [
+"Vector3",
+"Angle2",
+"byte"
+]
+}
+],
+"Client_OnKilledShotBy": [
+{
+"class": "DeathTransfer",
+"direction": "to-client",
+"params": [
+"uLink.NetworkViewID",
+"Vector3",
+"Angle2",
+"byte"
+]
+}
+],
+"ConnectSetup": [
+{
+"class": "LightSwitch",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"D": [
+{
+"class": "Context",
+"direction": "to-server",
+"params": []
+},
+{
+"class": "NGC",
+"direction": "to-client",
+"params": [
+"ushort"
+]
+}
+],
+"DOc": [
+{
+"class": "BasicDoor",
+"direction": "to-client",
+"params": [
+"sbyte"
+]
+}
+],
+"DOo": [
+{
+"class": "BasicDoor",
+"direction": "to-client",
+"params": [
+"sbyte",
+"ulong"
+]
+}
+],
+"DoAction": [
+{
+"class": "WorkBench",
+"direction": "both",
+"params": []
+}
+],
+"DoBeltUse": [
+{
+"class": "InventoryHolder",
+"direction": "to-server",
+"params": [
+"int"
+]
+}
+],
+"DoRepair": [
+{
+"class": "RepairBench",
+"direction": "to-server",
+"params": []
+}
+],
+"E": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": [
+"ContextMenuData"
+]
+}
+],
+"F": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"G": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"GNUP": [
+{
+"class": "Inventory",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"GetClientMove": [
+{
+"class": "HumanController",
+"direction": "to-server",
+"params": [
+"Vector3",
+"int",
+"ushort"
+]
+}
+],
+"GetNetworkUpdate": [
+{
+"class": "BasicWildLifeAI",
+"direction": "to-client",
+"params": [
+"Vector3",
+"Angle2"
+]
+},
+{
+"class": "SupplyCrate",
+"direction": "to-client",
+"params": [
+"Vector3",
+"Quaternion"
+]
+},
+{
+"class": "SupplyDropPlane",
+"direction": "to-client",
+"params": [
+"Vector3",
+"Quaternion"
+]
+}
+],
+"GetOwnerInfo": [
+{
+"class": "DeployableObject",
+"direction": "to-client",
+"params": [
+"ulong",
+"ulong"
+]
+},
+{
+"class": "StructureMaster",
+"direction": "to-client",
+"params": [
+"ulong",
+"ulong"
+]
+}
+],
+"GoodOwnerPos": [
+{
+"class": "uLinkStrictCharacter",
+"direction": "both",
+"params": []
+},
+{
+"class": "uLinkStrictPlatformer",
+"direction": "both",
+"params": []
+}
+],
+"H": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"I": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"IACT": [
+{
+"class": "Inventory",
+"direction": "both",
+"params": [
+"byte",
+"byte"
+]
+}
+],
+"IAST": [
+{
+"class": "Inventory",
+"direction": "both",
+"params": [
+"byte",
+"uLink.NetworkViewID"
+]
+}
+],
+"ID1": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"ISMV": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": [
+"byte",
+"byte"
+]
+}
+],
+"ITDE": [
+{
+"class": "Inventory",
+"direction": "both",
+"params": []
+}
+],
+"ITMG": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": [
+"NetEntityID",
+"byte",
+"byte",
+"bool"
+]
+}
+],
+"ITMV": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": [
+"NetEntityID",
+"byte",
+"byte"
+]
+}
+],
+"ITSM": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": [
+"byte",
+"byte",
+"bool"
+]
+}
+],
+"ITSP": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": [
+"byte"
+]
+}
+],
+"InterpDestroy": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": []
+}
+],
+"J": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"K": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"KP": [
+{
+"class": "ServerManagement",
+"direction": "to-client",
+"params": [
+"int"
+]
+}
+],
+"L": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"Landed": [
+{
+"class": "SupplyCrate",
+"direction": "to-client",
+"params": []
+}
+],
+"Local_BleedChange": [
+{
+"class": "ClientVitalsSync",
+"direction": "both",
+"params": [
+"float"
+]
+}
+],
+"Local_HealthChange": [
+{
+"class": "ClientVitalsSync",
+"direction": "both",
+"params": [
+"float",
+"uLink.NetworkViewID"
+]
+}
+],
+"M": [
+{
+"class": "Context",
+"direction": "to-client",
+"params": []
+}
+],
+"Mods": [
+{
+"class": "ItemRepresentation",
+"direction": "both",
+"params": [
+"byte[]"
+]
+}
+],
+"Move": [
+{
+"class": "uLinkSmoothCharacter",
+"direction": "both",
+"params": [
+"Vector3",
+"Vector3",
+"Quaternion"
+]
+},
+{
+"class": "uLinkSmoothRigidbody",
+"direction": "both",
+"params": [
+"Vector3",
+"Vector3",
+"Quaternion"
+]
+}
+],
+"OC1": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": [
+"uLink.NetworkViewID"
+]
+}
+],
+"OC2": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": [
+"uLink.NetworkViewID",
+"uLink.NetworkViewID"
+]
+}
+],
+"OnStatus": [
+{
+"class": "BasicTorchItemRep",
+"direction": "both",
+"params": [
+"bool"
+]
+},
+{
+"class": "TorchItemRep",
+"direction": "both",
+"params": [
+"bool"
+]
+}
+],
+"PKIF": [
+{
+"class": "ItemPickup",
+"direction": "to-client",
+"params": [
+"int",
+"byte"
+]
+}
+],
+"PKIS": [
+{
+"class": "ItemPickup",
+"direction": "to-client",
+"params": [
+"int"
+]
+}
+],
+"RFH": [
+{
+"class": "Controllable",
+"direction": "to-client",
+"params": [
+"byte"
+]
+}
+],
+"RN0": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN1": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN2": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN3": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN4": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN5": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN6": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RN7": [
+{
+"class": "Controllable",
+"direction": "both",
+"params": []
+}
+],
+"RODone": [
+{
+"class": "RigidObj",
+"direction": "to-client",
+"params": []
+}
+],
+"RS": [
+{
+"class": "ServerManagement",
+"direction": "to-client",
+"params": [
+"float"
+]
+}
+],
+"ReadClientMove": [
+{
+"class": "HumanController",
+"direction": "to-client",
+"params": [
+"Vector3",
+"int",
+"ushort",
+"float"
+]
+}
+],
+"ReadFallImpact": [
+{
+"class": "FallDamage",
+"direction": "unknown",
+"params": [
+"Vector3"
+]
+}
+],
+"ReadState": [
+{
+"class": "LightSwitch",
+"direction": "both",
+"params": [
+"bool"
+]
+}
+],
+"ReceiveBoundBPs": [
+{
+"class": "PlayerInventory",
+"direction": "to-client",
+"params": [
+"byte[]"
+]
+}
+],
+"ReceiveNetState": [
+{
+"class": "FireBarrel",
+"direction": "to-client",
+"params": [
+"bool"
+]
+}
+],
+"RecieveNetwork": [
+{
+"class": "Metabolism",
+"direction": "both",
+"params": [
+"float",
+"float",
+"float",
+"float",
+"float",
+"float"
+]
+},
+{
+"class": "RigidObj",
+"direction": "both",
+"params": [
+"Vector3",
+"Quaternion"
+]
+}
+],
+"RequestRespawn": [
+{
+"class": "ServerManagement",
+"direction": "to-server",
+"params": [
+"bool"
+]
+}
+],
+"SMSet": [
+{
+"class": "StructureComponent",
+"direction": "to-client",
+"params": [
+"uLink.NetworkViewID"
+]
+}
+],
+"SVUC": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": [
+"byte"
+]
+}
+],
+"SVUF": [
+{
+"class": "Inventory",
+"direction": "to-server",
+"params": []
+}
+],
+"SV_RunConsoleCommand": [
+{
+"class": "ConsoleNetworker",
+"direction": "to-server",
+"params": [
+"string"
+]
+}
+],
+"ServerMove": [
+{
+"class": "uLinkStrictCharacter",
+"direction": "both",
+"params": [
+"Vector3",
+"Vector3",
+"Quaternion"
+]
+},
+{
+"class": "uLinkStrictPlatformer",
+"direction": "both",
+"params": [
+"Vector3",
+"float",
+"float",
+"bool",
+"float"
+]
+}
+],
+"SetLooter": [
+{
+"class": "LootableObject",
+"direction": "both",
+"params": [
+"uLink.NetworkPlayer"
+]
+}
+],
+"SetUser": [
+{
+"class": "WorkBench",
+"direction": "both",
+"params": [
+"uLink.NetworkPlayer"
+]
+}
+],
+"Snd": [
+{
+"class": "BasicWildLifeAI",
+"direction": "both",
+"params": [
+"byte"
+]
+}
+],
+"StopLooting": [
+{
+"class": "LootableObject",
+"direction": "both",
+"params": []
+}
+],
+"StopUsing": [
+{
+"class": "WorkBench",
+"direction": "both",
+"params": []
+}
+],
+"TOSS": [
+{
+"class": "InventoryHolder",
+"direction": "to-server",
+"params": [
+"uLink.BitStream"
+]
+}
+],
+"TakeAll": [
+{
+"class": "LootableObject",
+"direction": "to-server",
+"params": []
+},
+{
+"class": "WorkBench",
+"direction": "to-server",
+"params": []
+}
+],
+"UnstickMove": [
+{
+"class": "ServerManagement",
+"direction": "to-client",
+"params": [
+"Vector3"
+]
+}
+],
+"Vomit": [
+{
+"class": "Metabolism",
+"direction": "both",
+"params": []
+}
+],
+"WorkStatusUpdate": [
+{
+"class": "WorkBench",
+"direction": "both",
+"params": [
+"float",
+"float"
+]
+}
+],
+"clientspeak": [
+{
+"class": "VoiceCom",
+"direction": "to-server",
+"params": [
+"int",
+"byte[]"
+]
+}
+],
+"fIc": [
+{
+"class": "FallDamage",
+"direction": "to-client",
+"params": [
+"float"
+]
+}
+],
+"fIm": [
+{
+"class": "FallDamage",
+"direction": "to-server",
+"params": [
+"Vector3"
+]
+}
+],
+"fIo": [
+{
+"class": "FallDamage",
+"direction": "both",
+"params": [
+"float"
+]
+}
+],
+"init": [
+{
+"class": "VoiceCom",
+"direction": "to-client",
+"params": [
+"int"
+]
+}
+],
+"modelindex": [
+{
+"class": "ResourceObject",
+"direction": "both",
+"params": [
+"int"
+]
+}
+],
+"voiceplay": [
+{
+"class": "VoiceCom",
+"direction": "to-client",
+"params": [
+"float",
+"int",
+"byte[]"
+]
+}
+],
+"wbi": [
+{
+"class": "CraftingInventory",
+"direction": "to-client",
+"params": [
+"bool"
+]
+}
+]
+}

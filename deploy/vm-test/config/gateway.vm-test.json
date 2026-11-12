@@ -1,0 +1,20 @@
+{
+  "mode": "vm-test",
+  "testHostOnlyBind": {"subnet": "192.168.56.0/24"},
+  "serverId": "__SERVER_ID__",
+  "centralUrl": "http://192.168.56.1:8080/",
+  "credentialFile": "C:/RLB/secrets/gateway.credential",
+  "controlKeyFile": "C:/RLB/secrets/control.key",
+  "metricsTokenFile": "C:/RLB/secrets/metrics.token",
+  "sidecarUrl": "http://127.0.0.1:28090",
+  "native": {"host": "127.0.0.1", "port": 29015},
+  "allowedOrigins": ["http://192.168.56.1:8080"],
+  "listen": {"host": "192.168.56.10", "port": 28443},
+  "path": "/play",
+  "tls": {"pfx": "C:/RLB/secrets/gateway-tls.pfx", "passphraseFile": "C:/RLB/secrets/gateway-tls.pass"},
+  "capacity": 100,
+  "wipe": "vm-test",
+  "ngcRegistry": "C:/RLB/app/browser/assets/recovered/ngc/registry.json",
+  "recoveredDir": "C:/RLB/app/browser/assets/recovered",
+  "anticheat": {"policy": {"autoKick": false}}
+}

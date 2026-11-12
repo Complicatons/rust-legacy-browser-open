@@ -1,0 +1,62 @@
+/* Account pages: split layout, art on the left, form on the right. */
+.auth-split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(380px,.9fr);min-height:calc(100vh - var(--bar-h))}
+.auth-art{position:relative;overflow:hidden;background:var(--k1) url(/site/generated/media/gather.jpg) 30% 50%/cover no-repeat;display:flex;align-items:flex-end;padding:48px 56px}
+/* WebP first (tools/site-webp.mjs; 707 KB JPEG → 515 KB, 157 KB at 960 px); the art is a 180-px strip on phones. */
+.auth-art{background-image:image-set(url(/site/generated/media/gather.webp) type("image/webp"),url(/site/generated/media/gather.jpg) type("image/jpeg"))}
+@media (max-width:960px){.auth-art{background-image:image-set(url(/site/generated/media/gather-960.webp) type("image/webp"),url(/site/generated/media/gather.jpg) type("image/jpeg"))}}
+.auth-art::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.35) 50%,rgba(10,10,10,.2) 100%),linear-gradient(90deg,rgba(10,10,10,.5),rgba(10,10,10,0) 60%)}
+.auth-art>*{position:relative;z-index:1}
+.auth-art .h{font-size:clamp(48px,5.6vw,88px)}
+.auth-art .sub{display:block;margin-top:12px;color:var(--w2);font:900 16px var(--heavy);font-stretch:125%;letter-spacing:.28em;text-transform:uppercase}
+.auth-art .mono{display:block;margin-top:22px;color:var(--w3)}
+.auth-form{display:flex;flex-direction:column;justify-content:center;padding:48px clamp(20px,5vw,72px);background:var(--k);border-left:1px solid var(--line)}
+.auth-form>div{width:100%;max-width:440px}
+.auth-form .h{font-size:clamp(34px,3.2vw,48px);margin-bottom:10px}
+.auth-form .lede{color:var(--w2);margin:0 0 28px}
+.auth-form form .btn-play{width:100%;margin-top:6px}
+.or{display:flex;align-items:center;gap:12px;margin:26px 0;color:var(--w3);font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line2)}
+.providers{display:grid;gap:10px}
+.providers .btn-provider{justify-content:center;height:48px;font-size:13px}
+.providers .btn-provider span{display:inline !important}
+.switch{margin-top:26px;color:var(--w2);font-size:15px}
+.switch a{color:var(--w);font-weight:600}
+.status-line:empty{display:none}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line2);background:var(--k1);font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w2);margin-bottom:18px}
+.badge.ok{border-color:rgba(95,169,160,.5);color:var(--teal)}
+.badge.warn{border-color:rgba(232,169,58,.5);color:var(--amber)}
+.notice{border:1px solid var(--line2);background:var(--k1);padding:16px 18px;margin-bottom:20px}
+.notice h2{margin:0 0 6px;font:700 13px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.notice p{margin:0;color:var(--w2)}
+.forgot{display:block;text-align:right;margin:-8px 0 18px;font-size:14px;color:var(--w2)}
+/* Account page */
+.account{max-width:880px;padding-bottom:64px}
+.acc-section{border:1px solid var(--line);margin-bottom:22px}
+.acc-section>h2{margin:0;padding:14px 18px;border-bottom:1px solid var(--line);font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.acc-row{display:grid;grid-template-columns:200px 1fr auto;gap:16px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.acc-row:last-child{border-bottom:0}
+.acc-row dt{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w3)}
+.acc-row dd{margin:0}
+.acc-form{padding:18px;border-top:1px solid var(--line);background:var(--k1)}
+.acc-form .row{display:flex;gap:10px;flex-wrap:wrap}
+/* Sign in a launcher (/desktop/approve) and the account page's launcher list. */
+.da-form{border-top:0}
+.da-form .lede,.da-done .lede{color:var(--w2);margin:0 0 18px;max-width:60ch}
+.field input.da-code{font-size:24px;height:auto;padding:10px 12px;letter-spacing:.14em;max-width:16ch;text-transform:uppercase}
+.da-done{padding:18px}
+.da-done .badge{margin-bottom:14px}
+.acc-launchers{margin:0}
+.acc-launchers:empty::before{content:"No launchers signed in.";display:block;padding:16px 18px;color:var(--w3)}
+.acc-note{margin:0;padding:14px 18px;border-top:1px solid var(--line);font-size:13px}
+@media (max-width:860px){
+ .auth-split{grid-template-columns:1fr}
+ .auth-art{min-height:180px;padding:24px 16px}
+ .auth-art .h{font-size:40px}.auth-art .mono{display:none}
+ .auth-form{border-left:0;padding:28px 16px 40px}
+ .acc-row{grid-template-columns:1fr;gap:6px}
+}
+.staff-links{margin:0 0 18px;color:var(--w3);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.staff-links a{color:var(--or-h)}
+/* Terms and privacy agreement under the sign-up forms. */
+.agree{margin:0 0 14px;color:var(--w2);font-size:14px;line-height:1.5}
+.agree a{color:var(--or-h)}

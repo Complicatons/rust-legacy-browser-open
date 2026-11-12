@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit article · Wiki · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/wiki.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/wiki-edit.mjs"></script>
+</head>
+<body data-page="wiki-edit">
+<!--#header-->
+<main id="main" class="wiki-editor">
+ <div class="wiki-top">
+  <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/wiki">Wiki</a><span>Editor</span></nav>
+ </div>
+ <div class="pending" id="edit-gate" hidden><b>Staff only</b><span>Wiki articles are written by the platform staff.</span><a class="btn small" href="/wiki">Back to the wiki</a></div>
+ <form class="edit-grid" id="edit-form" hidden novalidate>
+  <div class="edit-fields">
+   <h1 class="h" id="edit-h">New article</h1>
+   <div class="field"><label for="ed-title">Title</label><input id="ed-title" name="title" maxlength="120" required></div>
+   <div class="field-row">
+    <div class="field"><label for="ed-slug">Address</label><input id="ed-slug" name="slug" maxlength="64" pattern="[a-z0-9-]{1,64}" required spellcheck="false"><span class="help syntax" id="ed-url"></span></div>
+    <div class="field"><label for="ed-section">Section</label><select id="ed-section" name="section"></select></div>
+   </div>
+   <div class="field"><label for="ed-body">Text</label><textarea id="ed-body" name="body" rows="18" maxlength="100000" spellcheck="true"></textarea>
+    <span class="help syntax">## Heading · **bold** · *italic* · - list · [link](/wiki) · | table | · [[item:Hatchet]] · [[place:Hangar]]</span></div>
+   <div class="field"><label for="ed-note">Change note</label><input id="ed-note" name="note" maxlength="200" placeholder="What changed"></div>
+   <div class="edit-actions"><button class="btn-play" type="submit" id="ed-save">Save</button><a class="btn" id="ed-view" href="/wiki" hidden>View article</a><span class="mono muted" id="ed-status" aria-live="polite"></span></div>
+  </div>
+  <div class="edit-side">
+   <section class="panel"><div class="panel-h mono">Preview</div><div class="prose" id="ed-preview"></div></section>
+   <section class="panel" id="ed-history-wrap" hidden><div class="panel-h mono">History</div><ol class="history" id="ed-history"></ol></section>
+  </div>
+ </form>
+</main>
+<!--#footer-->
+</body>
+</html>

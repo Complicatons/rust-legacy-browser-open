@@ -1,0 +1,55 @@
+# Throwaway email domains refused at sign-up and on email change (central/identity.mjs). One domain per line;
+# subdomains are covered too. Central re-reads this file when it changes: edit it on the server, no deploy needed.
+# Platform staff can also add domains on the admin page (stored in the database).
+# Starter list. For full coverage, replace it with the community list from
+# https://github.com/disposable-email-domains/disposable-email-domains (disposable_email_blocklist.conf) on a schedule.
+10minutemail.com
+10minutemail.net
+20minutemail.com
+burnermail.io
+discard.email
+dispostable.com
+dropmail.me
+emailfake.com
+emailondeck.com
+fakeinbox.com
+generator.email
+getnada.com
+grr.la
+guerrillamail.biz
+guerrillamail.com
+guerrillamail.de
+guerrillamail.info
+guerrillamail.net
+guerrillamail.org
+guerrillamailblock.com
+inboxkitten.com
+mail.tm
+mailcatch.com
+maildrop.cc
+mailinator.com
+mailnesia.com
+mailpoof.com
+minuteinbox.com
+mintemail.com
+moakt.com
+mohmal.com
+mytemp.email
+pokemail.net
+sharklasers.com
+spam4.me
+spambox.us
+spamgourmet.com
+temp-mail.io
+temp-mail.org
+tempail.com
+tempinbox.com
+tempmail.com
+tempmailo.com
+tempr.email
+throwawaymail.com
+trash-mail.com
+trashmail.com
+yopmail.com
+yopmail.fr
+yopmail.net

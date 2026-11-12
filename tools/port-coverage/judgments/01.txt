@@ -1,0 +1,147 @@
+# Port-coverage judgments, one line per decompiled client type:  Key|Status|What it does|Port pointer or reason
+# Key = the type id after "<assembly>:" (leading "." dropped for the global namespace); "#2" marks a generic twin.
+# Status: P Ported (pointer = port files, `file` or `file:function`), N N/A (reason), A Partial (what is missing),
+#         M Missing, B Blocked (on what). Empty reason on an unreached N = not referenced by shipped content or reachable code.
+# Reason prefixes: engine: (replaced by the browser platform), server: (server-side only), editor: (editor/authoring only),
+#                  debug: (debug/test only), empty: (no behaviour), with: (data/helper type, ported inside the named port).
+@Assembly-CSharp
+AABBox|N|Axis-aligned box maths (corners, 3x4/4x4 transforms, encapsulation)|engine: three.js Box3/Matrix4 cover the callers' bounds maths
+Activatable|P|Component-interface driver that routes Act/toggle requests to IActivatable implementers (doors, fire barrels)|with: browser/doors.mjs, browser/deployables.mjs (door toggle, campfire/furnace on/off)
+ActivatableInfo|P|Serialized Activatable flags (requiresInstigator, alwaysToggleActTrigger)|with: browser/doors.mjs
+ActivationResult|P|Result codes of an activation request|with: browser/doors.mjs
+ActivationToggleState|P|On/off/unknown toggle state of an activatable|with: browser/deployables.mjs
+ActiveAnimation|N|NGUI helper that plays an Animation and fires callbacks when it finishes|
+actor|P|Console system for third-person camera convars (forceThirdPerson, last3rdPerson*)|browser/client-commands.mjs, browser/console-route.mjs
+AdaptiveNearPlane|P|PlayerCamera settings for the per-frame near-plane search|browser/adaptive-near-plane.mjs
+airdrop|P|Console system: airdrop.drop / min_players (server-side commands routed by the console)|browser/console-route.mjs, browser/airdrops.mjs
+AIVars|N|Debug AI flags (no target/attack/damage)|
+AmbientAudioPlayer|P|Day/night ambient loop pair faded by time of day|browser/world-audio.mjs
+AmmoItem|P|Inventory item class for ammunition stacks|with: browser/inventory.mjs
+AmmoItemDataBlock|P|Ammo item definition (casing type, description)|browser/tooltip.mjs, browser/combat.mjs
+AnchorStyleExtensions|N|dfGUI anchor flag helpers|
+Angle2|P|Packed pitch/yaw angle maths and network encoding|bridge/ulink/rust.mjs, browser/net-client.mjs
+Angle2EncDecTest|N|Test script for Angle2 encoding|
+Angle2OrQuaternion|N|Union of Angle2 or Quaternion|
+AnimationBlender|P|View-model animation mixer: residual idle frame blended in under one-shot Play/CrossFade|browser/animation-blender.mjs, browser/viewmodel.mjs, tools/export_viewmodels.py
+AnimationOrTween.Direction|P|NGUI tween/animation direction enum|with: browser/rpos-sounds.mjs
+AnimationOrTween.DisableCondition|N|NGUI tween disable condition|
+AnimationOrTween.EnableCondition|N|NGUI tween enable condition|
+AnimationOrTween.Trigger|P|NGUI trigger enum (OnClick, OnHover...) used by UIButtonSound/tweens|with: browser/rpos-sounds.mjs
+ApplyCrouch|P|Character addon marker that applies crouch height|with: browser/motor.mjs
+ArmorDataBlock|P|Armour item definition: per-damage-type protection values and worn model|browser/armor.mjs, browser/item-condition.mjs, browser/tooltip.mjs
+ArmorItem|P|Equipped armour item: slot rules and armour refresh on condition change|browser/item-condition.mjs, browser/item-ops.mjs
+ArmorModel|P|ScriptableObject holding a worn armour mesh/materials per slot (with censored variant)|tools/unity_armor.py, browser/armor.mjs
+ArmorModel#2|P|Generic slot-typed ArmorModel base|tools/unity_armor.py
+ArmorModelCollection|P|Feet/legs/torso/head collection of armour models|with: tools/unity_armor.py
+ArmorModelCollection#2|P|Generic collection of the four armour slots|with: tools/unity_armor.py
+ArmorModelFeet|P|Feet armour model asset|tools/unity_armor.py
+ArmorModelGroup|P|Default armour model set (naked body parts) bound when a slot is empty|with: tools/unity_armor.py, browser/armor.mjs
+ArmorModelHead|P|Head armour model asset|tools/unity_armor.py
+ArmorModelLegs|P|Legs armour model asset|tools/unity_armor.py
+ArmorModelMemberMap|P|Value map of the four slot models|with: tools/unity_armor.py
+ArmorModelMemberMap#2|P|Generic value map of the four slot models|with: tools/unity_armor.py
+ArmorModelRenderer|P|Binds worn armour meshes to the character's actor rig (default group, censorship)|browser/armor.mjs, browser/player-view.mjs
+ArmorModelSlot|P|Armour slot enum (feet/legs/torso/head)|with: browser/armor.mjs
+ArmorModelSlotClassAttribute|P|Attribute mapping ArmorModel subclasses to slots|with: tools/unity_armor.py
+ArmorModelSlotMask|P|Bit mask of armour slots|with: browser/armor.mjs
+ArmorModelSlotUtility|P|Slot/mask conversions and renderer names per slot|with: tools/unity_armor.py
+ArmorModelTorso|P|Torso armour model asset|tools/unity_armor.py
+ArrowMovement|P|Arrow flight: speed, drop, lifetime, hit/miss reporting|browser/combat.mjs, browser/arrow-trail.mjs
+Assert|N|Debug assertion helper|
+AudioAtDay|N|Plays an AudioSource only by day|
+AudioAtNight|N|Plays an AudioSource only by night|
+AudioAtWeather|N|Plays an AudioSource only in weather|
+AudioClipArray|P|ScriptableObject array of audio clips (random pick)|tools/export_audio.py, browser/melee-effects.mjs
+AuthOptions|N|Authoring-suite option flags|editor: hit-box/ragdoll authoring suite
+AuthorChHit|N|Authoring piece: character hit box|editor: hit-box/ragdoll authoring suite
+AuthorChJoint|N|Authoring piece: ragdoll joint|editor: hit-box/ragdoll authoring suite
+AuthorCreation|N|Authoring suite base creation|editor: hit-box/ragdoll authoring suite
+AuthorCreationProject|N|Authoring suite project asset|editor: hit-box/ragdoll authoring suite
+AuthorHull|N|Authoring suite hull builder (hit boxes, ragdoll)|editor: hit-box/ragdoll authoring suite
+AuthorHullBodyPartInfo|N|Authoring suite body-part info|editor: hit-box/ragdoll authoring suite
+AuthorHullBodyPartInfoMap|N|Authoring suite body-part map|editor: hit-box/ragdoll authoring suite
+AuthorPalletObject|N|Authoring suite palette entry|editor: hit-box/ragdoll authoring suite
+AuthorPeice|N|Authoring suite piece base|editor: hit-box/ragdoll authoring suite
+AuthorShared|N|Authoring suite shared GUI/editor helpers|editor: hit-box/ragdoll authoring suite
+AuthorSuiteCreationAttribute|N|Authoring suite attribute|editor: hit-box/ragdoll authoring suite
+AuthTarg|N|Authoring suite target enum|editor: hit-box/ragdoll authoring suite
+AvatarSaveProc|N|Empty avatar save component|
+AvatarSaveRestore|N|Copies persistent avatar blueprints between protobuf builders|server: avatar save/restore runs on the server
+BakeFunction|N|Empty bake function stub|
+BandageDataBlock|N|Old bandage item class (shipped bandages use BasicHealthKitDataBlock)|
+BandageItem|N|Old bandage held item|
+BandMode|P|USpeak voice band mode enum|with: browser/uspeak.mjs
+BaseAIMovement|P|Wildlife movement base: move/look targets, network updates, speed|browser/animals.mjs, browser/animal-view.mjs
+BaseHitBox|P|Hit box component pointing at its IDMain|with: browser/player-hitboxes.mjs
+BaseStateInterpolator|P|Base for state interpolators|with: browser/player-view.mjs
+BaseTraitMap|P|Base ScriptableObject for character trait maps|with: tools/recover_player.py
+BaseWeaponModDataBlock|P|Weapon attachment item: VM/rep attach objects, sockets, punch and zoom offsets|browser/item-mods.mjs, browser/weapon-mod-effects.mjs
+BasicDoor|P|Door state machine, context text/menu, sounds and open/close toggling|browser/doors.mjs, browser/locks.mjs
+BasicHealthKit|P|Inventory item class for medical kits|with: browser/item-ops.mjs
+BasicHealthKitDataBlock|P|Medical item: heal range, stops bleeding, Use menu option|browser/item-ops.mjs, browser/item-menu.mjs, browser/item-events.mjs
+BasicTorchItem|P|Held torch: ignite/extinguish, burn-time use consumption|browser/main.mjs:torchFrame
+BasicTorchItemDataBlock|P|Torch definition: first/third-person light prefabs, ignite/extinguish actions|browser/main.mjs:torchFrame, browser/server-held.mjs
+BasicTorchItemRep|P|Remote torch representation: lit state RPC and light|browser/server-held.mjs, browser/player-view.mjs
+BasicWildLifeAI|P|Client wildlife: network updates, sounds, death animation/crossfade, health change|browser/animals.mjs, browser/animal-view.mjs
+BasicWildLifeMovement|P|Wildlife movement settings (sim rate, hull, look)|browser/animals.mjs
+BBox|N|Eight-corner box struct for AABBox|engine: three.js maths
+BearAI|P|Bear AI: attack/death animations|browser/animals.mjs
+Bed|P|Bed deployable (respawn point)|browser/deployables.mjs
+BlankController|N|Empty controller|
+BloodDrawDatablock|P|Blood draw kit: takes health, gives blood|browser/item-ops.mjs, browser/item-menu.mjs
+BloodDrawItem|P|Inventory item class for the blood draw kit|with: browser/item-ops.mjs
+BloodHelper|N|Bleed-direction helper component|
+BlueprintDataBlock|P|Blueprint: ingredients, result, duration, workbench rule, Study option|browser/crafting.mjs, browser/item-ops.mjs
+BlueprintItem|P|Inventory item class for blueprints|with: browser/crafting.mjs
+BMFont|P|NGUI bitmap-font glyph table|with: tools/export_rpos.py (fonts exported), browser/rpos.mjs
+BMGlyph|P|NGUI bitmap-font glyph|with: tools/export_rpos.py
+BMSymbol|P|NGUI font symbol|with: tools/export_rpos.py
+BoarAI|P|Boar AI animation update|browser/animals.mjs
+BoatCameraMode|N|Unused boat camera enum|
+BobAntiOutput|P|HeadBob anti-output (cancels weapon motion on axes)|browser/head-bob.mjs
+BobAntiOutputAxes|P|Axes mask for BobAntiOutput|with: browser/head-bob.mjs
+BobConfiguration|P|HeadBob spring/curve configuration|tools/export_headbob.py, browser/head-bob.mjs
+BobEffect|P|Base head-bob effect (punch)|browser/head-bob.mjs
+BobEffectStack|P|Stack of running head-bob effects|browser/head-bob.mjs
+BobElement|N|Unused value/time pair|
+BobForceCurve|P|Head-bob force curves driven by movement sources|browser/head-bob.mjs
+BobForceCurveSource|P|Input source enum for bob curves|with: browser/head-bob.mjs
+BobForceCurveTarget|P|Target enum for bob curves|with: browser/head-bob.mjs
+BobPunchEffect|P|Gunshot/damage punch effect curves|browser/head-bob.mjs, tools/export_headbob.py
+BOBRES|P|Bob effect simulation result enum|with: browser/head-bob.mjs
+BounceArrow|P|Placement gizmo bouncing arrow|browser/placement-preview.mjs
+BoundHack|N|Forces skinned-mesh local bounds around a centroid so Unity never culls them|engine: three.js skinned meshes are drawn with frustumCulled=false
+BowWeaponDataBlock|P|Bow: draw/fire/cancel sounds, arrow speed, tiredness, damage|browser/combat.mjs, browser/remote-weapon.mjs
+BowWeaponItem|P|Held bow: draw state, tiredness, arrow ids, aiming|browser/combat.mjs
+BrandingVersion|P|Version label in the main menu|browser/front-end.mjs
+BreakUnityEngineBounds.Bounds|N|Empty class shadowing UnityEngine.Bounds|empty:
+BulletWeaponDataBlock|P|Gun definition: ammo, clip, fire/reload sounds, tracer, muzzle flash, damage, range|browser/combat.mjs, browser/item-condition.mjs
+BulletWeaponImpact|N|Bullet impact record (unused)|
+BulletWeaponItem|P|Held gun: reload, aim gating, aim sway, primary attack|browser/combat.mjs
+ByteReader|N|NGUI text-asset line reader|
+CacheRef|N|Cached Unity object reference struct|engine: plain JS references
+CameraEventMaskClear|P|Clears the camera's event mask|browser/quality.mjs
+CameraFX|P|Player camera: FOV, view model render, effects, adaptive near plane|browser/main.mjs, browser/adaptive-near-plane.mjs, browser/post-chain.mjs
+CameraFXPost|P|Camera post-cull/post-render hook|browser/quality.mjs
+CameraFXPre|P|Camera pre-cull hook|browser/quality.mjs
+CameraLayerDepths|P|Per-layer far clip distances|browser/layer-culling.mjs
+CameraMount|P|Camera mount stack (main/death/loading cameras with transitions)|with: browser/main.mjs, browser/death-screen.mjs
+CameraSettings|P|View-distance layer settings refreshed from convars|browser/layer-culling.mjs, browser/render-convars.mjs
+Camera_FollowTarget|N|Sample follow camera|
+CampfireInventory|P|Campfire fixed-slot inventory|browser/deployables.mjs
+CarCameraMode|N|Unused car camera enum|
+CCDesc|P|Character controller description (radius, slope, step, skin) and move|browser/motor.mjs, tools/export_physics.py
+CCDispatchTest|N|Test script|debug:
+CCHitDispatch|P|Forwards controller collider hits to CCMotor|with: browser/motor.mjs
+CCMotor|P|Character motor: movement, jumping, platforms, step physics|browser/motor.mjs
+CCMotorSettings|P|Motor settings asset (speeds, accel, gravity, jump)|tools/recover_player.py, browser/motor.mjs
+CCPusher|P|Moving-door pusher volumes|browser/motor.mjs, tools/export_physics.py
+CCTotem|P|Totem-pole stack of capsules for crouch height|browser/motor.mjs
+CCTotem#2|P|Totem base with totemic object|browser/motor.mjs
+CCTotem#3|P|Totem base with assignable object|browser/motor.mjs
+CCTotemicFigure|P|One capsule figure of the totem pole|with: browser/motor.mjs
+CCTotemPole|P|Totem pole: height configuration, move, teleport|browser/motor.mjs
+censor|P|Console system: censor.nudity|browser/client-commands.mjs, browser/armor.mjs
+Character|P|Character root: eyes, control, health, hit boxes, addons|browser/main.mjs, browser/player-view.mjs
+CharacterActorRigTrait|P|Trait: actor rig for the character|with: tools/recover_player.py
+CharacterAnimationTrait|P|Trait: movement animation setup and default group|tools/export_players.py

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Server console · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/tools.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/console.mjs"></script>
+</head>
+<body data-page="console">
+<!--#header-->
+<main id="main" class="tools admin console">
+ <header class="tools-hero"><h1 class="h">Server console</h1><p class="count mono" id="con-name"></p></header>
+ <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+
+ <section id="con-gate" class="panel" hidden>
+  <h2>Sign in to manage your server</h2>
+  <p>The console is for server owners and the Rust Legacy site staff.</p>
+  <p class="actions"><a class="btn small" href="/signin?next=/console">Sign in</a> <a class="btn small" href="/docs/manage-from-the-website">How it works</a></p>
+ </section>
+ <section id="con-none" class="panel" hidden>
+  <h2>No servers yet</h2>
+  <p>Register a server first. Its console appears here once its host app is connected.</p>
+  <p class="actions"><a class="btn small" href="/owner">Your servers</a> <a class="btn small" href="/list-your-server">List your server</a></p>
+ </section>
+
+ <section id="con" hidden>
+  <div class="panel toolbar">
+   <label class="pick">Server <select id="con-server"></select></label>
+   <span id="con-link" class="badge"></span>
+   <span id="con-seen" class="meta"></span>
+   <a class="btn small" id="con-admin" href="/admin">Players &amp; anti-cheat</a>
+  </div>
+
+  <section class="panel" id="con-offline" hidden aria-labelledby="con-offline-h">
+   <h2 id="con-offline-h">Host app not connected</h2>
+   <ol class="con-steps">
+    <li>Install <b>Rust Legacy Host</b> on the machine that runs your server.</li>
+    <li>On <a href="/owner">Your servers</a>, press <b>New host app key</b> for this server.</li>
+    <li>Paste the key into the host app's <b>Accounts</b> page. The console comes alive within a few seconds.</li>
+   </ol>
+   <p><a href="/docs/manage-from-the-website">Read the full guide</a></p>
+  </section>
+
+  <div class="con-grid">
+   <section class="panel" aria-labelledby="con-health-h">
+    <h2 id="con-health-h">Health</h2>
+    <dl class="con-tiles" id="con-tiles"></dl>
+   </section>
+   <section class="panel" aria-labelledby="con-parts-h">
+    <h2 id="con-parts-h">Parts</h2>
+    <div class="table-wrap"><table class="grid" id="con-parts">
+     <thead><tr><th>Part</th><th>State</th><th class="con-parts-wide">Up for</th><th class="con-parts-wide">Restarts</th><th>Actions</th></tr></thead>
+     <tbody></tbody>
+    </table></div>
+    <p class="actions con-all"><button type="button" class="small" data-op="start" data-target="all">Start all</button><button type="button" class="small secondary" data-op="restart" data-target="all">Restart all</button><button type="button" class="small secondary" data-op="stop" data-target="all">Stop all</button></p>
+    <form class="inline" id="con-restart-in"><label>Restart the game server in <select name="minutes"><option value="1">1 min</option><option value="5" selected>5 min</option><option value="15">15 min</option><option value="30">30 min</option></select></label><button>Restart with warnings</button><button type="button" class="small secondary" id="con-restart-cancel">Cancel restart</button></form>
+    <p class="hint" id="con-schedule"></p>
+   </section>
+  </div>
+
+  <section class="panel con-log-panel" aria-labelledby="con-log-h">
+   <h2 id="con-log-h">Live log</h2>
+   <div class="con-log-bar">
+    <div class="con-sources" id="con-sources" role="group" aria-label="Show lines from"></div>
+    <label class="con-find"><span class="sr-only">Find in the log</span><input id="con-find" type="search" placeholder="Find in the log" autocomplete="off" spellcheck="false"></label>
+    <button type="button" class="small secondary" id="con-pause" aria-pressed="false">Pause</button>
+   </div>
+   <div class="con-log" id="con-log" role="log" aria-live="off" tabindex="0"></div>
+  </section>
+
+  <div class="con-grid">
+   <section class="panel" aria-labelledby="con-backups-h">
+    <h2 id="con-backups-h">Backups</h2>
+    <form class="inline" id="con-keep"><label>Label <input name="label" maxlength="60" placeholder="before the wipe" autocomplete="off"></label><button>Keep a copy now</button></form>
+    <p class="hint" id="con-backups-note"></p>
+    <ul class="servers" id="con-backups"></ul>
+   </section>
+   <section class="panel" aria-labelledby="con-cmds-h">
+    <h2 id="con-cmds-h">Recent commands</h2>
+    <ul class="servers" id="con-cmds"></ul>
+   </section>
+  </div>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

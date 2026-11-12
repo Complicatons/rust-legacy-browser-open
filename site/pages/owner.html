@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your servers · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/tools.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/owner.mjs"></script>
+</head>
+<body data-page="owner">
+<!--#header-->
+<main id="main" class="tools">
+ <header class="tools-hero"><h1 class="h">Your servers</h1><p class="count mono" id="owned-count"></p></header>
+ <div class="pending" id="owner-gate" hidden><b>Sign in to manage servers</b><span>Server owners register their servers here.</span><a class="btn small" href="/signin?next=/owner">Sign in</a></div>
+ <div id="owner-tools" hidden>
+  <ol class="how">
+   <li><b class="mono">01</b><h2>Register</h2><p>Name, region and the gateway's wss:// address.</p></li>
+   <li><b class="mono">02</b><h2>Connect</h2><p>Enrol the gateway with the one-time code, and give the host app its key.</p></li>
+   <li><b class="mono">03</b><h2>List it</h2><p>Send the listing. Once it is approved, players find it in the server list.</p></li>
+   <li><b class="mono">04</b><h2>Run it</h2><p>Logs, restarts and backups in the console; players and anti-cheat in Server admin.</p></li>
+  </ol>
+  <p class="owner-help"><a href="/docs/list-your-server">How listing works</a> · <a href="/docs/manage-from-the-website">Managing from the website</a> · <a href="/docs">All help</a></p>
+  <section class="panel tools-sec" aria-labelledby="owned-title">
+   <div class="panel-h mono" id="owned-title">Servers</div>
+   <ul class="owned" id="owned"></ul>
+   <p class="muted empty" id="owned-empty" hidden>No servers yet. Register one below.</p>
+  </section>
+  <section class="panel tools-sec" id="enrolment" hidden aria-labelledby="enrol-title">
+   <div class="panel-h mono" id="enrol-title">One-time enrolment code · 15 minutes · shown once</div>
+   <div class="enrol"><pre><code id="enrol-code"></code></pre><button class="btn small" type="button" id="enrol-copy">Copy</button></div>
+   <p class="muted">Paste it on the <a href="/docs/install-the-host-app">host app</a>'s Setup page, under Connect to the website: one code links the gateway and this website's console. Without the host app, enrol the gateway yourself:</p>
+   <pre class="enrol-alt"><code id="enrol-command"></code></pre>
+  </section>
+  <section class="panel tools-sec" id="hostkey" hidden aria-labelledby="hostkey-title">
+   <div class="panel-h mono" id="hostkey-title">Host app key · shown once · replaces the previous key</div>
+   <div class="enrol"><pre><code id="hostkey-value"></code></pre><button class="btn small" type="button" id="hostkey-copy">Copy</button></div>
+   <p class="muted">The host app gets its key from the enrolment code. Use this only to replace it: paste it into the host app's Accounts page. It lets the app manage this server's players, links and anti-cheat as you.</p>
+  </section>
+  <section class="panel tools-sec" id="listing" hidden aria-labelledby="listing-title">
+   <div class="panel-h mono" id="listing-title">Server list entry</div>
+   <p class="listing-state" id="listing-state" role="status"></p>
+   <form id="listing-form" class="reg-form" novalidate>
+    <input type="hidden" name="server">
+    <div class="field wide"><label for="ls-name">Server name</label><input id="ls-name" name="servername" required maxlength="64" autocomplete="off"><span class="help">Shown in the server list and in game. Up to 64 characters.</span></div>
+    <div class="field wide"><label for="ls-desc">Description</label><textarea id="ls-desc" name="description" required maxlength="600" rows="4" placeholder="What makes your server worth joining: rules, wipe rhythm, admins, events."></textarea><span class="help" id="ls-desc-count">Up to 600 characters.</span></div>
+    <div class="field wide"><label for="ls-tags">Tags</label><input id="ls-tags" name="tags" maxlength="160" placeholder="vanilla, pvp, weekly wipe" autocomplete="off"><span class="help">Up to 6, separated by commas.</span></div>
+    <div class="field"><label for="ls-wipe">Wipe schedule</label><input id="ls-wipe" name="wipe" maxlength="64" placeholder="Thursdays 18:00 UTC" autocomplete="off"></div>
+    <div class="field"><label for="ls-lang">Language</label><input id="ls-lang" name="language" maxlength="32" placeholder="English" autocomplete="off"></div>
+    <div class="field"><label for="ls-discord">Discord invite</label><input id="ls-discord" name="discord" type="url" maxlength="200" placeholder="https://discord.gg/…" autocomplete="off" spellcheck="false"></div>
+    <div class="field"><label for="ls-site">Website</label><input id="ls-site" name="website" type="url" maxlength="200" placeholder="https://…" autocomplete="off" spellcheck="false"></div>
+    <label class="field wide check"><input type="checkbox" name="agree" required> <span>The server follows the <a href="/docs/listing-rules">listing rules</a>: no paid advantages, no cheating admins, honest description.</span></label>
+    <div class="wide"><button class="btn-play" type="submit">Send listing</button></div>
+   </form>
+  </section>
+  <section class="panel tools-sec" aria-labelledby="register-title">
+   <div class="panel-h mono" id="register-title">Register a server</div>
+   <form id="register" class="reg-form" novalidate>
+    <div class="field"><label for="srv-name">Name</label><input id="srv-name" name="name" required maxlength="64" autocomplete="off"></div>
+    <div class="field"><label for="srv-region">Region</label><input id="srv-region" name="region" required maxlength="32" placeholder="eu" autocomplete="off"></div>
+    <div class="field wide"><label for="srv-endpoint">Gateway address</label><input id="srv-endpoint" name="endpoint" required type="url" placeholder="wss://play.example.com/play" autocomplete="off" spellcheck="false"><span class="help">The address players' browsers connect to. Must start with wss://</span></div>
+    <div class="wide"><button class="btn-play" type="submit">Register</button></div>
+   </form>
+  </section>
+ </div>
+</main>
+<!--#footer-->
+</body>
+</html>

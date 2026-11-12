@@ -1,0 +1,162 @@
+@Assembly-CSharp
+EquipmentDataBlock|P|Wearable equipment item base (equip/unequip hooks)|browser/tooltip.mjs, browser/armor.mjs
+EquipmentItem|P|Equipped item instance (equip/unequip)|with: browser/armor.mjs
+EquipmentWearer|P|Sums worn armour, ArmorData RPC, armour model refresh|browser/combat.mjs, browser/online.mjs, browser/rpos.mjs
+EventLister|N|Event listener list helper|
+EventListerInvokeAttribute|N|Event listener invoke attribute|
+ExplosionEffect|P|Explosion light fade and pitch randomisation|browser/presentation-extras.mjs
+ExplosionHelper|N|Explosion overlap queries (server damage)|
+Facepunch.Bundling|P|Asset-bundle loading by path/type|engine: the port loads its own exported manifests (browser/scene.mjs, tools/export_*.py)
+Facepunch.Abstract.KeyArgumentIsKeyTypeException|N|Trait-key argument exception|empty: exception type
+Facepunch.Abstract.KeyTypeInfo|P|Trait key type registry|with: tools/recover_player.py (trait maps resolved at export)
+Facepunch.Abstract.KeyTypeInfo#2|P|Trait key hierarchy and registration|with: tools/recover_player.py
+Facepunch.Abstract.KeyTypeInfo#3|P|Typed trait key info|with: tools/recover_player.py
+Facepunch.Attributes.CustomLookupResult|N|Editor lookup result|editor:
+Facepunch.Attributes.FieldAttribute|N|Editor field attribute|editor:
+Facepunch.Attributes.ObjectLookupFieldAttribute|N|Editor object lookup attribute|editor:
+Facepunch.Attributes.ObjectLookupFieldFixedTypeAttribute|N|Editor fixed-type lookup attribute|editor:
+Facepunch.Attributes.PrefabLookupKinds|N|Editor lookup enum|editor:
+Facepunch.Attributes.SearchMode|N|Editor search enum|editor:
+Facepunch.Build.Connection|P|Tells the build connection the game loaded|bridge/ulink/session.mjs
+Facepunch.Build.ConnectionHandler|N|Build connection interface|
+Facepunch.Build.Constants|N|Build/bundle file-name constants|engine: the port has its own asset layout
+Facepunch.Clocks.Counters.DateTimeWatch|N|Stopwatch|
+Facepunch.Clocks.Counters.SystemTimestamp|N|High-resolution stopwatch (input timing)|engine: performance.now()
+Facepunch.Clocks.Counters.uLink.LocalTime|N|uLink local-time stopwatch|
+Facepunch.Clocks.Counters.uLink.NetworkTime|N|uLink network-time stopwatch|
+Facepunch.Clocks.Counters.Unity.FixedTime|N|Fixed-time stopwatch|
+Facepunch.Clocks.Counters.Unity.NetworkTime|N|Network-time stopwatch|
+Facepunch.Clocks.Counters.Unity.RealtimeSinceStartup|N|Realtime stopwatch|
+Facepunch.Clocks.Counters.Unity.ScaledTime|N|Scaled-time stopwatch|
+Facepunch.Clocks.Counters.Unity.SinceLevelLoad|N|Level-time stopwatch|
+Facepunch.Collections.StaticQueue|N|Static queue collection|
+Facepunch.Hash.MurmurHash2|P|MurmurHash2 used for datablock/prefab hashes|tools/export_ngc_registry.py
+Facepunch.Load.AssetBundleLoadedEventHandler|N|Bundle-loaded delegate|engine: browser fetch of exported assets
+Facepunch.Load.ContentType|N|Bundle content type|engine: browser fetch of exported assets
+Facepunch.Load.Group|N|Bundle download group|engine: browser fetch of exported assets (browser/world-prefetch.mjs)
+Facepunch.Load.IDownloader|N|Bundle downloader interface|engine: browser fetch
+Facepunch.Load.IDownloaderDescriptive|N|Downloader description interface|engine: browser fetch
+Facepunch.Load.IDownloaderDispatch|N|Downloader dispatch interface|engine: browser fetch
+Facepunch.Load.IDownloadTask|N|Download task interface|engine: browser fetch
+Facepunch.Load.Item|N|Bundle listing entry|engine: browser fetch
+Facepunch.Load.Job|N|Bundle download job|engine: browser fetch
+Facepunch.Load.Loader|N|Bundle loader from the JSON listing|engine: browser fetch (load order: browser/load-order.json)
+Facepunch.Load.MultipleAssetBundlesLoadedEventHandler|N|Bundles-loaded delegate|engine: browser fetch
+Facepunch.Load.Operation|N|Loader operation|engine: browser fetch
+Facepunch.Load.Reader|N|Bundle listing JSON reader|engine: browser fetch
+Facepunch.Load.Stream|N|Loader stream|engine: browser fetch
+Facepunch.Load.TaskStatus|N|Task status enum|engine: browser fetch
+Facepunch.Load.TaskStatusCount|N|Task status counts (loading progress)|engine: browser fetch; progress shown by browser/front-end.mjs
+Facepunch.Load.Token|N|Listing JSON token enum|engine: browser fetch
+Facepunch.Load.Utility|N|Coroutine helpers for the loader|engine: JS promises
+Facepunch.Load.Downloaders.FileDispatch|N|File downloader|engine: browser fetch
+Facepunch.Load.Downloaders.WWWDispatch|N|WWW downloader|engine: browser fetch
+Facepunch.MeshBatch.MeshBatchGeneratedBoxModel|P|Generated box model for batched structures|with: browser/structures.mjs (structure meshes drawn instanced)
+Facepunch.MeshBatch.MeshBatchGraphicalTarget|P|Batch render target on StructureMaster|engine: three.js InstancedMesh (browser/structures.mjs)
+Facepunch.MeshBatch.MeshBatchInstanceDynamic|P|Structure component mesh-batch instance|engine: three.js InstancedMesh (browser/structures.mjs)
+Facepunch.MeshBatch.MeshBatchInstanceManual|N|Manual mesh-batch instance|
+Facepunch.MeshBatch.MeshBatchMaterial|P|Mesh-batch material asset|with: tools/export_deployables.py
+Facepunch.MeshBatch.MeshBatchModel|P|Mesh-batch model asset (LOD/physics meshes)|with: tools/export_deployables.py
+Facepunch.MeshBatch.MeshBatchPhysicalOutput|P|Mesh-batch physics output|engine: browser/collision.mjs structure colliders
+Facepunch.MeshBatch.MeshBatchPhysicalTarget|P|Mesh-batch physics target on StructureMaster|engine: browser/collision.mjs
+Facepunch.MeshBatch.MeshBatchPhysicMaterial|P|Mesh-batch physic material|with: browser/surface-routing.mjs
+Facepunch.Procedural.ClockStatus|P|Millis clock status enum|with: browser/animals.mjs
+Facepunch.Procedural.Direction|P|Integrated direction for wildlife turning|browser/animals.mjs
+Facepunch.Procedural.Integrated|P|Clock-integrated value|browser/animals.mjs
+Facepunch.Procedural.Integration|P|Integration mode enum|with: browser/animals.mjs
+Facepunch.Procedural.MillisClock|P|Millisecond countdown clock|browser/animals.mjs
+Facepunch.Procedural.Origin|N|Integrated origin|
+Facepunch.Progress.IProgress|P|Progress interface (loading)|with: browser/front-end.mjs
+Facepunch.Progress.IProgressUtility|N|Progress polling helper|
+Facepunch.Progress.ProgressBar|P|Loading progress aggregation|browser/front-end.mjs
+Facepunch.Traits.Binder|N|Trait binder stub|empty:
+Facepunch.Util.Reflection|N|Attribute reflection helper|engine:
+Facepunch.Utility.CommandLine|N|Command-line switches|
+Facepunch.Utility.String|P|Quote-aware string split for console/chat|browser/console-route.mjs, browser/chat.mjs
+FallDamage|P|Fall impact, leg injury, injury RPCs (fIm/fIo/fIc), leg-break sound|browser/fall-damage.mjs
+falldamage|P|Console system: fall damage velocities and injury length|browser/fall-damage.mjs
+FavouriteList|P|Favourite servers list|browser/server-list.mjs, browser/client-commands.mjs
+FindChildHelper|N|Find child transform by name|engine: three.js getObjectByName
+FireBarrel|P|Campfire/furnace/barrel: fuel, on/off, light flicker, cooking, heat zone|browser/deployables.mjs, browser/light-style.mjs
+FitRequirements|P|Deployable placement capsule/sphere tests|browser/main.mjs, browser/deployables.mjs
+FitRequirementsPreview|N|Editor preview|editor:
+FixedSizeInventory|P|Fixed-size inventory marker|with: browser/deployables.mjs
+FlareObj|P|Thrown flare: light, strike sound, hide/show|browser/offline-flare.mjs, browser/server-rigid.mjs
+FlashlightItemRep|N|Flashlight representation (FlashlightItemRep prefab never spawned)|
+FLOAT_CONST_double|N|PI constant|
+FLOAT_CONST_float|N|PI constant|
+FocusEventHandler|N|dfGUI focus delegate|engine: DOM focus events
+FolderHelper|N|Editor folder marker on scene groups|editor:
+FootCameraMode|N|Unused camera enum|
+FootstepEmitter|P|Footstep sounds by stride and surface|browser/audio.mjs, browser/world-audio.mjs
+footsteps|P|Console system footsteps.quality|browser/audio.mjs, browser/convars.mjs
+FPGrass|P|Procedural grass renderer|browser/grass.mjs
+FPGrassAsset|N|Empty grass asset base|empty:
+FPGrassAssets|N|Grass asset pack component (FPGrassPack prefabs never spawned)|
+FPGrassAtlas|P|Grass texture atlas|tools/export_grass.py, browser/grass.mjs
+FPGrassDisplacementCamera|P|Grass displacement render texture camera|with: browser/grass.mjs (grass.displacement)
+FPGrassDisplacementController|N|Empty displacement controller|empty:
+FPGrassDisplacementObject|N|Grass displacement object (nothing spawns one)|
+FPGrassDisplacementRadius|N|Radius displacement|
+FPGrassDisplacementTrail|N|Trail displacement|
+FPGrassLayer|P|Camera grass layer: frustum and displacement|browser/grass.mjs
+FPGrassLevel|P|Grass level (grid ring)|browser/grass.mjs
+FPGrassPatch|P|Grass patch mesh|browser/grass.mjs
+FPGrassProbabilities|P|Grass detail probability texture|browser/grass.mjs, tools/export_grass.py
+FPGrassProbabilityGenerator|P|Generates per-level probability maps from terrain splats|browser/grass.mjs
+FPGrassProperty|P|Grass colours and sizes|browser/grass.mjs
+Furnace|P|Furnace cook duration|browser/deployables.mjs
+GameConfig|N|Downloads a JSON config from Facepunch's site for the server list|engine: Facepunch's config service is gone; browser/server-list.mjs reads the port's own list
+GameConstant|N|Tag constants|
+GameEvent|P|Player-connected and quality-refresh events|browser/render-convars.mjs
+GameFullscreen|P|Fullscreen overlay/fade image effect (damage, death fades)|browser/post-chain.mjs, browser/combat-feedback.mjs
+GameGizmo|P|Placement gizmo (mesh, materials, good/bad colours, alpha)|browser/placement-preview.mjs, tools/export_placement.py
+GameGizmoWaveAnimation|P|Bouncing gizmo arrow|browser/placement-preview.mjs
+GameGizmoWaveAnimationCarrier|P|Carrier highlight gizmo|browser/placement-preview.mjs
+GameInput|P|Game buttons, bindings and mouse sensitivity|browser/key-bindings.mjs, browser/game-controls.mjs
+GameTip|P|Name tag over players with line-of-sight test|browser/name-tags.mjs
+gametip|P|Console system gametip.scale|browser/name-tags.mjs
+GameTooltipManager|P|Positions name-tag tooltips on screen|browser/name-tags.mjs
+GameUI|P|Game UI root|browser/front-end.mjs
+gameui|P|Console system gameui.hide/show|browser/client-commands.mjs
+GenericProp|N|Empty IDMain subclass|empty:
+GenericSpawner|N|Server spawner of resources/wildlife (prefab never spawned on clients)|server: offline spawning in browser/resources.mjs, browser/animals.mjs
+GenericSpawnerSpawnList|P|Spawn list asset (prefab names, populations)|tools/export_resources.py
+GeometryMeshing|N|Sphere/capsule mesh generation|
+gfx|P|Console system gfx.* (ssaa, bloom, grain, ssao, tonemap, shafts, damage)|browser/render-convars.mjs, browser/post-chain.mjs
+gizmos|P|Console system gizmos.carrier|browser/placement-preview.mjs, browser/client-commands.mjs
+Gizmos2|N|Gizmo drawing helpers|editor:
+global|P|Console system global.* (find, echo, quit, fpslog...)|browser/client-commands.mjs, browser/console-route.mjs
+GrabBag|N|Array-backed list|engine: JS arrays
+grass|P|Console system grass.* convars|browser/convars.mjs, browser/grass.mjs
+gui|P|Console system gui.hide/show/branding|browser/client-commands.mjs
+GUIHeldItem|P|RPOS drag icon: smooth-damps from the cell to the cursor, fades into the drop cell|browser/held-item.mjs, browser/inventory-interactions.mjs
+GUIHide|P|Hides GUI roots on gui.hide|browser/front-end.mjs
+GunpowderDataBlock|P|Gunpowder/explosives item|browser/tooltip.mjs
+GunpowderItem|P|Gunpowder inventory item|with: browser/inventory.mjs
+gunshots|P|Console system gunshots.aiscared|browser/console-route.mjs
+HandGrenadeDataBlock|P|Grenade/supply signal: pull pin, throw|browser/combat.mjs, browser/thrown-physics.mjs
+HandGrenadeItem|P|Held grenade item|with: browser/combat.mjs
+Hardpoint|P|Door/window frame hardpoint|browser/structures.mjs, browser/deployables.mjs
+HardpointMaster|P|Collection of hardpoints on a frame|browser/structures.mjs, browser/deployables.mjs
+HeadBob|P|Camera head bob spring simulation|browser/head-bob.mjs
+HealthDimmer|P|Darkens renderers as health drops|browser/take-damage.mjs
+HealthTextureDimmer|P|Health dimmer component on deployables|browser/take-damage.mjs, browser/main.mjs
+HeatZone|P|Campfire/furnace warmth trigger|browser/survival.mjs, browser/deployables.mjs
+HeldItem|P|Held item base: view model, activation, mods, pre/post frame|browser/combat.mjs, browser/viewmodel.mjs
+HeldItemDataBlock|P|Held item definition: rep/VM prefabs, deploy sound, aim settings, anim group|browser/server-held.mjs, browser/combat.mjs
+HeliCameraMode|N|Unused camera enum|
+HelloScript|N|Test script|debug:
+HitBox|P|Hit box collider with body part|tools/export_players.py, browser/player-hitboxes.mjs
+HitBoxSystem|P|Hit box set and layer check|browser/collision.mjs, browser/server-combat.mjs
+HostileWildlifeAI|P|Hostile wildlife: attack animation/sounds, scent|browser/animals.mjs
+HSet|N|Set operations for VisQuery|server: VisNode/VisQuery are destroyed on clients (BasicWildLifeAI.Awake)
+HSetIter|N|Set iterator|server: VisNode queries
+HSetOper|N|Set operation enum|server: VisNode queries
+HUDDirectionalDamage|P|Directional damage indicator|browser/combat-feedback.mjs
+HudEnabled|P|HUD on/off switch|with: browser/client-commands.mjs (gui.hide)
+HUDHitIndicator|P|Hit marker|browser/combat-feedback.mjs
+HUDIndicator|P|HUD indicator base: placement and timing|browser/combat-feedback.mjs
+HumanBodyTakeDamage|P|Player damage: armour, bleeding, heal over time|browser/take-damage.mjs, browser/survival.mjs
+HumanCharacter|N|Empty Character subclass|empty:
+HumanControlConfiguration|P|Sprint/crouch/landing speed curves|browser/motor.mjs, tools/recover_player.py

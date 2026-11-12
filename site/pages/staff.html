@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff panel · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/tools.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/staff.mjs"></script>
+</head>
+<body data-page="staff">
+<!--#header-->
+<main id="main" class="tools admin staff">
+ <header class="tools-hero"><h1 class="h">Staff panel</h1><p class="count mono">Site staff · every server</p></header>
+ <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+
+ <section id="st-gate" class="panel" hidden>
+  <h2>Site staff only</h2>
+  <p>This panel is for the Rust Legacy team. Server owners manage their own servers from <a href="/owner">Your servers</a>.</p>
+ </section>
+
+ <section id="st" hidden>
+  <dl class="st-tiles" id="st-tiles"></dl>
+
+  <section class="panel" aria-labelledby="st-queue-h">
+   <h2 id="st-queue-h">Listing requests</h2>
+   <p class="hint" id="st-review-mode"></p>
+   <ul class="st-queue" id="st-queue"></ul>
+  </section>
+
+  <section class="panel" aria-labelledby="st-servers-h">
+   <h2 id="st-servers-h">Every server</h2>
+   <div class="inline st-filter"><label>Find <input id="st-find" type="search" placeholder="Server or owner" autocomplete="off"></label>
+    <label>Show <select id="st-show"><option value="all">All servers</option><option value="online">Online</option><option value="attention">Needs attention</option><option value="suspended">Suspended</option></select></label></div>
+   <div class="table-wrap"><table class="grid st-table" id="st-servers">
+    <thead><tr>
+     <th><button type="button" class="st-sort" data-key="name">Server</button></th>
+     <th><button type="button" class="st-sort" data-key="owner">Owner</button></th>
+     <th><button type="button" class="st-sort" data-key="state">State</button></th>
+     <th><button type="button" class="st-sort" data-key="players">Players</button></th>
+     <th><button type="button" class="st-sort" data-key="host">Host app</button></th>
+     <th><button type="button" class="st-sort" data-key="listing">Listing</button></th>
+     <th><button type="button" class="st-sort" data-key="flags24h">Flags 24 h</button></th>
+     <th><button type="button" class="st-sort" data-key="openReports">Reports</button></th>
+     <th><button type="button" class="st-sort" data-key="holds">Holds</button></th>
+     <th>Open</th>
+    </tr></thead>
+    <tbody></tbody>
+   </table></div>
+  </section>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

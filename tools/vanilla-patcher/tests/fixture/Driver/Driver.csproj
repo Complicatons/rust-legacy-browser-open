@@ -1,0 +1,17 @@
+<!-- Drives the synthetic fixture: its own build output directory is exactly the shape tools/vanilla-patcher expects
+     (Assembly-CSharp.dll, uLink.dll, RustLegacyBrowser.Vanilla.dll side by side), so `patch` runs against this
+     directory, in place; then running this driver exercises whatever is on disk at that moment: unpatched or
+     patched, stock-shaped or Fougerite-shaped, same executable either way. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../GameAsm/GameAsm.csproj" />
+    <ProjectReference Include="../ULink/ULink.csproj" />
+    <ProjectReference Include="../Hooks/Hooks.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,36 @@
+{
+  "_comment": "Isolated-VM test topology (SERVER-TESTING-PLAN.md section 4). Read by deploy/vm-test/scripts/*.ps1 (inside the VM), deploy/vm-test/host/*.ps1 and tools/build-vm-iso.mjs (host). No secrets here: they are generated inside the VM (scripts/03-New-Secrets.ps1) or in the host state folder (host/Initialize-HostCentral.ps1).",
+  "network": {
+    "subnet": "192.168.56.0/24",
+    "prefixLength": 24,
+    "hostAddress": "192.168.56.1",
+    "vmAddress": "192.168.56.10"
+  },
+  "ports": {
+    "central": 8080,
+    "gateway": 28443,
+    "sidecar": 28090,
+    "server": 29015
+  },
+  "server": {
+    "zipName": "RustLegacyServer.zip",
+    "zipSha256": "98D7BD5C88DFB0D9D36EDEF99B17872B78E7CA803EB0D22673375A90A9FB3A15",
+    "zipBytes": 543636040,
+    "assemblyCSharpSha256": "CE0DD83271472454FC27CE137A9FA9D042B3A5F12FB26F1C7A67D61EEA3ACFBB",
+    "hashSource": "analysis/INITIAL-FINDINGS.md (SHA-256 identities) and tools/vanilla-patcher/Program.cs (supported build)",
+    "exe": "rust_server.exe",
+    "args": ["-batchmode", "-cfg", "cfg/server.cfg", "-maxplayers", "100", "-port", "29015", "-datadir", "rust_server_Data/", "-nographics"],
+    "argsSource": "Run Server.bat shipped in the zip"
+  },
+  "vm": {
+    "root": "C:\\RLB",
+    "isoVolumeLabel": "RLB_VMTEST",
+    "handoffVolumeLabel": "RLB_HANDOFF",
+    "exportVolumeLabel": "RLB_EXPORT"
+  },
+  "host": {
+    "stateDir": "%LOCALAPPDATA%\\RLB-vm-test",
+    "browserProfileDir": "%LOCALAPPDATA%\\RLB-vm-test\\browser-profile",
+    "exportQuarantine": "%USERPROFILE%\\RLB-vm-exports"
+  }
+}

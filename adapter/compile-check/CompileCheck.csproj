@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Type-checks the Oxide plugin against Rust Legacy reference assemblies. Usage:
+       dotnet build adapter/compile-check -p:RefDir=<folder with Assembly-CSharp.dll, uLink.dll, UnityEngine.dll> -->
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>5</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>CS0114;CS0108</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="OxideStubs.cs" />
+    <Compile Include="../RustLegacyBrowser.cs" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net35" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <Reference Include="Assembly-CSharp"><HintPath>$(RefDir)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="uLink"><HintPath>$(RefDir)/uLink.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(RefDir)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Facepunch.ID"><HintPath>$(RefDir)/Facepunch.ID.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

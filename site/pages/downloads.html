@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downloads · Rust Legacy Browser</title>
+<meta name="description" content="Download the Rust Legacy game loader and the Rust Legacy Host server software for Windows, with SHA-256 checksums to check each file.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/content.css">
+<link rel="stylesheet" href="/site/css/pages/docs.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/downloads.mjs"></script>
+</head>
+<body data-page="downloads">
+<!--#header-->
+<main id="main" class="content docs downloads">
+ <div class="page-head"><h1 class="h">Downloads</h1><p>Windows apps for playing and hosting. Playing in the browser needs no download: <a href="/servers">pick a server</a>.</p></div>
+
+ <section class="dl-product" aria-labelledby="dl-loader-h">
+  <p class="mono doc-group">For players</p>
+  <h2 class="h" id="dl-loader-h">Game loader</h2>
+  <p class="dl-lede">Play with your own copy of the desktop game, signed in with your website account.</p>
+  <div id="dl-loader" aria-busy="true"></div>
+  <p class="dl-links"><a href="/docs/the-game-loader">How to install and use it</a></p>
+ </section>
+
+ <section class="dl-product" aria-labelledby="dl-host-h">
+  <p class="mono doc-group">For server owners</p>
+  <h2 class="h" id="dl-host-h">Rust Legacy Host</h2>
+  <p class="dl-lede">The server software: runs your Legacy server and links it to this website.</p>
+  <div id="dl-host" aria-busy="true"></div>
+  <p class="dl-links"><a href="/docs/install-the-host-app">How to install it</a><a href="/docs/set-up-your-server">Set up your server</a><a href="/docs/how-it-all-fits-together">How it all fits together</a></p>
+ </section>
+
+ <section class="dl-product dl-check" aria-labelledby="dl-check-h">
+  <h2 class="h" id="dl-check-h">Check your download</h2>
+  <ol>
+   <li>Open <b>PowerShell</b> in the folder you downloaded to.</li>
+   <li>Run <code>Get-FileHash .\RustLegacyLoader-&lt;version&gt;.zip -Algorithm SHA256</code> (or the host installer's file name).</li>
+   <li>The <b>Hash</b> must match the SHA-256 above, every character. If it doesn't, delete the file and tell us on <a href="https://discord.gg/your-invite" rel="noopener">Discord</a>.</li>
+  </ol>
+  <p class="dl-fine">The numbers on this page come from release manifests signed with the project's release key. Only download from your-domain.example.</p>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

@@ -1,0 +1,165 @@
+@Assembly-CSharp
+LockpickItem|P|Lockpick inventory item|with: browser/inventory.mjs
+LockpickItemDataBlock|P|Lockpick item (picking ability; no client action)|browser/tooltip.mjs
+LootableObject|P|Lootable container: looter, open/close loot window, take all, context text|browser/loot.mjs, browser/context-ui.mjs, browser/airdrops.mjs
+LootableObjectSpawner|N|Server loot crate spawner (LootableSpawner prefab copy never spawned)|server: offline loot in browser/loot.mjs
+LootSpawnList|P|Weighted loot packages|browser/loot.mjs, tools/export_loot.py
+LootSpawnListReference|P|Named loot list reference|tools/export_loot.py
+MagazineDataBlock|N|Magazine item class (no magazine items shipped)|no magazine items ship
+MagazineItem|N|Magazine item instance|no magazine items ship
+MainMenu|P|Main menu: screens, options, server list, exit, background|browser/front-end.mjs
+ManagedLeakDetector|N|Debug leak detector|debug:
+MarkerScript|N|EasyRoads3D road marker data (roads are baked into the scene mesh)|editor:
+Matrix4x4Decomp|N|Matrix decomposition|
+MatrixHelper|N|Camera project/unproject helpers|engine: three.js Matrix4/Vector3.project
+MatrixTest|N|Test script|debug:
+MegaTerrain|N|Terrain stitching tool|editor:
+MeleeWeaponDataBlock|P|Melee weapon: damage, range, swing timing, impacts, gathering|browser/combat.mjs, browser/melee-effects.mjs, browser/collision.mjs
+MeleeWeaponItem|P|Held melee weapon: queued swing and sound|browser/main.mjs:meleeFrame
+MeshBatchPhysics|P|Mesh-batch physics helpers used by placement|engine: browser/collision.mjs
+MeshCombineUtility|N|Mesh combining for CombineChildren|engine: instancing in browser/structures.mjs
+Metabolism|P|Calories, water, radiation, poison, cold, consumption|browser/survival.mjs, browser/server-vitals.mjs
+ModelPrefabSkin|N|Model prefab skin asset|
+ModViewModelAddArgs|P|Arguments when a mod is added to a view model|with: browser/item-mods.mjs
+ModViewModelRemoveArgs|P|Arguments when a mod is removed|with: browser/item-mods.mjs
+MoPhoGames.USpeak.Codec.ADPCMCodec|N|ADPCM voice codec (not the shipped codec)|
+MoPhoGames.USpeak.Codec.ICodec|P|USpeak codec interface|browser/uspeak.mjs
+MoPhoGames.USpeak.Codec.MuLawCodec|N|mu-law codec (not the shipped codec)|
+MoPhoGames.USpeak.Core.USpeakAudioClipCompressor|P|Voice compression/decompression|browser/uspeak.mjs
+MoPhoGames.USpeak.Core.USpeakAudioClipConverter|P|Float/short sample conversion|browser/uspeak.mjs
+MoPhoGames.USpeak.Core.USpeakFrameContainer|P|Voice frame container|browser/uspeak.mjs, bridge/voice.mjs
+MoPhoGames.USpeak.Core.USpeakSettingsData|P|Voice band/codec settings byte|browser/uspeak.mjs, bridge/voice.mjs
+MoPhoGames.USpeak.Core.Utils.USpeakPoolUtils|P|Sample buffer pools|engine: typed arrays in browser/uspeak.mjs
+MoPhoGames.USpeak.Interface.ISpeechDataHandler|P|Voice data handler interface|with: browser/voice.mjs
+MoPhoGames.USpeak.Interface.IUSpeakTalkController|P|Push-to-talk interface|with: browser/voice.mjs
+MountedCamera|P|Main camera mount with view transitions|browser/main.mjs, browser/render-convars.mjs
+MountedWeaponCameraMode|N|Unused camera enum|
+MouseEventHandler|N|dfGUI mouse delegate|engine: DOM mouse events
+MovingDoor|P|Door movement (pivot rotation/translation, smoothing, sides)|browser/doors.mjs
+MultiLODGroupConfig|N|LOD group config asset|
+MultiValue|N|Multi-value collection|
+MusicPlayer|P|In-game music tracks with gaps and volume|browser/world-audio.mjs, browser/menu-audio.mjs
+MuzzleFlash|P|Muzzle flash light fade|browser/muzzle-flash.mjs
+NavMeshMovement|P|NavMeshAgent-driven wildlife movement|browser/animals.mjs, browser/nav-crowd.mjs
+NearFarAdjustment|N|Near/far plane test script|
+net|P|Console system net.connect/disconnect/reconnect|browser/client-commands.mjs, browser/front-end.mjs
+NetCheck|N|Player validity helper|
+NetClockTester|N|Network clock test|debug:
+NetCull|P|uLink wrapper: RPC send/verify, instantiate/destroy, connect/disconnect|bridge/ulink/ulink.mjs, bridge/game-bridge.mjs, browser/online.mjs
+NetDoppler|P|Doppler pitch for the airdrop plane|browser/airdrops.mjs
+NetEntityID|P|Network entity id (view id or NGC id)|bridge/ulink/rust.mjs, browser/remote-weapon.mjs
+NetError|P|Network error codes|browser/net-error.mjs
+NetErrorHelper|N|Network error text helper (not reached)|
+NetInstance|P|Network instance lifecycle (create/destroy callbacks)|with: browser/online.mjs
+NetMainPrefab|P|Network prefab: proxy/server/local prefabs, local append, name registry|tools/export_animals.py, browser/online.mjs
+NetMainPrefabFieldAttribute|N|Editor attribute|editor:
+NetMainPrefabNameException|N|Prefab name exception|empty: exception type
+NetPostUpdate|N|Network post-update pump|engine: the gateway and browser/online.mjs process messages directly
+NetPreUpdate|P|Network pre-update pump and fps log|browser/main.mjs, browser/client-commands.mjs
+Network|N|Empty uLink alias|empty:
+NetworkConnectionError|P|Connection error enum alias|with: browser/net-error.mjs
+NetworkCullInfo|N|Empty cull info|empty:
+NetworkDisconnection|P|Disconnection reason alias|with: browser/net-error.mjs
+NetworkMessageInfo|P|uLink message info alias|with: bridge/ulink/ulink.mjs
+NetworkPeerType|N|Peer type alias|
+NetworkPlayer|P|uLink player alias|bridge/ulink/rust.mjs
+NetworkPrefabFieldAttribute|N|Editor attribute|editor:
+NetworkStateSynchronization|P|State sync enum alias|with: bridge/ulink/ulink.mjs
+NetworkView|P|uLink network view alias|with: bridge/ulink/ulink.mjs
+NetworkViewID|P|uLink view id alias|bridge/ulink/rust.mjs
+NGC|P|NGC compact entity protocol: add/delete/call, prefab registry|bridge/ulink/rust.mjs, bridge/game-bridge.mjs, tools/export_ngc_registry.py
+NGCAutoAddScriptAttribute|N|NGC attribute (not reached)|
+NGCConfiguration|P|NGC prefab registry asset|tools/export_ngc_registry.py
+NGCInternalView|P|NGC internal network view (RPC routing)|bridge/ulink/rust.mjs
+NGCPrefabFieldAttribute|N|Editor attribute|editor:
+NGCRPCAttribute|P|Marks NGC RPC methods (message table)|tools/export_ngc_registry.py
+NGCRPCSkipAttribute|P|Skips methods from the NGC message table|tools/export_ngc_registry.py
+NGCView|P|NGC entity view: scripts, initial data, RPC|bridge/ulink/rust.mjs, browser/online.mjs
+NGUI.Meshing.MeshBuffer|N|NGUI/laser vertex buffer building|engine: three.js BufferGeometry / DOM
+NGUI.Meshing.Primitive|N|NGUI primitive|engine: DOM
+NGUI.Meshing.PrimitiveKind|N|NGUI primitive kind|engine: DOM
+NGUI.Meshing.Vertex|N|NGUI vertex|engine: DOM
+NGUI.MessageUtil.Boxed|N|NGUI message boxing|
+NGUI.MessageUtil.Names|N|NGUI message names|
+NGUI.MessageUtil.Util|N|NGUI message helpers|
+NGUI.Structures.float3|N|NGUI float3|engine: DOM
+NGUI.Structures.NineRectangle|P|Nine-slice rectangle maths for sliced sprites|engine: CSS border-image/nine-slice in browser/rpos.mjs
+NGUI.Structures.Rectangle|N|NGUI rectangle|
+NGUIDebug|N|NGUI debug|debug:
+NGUIHack.Event|N|NGUI event wrapper|engine: DOM events
+NGUIMath|P|NGUI maths (ConstrainRect, pixel perfect, bounds)|browser/rpos-scroll.mjs
+NGUITools|P|NGUI helpers: PlaySound, colours, symbol parsing|browser/rpos-sounds.mjs, browser/rpos.mjs
+NonAIRootControllableException|N|Exception|empty: exception type
+NonAIVesselControllableException|N|Exception|empty: exception type
+NonBindlessVesselControllableException|N|Exception|
+NonControllableException|N|Exception|empty: exception type
+NonPlayerRootControllableException|N|Exception|empty: exception type
+NonPlayerVesselControllableException|N|Exception|empty: exception type
+NonVesselControllableException|N|Exception|empty: exception type
+NoPlacementZone|P|No-build zones|browser/deployables.mjs, browser/structures.mjs
+notice|P|Console system notice.popup/inventory|browser/notices.mjs, browser/client-commands.mjs
+ObjectDB|N|Object database for VisNode|server: VisNode is destroyed on clients
+objects|N|Empty console system|empty:
+ODBCachedEnumerator|N|ObjectDB enumerator|server: VisNode queries
+ODBCachedEnumerator#2|N|ObjectDB enumerator|server: VisNode queries
+ODBCachedEnumerator#3|N|ObjectDB enumerator|server: VisNode queries
+ODBEnumerable|N|ObjectDB enumerable|server: VisNode queries
+ODBEnumerator|N|ObjectDB enumerator|server: VisNode queries
+ODBForwardEnumerable|N|ObjectDB enumerable|server: VisNode queries
+ODBForwardEnumerator|N|ObjectDB enumerator|server: VisNode queries
+ODBGenericEnumerable|N|ObjectDB enumerable|server: VisNode queries
+ODBGenericEnumerable#2|N|ObjectDB enumerable|server: VisNode queries
+ODBGenericEnumerable#3|N|ObjectDB enumerable|server: VisNode queries
+ODBItem|N|ObjectDB item|server: VisNode queries
+ODBList|N|ObjectDB list|server: VisNode queries
+ODBNode|N|ObjectDB node|server: VisNode queries
+ODBReverseEnumerable|N|ObjectDB enumerable|server: VisNode queries
+ODBReverseEnumerator|N|ObjectDB enumerator|server: VisNode queries
+ODBSet|N|ObjectDB set|server: VisNode queries
+ODBSibling|N|ObjectDB sibling|server: VisNode queries
+OfflineMode|N|Offline test mode (prefab never spawned)|
+OfflinePlayer|N|Offline test player (prefab never spawned)|
+OpaqueCapture|P|Captures opaque scene for later passes|browser/post-chain.mjs, browser/quality.mjs
+OptionsInput|P|Options input page: key binding lines|browser/front-end.mjs, browser/key-bindings.mjs
+OptionsKeyBinding|P|One key-binding row: listen and set keys|browser/key-bindings.mjs, browser/front-end.mjs
+OptionsWindow|P|Options window apply/OK|browser/front-end.mjs, browser/convars.mjs
+Orbit|N|Orbit test script|debug:
+Pagination|P|Server list pagination|browser/front-end.mjs, browser/server-list.mjs
+ParticleAtDay|N|Particles by day (not on shipped content)|
+ParticleAtNight|N|Particles by night (not on shipped content)|
+ParticleAtWeather|N|Particles in weather (not on shipped content)|
+PassengerCameraMode|N|Unused camera enum|
+PasswordLockableObject|P|Code-lockable door/box|browser/locks.mjs
+PathSlopScene|N|Path slop data holder (fields only; nothing reads them)|empty: data never read
+PerspectiveFit|N|Perspective fit test|
+PerspectiveMatrixBuilder|P|Perspective matrix from FOV/aspect/planes|engine: three.js PerspectiveCamera (browser/adaptive-near-plane.mjs)
+PivotTest|N|Test script|debug:
+player|N|Console system player.backpackLockTime (server convar, default 0)|server: only the server's HumanController reads it
+Player|P|Player component: network instantiate|browser/online.mjs
+PlayerAnimation|P|Remote player animation: movement sampler, item group, actions|browser/player-sampler.mjs, browser/player-view.mjs
+PlayerClient|P|Player client: local player, user id/name, input routing|browser/online.mjs, browser/name-tags.mjs
+PlayerInventory|P|Player inventory: bag/belt/equipment slots, blueprints, active item|browser/inventory.mjs, browser/item-ops.mjs
+PlayerMovement_Mecanim|N|Mecanim movement sample|
+PlayerProxyTest|P|Local vs proxy player setup (disables components on proxies)|with: browser/player-view.mjs
+PlayerPusher|N|Door pusher (no-op in this build: needs a layer-16 CCMotor and CCMotor.DoPush is empty)|empty: no effect in the shipped build
+PopupInventory|P|Item gained/lost popup|browser/popup-ui.mjs
+PopupNotice|P|Notice popup|browser/popup-ui.mjs, browser/notices.mjs
+PopupUI|P|Popup container and creation|browser/popup-ui.mjs
+POSIX.Time|N|Unix time helpers|engine: Date.now()
+PosRot|P|Position/rotation pair with lerp|browser/airdrops.mjs
+PostAuthAttribute|N|Post-auth attribute|
+PostAuthFetchAttribute|N|Post-auth attribute|
+PostAuthFetchChildAttribute|N|Post-auth attribute|
+PostAuthFetchChildOrParentAttribute|N|Post-auth attribute|
+PostAuthFetchParentAttribute|N|Post-auth attribute|
+PostAuthFetchParentOrChildAttribute|N|Post-auth attribute|
+PrefabRenderer|P|Draws a prefab with an override material (placement preview)|browser/placement-preview.mjs
+PrefabRendererTest|N|Test script|debug:
+ProjectionTest|N|Test script|debug:
+PropertyChangedEventHandler|N|dfGUI property delegate|engine: DOM events
+ProtectionTakeDamage|P|Damage with per-type armour values|browser/take-damage.mjs, browser/animals.mjs
+QuaternionTest|N|Test script|debug:
+QueuedShotDeathInfo|P|Death shot info applied to the ragdoll|browser/ragdoll-death.mjs, browser/ragdoll-physics.mjs
+QuickLight|P|Short-lived impact light|browser/presentation-extras.mjs, browser/tracer-effects.mjs
+RabbitAI|P|Rabbit AI animation|browser/animals.mjs
+Radiation|P|Radiation exposure from zones|browser/survival.mjs, browser/hud.mjs

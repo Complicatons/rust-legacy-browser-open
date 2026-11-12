@@ -1,0 +1,120 @@
+@Assembly-CSharp
+RadiationZone|P|Radiation zone sphere: exposure by distance, trigger membership|browser/survival.mjs, tools/export_scene.py
+Ragdoll|P|Ragdoll character linked to its source|browser/ragdoll-corpse.mjs, tools/export_ragdoll.py
+RagdollHelper|P|Copies the living pose onto the ragdoll by bone name|browser/ragdoll-death.mjs
+RagdollTransferInfo|P|Head bone lookup for death camera transfer|browser/ragdoll-death.mjs
+RagdollTransferInfoProvider|P|Provider interface for the head bone|with: browser/ragdoll-death.mjs
+RCon|N|Empty RCon stub|empty:
+RecoilSimulation|P|View recoil impulses|browser/combat.mjs
+RectExtensions|N|Rect helpers|
+RecycleList|N|Recycled list for VisNode|server: VisNode queries
+RecycleListIter|N|Recycled list iterator|server: VisNode queries
+RecycleToolDataBlock|N|Recycle tool item (none shipped)|
+ReferenceTypeHelper|N|Generic reference-type check for interpolators|engine:
+ReferenceTypeHelper#2|N|Generic reference-type check|engine:
+ReflectionExtensions|N|Reflection helpers|
+RelativeControl|P|Relative control enum|with: browser/online.mjs
+render|P|Console system render.* (distance, frames, fov, vsync, level)|browser/render-convars.mjs, browser/client-commands.mjs
+RenderAtDay|N|Renderer by day (not on shipped content)|
+RenderAtNight|N|Renderer by night (not on shipped content)|
+RenderAtWeather|N|Renderer in weather (not on shipped content)|
+RepairBench|P|Repair bench: repair cost, condition, DoRepair|browser/repair.mjs
+RepairEvent|P|Repair event record|with: browser/repair.mjs
+RepairReceiver|P|Structure/deployable repair ammo and resources for max health|browser/repair.mjs, tools/export_deployables.py
+RepairStatus|P|Repair status enum|with: browser/repair.mjs
+ResearchToolDataBlock|P|Research kit: study blueprints by combining|browser/item-ops.mjs, browser/tooltip.mjs
+ResearchToolItem|P|Research kit item combine|browser/item-ops.mjs
+ResourceGivePair|P|Resource amounts given by a node|browser/resources.mjs, tools/export_resources.py
+ResourceHarvester|N|Resource efficiency helper (not reached)|
+ResourceObject|P|Ore/wood pile: model index changes (mesh-change effect, 0.15 s delayed swap), spawner link|browser/resources.mjs, browser/online.mjs, browser/main.mjs
+Resources|N|Resources.Load wrapper|engine: the port fetches exported assets
+ResourceTarget|P|Gatherable resource target (nodes, animal corpses)|browser/resources.mjs, browser/animals.mjs
+ResourceType|N|Resource type enum (not reached)|
+ResourceTypeItem|P|Resource item: cookable/flammable|browser/deployables.mjs
+ResourceTypeItemDataBlock|P|Resource item definition: cooking, fuel|browser/tooltip.mjs, browser/deployables.mjs
+ReverseSurfaceShader|N|Shader tool asset|editor:
+RigidbodyInterpolator|P|Rigidbody state interpolation (flares, grenades, crates, pickups)|browser/airdrops.mjs, browser/server-rigid.mjs
+RigidObj|P|Networked rigid object: updates, hide/show, interpolation events|browser/server-rigid.mjs, browser/offline-flare.mjs
+RigidObjServerCollision|N|Server collision forwarder|server:
+RoadObjectScript|N|EasyRoads3D road object (editor data; roads are baked into the scene)|editor:
+RockDecorAreaHelper|N|Rock decor area gizmos|editor: gizmos only
+RPCMode|P|uLink RPC mode alias|with: bridge/ulink/ulink.mjs
+RPOS|P|RPOS manager: windows, cursor, plaques, use-hover text label|browser/use-hover.mjs, browser/rpos.mjs, browser/inventory-ui.mjs, browser/hud.mjs
+RPOSArmorWindow|P|Armour window: cells and protection text|browser/rpos.mjs, browser/inventory-ui.mjs
+RPOSBumper|P|Window bumper bar|browser/rpos-layout.mjs, browser/rpos-sounds.mjs
+RPOSCraftItemEntry|P|Blueprint list entry (selected highlight, tooltip)|browser/inventory-ui.mjs, browser/rpos-sounds.mjs
+RPOSCraftWindow|P|Craft window: blueprint list, amount, progress, craft sound|browser/inventory-ui.mjs, browser/crafting.mjs, browser/rpos-sounds.mjs
+RPOSDragArbiter|N|Drag arbiter stub|empty:
+RPOSFilter|N|UI camera pre-cull filter|engine: DOM overlay
+RPOSInfoWindow|N|Item info window (RPOS.OpenInfoWindow is empty in this build)|empty: never opened
+RPOSInvCellManager|P|Cell grid generation (count, size, spacing, offsets)|browser/rpos.mjs, tools/export_rpos.py
+RPOSInventoryCell|P|Inventory cell: icon, stack/uses labels, condition tint, drag/drop/alt-click|browser/rpos.mjs, browser/inventory-ui.mjs, browser/inventory-interactions.mjs
+RPOSItemRightClickMenu|P|Item right-click menu|browser/item-menu.mjs, browser/inventory-ui.mjs
+RPOSLimitFlags|P|RPOS limits per controllable|with: browser/inventory-ui.mjs
+RPOSLootWindow|P|Loot window with Take All|browser/inventory-ui.mjs, browser/rpos-layout.mjs
+RPOSPlaqueManager|P|Cold/bleeding/workbench status plaques|browser/hud.mjs
+RPOSRepairBenchWindow|P|Repair bench window|browser/repair.mjs, browser/rpos-layout.mjs
+RPOSWindow|P|RPOS window base: show/hide with RPOS, messages, close button|browser/rpos-layout.mjs, browser/inventory-ui.mjs
+RPOSWindowInliners|N|Window registration helper|
+RPOSWindowMessage|P|Window message enum|with: browser/rpos-layout.mjs
+RPOSWindowMessageCenter|P|Window message dispatch|with: browser/rpos-layout.mjs
+RPOSWindowMessageHandler|P|Window message delegate|with: browser/rpos-layout.mjs
+RPOSWindowScrollable|P|Scrollable window (draggable panel reset)|browser/rpos-scroll.mjs
+RPOSWorkbenchWindow|N|Workbench work window (opened only by WorkBench, which no shipped prefab carries)|opened only by WorkBench, which no shipped prefab carries
+RPOS_Craft_BlueprintList|P|Blueprint list by category|browser/inventory-ui.mjs, browser/rpos-sounds.mjs
+RPOS_Craft_Ingredientlist|N|Empty ingredient list script|empty:
+RPOS_Craft_IngredientPlaque|P|Ingredient plaque: name, need/have, tick/cross|browser/inventory-ui.mjs, browser/crafting.mjs
+RunConsoleCommand|P|Runs a console command from a menu button|browser/front-end.mjs, browser/console-window.mjs
+Rust.Globals|P|Level/loading globals|with: browser/front-end.mjs
+Rust.Notice|P|Notice popups|browser/notices.mjs
+Rust.Defines.Connection|P|Protocol constants|bridge/ulink/session.mjs
+Rust.Steam.SteamGroups|N|Steam group membership (official server groups)|engine: Steam is replaced by the port's own accounts (central/)
+RustLevel|P|Level load routine and broadcast|browser/front-end.mjs, browser/main.mjs
+RustLoader|N|Bundle loader MonoBehaviour (not reached)|
+RustLoaderInstantiateOnComplete|N|Loader completion helper|
+RustPlayerClient|P|Rust player client input|with: browser/online.mjs
+RustProfiler|N|Empty profiler|empty:
+RustProto.Avatar|N|Avatar save message|server: save format; the port saves its own (browser/persistence.mjs)
+RustProto.AwayEvent|N|Away event save message|server: save format
+RustProto.Blueprint|N|Blueprint save message|server: save format
+RustProto.Common|N|Proto descriptors|server: save format
+RustProto.Error|N|Error message proto|server:
+RustProto.GameError|N|Game error proto|server:
+RustProto.Item|N|Item save message|server: save format
+RustProto.ItemMod|N|Item mod save message|server: save format
+RustProto.objectCoords|N|Object coords save message|server: save format
+RustProto.objectDeployable|N|Deployable save message|server: save format
+RustProto.objectDoor|N|Door save message|server: save format
+RustProto.objectFireBarrel|N|Fire barrel save message|server: save format
+RustProto.objectICarriableTrans|N|Carrier save message|server: save format
+RustProto.objectLockable|N|Lockable save message|server: save format
+RustProto.objectNetInstance|N|Net instance save message|server: save format
+RustProto.objectNGCInstance|N|NGC instance save message|server: save format
+RustProto.objectSleepingAvatar|N|Sleeper save message|server: save format
+RustProto.objectStructComponent|N|Structure component save message|server: save format
+RustProto.objectStructMaster|N|Structure master save message|server: save format
+RustProto.objectTakeDamage|N|Health save message|server: save format
+RustProto.Quaternion|N|Quaternion proto|server: save format
+RustProto.SavedObject|N|Saved world object|server: save format
+RustProto.User|N|User proto|server:
+RustProto.Vector|N|Vector proto|server: save format
+RustProto.Vitals|N|Vitals save message|server: save format
+RustProto.WorldSave|N|World save message|server: save format
+RustProto.Worldsave|N|World save descriptors|server: save format
+RustProto.Helpers.Recycler|N|Proto builder recycler|server: save format
+RustProto.Proto.Avatar|N|Avatar proto descriptors|server: save format
+RustProto.Proto.Blueprint|N|Blueprint proto descriptors|server: save format
+RustProto.Proto.Error|N|Error proto descriptors|server:
+RustProto.Proto.Item|N|Item proto descriptors|server: save format
+RustProto.Proto.ItemMod|N|Item mod proto descriptors|server: save format
+RustProto.Proto.User|N|User proto descriptors|server:
+RustProto.Proto.Vitals|N|Vitals proto descriptors|server: save format
+RustServerManagement|P|Server management singleton (client-side lookup of carriers etc.)|browser/deployables.mjs, browser/structures.mjs
+SaveableInventory|P|Saveable container inventory|browser/deployables.mjs, browser/persistence.mjs
+SaveStringPool|N|Save string pool|server:
+SceneChildMeshes|N|Scene child mesh lists (empty in the shipped scene)|empty:
+ScriptableObjectArrayBase|P|ScriptableObject array base|tools/export_audio.py
+SecurityCamScreen|N|Security camera screen|
+SeededRandom|N|Seeded random generator (not reached)|
+SendBehavior|P|USpeak send behaviour enum|with: browser/voice.mjs
+server|N|Empty console system|empty:

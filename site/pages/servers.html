@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servers · Rust Legacy Browser</title>
+<meta name="description" content="Rust Legacy servers you can join from your browser: who is online, the map and the rules, with no download.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/servers.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/servers.mjs"></script>
+</head>
+<body data-page="servers">
+<!--#header-->
+<main id="main" class="browser">
+ <div class="toolbar" role="search">
+  <h1 class="h">Servers</h1>
+  <label class="search"><span class="sr-only">Search servers</span>
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+   <input id="q" type="search" placeholder="Search by name" autocomplete="off" spellcheck="false"><span class="key" aria-hidden="true">/</span>
+  </label>
+  <div class="chips" id="regions" role="group" aria-label="Region"></div>
+  <label class="check"><input type="checkbox" id="hide-full"> Hide full</label>
+  <label class="check"><input type="checkbox" id="hide-offline"> Hide offline</label>
+  <label class="check"><span>Sort</span><select class="sort" id="sort"><option value="players">Players</option><option value="name">Name</option><option value="region">Region</option></select></label>
+  <div class="updated mono"><span id="updated" aria-live="polite">Loading</span><button class="btn small" type="button" id="refresh">Refresh</button></div>
+ </div>
+ <section class="list-wrap" aria-label="Server list">
+  <div class="list-head mono" aria-hidden="true"><span></span><span>Server</span><span>Region</span><span>Players</span><span>Wipe</span></div>
+  <ul class="srv-list" id="list" aria-busy="true"></ul>
+  <div class="state" id="state" hidden></div>
+ </section>
+ <aside class="detail" id="detail" aria-live="polite"></aside>
+</main>
+<!--#footer-->
+</body>
+</html>

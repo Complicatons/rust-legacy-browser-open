@@ -1,0 +1,166 @@
+/* Wiki: section rail, search, tiles, item grid, tables, pages, articles and the staff editor. */
+.wiki a,.wiki-editor a{text-decoration:none}
+/* Grids draw their own cell lines (right + bottom) so a short last row leaves no filler. */
+.tiles,.item-grid,.card-grid,.wiki-stats{border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.tile,.item-card,.card,.wiki-stats .stat{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.wiki{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - var(--bar-h))}
+.wiki-rail{position:sticky;top:var(--bar-h);align-self:start;display:flex;flex-direction:column;padding:22px 0;border-right:1px solid var(--line);min-height:calc(100vh - var(--bar-h))}
+.wiki-rail a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 20px;border-left:3px solid transparent;color:var(--w2);font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.wiki-rail a:hover{color:var(--w);background:var(--k1)}
+.wiki-rail a[aria-current=page]{color:var(--w);border-left-color:var(--or);background:var(--k1)}
+.wiki-rail b{color:var(--w3);font-weight:700}
+.wiki-rail .rail-home{font:900 16px var(--heavy);font-stretch:125%;letter-spacing:.02em;margin-bottom:8px}
+.wiki-body{min-width:0;padding:0 var(--gutter) 56px}
+.wiki-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:18px 0;border-bottom:1px solid var(--line)}
+.wiki-search{position:relative;flex:0 1 420px;min-width:240px}
+.wiki-search input{width:100%;height:42px;padding:0 40px 0 36px;background:var(--k1);border:1px solid var(--line2);color:var(--w);font-size:15px}
+.wiki-search input:focus{outline:2px solid var(--w);outline-offset:0}
+.wiki-search svg{position:absolute;left:11px;top:13px;width:16px;height:16px;color:var(--w3)}
+.wiki-search .key{position:absolute;right:9px;top:10px}
+.wiki-results{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);margin:0;padding:4px 0;list-style:none;background:var(--k1);border:1px solid var(--line2);box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.wiki-results li{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;cursor:pointer;border-left:3px solid transparent}
+.wiki-results li[aria-selected=true]{background:var(--k3);border-left-color:var(--or)}
+.wiki-results li.none{color:var(--w3);cursor:default}
+.wiki-results .mono{font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.wiki-main{padding-top:28px}
+.wiki-main>*+*{margin-top:28px}
+.wiki-hero{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 22px}
+.wiki-hero .h{font-size:clamp(40px,6vw,72px);margin:0}
+.wiki-hero .count{margin:0;color:var(--or);font-size:22px}
+.wiki-hero p{margin:0}
+/* Home tiles: big number, short label */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.tile{display:flex;flex-direction:column;gap:10px;padding:22px 20px;background:var(--k);transition:background .15s}
+.tile b{font:900 46px/1 var(--heavy);font-stretch:125%;font-variant-numeric:tabular-nums}
+.tile span{color:var(--w3);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tile:hover{background:var(--k1)}
+.tile:hover span{color:var(--or)}
+.wiki-sec h2,.sub{margin:0 0 12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.sec-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.sec-h h2{margin:0}
+.art-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.art-list a{display:flex;justify-content:space-between;gap:16px;padding:13px 4px;border-bottom:1px solid var(--line)}
+.art-list a:hover{background:var(--k1)}
+.art-list .mono{font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.staff-only{display:none!important}
+body.is-staff .staff-only{display:inline-flex!important}
+.source{color:var(--w3);font-size:11px;letter-spacing:.06em;padding-top:18px;border-top:1px solid var(--line)}
+.source a{color:var(--w3)}
+/* Chips */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{height:34px;padding:0 12px;border:1px solid var(--line2);background:transparent;color:var(--w2);font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.chip:hover{color:var(--w);border-color:var(--w3)}
+.chip[aria-pressed=true]{background:var(--w);border-color:var(--w);color:var(--k)}
+.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));margin-top:14px}
+.item-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;background:var(--k);min-height:150px}
+.item-card b{font-weight:600;line-height:1.25}
+.item-card .mono{margin-top:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.item-card:hover{background:var(--k1)}
+.item-card:hover b{color:var(--or-h)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.card{display:flex;flex-direction:column;gap:12px;padding:18px;background:var(--k)}
+.card:hover{background:var(--k1)}
+.card-t{font:900 20px/1.05 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.card .mono{font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.ings{display:flex;flex-wrap:wrap;gap:6px}
+.cell-item{display:inline-flex;align-items:center;gap:10px}
+.cell-item:hover span{color:var(--or-h)}
+.cell-item b{color:var(--or-h);font-size:12px}
+.cell-item.big span{font:900 24px var(--heavy);font-stretch:125%;text-transform:uppercase}
+/* Stats: numbers with short labels */
+.wiki-stats{display:flex;flex-wrap:wrap;width:fit-content;max-width:100%;margin-left:0;margin-right:0;margin-bottom:0}
+.wiki-main>.wiki-stats:first-child{margin-top:0}
+.wiki-stats .stat{flex:0 0 auto;min-width:130px;display:flex;flex-direction:column-reverse;gap:6px}
+.wiki-stats .stat+.stat{border-left:0}
+.wiki-stats dt{color:var(--w3);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.wiki-stats dd{margin:0;font:900 34px/1 var(--heavy);font-stretch:125%;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.wiki-stats dd.rad{color:var(--red-text)}
+.explosive{display:flex;flex-wrap:wrap;align-items:center;gap:18px 32px;padding:18px 20px}
+.explosive .wiki-stats{flex:1;min-width:280px}
+/* Pages */
+.detail-head{display:flex;align-items:center;gap:22px}
+.detail-head .h{font-size:clamp(34px,5vw,60px);margin:0 0 10px;line-height:.95}
+/* In-game pictures on animal and loot pages: one wide, or two or three across (one column on phones). */
+.detail-pics{display:grid;grid-template-columns:repeat(var(--cols,2),minmax(0,1fr));gap:12px;margin:22px 0 4px}
+.detail-pics[data-n="1"]{--cols:1;max-width:760px}
+.detail-pics[data-n="3"]{--cols:3}
+.detail-pics figure{margin:0}
+.detail-pics img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line)}
+.detail-pics figcaption{margin-top:6px;font:500 12px var(--mono);color:var(--w3)}
+@media (max-width:640px){.detail-pics,.detail-pics[data-n]{--cols:1}}
+/* The item's own in-game description, under its name. */
+.item-desc{max-width:62ch;margin:14px 0 0;color:var(--w2);font-size:17px;line-height:1.5}
+.type-chip{display:inline-block;padding:5px 10px;border:1px solid var(--line2);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--w2)}
+.type-chip.rad{border-color:rgba(198,47,36,.6);color:var(--red-text)}
+.detail-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.detail-cols>div>*+*{margin-top:28px}
+.wiki-sec .wiki-stats{margin-top:12px}
+.more{display:inline-block;margin-top:10px;font-size:11px;letter-spacing:.08em;color:var(--w3);text-transform:uppercase}
+.more:hover{color:var(--w)}
+.snippet-map{position:relative;height:340px;border:1px solid var(--line2)}
+/* Editor */
+.wiki-editor{padding:0 var(--gutter) 56px}
+.wiki-editor>.pending{margin-top:28px}
+.edit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding-top:24px}
+.edit-fields .h{font-size:44px;margin:0 0 20px}
+.field-row{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:14px}
+.field textarea{font:500 14px/1.55 var(--mono);resize:vertical;min-height:360px}
+.edit-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.edit-side{display:grid;gap:20px;align-content:start}
+.edit-side .prose{padding:18px;font-size:15px;max-height:70vh;overflow:auto}
+.history{list-style:none;margin:0;padding:0}
+.history li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.history li .mono{grid-column:1;font-size:11px}
+.history li .btn{grid-row:1/3;grid-column:2}
+@media (max-width:1000px){
+ .detail-cols,.edit-grid{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+ .wiki{grid-template-columns:1fr;align-content:start}
+ .wiki-rail{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none;min-height:0;padding:0;border-right:0;border-bottom:1px solid var(--line)}
+ .wiki-rail::-webkit-scrollbar{display:none}
+ .wiki-rail a{flex:none;padding:12px 14px;border-left:0;border-bottom:3px solid transparent}
+ .wiki-rail a[aria-current=page]{border-bottom-color:var(--or)}
+ .wiki-rail .rail-home{margin:0}
+ .wiki-rail b{display:none}
+ .wiki-search{flex-basis:100%}
+ .detail-head{align-items:flex-start;gap:14px}
+ .ico.lg{width:72px;height:72px}
+ .field-row{grid-template-columns:1fr}
+ .tile b{font-size:38px}
+}
+.field .syntax{font:500 12px/1.6 var(--mono);letter-spacing:0;text-transform:none;color:var(--w3)}
+/* Guides */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.guide-card{display:flex;flex-direction:column;gap:8px;padding:0 0 14px;background:var(--k1);border:1px solid var(--line)}
+.guide-card:hover{border-color:var(--w3)}
+.guide-card:hover b{color:var(--or-h)}
+.guide-card b{padding:0 14px;font:900 18px/1.1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.guide-card .muted{padding:0 14px;font-size:14px;line-height:1.45}
+.guide-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--k2)}
+.guide-thumb.none{background:repeating-linear-gradient(135deg,var(--k1) 0 10px,var(--k2) 10px 20px)}
+/* Recommended guides stay compact on phones: two small cards a row, titles only. */
+@media (max-width:700px){#recommended-guides .guide-grid{grid-template-columns:1fr 1fr;gap:8px}#recommended-guides .guide-card{padding-bottom:10px}#recommended-guides .guide-card b{padding:0 10px;font-size:14px}#recommended-guides .guide-card .muted{display:none}}
+.wiki-main .lede{margin:0;max-width:760px;font-size:19px;color:var(--w2)}
+.guide-hero{display:block;width:100%;max-width:960px;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line2)}
+.guide-hero.none{display:none}
+.prose.guide figure{margin:1.4em 0}
+.prose.guide figure img{display:block;width:100%}
+.prose.guide figcaption{margin-top:8px;font:500 13px var(--mono);color:var(--w3)}
+.prose.guide h2{margin-top:1.8em}
+.guide-nav{display:flex;justify-content:space-between;gap:16px;max-width:760px;padding-top:18px;border-top:1px solid var(--line)}
+.guide-nav a{display:grid;gap:4px;max-width:48%}
+.guide-nav a.next{margin-left:auto;text-align:right}
+.guide-nav .mono{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.guide-nav b{font:900 17px/1.1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.guide-nav a:hover b{color:var(--or-h)}
+@media (max-width:700px){.prose.guide table{display:block;max-width:100%;overflow-x:auto}}
+/* Resource calculator: home promo and rail link (the page itself is calculator.css) */
+.calc-promo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;align-items:center;padding:20px 22px;border:1px solid var(--line2);border-left:4px solid var(--or);background:linear-gradient(90deg,rgba(205,90,40,.12),transparent 60%)}
+.calc-promo b{font:900 26px/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.calc-promo .muted{grid-column:1}
+.calc-promo .mono{grid-column:2;grid-row:1/3;color:var(--or-h);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.calc-promo:hover{border-color:var(--w3)}
+.wiki-rail .rail-tool{margin-top:10px;border-top:1px solid var(--line);padding-top:16px;color:var(--or-h)}
+@media (max-width:600px){.calc-promo{grid-template-columns:1fr}.calc-promo .mono{grid-column:1;grid-row:auto}}
+@media (max-width:860px){.wiki-rail .rail-tool{margin:0;border-top:0;padding-top:12px}}

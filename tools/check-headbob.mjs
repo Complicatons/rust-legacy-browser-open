@@ -1,0 +1,34 @@
+// Actual movement/input in Edge; no original executable software is launched.
+import {listenServer} from '../bridge/listen.mjs';
+import {chromium} from 'playwright-core';
+import {writeFile,mkdir} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {createServer} from './serve.mjs';
+import {launchOptions,readGraphics} from './qa-browser.mjs';
+const server=createServer();await listenServer(server);let browser;
+try{browser=await chromium.launch(launchOptions());const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ await page.addInitScript(()=>{let state=0x517cc1b7;Math.random=()=>{state^=state<<13;state^=state>>>17;state^=state<<5;return (state>>>0)/4294967296;};});
+ await page.goto(`http://127.0.0.1:${server.address().port}/?dev`,{waitUntil:'networkidle'});await page.waitForFunction(()=>window.explorerState?.frames>5,{},{timeout:60000});
+ await page.locator('#respawn').evaluate(b=>b.click());await page.waitForFunction(()=>window.explorerState.walk);
+ await page.evaluate(()=>{const d=window.explorerDev;d.giveItem('M4',1);d.giveItem('556 Ammo',30);d.hold('M4');});await page.waitForTimeout(2400);
+ const graphics=await readGraphics(page),results={};
+ await page.evaluate(()=>{window.bobSamples=[];window.bobSampleTimer=setInterval(()=>{const s=window.explorerState,b=window.explorerDev.headBob();window.bobSamples.push({...b,worldPosition:s.position,grounded:s.player.grounded});},20);});
+ await page.keyboard.down('w');await page.waitForTimeout(1600);await page.keyboard.up('w');
+ results.walk=await page.evaluate(()=>{const samples=window.bobSamples;window.bobSamples=[];return samples;});
+ assert.ok(results.walk.some(s=>Math.hypot(...s.rotation)>0.15),'walking produces recovered rotational force');
+ assert.ok(results.walk.some(s=>Math.hypot(...s.worldPosition.map((v,i)=>v-results.walk[0].worldPosition[i]))>1),'real movement');
+ assert.ok(results.walk.some(s=>Math.hypot(...s.position)>0.001),'movement displaces the camera');
+ assert.ok(results.walk.every(s=>s.eyePosition.every((v,i)=>Math.abs(v-s.worldPosition[i])<1e-8)),'draw restores true eye position');
+ await page.keyboard.down('d');await page.waitForTimeout(750);await mkdir('analysis/browser-qa',{recursive:true});await page.screenshot({path:'analysis/browser-qa/headbob-strafe.png'});await page.keyboard.up('d');
+ results.strafe=await page.evaluate(()=>{const s=window.bobSamples;window.bobSamples=[];return s;});assert.ok(results.strafe.some(s=>Math.abs(s.rotation[2])>0.1));
+ await page.waitForFunction(()=>window.explorerState.player.grounded);await page.keyboard.down('Space');await page.waitForFunction(()=>!window.explorerState.player.grounded);results.jump=await page.evaluate(()=>({bob:window.explorerDev.headBob(),grounded:window.explorerState.player.grounded}));await page.keyboard.up('Space');assert.equal(results.jump.grounded,false);
+ await page.waitForTimeout(700);await page.mouse.move(700,450);await page.mouse.down({button:'right'});await page.waitForTimeout(900);
+ results.aim=await page.evaluate(()=>window.explorerDev.headBob());assert.ok(results.aim.scalars.positionScale<=1);assert.ok(results.aim.scalars.rotationScale<=1);
+ await page.screenshot({path:'analysis/browser-qa/headbob-aim.png'});await page.mouse.up({button:'right'});
+ await page.evaluate(()=>window.explorerDev.trigger(60));await page.waitForFunction(()=>window.explorerDev.headBob().effectStarts>0);results.shot=await page.evaluate(()=>window.explorerDev.headBob());await page.waitForTimeout(6000);
+ results.rest=await page.evaluate(()=>window.explorerDev.headBob());assert.ok(Math.hypot(...results.rest.position)<0.001);assert.ok(Math.hypot(...results.rest.rotation)<0.15);
+ results.damage=await page.evaluate(()=>{const d=window.explorerDev,before=d.headBob().effectStarts;d.hurtPlayer(5);return {before,after:d.headBob().effectStarts};});assert.equal(results.damage.after,results.damage.before+1);
+ await page.locator('#mode').evaluate(b=>b.click());await page.waitForTimeout(100);results.fly=await page.evaluate(()=>window.explorerDev.headBob());assert.deepEqual(results.fly.position,[0,0,0]);assert.deepEqual(results.fly.rotation,[0,0,0]);
+ await page.evaluate(()=>clearInterval(window.bobSampleTimer));assert.deepEqual(errors,[]);await writeFile('analysis/browser-qa/headbob.json',JSON.stringify({graphics,results,errors},null,1));console.log(JSON.stringify({graphics,samples:results.walk.length,walkRotationMax:Math.max(...results.walk.map(s=>Math.hypot(...s.rotation))),strafeRotationMax:Math.max(...results.strafe.map(s=>Math.hypot(...s.rotation))),jump:results.jump,aim:results.aim,rest:results.rest,fly:results.fly,errors},null,1));
+}finally{await browser?.close();await new Promise(r=>server.close(r));}

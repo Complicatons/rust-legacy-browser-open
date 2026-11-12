@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiki · Rust Legacy Browser</title>
+<meta name="description" content="Rust Legacy wiki page built from the original game data.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/island.css">
+<link rel="stylesheet" href="/site/css/pages/wiki.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/wiki.mjs"></script>
+</head>
+<body data-page="wiki-page">
+<!--#header-->
+<main id="main" class="wiki">
+ <nav class="wiki-rail" id="wiki-rail" aria-label="Wiki sections"></nav>
+ <div class="wiki-body">
+  <div class="wiki-top">
+   <nav class="crumbs mono" id="crumbs" aria-label="Breadcrumb"><a href="/wiki">Wiki</a></nav>
+   <div class="wiki-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input id="wiki-q" type="search" placeholder="Search the wiki" autocomplete="off" spellcheck="false" role="combobox" aria-label="Search the wiki" aria-expanded="false" aria-controls="wiki-results" aria-autocomplete="list">
+    <span class="key" aria-hidden="true">/</span>
+    <ul class="wiki-results" id="wiki-results" role="listbox" aria-label="Results" hidden></ul>
+   </div>
+  </div>
+  <div class="wiki-main" id="wiki-main" aria-busy="true"></div>
+ </div>
+</main>
+<!--#footer-->
+</body>
+</html>

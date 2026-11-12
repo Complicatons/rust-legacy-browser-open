@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rust Legacy Launcher</title>
+<link rel="stylesheet" href="launcher.css">
+</head>
+<body>
+<div class="window" data-phase="starting">
+ <header class="bar">
+  <span class="brand">Rust Legacy</span><span class="brand-sub">Launcher</span>
+  <span class="beat" aria-hidden="true"></span>
+ </header>
+
+ <!-- The seam links the three steps of joining. Current runs down it as each step completes, and again on every heartbeat. -->
+ <main class="steps">
+  <div class="seam" aria-hidden="true"><i class="seam-live"></i><i class="spark"></i></div>
+
+  <section class="step" id="step-account" aria-labelledby="h-account">
+   <span class="node"></span>
+   <div class="step-head"><h2 id="h-account">Account</h2><span class="summary" id="account-summary"></span>
+    <button class="link" id="signout" hidden>Sign out</button></div>
+   <div class="step-body" id="account-body"><div>
+    <!-- One form for both: "Create account" shows the website's sign-up fields (same rules as site/pages/register.html). -->
+    <div class="mode" role="group" aria-label="Account">
+     <button type="button" id="mode-signin" aria-pressed="true">Sign in</button><button type="button" id="mode-register" aria-pressed="false">Create account</button>
+    </div>
+    <form id="signin" data-mode="signin" novalidate>
+     <div class="field" data-for="signin"><label for="login">Username or email</label><input id="login" name="login" autocomplete="username" spellcheck="false" maxlength="254" required></div>
+     <div class="field" data-for="register" hidden><label for="email">Email</label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" maxlength="254" required></div>
+     <div class="field" data-for="register" hidden><label for="username">Username</label><input id="username" name="username" autocomplete="username" spellcheck="false" maxlength="20" required aria-describedby="username-help">
+      <p class="help" id="username-help">3–20 letters, numbers, _ or -. This is your name in game.</p></div>
+     <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" required aria-describedby="password-help">
+      <p class="help" id="password-help" data-for="register" hidden>At least 8 characters. A short phrase works well.</p></div>
+     <div class="checks">
+      <label class="check"><input type="checkbox" id="remember-login" checked><span>Remember my email or username</span></label>
+      <label class="check"><input type="checkbox" id="remember" checked><span>Keep me signed in on this PC</span></label>
+     </div>
+     <p class="agree" data-for="register" hidden>By creating an account you agree to the <a id="terms" href="#">Terms of use</a> and <a id="privacy" href="#">Privacy notice</a>. You must be 13 or older.</p>
+     <button class="primary" type="submit" id="signin-button"><span id="signin-label">Sign in</span></button>
+     <button class="link quiet" type="button" id="device-start" data-for="signin">Signed up with Steam or Discord? Use a code</button>
+    </form>
+    <div id="device" hidden>
+     <p class="lede">Sign in on the website, open this page and enter the code:</p>
+     <output class="code" id="device-code">····-····</output>
+     <p class="hint mono" id="device-url"></p>
+     <div class="row"><button class="secondary" type="button" id="device-open">Open the website</button><button class="link" type="button" id="device-cancel">Cancel</button></div>
+    </div>
+   </div></div>
+  </section>
+
+  <section class="step" id="step-server" aria-labelledby="h-server">
+   <span class="node"></span>
+   <div class="step-head"><h2 id="h-server">Server</h2><span class="summary" id="server-summary"></span>
+    <button class="link" id="disconnect" hidden>Change</button></div>
+   <div class="step-body" id="server-body"><div>
+    <ul class="servers" id="servers" role="listbox" aria-label="Servers"></ul>
+    <button class="primary" id="connect" disabled><span>Connect</span></button>
+   </div></div>
+  </section>
+
+  <section class="step" id="step-game" aria-labelledby="h-game">
+   <span class="node"></span>
+   <div class="step-head"><h2 id="h-game">Game</h2><span class="summary" id="game-summary"></span></div>
+   <div class="step-body" id="game-body"><div>
+    <button class="primary launch" id="launch"><span>Launch game</span></button>
+    <p class="hint" id="launch-hint">Opens your own Rust Legacy. This window stays in the tray and keeps you connected while you play.</p>
+    <div class="ingame" id="ingame" hidden>
+     <p class="lede" id="ingame-text"></p>
+     <dl class="readout mono">
+      <div><dt>Server</dt><dd id="ro-server"></dd></div>
+      <div><dt>Address</dt><dd id="ro-address"></dd></div>
+      <div><dt>Next check-in</dt><dd id="ro-beat">15 s</dd></div>
+     </dl>
+     <p class="hint">In game: Play → Favourites, or press F1 and type <span class="mono" id="ro-connect"></span></p>
+    </div>
+   </div></div>
+  </section>
+ </main>
+
+ <p class="toast" id="toast" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>

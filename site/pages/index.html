@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rust Legacy Browser · Back to where survival began</title>
+<meta name="description" content="The original Rust Legacy island and rules, running in your browser. Create an account, pick a server and play. No download.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rust Legacy Browser">
+<meta property="og:title" content="Rust Legacy: back to where survival began">
+<meta property="og:description" content="The original island and rules, running in your browser. No download.">
+<meta property="og:url" content="/">
+<meta property="og:image" content="/site/generated/media/share-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/site/generated/media/share-home.jpg">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/title.css">
+<link rel="stylesheet" href="/site/css/pages/home.css">
+<script type="importmap">{"imports":{"three":"/vendor/three.module.js","three/addons/":"/vendor/addons/"}}</script>
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/home.mjs"></script>
+</head>
+<body data-page="home" data-sound>
+<!--#header-->
+<main id="main" class="title-screen">
+ <canvas class="bg-canvas" aria-hidden="true"></canvas>
+ <div class="ts-inner">
+  <div class="ts-title"><h1 class="h">Rust<br>Legacy</h1><span class="sub">Back to where survival began</span></div>
+  <nav aria-label="Title menu"><ul class="ts-menu">
+   <li><a href="/servers" data-selected>Play<span class="key">Enter</span></a></li>
+   <li><a href="/island" data-key="m">The island<span class="key">M</span></a></li>
+   <li><a href="/updates" data-key="u">Updates<span class="key">U</span></a></li>
+   <li><a href="/wiki" data-key="w">Wiki<span class="key">W</span></a></li>
+   <li><a href="/guide" data-key="h">How to play<span class="key">H</span></a></li>
+  </ul></nav>
+  <aside class="quick" aria-label="Progress and quick join">
+   <div class="hp panel" id="hp">
+    <div class="hp-top"><span class="hp-label mono" id="hp-label">Progress</span><b id="hp-pct">—</b></div>
+    <div class="hp-bar" id="hp-bar" role="progressbar" aria-labelledby="hp-label" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+    <div class="hp-foot mono"><span id="hp-src">Public journal on GitHub</span><a href="/roadmap">Roadmap</a></div>
+   </div>
+   <div class="hn panel" id="hn">
+    <div id="hn-step">
+     <h2 class="hn-h mono" id="hn-title">Get notified on opening day</h2>
+     <form id="hn-form" class="hn-form" novalidate aria-labelledby="hn-title">
+      <label class="sr-only" for="hn-email">Email</label>
+      <input id="hn-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+      <div class="hn-trap" aria-hidden="true"><label for="hn-website">Website</label><input id="hn-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn" type="submit">Notify me</button>
+     </form>
+     <p class="hn-err" id="hn-err" role="alert" hidden></p>
+     <p class="hn-note">Only used for opening day. <a href="/privacy">Privacy</a></p>
+    </div>
+    <div id="hn-done" tabindex="-1" hidden>
+     <p class="hn-ok"><b>You're on the list.</b> You'll need an account to log in and play.</p>
+     <a class="btn small" id="hn-create" href="/register">Create your account</a>
+    </div>
+   </div>
+   <div class="panel qj">
+   <div class="panel-h mono"><h2 id="qj-title" class="mono"><span class="dot" id="qj-dot" aria-hidden="true"></span> Quick join</h2><span id="qj-state">Loading</span></div>
+   <div class="stats" id="qj-stats"><div class="stat"><b id="qj-servers" class="skeleton">00</b><span class="mono">Servers</span></div><div class="stat"><b id="qj-players" class="skeleton">00</b><span class="mono">Players</span></div></div>
+   <ul class="qj-list" id="qj-list" aria-live="polite"></ul>
+   <a class="btn-play" href="/servers" id="qj-play"><span>Play</span><span class="key">Enter</span></a>
+   </div>
+  </aside>
+  <div class="ts-foot mono">No download · desktop · keyboard + mouse
+   <p>The original Rust Legacy island and rules, running in your browser.</p>
+   <a class="ts-notify" href="/launch">Get notified when the servers open</a>
+   <div class="ts-hints" aria-hidden="true"><span><span class="key">↑</span> <span class="key">↓</span> Select</span><span><span class="key">Enter</span> Confirm</span></div>
+   <button class="live-toggle" type="button" id="live-toggle" aria-pressed="true" hidden>Live background: on</button>
+  </div>
+ </div>
+</main>
+<!--#footer-->
+</body>
+</html>

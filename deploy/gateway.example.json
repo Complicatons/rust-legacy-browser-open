@@ -1,0 +1,15 @@
+{
+  "serverId": "REPLACE-with-the-id-shown-when-registering",
+  "centralUrl": "https://play.example.com/",
+  "credentialFile": "/etc/rlb-gateway/credential",
+  "controlKeyFile": "/etc/rlb-gateway/control.key",
+  "sidecarUrl": "http://127.0.0.1:28090",
+  "native": {"host": "127.0.0.1", "port": 28015},
+  "allowedOrigins": ["https://play.example.com"],
+  "listen": {"host": "127.0.0.1", "port": 28443},
+  "path": "/play",
+  "capacity": 50,
+  "wipe": "2026-10",
+  "ngcRegistry": "browser/assets/recovered/ngc/registry.json",
+  "trustedProxies": ["loopback"]
+}

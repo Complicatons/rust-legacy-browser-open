@@ -1,0 +1,92 @@
+/* Help (/docs, site/js/docs.mjs) and List your server (/list-your-server). */
+.docs-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 36px}
+.docs-paths a{display:grid;gap:6px;padding:18px 20px;border:1px solid var(--line2);background:var(--k1);color:var(--w);transition:border-color .15s,background .15s}
+.docs-paths a:hover{border-color:var(--or);background:var(--k2)}
+.docs-paths b{font:900 22px/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.docs-paths span{color:var(--w2);font-size:15px}
+.docs-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px}
+.docs-group{min-width:0;scroll-margin-top:calc(var(--bar-h) + 16px)}
+.docs-group h2{margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid var(--line2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+.docs-group ul{list-style:none;margin:0;padding:0}
+.docs-group a{display:grid;gap:3px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--w)}
+.docs-group a:hover b{color:var(--or-h)}
+.docs-group b{font-weight:600;font-size:17px}
+.docs-group span{color:var(--w2);font-size:14px}
+.doc-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:48px;align-items:start;margin-top:18px}
+.doc-article header{margin:0 0 22px}
+.doc-article .doc-group{margin:0;color:var(--or);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.doc-article .h{font-size:clamp(32px,4.6vw,54px);margin:10px 0 12px;line-height:.95}
+.doc-article .lede{margin:0;color:var(--w2);font-size:19px;max-width:40em}
+.doc-article .prose h2{margin-top:1.6em}
+.doc-article .prose code{font:600 .9em var(--mono);color:var(--w)}
+.doc-article .prose pre{padding:14px;background:var(--k1);border:1px solid var(--line);overflow:auto}
+.doc-article .prose table{width:100%;border-collapse:collapse;font-size:15px}
+.doc-article .prose th,.doc-article .prose td{padding:9px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}
+.doc-article .prose th{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w2);background:var(--k1)}
+.doc-side{position:sticky;top:calc(var(--bar-h) + 20px);display:grid;gap:10px;padding-left:20px;border-left:1px solid var(--line)}
+.doc-side>p{margin:0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.doc-side ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.doc-side a{display:block;padding:6px 0;color:var(--w2);font-size:15px}
+.doc-side a:hover,.doc-side a[aria-current=page]{color:var(--w)}
+.doc-side a[aria-current=page]{box-shadow:inset 3px 0 0 var(--or);padding-left:10px}
+@media (max-width:900px){.docs-paths{grid-template-columns:1fr}.docs-groups{grid-template-columns:1fr}.doc-layout{grid-template-columns:1fr;gap:28px}.doc-side{position:static;padding:20px 0 0;border-left:0;border-top:1px solid var(--line)}}
+/* List your server */
+.ls-hero{padding:48px 0 30px;border-bottom:1px solid var(--line)}
+.ls-hero p.eyebrow{margin:0 0 12px;color:var(--or);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.ls-hero .h{font-size:clamp(44px,7vw,96px);margin:0;line-height:.9}
+.ls-hero p{margin:16px 0 0;color:var(--w2);font-size:19px;max-width:38em}
+.ls-hero .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.ls-figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;border-left:1px solid var(--line)}
+.ls-figures div{display:flex;flex-direction:column-reverse;gap:6px;padding:22px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ls-figures dd{margin:0;font:900 clamp(34px,4.4vw,56px)/1 var(--heavy);font-stretch:110%;color:var(--or)}
+.ls-figures dt{color:var(--w3);font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.ls-sec{padding:44px 0 0}
+.ls-sec>h2{margin:0 0 18px;font:900 clamp(26px,3.4vw,40px)/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.ls-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.ls-steps li{display:flex;flex-direction:column;gap:8px;padding:20px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ls-steps b{color:var(--or);font:700 14px var(--mono)}
+.ls-steps h3{margin:0;font:900 20px/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.ls-steps p{margin:0;color:var(--w2);font-size:15px}
+.ls-steps a{color:var(--w);text-decoration:underline;font-size:14px;margin-top:auto}
+.ls-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ls-features div{padding:18px;border:1px solid var(--line2);background:var(--k1)}
+.ls-features h3{margin:0 0 6px;font-size:17px}
+.ls-features p{margin:0;color:var(--w2);font-size:15px}
+.ls-need{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;margin:0;padding:0;list-style:none}
+.ls-need li{padding:12px 0 12px 28px;border-bottom:1px solid var(--line);position:relative;color:var(--w2)}
+.ls-need li::before{content:"";position:absolute;left:4px;top:19px;width:10px;height:10px;background:var(--or)}
+.ls-need b{color:var(--w)}
+.ls-cta{margin-top:44px;padding:28px;border:1px solid var(--or);display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between}
+.ls-cta h2{margin:0;font:900 clamp(24px,3vw,34px)/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.ls-cta p{margin:6px 0 0;color:var(--w2)}
+.ls-cta .actions{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:1000px){.ls-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.ls-features{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.ls-figures{grid-template-columns:repeat(2,minmax(0,1fr))}.ls-steps,.ls-features,.ls-need{grid-template-columns:1fr}}
+/* Annotated screenshots in help pages (tools/capture-docs.mjs): framed, and the loader shown at its real window size
+   (its pictures are taken at 2x, 840 px for a 420 px window). The numbered list under each picture matches its marks. */
+.doc-article img{margin:20px 0 12px;border:1px solid var(--line2);border-radius:6px;height:auto}
+.doc-article img[src*="/docs/images/loader-"]{width:420px}
+/* The host app's download box (site/js/docs.mjs) */
+.dl-box{margin:0 0 30px;border:1px solid var(--or);background:var(--k1)}
+.dl-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.dl-stats div{display:flex;flex-direction:column;gap:6px;padding:18px;border-right:1px solid var(--line)}
+.dl-stats div:last-child{border-right:0}
+.dl-stats b{font:900 clamp(24px,3vw,36px)/1 var(--heavy);font-stretch:110%;color:var(--or)}
+.dl-stats b.warn{color:var(--amber,#e8a93a)}
+.dl-stats span{color:var(--w3);font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.dl-act{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;padding:18px}
+.dl-sha{font:500 12px var(--mono);color:var(--w2);overflow-wrap:anywhere;min-width:0}
+.dl-note{margin:0;padding:16px 18px;color:var(--w2)}
+.dl-sum{font-size:12px;color:var(--w2)}
+@media (max-width:640px){.dl-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.dl-stats div:nth-child(2){border-right:0}.dl-stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+/* The downloads page (site/pages/downloads.html) */
+.downloads .dl-product{max-width:860px;margin:0 0 48px}
+.downloads .dl-product h2{margin:4px 0 8px;font-size:clamp(24px,3vw,32px)}
+.downloads .dl-lede{margin:0 0 18px;color:var(--w2)}
+.downloads .dl-box{margin:0}
+.downloads .dl-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 0}
+.downloads .dl-check ol{margin:0;padding-left:22px;color:var(--w2)}
+.downloads .dl-check li{margin:0 0 8px}
+.downloads .dl-check code{font:500 13px var(--mono);overflow-wrap:anywhere}
+.downloads .dl-fine{margin:14px 0 0;font-size:13px;color:var(--w3)}
+@media (max-width:700px){.dl-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.dl-stats div:nth-child(2){border-right:0}.dl-stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}}

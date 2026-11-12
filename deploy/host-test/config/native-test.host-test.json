@@ -1,0 +1,20 @@
+{
+  "_comment": "tools/check-native.mjs and tools/soak-bots.mjs against the original server on this PC (deploy/host-test, everything on 127.0.0.1). No secrets here: passwords come from the named env vars. serverId is shown on the owner page (http://127.0.0.1:8080/owner) after 13-Enrol-Gateway.ps1. metrics token: C:\\RLB-host\\secrets\\metrics.token.",
+  "centralUrl": "http://127.0.0.1:8080",
+  "serverId": "00000000-0000-0000-0000-000000000000",
+  "gameUrl": null,
+  "ignoreHttpsErrors": true,
+  "player": {"auth": "password", "login": "native-tester", "passwordEnv": "RLB_NATIVE_PASSWORD"},
+  "rconPasswordEnv": "RLB_NATIVE_RCON_PASSWORD",
+  "_admin_tools": "Admin tools rows: player needs the admin (or owner) role on this server on the website; target is a second plain account made for the run (under 30 days old, single-word display name, no role). No desktop client on the host (the client installer is not run), so the desktop rows are skipped.",
+  "target": {"auth": "password", "login": "native-target", "passwordEnv": "RLB_NATIVE_TARGET_PASSWORD"},
+  "adminWaitMs": 30000,
+  "walkSeconds": 10,
+  "replyMs": 10000,
+  "skyWaitMs": 90000,
+  "airdropWaitMs": 120000,
+  "gatherRadius": 60,
+  "metrics": {"url": "https://127.0.0.1:28443/metrics", "tokenEnv": "RLB_GATEWAY_METRICS_TOKEN", "insecure": true},
+  "bots": {"accounts": {"auth": "password", "loginPattern": "soak-bot-{n}", "passwordEnv": "RLB_SOAK_PASSWORD"}},
+  "soak": {"bots": 8, "durationSeconds": 3600, "behaviours": ["walk", "gather", "chat", "reconnect"], "chatEverySeconds": 30, "reconnectEverySeconds": 300, "sampleSeconds": 15}
+}

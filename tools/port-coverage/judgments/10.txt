@@ -1,0 +1,172 @@
+@Assembly-CSharp
+WoodBlockerTemp|P|Wood left on trees per blocker for gathering|browser/resources.mjs, tools/export_resources.py
+WorkBench|N|Old workbench with a work window (no shipped prefab carries it; the Workbench prefab only has WorkZone)|no shipped prefab carries it (the Workbench prefab has WorkZone only)
+WorkZone|P|Workbench crafting zone|browser/deployables.mjs, browser/crafting.mjs
+ZombieSpawner|N|Zombie spawner (not reached)|
+zzzzzzzz____RustCompileData_|N|Build metadata asset|editor: build data
+@Assembly-CSharp-firstpass
+BlurEffect|P|Main menu background blur|browser/front-end.mjs
+ColorCorrectionEffect|N|Standard Assets image effect (not reached)|
+ContrastStretchEffect|N|Standard Assets image effect (not reached)|
+Displace|N|Water4 displacement toggle (only on Water4Example prefabs)|
+GerstnerDisplace|N|Water4 Gerstner displacement (only on Water4Example prefabs)|
+GlowEffect|N|Standard Assets image effect (not reached)|
+GrayscaleEffect|N|Standard Assets image effect (not reached)|
+ImageEffectBase|N|Standard Assets image effect base (not reached)|
+ImageEffects|N|Standard Assets blit helpers (not reached)|
+MeshContainer|N|Water mesh container (not reached)|
+MotionBlur|N|Standard Assets image effect (not reached)|
+MouseLook|N|Standard Assets mouse look (First Person Controller prefab never spawned)|
+NoiseEffect|N|Standard Assets image effect (not reached)|
+PlanarReflection|P|Water planar reflection camera|browser/water4.mjs, browser/render-convars.mjs
+SepiaToneEffect|N|Standard Assets image effect (not reached)|
+SpecularLighting|P|Water specular light direction|browser/water4.mjs
+SSAOEffect|N|SSAO (only on the never-spawned First Person Controller prefab; gfx.ssao finds no instance)|only on the never-spawned First Person Controller; gfx.ssao finds no instance
+TwirlEffect|N|Standard Assets image effect (not reached)|
+uLink.Runtime|N|uLink runtime marker|engine: uLink is replaced by the gateway (bridge/)
+uLinkChatGUI|N|uLink sample chat|
+uLinkClientGUI|N|uLink sample client GUI|
+uLinkConsoleGUI|N|uLink sample console|
+uLinkEnterLicenseKey|N|uLink licence key|
+uLinkInstantiateForOthers|N|uLink sample|
+uLinkInstantiatePool|N|uLink sample pool|
+uLinkInternalHelper|N|uLink internal helper|
+uLinkNetworkP2P|N|uLink P2P|
+uLinkNetworkView|P|uLink network view component|bridge/game-bridge.mjs, bridge/ulink/ulink.mjs
+uLinkObjectLabel|N|uLink sample label|
+uLinkObservedList|N|uLink sample|
+uLinkOverrideNetworkDestroy|N|uLink sample|
+uLinkOverrideSettings|N|uLink settings override|
+uLinkP2PConnector|N|uLink P2P|
+uLinkRegisterPrefabs|N|uLink prefab registry|
+uLinkServerAuthentication|N|uLink server auth|
+uLinkSimpleServer|N|uLink sample server|
+uLinkSmoothCharacter|N|uLink sample|
+uLinkSmoothPlatformer|N|uLink sample|
+uLinkSmoothRigidbody|N|uLink sample|
+uLinkSmoothRigidbodyImproved|N|uLink sample|
+uLinkStatisticsGUI|N|uLink statistics GUI|
+uLinkStrictCharacter|N|uLink sample|
+uLinkStrictPlatformer|N|uLink sample|
+VortexEffect|N|Standard Assets image effect (not reached)|
+Water|N|Standard Assets water (only on unused Daylight/Nighttime Water prefabs)|
+WaterBase|P|Water4 base: shader quality and edge blend|browser/water4.mjs
+WaterQuality|P|Water quality enum|with: browser/water4.mjs
+WaterTile|P|Water4 tile reflection hook|browser/water4.mjs
+@Assembly-UnityScript
+FeatureType|N|Sample enum|
+Headbobber|N|Sample head bob|
+KeepOnSurface|N|Sample|
+PlaceOnSurface|N|Sample|
+TimedObjectDestructor|P|Destroys an object after a timeout (explosion, chat line)|browser/chat.mjs, browser/presentation-extras.mjs
+@Assembly-UnityScript-firstpass
+AAMode|P|Anti-aliasing mode enum|with: browser/post-chain.mjs
+AmbientObscurance|N|Image effect (not reached)|
+AntialiasingAsPostEffect|P|SSAA/FXAA post effect (gfx.ssaa)|browser/post-chain.mjs
+Bloom|P|Bloom image effect (gfx.bloom)|browser/post-chain.mjs
+BloomAndLensFlares|N|Bloom and lens flares (only on the never-spawned First Person Controller)|
+BloomScreenBlendMode|P|Bloom blend enum|with: browser/post-chain.mjs
+Blur|N|Image effect (not reached)|
+BokehDestination|N|DOF enum|
+CameraMotionBlur|N|Image effect (not reached)|
+CharacterMotor|N|Standard Assets motor (First Person Controller never spawned)|
+CharacterMotorJumping|N|Standard Assets motor data|
+CharacterMotorMovement|N|Standard Assets motor data|
+CharacterMotorMovingPlatform|N|Standard Assets motor data|
+CharacterMotorSliding|N|Standard Assets motor data|
+CharacterState|N|Standard Assets enum|
+ColorCorrectionCurves|N|Image effect (not reached)|
+ColorCorrectionLut|N|Image effect (not reached)|
+ColorCorrectionMode|N|Image effect enum|
+ContrastEnhance|N|Image effect (not reached)|
+Crease|N|Image effect (not reached)|
+DepthOfField34|N|Image effect (not reached)|
+DepthOfFieldScatter|N|Image effect (not reached)|
+Dof34QualitySetting|N|DOF enum|
+DofBlurriness|N|DOF enum|
+DofResolution|N|DOF enum|
+EdgeDetectEffectNormals|N|Image effect (not reached)|
+EdgeDetectMode|N|Image effect enum|
+FastBloom|N|Image effect (not reached)|
+Fisheye|N|Image effect (not reached)|
+FPSInputController|N|Standard Assets input (never spawned)|
+GlobalFog|N|Image effect (not reached)|
+HDRBloomMode|P|Bloom HDR enum|with: browser/post-chain.mjs
+LensflareStyle34|N|Lens flare enum|
+MovementTransferOnJump|N|Standard Assets enum|
+NoiseAndGrain|P|Film grain (gfx.grain)|browser/post-chain.mjs
+PlatformInputController|N|Standard Assets input|
+PostEffectsBase|P|Post effect base (shader checks)|with: browser/post-chain.mjs
+PostEffectsHelper|N|Post effect helper|
+Quads|P|Quad mesh cache for laser beams|with: browser/weapon-mod-effects.mjs
+ScreenOverlay|N|Image effect (not reached)|
+ShaftsScreenBlendMode|P|Sun shaft blend enum|with: browser/post-chain.mjs
+SunShafts|N|Standard sun shafts (TOD_SunShafts is the one used)|the standard SunShafts is not used; TOD_SunShafts is (browser/post-chain.mjs)
+SunShaftsResolution|P|Sun shaft resolution enum|with: browser/post-chain.mjs
+ThirdPersonCamera|N|Standard Assets camera (never spawned)|
+ThirdPersonController|N|Standard Assets controller (never spawned)|
+TiltShiftHdr|N|Image effect (not reached)|
+Tonemapping|N|Tonemapping (only on the never-spawned First Person Controller; gfx.tonemap finds no instance)|only on the never-spawned First Person Controller; gfx.tonemap finds no instance
+Triangles|N|Triangle mesh cache for fonts|engine: canvas text
+TweakMode34|N|Bloom enum|
+Vignetting|N|Image effect (not reached)|
+@Facepunch.Actor
+Facepunch.Actor.ActorInterface|N|Actor interface enum|
+Facepunch.Actor.ActorMeshInfo|P|Skinned mesh bone indices and bind poses per armour mesh|tools/unity_armor.py, browser/armor.mjs
+Facepunch.Actor.ActorMeshRenderer|P|Binds actor meshes to a rig|browser/armor.mjs
+Facepunch.Actor.ActorRig|P|Player bone rig and poses|tools/unity_armor.py, browser/player-view.mjs
+Facepunch.Actor.ActorRigEditorData|N|Editor data|editor:
+Facepunch.Actor.ActorRigFieldRiggedAttribute|N|Editor attribute|editor:
+Facepunch.Actor.ActorRigFieldRigWorkerAttribute|N|Editor attribute|editor:
+Facepunch.Actor.ActorRiggedConfiguration|P|Rigged bone configuration|with: browser/armor.mjs
+Facepunch.Actor.Bone|P|Rig bone|with: browser/player-view.mjs
+Facepunch.Actor.BoneStructure|P|Ordered bone transforms of player/ragdoll|browser/player-view.mjs, browser/ragdoll-death.mjs
+Facepunch.Actor.FacepunchImportData|N|Model import data|editor:
+Facepunch.Actor.IActorPostImportResponder|N|Import interface|editor:
+Facepunch.Actor.IActorRigged|P|Rigged interface|with: browser/armor.mjs
+Facepunch.Actor.IActorRigInterface|P|Rig interface|with: browser/armor.mjs
+Facepunch.Actor.IActorRigWorker|N|Rig worker interface|editor:
+Facepunch.Actor.Utility.TemporaryArray|N|Temporary array pool|engine: JS arrays
+@Facepunch.Cursor
+Facepunch.Cursor.EscapeKeyEventHandler|P|Escape key delegate|with: browser/game-controls.mjs
+Facepunch.Cursor.LockCursorManager|P|Cursor lock/unlock arbitration between UI windows|browser/game-controls.mjs, browser/front-end.mjs
+Facepunch.Cursor.LockCursorResult|P|Lock result enum|with: browser/game-controls.mjs
+Facepunch.Cursor.LockOrUnlockCursorCallback|P|Lock callback|with: browser/game-controls.mjs
+Facepunch.Cursor.UnlockCursorFlags|P|Unlock flags|browser/game-controls.mjs
+Facepunch.Cursor.UnlockCursorFlagsUtil|N|Flag helpers|
+Facepunch.Cursor.UnlockCursorNode|P|Unlock request node per window|browser/game-controls.mjs, browser/lock-entry.mjs
+Facepunch.Cursor.Internal.Binder|P|Cursor manager singleton binder|with: browser/game-controls.mjs
+Facepunch.Cursor.Internal.Cursor|P|Low-level cursor lock (Pointer Lock in the port)|browser/game-controls.mjs
+Facepunch.Cursor.Internal.NoExit|P|No-exit lock count|with: browser/game-controls.mjs
+Facepunch.Cursor.Internal.RectIdentifiers|N|GUI rect ids for the cursor fallback|engine: Pointer Lock API
+Facepunch.Cursor.Internal.UnlockCursorNodeImpl|P|Unlock node implementation|with: browser/game-controls.mjs
+@Facepunch.Geometry
+Facepunch.Geometry.AABox|N|Axis-aligned box maths|engine: three.js Box3
+Facepunch.Geometry.Box|N|Oriented box maths|engine: three.js maths
+Facepunch.Geometry.BoxCorners|N|Box corners|engine: three.js maths
+Facepunch.Geometry.Capsule|P|Capsule shape (hit boxes, pushers)|browser/collision.mjs
+Facepunch.Geometry.ColliderUtility|N|Collider/shape conversion (not reached)|
+Facepunch.Geometry.Geometric|P|Shape kind enum|with: browser/motor.mjs
+Facepunch.Geometry.IBox|N|Box interface|engine:
+Facepunch.Geometry.ICapsule|P|Capsule interface|with: browser/collision.mjs
+Facepunch.Geometry.ILine|P|Line interface|with: browser/motor.mjs
+Facepunch.Geometry.IPoint|P|Point interface|with: browser/motor.mjs
+Facepunch.Geometry.IShape|P|Shape interface|with: browser/motor.mjs
+Facepunch.Geometry.IShape#2|P|Typed shape interface|with: browser/motor.mjs
+Facepunch.Geometry.ISphere|P|Sphere interface|with: browser/motor.mjs
+Facepunch.Geometry.Line|P|Line segment maths|browser/motor.mjs
+Facepunch.Geometry.Matrix|N|Matrix struct|engine: three.js Matrix4
+Facepunch.Geometry.Normal|N|Normal vector struct|engine: three.js Vector3
+Facepunch.Geometry.Plane|P|Plane maths (pusher planes)|browser/motor.mjs, browser/collision.mjs
+Facepunch.Geometry.PlaneBox|N|Plane box|engine:
+Facepunch.Geometry.Planewich|N|Plane pair|engine:
+Facepunch.Geometry.Point|P|Point struct|with: browser/motor.mjs
+Facepunch.Geometry.Scale|N|Scale struct|engine: three.js Vector3
+Facepunch.Geometry.Shape|P|Tagged shape union (CCPusher shapes)|browser/motor.mjs, tools/export_physics.py
+Facepunch.Geometry.ShapeDefinition|P|Serialized shape definition|tools/export_physics.py
+Facepunch.Geometry.Solve|P|Closest-point/intersection solvers (totem, crouch)|browser/motor.mjs
+Facepunch.Geometry.Sphere|P|Sphere shape|browser/collision.mjs, browser/motor.mjs
+Facepunch.Geometry.Surface|N|Surface struct (not reached)|
+Facepunch.Geometry.Vector|N|Vector struct|engine: three.js Vector3
+Facepunch.Geometry.ZeroLengthException|N|Exception|empty: exception type
+Facepunch.Geometry.Editor.GizmoHelper|N|Gizmo drawing|editor:

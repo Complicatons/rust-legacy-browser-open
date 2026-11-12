@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Sign in to Rust Legacy Browser with your account or Steam.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/auth-pages.mjs"></script>
+</head>
+<body data-page="signin">
+<!--#header-->
+<main id="main" class="auth-split">
+ <aside class="auth-art" aria-hidden="true"><div><div class="h">Welcome<br>back</div><span class="sub">Sign in to play</span><span class="mono">The original island · in your browser · preview</span></div></aside>
+ <section class="auth-form"><div>
+  <h1 class="h">Sign in</h1>
+  <p class="lede">Use your email or username.</p>
+  <form id="signin-form" novalidate>
+   <div class="field" data-field="login">
+    <label for="f-login">Email or username</label>
+    <input id="f-login" name="login" type="text" autocomplete="username" required maxlength="254" spellcheck="false">
+    <p class="err" id="f-login-err" hidden></p>
+   </div>
+   <div class="field" data-field="password">
+    <label for="f-password">Password</label>
+    <div class="input-row"><input id="f-password" name="password" type="password" autocomplete="current-password" required maxlength="128"><button class="btn pw-toggle" type="button" aria-pressed="false" aria-controls="f-password">Show</button></div>
+    <p class="err" id="f-password-err" hidden></p>
+   </div>
+   <a class="forgot" href="/forgot" hidden>Forgot password?</a>
+   <button class="btn-play" type="submit"><span>Sign in</span><span class="key">Enter</span></button>
+  </form>
+   <div class="or provider-block">or</div>
+   <div class="providers provider-block"></div>
+  <p class="switch">New here? <a class="keep-next" href="/register">Create an account</a></p>
+ </div></section>
+</main>
+<!--#footer-->
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "serverId": "REPLACE-same-as-gateway",
+  "port": 28090,
+  "dataFile": "/var/lib/rlb-sidecar/identities.json",
+  "pluginKeyFile": "/etc/rlb-sidecar/plugin.key",
+  "controlKeyFile": "/etc/rlb-gateway/control.key",
+  "namespace": null,
+  "steamGroupWhitelisted": false
+}

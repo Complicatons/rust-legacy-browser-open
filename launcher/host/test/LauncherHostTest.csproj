@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Host tests, run by tools/build-launcher.mjs with its test switch: the launch profile, the proxy pipe end to end, DPAPI, settings, the hardware ID. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\ProfileBuilder.cs" />
+    <Compile Include="..\TicketPipe.cs" />
+    <Compile Include="..\Storage.cs" />
+    <Compile Include="..\HardwareId.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+</Project>

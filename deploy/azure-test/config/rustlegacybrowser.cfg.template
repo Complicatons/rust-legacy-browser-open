@@ -1,0 +1,4 @@
+# Rust Legacy browser adapter (azure-test). Written by deploy/host-test/scripts/10-Patch-TestCopy.ps1 into <test copy>/rust_server_Data/cfg/
+SidecarUrl=http://127.0.0.1:28090/plugin
+PluginKeyHex=__PLUGIN_KEY_HEX__
+LauncherOnly=false

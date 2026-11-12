@@ -1,0 +1,22 @@
+{
+  "_comment": "tools/check-native.mjs and tools/soak-bots.mjs against the isolated VM (deploy/vm-test). No secrets here: passwords come from the named env vars (or *File paths). serverId is shown on the owner page after registering the VM gateway.",
+  "centralUrl": "http://192.168.56.1:8080",
+  "serverId": "00000000-0000-0000-0000-000000000000",
+  "gameUrl": null,
+  "ignoreHttpsErrors": true,
+  "player": {"auth": "password", "login": "native-tester", "passwordEnv": "RLB_NATIVE_PASSWORD"},
+  "rconPasswordEnv": "RLB_NATIVE_RCON_PASSWORD",
+  "_admin_tools": "Admin tools rows: player needs the admin (or owner) role on this server on the website; target is a second plain account made for the run (under 30 days old, single-word display name, no role); desktop is the in-game name of the original client connected inside the VM (omit to skip the desktop rows; it gets kicked).",
+  "target": {"auth": "password", "login": "native-target", "passwordEnv": "RLB_NATIVE_TARGET_PASSWORD"},
+  "desktop": {"name": "DeskTester"},
+  "_meet": "Two-player rows bring the target next to the player: admin teleport.toplayer (meetTeleport:false skips it), then up to meetRespawns (3) respawns while it is beyond meetWalkMax (150 m), then walk-to-meet along the island navmesh (tools/native/walk-meet.mjs; meetMs caps the walk, default ~200 ms per path metre + 60 s; meetLog:true prints progress).",
+  "adminWaitMs": 30000,
+  "walkSeconds": 10,
+  "replyMs": 10000,
+  "skyWaitMs": 90000,
+  "airdropWaitMs": 120000,
+  "gatherRadius": 60,
+  "metrics": {"url": "https://192.168.56.10:28443/metrics", "tokenEnv": "RLB_GATEWAY_METRICS_TOKEN", "insecure": true},
+  "bots": {"accounts": {"auth": "password", "loginPattern": "soak-bot-{n}", "passwordEnv": "RLB_SOAK_PASSWORD"}},
+  "soak": {"bots": 8, "durationSeconds": 3600, "behaviours": ["walk", "gather", "chat", "reconnect"], "chatEverySeconds": 30, "reconnectEverySeconds": 300, "sampleSeconds": 15}
+}

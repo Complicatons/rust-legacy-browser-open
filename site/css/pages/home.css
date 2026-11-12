@@ -1,0 +1,49 @@
+/* Homepage additions to the title screen: quick join panel. */
+.quick{grid-column:2;grid-row:2/4;align-self:end;width:100%}
+.quick .panel-h h2{margin:0;font-size:12px;display:flex;align-items:center;gap:8px}
+.quick .stats{border-bottom:1px solid var(--line)}
+.qj-list{list-style:none;margin:0;padding:0}
+.qj-list li{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--line)}
+.qj-list b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qj-list .n{font:700 12px var(--mono);color:var(--w2)}
+.qj-list a{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--or);text-decoration:none;padding:4px 0}
+.qj-list a:hover{color:var(--or-h);text-decoration:underline}
+.qj-list .empty{display:block;color:var(--w2);font-size:15px}
+.qj-list .empty a{font-size:inherit}
+.quick .btn-play{width:100%}
+/* Progress (from the public GitHub journal, as on /roadmap), a slim panel above quick join. */
+.hp{margin-bottom:10px;padding:12px 16px 11px}
+.hp-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.hp-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--w2)}
+.hp-top b{font:900 26px/1 var(--heavy);font-stretch:125%;font-variant-numeric:tabular-nums}
+.hp-bar{position:relative;height:8px;margin-top:9px;overflow:hidden;background:var(--k2);box-shadow:inset 0 0 0 1px var(--line)}
+.hp-bar i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#b8501f,var(--or) 70%,var(--or-h));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.hp-bar i::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.16) 0 8px,transparent 8px 16px);background-size:32px 100%;animation:hp-stripes 1.2s linear infinite}
+@keyframes hp-stripes{to{background-position:32px 0}}
+.hp-foot{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--w3)}
+.hp-foot a{color:var(--or);text-decoration:none}
+.hp-foot a::after{content:" →"}
+.hp-foot a:hover{color:var(--or-h);text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.hp-bar i{transition:none}.hp-bar i::after{animation:none}}
+/* Get notified (the same list as /launch), between progress and quick join. */
+.hn{margin-bottom:10px;padding:12px 16px 14px}
+.hn [tabindex="-1"]:focus{outline:none}
+.hn-h{margin:0 0 9px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--w2)}
+.hn-form{display:flex;gap:8px}
+.hn-form input{flex:1;min-width:0;height:42px;padding:0 12px;background:var(--k1);border:1px solid var(--line2);color:var(--w);font-size:15px}
+.hn-form input:focus{outline:2px solid var(--w);outline-offset:0;border-color:var(--w)}
+.hn-form input[aria-invalid=true]{border-color:var(--red)}
+.hn-form .btn{flex:none;height:42px}
+.hn-trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.hn-err{margin:8px 0 0;color:var(--red-text);font-size:14px}
+.hn-ok{margin:0 0 10px;color:var(--w2);font-size:15px;line-height:1.45}
+.hn-ok b{color:var(--w)}
+.live-toggle{margin-top:14px;padding:0;background:none;border:0;color:var(--w3);font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.live-toggle:hover{color:var(--w)}
+@media (max-width:860px){
+ .quick{grid-column:1;grid-row:auto;margin-top:28px}
+}
+.stat b.na{font-size:28px;line-height:40px;color:var(--w3)}
+@media (max-width:860px){.title-screen::after{background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.82) 45%,rgba(10,10,10,.95) 100%)}}
+.hn-note{margin:8px 0 0;color:var(--w3);font-size:12px}
+.hn-note a{color:var(--w2)}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unsubscribe · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/unsubscribe.mjs"></script>
+</head>
+<body data-page="unsubscribe">
+<!--#header-->
+<main id="main" class="auth-split">
+ <aside class="auth-art" aria-hidden="true"><div><div class="h">No more<br>emails</div><span class="sub">Opening-day list</span><span class="mono">The original island · in your browser · preview</span></div></aside>
+ <section class="auth-form"><div>
+  <div id="un-ask">
+   <h1 class="h">Unsubscribe</h1>
+   <p class="lede">Stop emails about Rust Legacy Browser opening day. Your account, if you have one, is not affected.</p>
+   <button class="btn-play" type="button" id="un-go">Unsubscribe</button>
+   <p class="err" id="un-err" role="alert" hidden></p>
+  </div>
+  <div id="un-done" tabindex="-1" hidden>
+   <h1 class="h">You're unsubscribed</h1>
+   <p class="lede">We won't email you about opening day. For news, join the Discord or check the roadmap.</p>
+   <p class="switch"><a href="/roadmap">See the roadmap</a></p>
+  </div>
+  <div id="un-missing" hidden>
+   <h1 class="h">Link not complete</h1>
+   <p class="lede">This unsubscribe link is missing its code. Use the link at the bottom of the email, or ask us on Discord to remove your address.</p>
+  </div>
+ </div></section>
+</main>
+<!--#footer-->
+</body>
+</html>

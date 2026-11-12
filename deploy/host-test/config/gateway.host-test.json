@@ -1,0 +1,18 @@
+{
+  "serverId": "__SERVER_ID__",
+  "centralUrl": "http://127.0.0.1:8080/",
+  "credentialFile": "__ROOT__/secrets/gateway.credential",
+  "controlKeyFile": "__ROOT__/secrets/control.key",
+  "metricsTokenFile": "__ROOT__/secrets/metrics.token",
+  "sidecarUrl": "http://127.0.0.1:28090",
+  "native": {"host": "127.0.0.1", "port": 29015},
+  "allowedOrigins": ["http://127.0.0.1:8080"],
+  "listen": {"host": "127.0.0.1", "port": 28443},
+  "path": "/play",
+  "tls": {"pfx": "__ROOT__/secrets/gateway-tls.pfx", "passphraseFile": "__ROOT__/secrets/gateway-tls.pass"},
+  "capacity": 100,
+  "wipe": "host-test",
+  "ngcRegistry": "__REPO__/browser/assets/recovered/ngc/registry.json",
+  "recoveredDir": "__REPO__/browser/assets/recovered",
+  "anticheat": {"policy": {"autoKick": false}}
+}

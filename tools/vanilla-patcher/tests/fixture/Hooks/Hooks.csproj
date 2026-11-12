@@ -1,0 +1,13 @@
+<!-- Synthetic stand-in for RustLegacyBrowser.Vanilla.dll (adapter/vanilla): only the Hooks type's method shapes
+     tools/vanilla-patcher's Hook() lookups need, each recording that it was called instead of doing anything real. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>RustLegacyBrowser.Vanilla</AssemblyName>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../GameAsm/GameAsm.csproj" />
+    <ProjectReference Include="../ULink/ULink.csproj" />
+  </ItemGroup>
+</Project>

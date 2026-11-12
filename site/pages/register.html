@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register · Rust Legacy Browser</title>
+<meta name="description" content="Create a Rust Legacy Browser account to join servers and keep your name.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/auth-pages.mjs"></script>
+</head>
+<body data-page="register">
+<!--#header-->
+<main id="main" class="auth-split">
+ <aside class="auth-art" aria-hidden="true"><div><div class="h">Back to where<br>survival began</div><span class="sub">Create your account</span><span class="mono">The original island · in your browser · preview</span></div></aside>
+ <section class="auth-form"><div>
+  <h1 class="h">Create your account</h1>
+  <p class="lede">One account works on every server listed here.</p>
+  <form id="register-form" novalidate>
+   <div class="field" data-field="email">
+    <label for="f-email">Email</label>
+    <input id="f-email" name="email" type="email" autocomplete="email" required inputmode="email" maxlength="254">
+    <p class="err" id="f-email-err" hidden></p>
+   </div>
+   <div class="field" data-field="username">
+    <label for="f-username">Username</label>
+    <input id="f-username" name="username" type="text" autocomplete="username" required maxlength="20" spellcheck="false" aria-describedby="f-username-help">
+    <p class="help" id="f-username-help">3–20 letters, numbers, _ or -. This is your name in game.</p>
+    <p class="ok status-line" id="f-username-status" aria-live="polite"></p>
+    <p class="err" id="f-username-err" hidden></p>
+   </div>
+   <div class="field" data-field="password">
+    <label for="f-password">Password</label>
+    <div class="input-row"><input id="f-password" name="password" type="password" autocomplete="new-password" required maxlength="128" aria-describedby="f-password-help"><button class="btn pw-toggle" type="button" aria-pressed="false" aria-controls="f-password">Show</button></div>
+    <div class="meter" aria-hidden="true"><i></i></div>
+    <p class="help" id="f-password-help">At least 8 characters. A short phrase works well.</p>
+    <p class="err" id="f-password-err" hidden></p>
+   </div>
+   <p class="agree">By creating an account you agree to the <a href="/terms">Terms of use</a> and <a href="/privacy">Privacy notice</a>. You must be 13 or older.</p>
+   <button class="btn-play" type="submit"><span>Create account</span><span class="key">Enter</span></button>
+  </form>
+   <div class="or provider-block">or</div>
+   <div class="providers provider-block"></div>
+  <p class="switch">Already have an account? <a class="keep-next" href="/signin">Sign in</a></p>
+ </div></section>
+</main>
+<!--#footer-->
+</body>
+</html>

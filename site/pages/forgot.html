@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forgot password · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/auth-pages.mjs"></script>
+</head>
+<body data-page="forgot">
+<!--#header-->
+<main id="main" class="auth-split">
+ <aside class="auth-art" aria-hidden="true"><div><div class="h">Locked<br>out?</div><span class="sub">Reset your password</span><span class="mono">The original island · in your browser · preview</span></div></aside>
+ <section class="auth-form"><div>
+  <h1 class="h">Reset password</h1>
+  <p class="lede">We will email you a link to choose a new password.</p>
+  <div class="notice" id="mail-off" hidden><h2>Not available yet</h2><p>Password reset by email is not set up on this site. Sign in with Steam if you linked it.</p></div>
+  <div class="notice" id="sent" hidden><h2>Check your email</h2><p>If an account uses that address, a link is on its way. It works for 30 minutes.</p></div>
+  <form id="forgot-form" novalidate>
+   <div class="field" data-field="email">
+    <label for="f-email">Email</label>
+    <input id="f-email" name="email" type="email" autocomplete="email" required inputmode="email" maxlength="254">
+    <p class="err" id="f-email-err" hidden></p>
+   </div>
+   <button class="btn-play" type="submit"><span>Send reset link</span><span class="key">Enter</span></button>
+  </form>
+  <p class="switch"><a href="/signin">Back to sign in</a></p>
+ </div></section>
+</main>
+<!--#footer-->
+</body>
+</html>

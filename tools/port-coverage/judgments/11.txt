@@ -1,0 +1,186 @@
+@Facepunch.HitBox
+BodyPart|P|Body part enum (head, chest, limbs...)|browser/combat-feedback.mjs, browser/player-hitboxes.mjs
+BodyPartIndex|P|Indexed body part reference|with: browser/player-hitboxes.mjs
+BodyPartInfo|N|Body part info (not reached)|
+BodyPartMap|P|Body part to value map|with: browser/player-hitboxes.mjs
+BodyPartMapBase|P|Body part map base|with: browser/player-hitboxes.mjs
+BodyPartMask|P|Body part bit mask|with: browser/player-hitboxes.mjs
+BodyPartMaskSerializable|P|Serializable body part mask|with: tools/export_players.py
+BodyPartPair|P|Body part/value pair|with: browser/player-hitboxes.mjs
+BodyParts|N|Body part side helpers (not reached)|
+BodyPartTransformMap|N|Body part transform map (not reached)|
+Facepunch.Intersect.HitBox|P|Hit box: priority, damage factor, hit-box-only|tools/export_players.py, browser/player-hitboxes.mjs
+Facepunch.Intersect.HitBoxSystem|P|Hit box set and shape raycasts|browser/player-hitboxes.mjs, browser/collision.mjs
+Facepunch.Intersect.HitShapeHit|P|Hit box raycast result|with: browser/player-hitboxes.mjs
+Facepunch.Intersect.ProxyHack|N|Empty proxy component|empty:
+HitBoxesTest|N|Test script|debug:
+HitBoxesTestCast|N|Test script|debug:
+HitBoxTraits|P|Hit box priority/multiplier/body part|with: browser/player-hitboxes.mjs
+HitShape|P|Sphere/capsule/box hit shapes and ray tests|browser/player-hitboxes.mjs
+HitShapeInversion|P|Shape inversion enum|with: browser/player-hitboxes.mjs
+HitShapeKind|P|Shape kind enum|with: browser/player-hitboxes.mjs
+IDRemoteBodyPart|P|Remote ID with a body part|with: browser/player-hitboxes.mjs
+IDRemoteBodyPartCollection|P|Body part collection|with: browser/player-hitboxes.mjs
+IHitBox|P|Hit box interface|with: browser/player-hitboxes.mjs
+Intersect2D|N|2D intersection maths (not reached)|
+Intersect3D|P|Ray/capsule/sphere intersection maths|browser/player-hitboxes.mjs, browser/collision.mjs
+IntersectHint|P|Intersection hint enum|with: browser/player-hitboxes.mjs
+Line2D|N|2D line (only via Ray2D)|engine:
+Line3D|P|3D line segment|with: browser/collision.mjs
+Physics2|P|Raycasts and sphere casts that include hit boxes|browser/collision.mjs
+Ray2D|N|2D ray|engine:
+Ray3D|P|3D ray with fraction|with: browser/collision.mjs
+RaycastHit2|P|Raycast hit including hit-box shapes|with: browser/collision.mjs
+@Facepunch.ID
+Facepunch.MonoBehaviour|N|Facepunch MonoBehaviour base (network view lookup)|engine: JS objects
+Facepunch.NetBehaviour|P|Networked behaviour base|with: browser/online.mjs
+Facepunch.NetworkUtility|N|Network view helpers (not reached)|
+Facepunch.NetworkView|P|Network view with ID main/remote evaluation|with: bridge/ulink/ulink.mjs, browser/online.mjs
+Facepunch.ID.Identifiable|N|ID casting helpers (not reached)|
+Facepunch.ID.IIdentifiable|N|Identity interface|engine: JS object identity
+Facepunch.ID.IIdentifiableBase|N|Identity base interface|engine: JS object identity
+Facepunch.ID.IIdentifiableLocal|N|Identity interface (not reached)|
+Facepunch.ID.IIdentifiableMain|N|Identity interface (not reached)|
+Facepunch.ID.IIdentifiableRemote|N|Identity interface (not reached)|
+Facepunch.ID.IIdentifiableSelf|N|Identity interface|engine: JS object identity
+Facepunch.ID.IIdentifiableSelfLocal|N|Identity interface|engine: JS object identity
+Facepunch.ID.IIdentifiableSelfMain|N|Identity interface|engine: JS object identity
+Facepunch.ID.IIdentifiableSelfRelative|N|Identity interface|engine: JS object identity
+Facepunch.ID.IIdentifiableSelfRemote|N|Identity interface|engine: JS object identity
+IDBase|N|Identity component base (main/local/remote)|engine: JS object identity
+IDFlags|N|Identity flags|engine: JS object identity
+IDKind|N|Identity kind|engine: JS object identity
+IDLocal|N|Local identity component|engine: JS object identity
+IDMain|N|Main identity component (entity root)|engine: JS object identity
+IDRelative|N|Relative identity component|engine: JS object identity
+IDRemote|N|Remote identity component|engine: JS object identity
+@Facepunch.MeshBatch
+Facepunch.MeshBatch.Configuration|N|Mesh batch configuration|engine: three.js instancing (browser/structures.mjs)
+Facepunch.MeshBatch.MeshBatchAsset|N|Mesh batch asset base|engine: three.js instancing
+Facepunch.MeshBatch.MeshBatchInstance|P|Structure mesh instance (graphical/physical models, LOD distance)|engine: browser/structures.mjs draws structure meshes instanced
+Facepunch.MeshBatch.MeshBatchPhysics|P|Raycasts against merged structure colliders|engine: browser/collision.mjs structure colliders
+Facepunch.MeshBatch.MeshBatchTarget|N|Mesh batch target jobs|engine: three.js instancing
+Facepunch.MeshBatch.PhysicalIntegrationMode|N|Physics integration enum|engine:
+Facepunch.MeshBatch.Extensions.MeshBatchExtenders|N|Mesh batch hit helpers (not reached)|
+Facepunch.MeshBatch.Internal.AssetKind|N|Asset kind enum|engine:
+Facepunch.MeshBatch.Internal.Batch|N|Batch buffers|engine: three.js instancing
+Facepunch.MeshBatch.Internal.BatchMode|N|Batch mode enum|engine:
+Facepunch.MeshBatch.Internal.Job|N|Mesh combine job (threads)|engine: three.js instancing
+Facepunch.MeshBatch.Internal.JobList|N|Job list|engine:
+Facepunch.MeshBatch.Internal.JobListIterator|N|Job iterator|engine:
+Facepunch.MeshBatch.Internal.JobListOrder|N|Job order enum|engine:
+Facepunch.MeshBatch.Internal.JobQueue|N|Job queue|engine:
+Facepunch.MeshBatch.Internal.JobState|N|Job state enum|engine:
+Facepunch.MeshBatch.Internal.LaunchStatus|N|Launch status enum|engine:
+Facepunch.MeshBatch.Internal.Layout|N|Batch layout|engine: three.js instancing
+Facepunch.MeshBatch.Internal.MeshBuffer|N|Mesh buffer|engine: three.js BufferGeometry
+Facepunch.MeshBatch.Internal.MeshInstance|N|Mesh instance|engine: three.js instancing
+Facepunch.MeshBatch.Internal.MeshPair|N|Mesh pair|engine:
+Facepunch.MeshBatch.Internal.NotEditorException|N|Exception|empty: exception type
+Facepunch.MeshBatch.Internal.PhysicalMergeMaterial|N|Merged physics material|engine:
+Facepunch.MeshBatch.Internal.PhysicalMergeOutput|N|Merged physics output|engine:
+Facepunch.MeshBatch.Internal.PhysicalMergePair|N|Merged physics pair|engine:
+Facepunch.MeshBatch.Internal.PhysicalMergePairIterator|N|Iterator|engine:
+Facepunch.MeshBatch.Internal.PhysicalMerger|N|Physics mesh merger|engine: browser/collision.mjs
+Facepunch.MeshBatch.Internal.Processor|N|Worker thread processor|engine:
+Facepunch.MeshBatch.Internal.Rendering|N|Batched draw list|engine: three.js instancing
+Facepunch.MeshBatch.Internal.RenderMaterial|N|Render material|engine:
+Facepunch.MeshBatch.Internal.RenderMesh|N|Render mesh|engine:
+Facepunch.MeshBatch.Internal.RenderPair|N|Render pair|engine:
+Facepunch.MeshBatch.Internal.RenderPairIterator|N|Iterator|engine:
+Facepunch.MeshBatch.Internal.Result|N|Combine result buffers|engine:
+Facepunch.MeshBatch.Internal.ResultCode|N|Result code enum|engine:
+Facepunch.MeshBatch.Internal.Scheduler|N|Job scheduler|engine:
+Facepunch.MeshBatch.Internal.Timer|N|Stopwatch|engine:
+Facepunch.MeshBatch.Internal.Topology|N|Topology enum|engine:
+Facepunch.MeshBatch.Internal.Utility|N|Asset helpers|engine:
+Facepunch.MeshBatch.Internal.VertexFlags|N|Vertex flags|engine:
+Facepunch.MeshBatch.Runtime.MeshBatchGeneratedBoxModel|P|Generated box model (structure physics boxes)|with: tools/export_deployables.py
+Facepunch.MeshBatch.Runtime.MeshBatchGraphicalTarget|N|Graphical batch target|engine: three.js InstancedMesh (browser/structures.mjs)
+Facepunch.MeshBatch.Runtime.MeshBatchInstanceDynamic|P|Dynamic instance with LOD distance check|browser/structures.mjs
+Facepunch.MeshBatch.Runtime.MeshBatchInstanceManual|N|Manual instance (not reached)|
+Facepunch.MeshBatch.Runtime.MeshBatchMaterial|P|Batch material asset|with: tools/export_deployables.py
+Facepunch.MeshBatch.Runtime.MeshBatchModel|P|Batch model asset (LOD, physics meshes)|with: tools/export_deployables.py
+Facepunch.MeshBatch.Runtime.MeshBatchPhysicalOutput|N|Merged collider output|engine: browser/collision.mjs
+Facepunch.MeshBatch.Runtime.MeshBatchPhysicalTarget|N|Physics batch target|engine: browser/collision.mjs
+Facepunch.MeshBatch.Runtime.MeshBatchPhysicMaterial|P|Batch physic material|with: browser/surface-routing.mjs
+Facepunch.MeshBatch.Runtime.Sealed.MeshBatchLayer|N|Camera hook driving batch updates|engine: three.js instancing
+Facepunch.MeshBatch.Runtime.Sealed.MeshBatchManager|N|Batch manager|engine:
+Facepunch.MeshBatch.Runtime.Sealed.MeshBatchPhysicalIntegration|N|Physics integration queue|engine:
+Facepunch.MeshBatch.Runtime.Sealed.MeshBatchQuitHandler|N|Quit handler|engine:
+@Facepunch.Movement
+Facepunch.Movement.AimMatrix|P|Aim up/down animation matrix|browser/player-sampler.mjs, browser/player-layers.mjs
+Facepunch.Movement.AnimationSample|P|Animation sample slot|with: browser/player-sampler.mjs
+Facepunch.Movement.BaseMatrix|P|Inherited animation matrix base|browser/player-sampler.mjs
+Facepunch.Movement.Configuration|P|Movement animation configuration (speeds, offsets, fades)|browser/player-sampler.mjs
+Facepunch.Movement.ConfigurationVersion|N|Configuration version counter|engine:
+Facepunch.Movement.CreationContext|P|Sampler creation context|browser/player-layers.mjs
+Facepunch.Movement.CreationData|P|Sampler creation data|with: browser/player-layers.mjs
+Facepunch.Movement.FIELDAttribute|N|Editor attribute|editor:
+Facepunch.Movement.GroupConfiguration|P|Item group configuration (attack/reload/fall)|browser/player-sampler.mjs
+Facepunch.Movement.GroupContext|P|Group runtime context|browser/player-sampler.mjs
+Facepunch.Movement.GroupEvent|P|Group event enum (attack, reload, ready)|browser/player-view.mjs
+Facepunch.Movement.GroupEventUtility|N|Event count helper|
+Facepunch.Movement.GroupMatrix|P|Group animation matrix|browser/player-sampler.mjs
+Facepunch.Movement.JumpMatrix|P|Jump animation matrix|browser/player-sampler.mjs
+Facepunch.Movement.K|P|Sampler layer constants|with: browser/player-layers.mjs
+Facepunch.Movement.KIND|P|Matrix kind enum|with: browser/player-sampler.mjs
+Facepunch.Movement.MATRIXAttribute|N|Editor attribute|editor:
+Facepunch.Movement.MEMBER_ARRAYAttribute|N|Editor attribute|editor:
+Facepunch.Movement.MovementMatrix|P|Movement (N/E/S/W/idle) matrix|browser/player-sampler.mjs
+Facepunch.Movement.Role|N|AI role enum|server: VisNode
+Facepunch.Movement.Sampler|P|Movement animation weight sampler|browser/player-sampler.mjs, browser/player-layers.mjs
+Facepunch.Movement.SETUP_MEMBERAttribute|N|Editor attribute|editor:
+Facepunch.Movement.State|P|Movement state enum|with: browser/player-sampler.mjs
+Facepunch.Movement.StateConfiguration|P|State configuration (headings, jumps, rates)|browser/player-motion.mjs, browser/player-sampler.mjs
+Facepunch.Movement.StateContext|P|State runtime context|browser/player-layers.mjs
+Facepunch.Movement.StateMatrix|P|State matrix (movement/jump/aim indices)|browser/player-sampler.mjs
+Facepunch.Movement.StateSlot|P|State slot|with: browser/player-sampler.mjs
+Facepunch.Movement.Utility|P|Duration-to-rate helper|browser/player-sampler.mjs
+Facepunch.Movement.Weights|P|Heading weights|with: browser/player-sampler.mjs
+MovementAnimationSetup|P|Male movement animation setup asset|tools/export_players.py, browser/player-sampler.mjs
+@Facepunch.Prefetch
+AutoPrefetch|N|Prefetch component (not reached)|
+Facepunch.Prefetch.IPrefetchOverrideAttribute|N|Prefetch attribute|
+Facepunch.Prefetch.PrefetchBaseAttribute|N|Prefetch attribute|
+Facepunch.Prefetch.PrefetchBaseNameMaskAttribute|N|Prefetch attribute|
+Facepunch.Prefetch.PrefetchBaseNameMaskOverrideAttribute|N|Prefetch attribute|
+Facepunch.Prefetch.PrefetchBaseOverrideAttribute|N|Prefetch attribute|
+Facepunch.Prefetch.PrefetchDirective|N|Prefetch enum|
+Facepunch.Prefetch.PrefetchUtility|N|Prefetch helpers|
+PrefetchChildComponentAttribute|N|Prefetch attribute|
+PrefetchChildComponentOverrideAttribute|N|Prefetch attribute|
+PrefetchComponentAttribute|N|Prefetch attribute|
+PrefetchComponentOverrideAttribute|N|Prefetch attribute|
+PrefetchParentComponentAttribute|N|Prefetch attribute|
+PrefetchParentComponentOverrideAttribute|N|Prefetch attribute|
+@Facepunch.Utility
+Facepunch.Build.EnumeratedInBuildAttribute|N|Build attribute|editor:
+Facepunch.Build.IncludedInBuildScriptableObjectAttribute|N|Build attribute|editor:
+Facepunch.Build.UniqueBundleScriptableObjectAttribute|N|Build attribute|editor:
+Facepunch.Precision.Matrix4x4G|P|Double-precision matrices (camera projection, TRS)|browser/adaptive-near-plane.mjs
+Facepunch.Precision.Precise|P|Precise transform/angle helpers (MoveTowardsAngle, DeltaAngle)|browser/player-sampler.mjs, browser/head-bob.mjs
+Facepunch.Precision.QuaternionG|P|Double-precision quaternion|with: browser/head-bob.mjs
+Facepunch.Precision.Vector2G|P|Double-precision Vector2|with: browser/player-sampler.mjs
+Facepunch.Precision.Vector3G|P|Double-precision Vector3 (SmoothDamp)|browser/head-bob.mjs
+Facepunch.Precision.Vector4G|P|Double-precision Vector4|with: browser/adaptive-near-plane.mjs
+Facepunch.Utility.AutoRoutine|N|Coroutine helper (not reached)|
+Facepunch.Utility.FacepunchAutoRoutine|N|Coroutine host (not reached)|
+Facepunch.Utility.EditorOnly.Bundle|N|Editor bundle loading|editor:
+IJSONStreamedComponent|N|JSON interface (not reached)|
+JSONArray|N|JSON array (not reached)|
+JSONBaseException|N|JSON exception|
+JSONBlock|N|JSON block|
+JSONBytes|N|JSON bytes|
+JSONConversionException|N|JSON exception|
+JSONEndException|N|JSON exception|
+JSONHive|N|JSON hive|
+JSONNotReadingException|N|JSON exception|
+JSONNotWritingException|N|JSON exception|
+JSONProp|N|JSON property|
+JSONStateException|N|JSON exception|
+JSONStream|N|JSON stream|
+JSONStreamOtherException|N|JSON exception|
+JSONToken|N|JSON token|
+JSONValue|N|JSON value|
+TypeUtility|N|Type name parsing|engine:

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy notice · Rust Legacy Browser</title>
+<meta name="description" content="What Rust Legacy Browser collects about you, why, how long we keep it, who can see it, and your rights under UK GDPR.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/legal.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+</head>
+<body data-page="privacy">
+<!--#header-->
+<main id="main" class="wrap legal">
+ <div class="page-head"><h1 class="h">Privacy notice</h1><p class="mono updated">Last updated 29 October 2026</p></div>
+ <article class="prose">
+  <p>Rust Legacy Browser is an unofficial fan project that brings Rust Legacy to the web browser. This notice explains what the website (your-domain.example), the desktop launcher and the game servers listed here collect about you, why, how long we keep it, who can see it, and what you can ask us to do. It only describes what the service actually does.</p>
+
+  <h2>Who runs this site</h2>
+  <p>The site is run from the United Kingdom, and the people who run it are the "controller" of your personal data under UK data protection law (UK GDPR and the Data Protection Act 2018). To reach us, see <a href="/contact">Contact</a>.</p>
+
+  <h2>What we collect and why</h2>
+  <h3>Your account</h3>
+  <ul>
+   <li><b>Username</b> and <b>email address</b>, to run your account and send account emails (confirming your email, resetting your password).</li>
+   <li>Your <b>password</b>, stored only as a one-way hash (scrypt). We never see or store the password itself.</li>
+   <li>If you sign in with <b>Steam</b>: your Steam ID, which we need to sign you in, and the display name it sends us. We never see your Steam password.</li>
+   <li>If you link a <b>desktop character</b> to your account: a one-way hash of that character's game ID on that server, never the ID itself.</li>
+   <li>Your <b>sign-in sessions</b> (a random token, stored hashed) on the website and in the desktop launcher, so you stay signed in.</li>
+   <li>Short-lived codes for confirming your email, resetting your password and linking a launcher or desktop character.</li>
+   <li>A count of failed sign-in attempts, held in memory, to lock out password guessing.</li>
+   <li>If a server asks you to verify a <b>phone number</b>: a one-way keyed hash of it, so one number fits one account. The number itself is held in memory only while the code is valid and is never written to our database.</li>
+  </ul>
+
+  <h3>Keeping banned players out</h3>
+  <p>Anyone can play, with or without Steam, so we need another way to stop banned players coming straight back on a new account. For this we keep a <b>one-way fingerprint</b> of each identifier below, not the identifier itself: a keyed hash (HMAC-SHA256) made with a secret key that is kept apart from our database. A fingerprint can tell us "this is the same one as before", but can't be turned back into the original.</p>
+  <p>The identifiers we fingerprint:</p>
+  <ul>
+   <li>your email address in a simplified form, your Steam ID, and your phone if you verified one;</li>
+   <li>a random <b>device token</b> this browser keeps (a cookie and a copy in local storage), set once you're signed in;</li>
+   <li>a few <b>browser signals</b> (browser and version, screen size, time zone, language, graphics card name), combined into one hash;</li>
+   <li>a hash of your <b>IP address</b>, and the name of the network if it belongs to a known hosting or VPN provider;</li>
+   <li>if you use the desktop launcher, a <b>hardware ID</b>: the launcher sends a hash of your PC's identifiers and we hash it again before storing it;</li>
+  </ul>
+  <p>We also note when you were on each server (not hashed), so we can tell whether two accounts were ever online at the same time. Server staff see <b>"possible alt"</b> notes (for example "same browser device"), never the hashes or the values behind them. Browser device, signal and IP matches never ban anyone on their own: a person reviews them. A ban on an account also covers its email, Steam, phone and hardware ID, so a new account using one of them is refused. We also refuse sign-ups from known throwaway email services.</p>
+
+  <h3>When you play</h3>
+  <ul>
+   <li><b>Joining.</b> Which servers you join and when, so a join ticket works only once, and your <b>in-game names</b> on each server. A server marked as Steam-verified is told your Steam ID when you join it.</li>
+   <li><b>Leaderboards.</b> The server's gateway reports what you do in game: time online, animals and players killed, deaths, resources gathered, items crafted, pieces built and distance travelled, per server and day. Your username and these totals are public on the <a href="/leaderboard">leaderboard</a> and your profile page. You can hide yourself from every board and your profile on your <a href="/account">account page</a>; the counts are then kept but not shown.</li>
+   <li><b>Moderation.</b> Bans (with the reason and who set them), <b>reports</b> you file or other players file about you (with the text written), and a log of admin actions.</li>
+   <li><b>Anti-cheat.</b> A flag, a score and a short record of your movement or shots around the flagged moment, kept as evidence, and the item transfers the server sees between players.</li>
+   <li><b>Screenshots for anti-cheat.</b> When server staff ask, or automatically when the anti-cheat raises a serious flag, the game takes a picture of what it shows you: the game view with its menus and chat, never anything outside the game's tab. There is no prompt when it happens. That server's owner, admins and moderators can ask for one and look at it, and our staff can too; admins can delete one. Every request, view and deletion is logged. Screenshots are <b>deleted automatically after 30 days</b>. A screenshot is evidence for a person to judge, not an automatic verdict.</li>
+   <li><b>Holds.</b> If your account shares an identifier with a banned account, we note the match and which kind it was, so staff can review it and clear it.</li>
+   <li><b>Voice chat</b> (hold V) goes only to players near you while you hold the key. We don't record it. Text chat isn't sent to this website.</li>
+  </ul>
+
+  <h3>IP addresses</h3>
+  <p><b>What:</b> the IP address you join a server from, kept in that server's IP history. <b>Why:</b> to enforce bans and prevent abuse. <b>How long:</b> 90 days. <b>Who can see it:</b> server admins and our staff.</p>
+  <p>Admins can <b>ban an IP address</b> or a small range of addresses, which stops anyone joining from it, so people who share a connection with a banned player may be blocked too. Every IP ban is logged with who set it and why, and you can ask us to review one.</p>
+
+  <h3>The forum and wiki</h3>
+  <p>Threads and posts you write on the <a href="/forum">forum</a>, with your username and when you posted or edited, are public. Staff edits to the wiki are kept with who made them.</p>
+
+  <h3>The opening-day list</h3>
+  <p>If you leave your email on the <a href="/launch">launch page</a>, we keep that address, when you signed up and a random code for your unsubscribe link, and a record of whether the opening-day email reached you. We use it only to tell you when the servers open.</p>
+
+  <h3>If you run a server</h3>
+  <p>Your account, your server's name, region and address, your listing (description, tags, Discord and website links), and what your host app reports: whether the server is up, its backups list, its last wipe date and its live log. The live log can name players as they join, leave, die or are flagged; we keep only the newest 2,000 lines per server, in memory, never in our database.</p>
+
+  <h3>Technical data</h3>
+  <ul>
+   <li>Your IP address is used to limit how often one connection can sign in, sign up or send forms. For that it is held in memory for about a minute. Our web server keeps no access logs.</li>
+   <li><b>Cloudflare</b> sits in front of the site for security and speed, so it handles your IP address and requests (see "Who sees it").</li>
+  </ul>
+
+  <h3>What we don't do</h3>
+  <p>No adverts, no analytics, no tracking cookies, and we never sell your data or share it for marketing.</p>
+
+  <h3>Our lawful bases</h3>
+  <ul>
+   <li><b>Running the service you asked for</b> (your account, sign-in, joining servers, launcher, account emails, forum): necessary for our agreement with you.</li>
+   <li><b>Keeping the game fair and safe</b> (anti-cheat, screenshots, bans and IP bans, the IP history, reports, audit logs, rate limits, the hashed identifiers, and the server tools owners use): our legitimate interest, and other players', in a game without cheating, fraud or abuse. We keep it light: hashes where a hash is enough, no automatic bans from device signals or IP addresses, and set retention periods. You can object (see "Your rights").</li>
+   <li><b>Public leaderboards</b>: our legitimate interest in showing who plays and how, with a switch to hide yourself.</li>
+   <li><b>The opening-day email</b>: your consent, which you can withdraw at any time with the unsubscribe link or by asking us.</li>
+   <li><b>Legal requests</b>: where the law requires us to keep or share something.</li>
+  </ul>
+
+  <h2>How long we keep it</h2>
+  <table>
+   <thead><tr><th>What</th><th>How long</th></tr></thead>
+   <tbody>
+    <tr><td>Website sign-in sessions</td><td>7 days, or until you sign out</td></tr>
+    <tr><td>Launcher sign-in sessions</td><td>30 days, or until you sign out</td></tr>
+    <tr><td>Email, password and link codes</td><td>Until used or expired (24 hours at most)</td></tr>
+    <tr><td>Failed sign-in count</td><td>15 minutes, in memory</td></tr>
+    <tr><td>Your account</td><td>Until you ask us to delete it</td></tr>
+    <tr><td>IP addresses you join from</td><td>90 days</td></tr>
+    <tr><td>IP bans</td><td>Until they expire or are lifted</td></tr>
+    <tr><td>Browser device records (hashed)</td><td>12 months after last seen</td></tr>
+    <tr><td>Time on servers and in-game names</td><td>6 months after last seen</td></tr>
+    <tr><td>Anti-cheat screenshots</td><td>30 days, then deleted automatically</td></tr>
+    <tr><td>Server live logs</td><td>Newest 2,000 lines per server, in memory, until the website restarts</td></tr>
+    <tr><td>Hashed identifiers (email, Steam, phone, hardware ID)</td><td>While the account exists, and while a ban on it is in force</td></tr>
+    <tr><td>Join ticket records</td><td>1 hour after the ticket expires</td></tr>
+    <tr><td>Linked desktop characters (hashed)</td><td>Until the link is removed</td></tr>
+    <tr><td>Leaderboard counts</td><td>While your account exists</td></tr>
+    <tr><td>Bans, holds, reports, anti-cheat records, item transfers and the admin log</td><td>As long as they're needed to keep servers fair</td></tr>
+    <tr><td>Forum posts</td><td>Until you or staff delete them</td></tr>
+    <tr><td>The opening-day list</td><td>Until you unsubscribe, or we close the list after opening day</td></tr>
+    <tr><td>Rate-limit counters</td><td>About a minute, in memory</td></tr>
+   </tbody>
+  </table>
+
+  <h2>Who sees it</h2>
+  <table>
+   <thead><tr><th>What</th><th>Who can see it</th></tr></thead>
+   <tbody>
+    <tr><td>Your username, leaderboard totals, profile and forum posts</td><td>Everyone (hide the leaderboard and profile on your account page)</td></tr>
+    <tr><td>Your email, Steam ID and sign-in details</td><td>You and our staff</td></tr>
+    <tr><td>In-game names, time played, bans, reports, anti-cheat records, "possible alt" notes, item transfers and screenshots on a server</td><td>That server's owner, admins and moderators, and our staff</td></tr>
+    <tr><td>IP addresses you join a server from</td><td>That server's admins, and our staff</td></tr>
+    <tr><td>The admin log of a server</td><td>That server's owner and admins, and our staff</td></tr>
+    <tr><td>A server's live log</td><td>That server's owner, and our staff</td></tr>
+    <tr><td>The opening-day list</td><td>Our staff</td></tr>
+   </tbody>
+  </table>
+  <p>Services that handle data for us:</p>
+  <ul>
+   <li><b>OVH</b> (OVHcloud), which hosts our server in the United Kingdom.</li>
+   <li><b>Cloudflare</b>, which protects and speeds up the site. It may handle traffic outside the UK under its own safeguards.</li>
+   <li><b>Steam</b> (Valve), only if you choose to sign in with it. If a server asks for a Steam account of a certain age, level or ban record, we ask Steam about your Steam ID when you join it.</li>
+   <li>An <b>email provider</b>, once we connect one, to send account emails and the opening-day email.</li>
+  </ul>
+  <p><b>Server owners.</b> Some game servers are run by other people. Their game server and its gateway see your connection and what you do in game, and may keep their own logs. They see the moderation data above for their own server, and they're responsible for what they do with it. We don't share your data with anyone else unless the law requires it.</p>
+
+  <h2>Cookies</h2>
+  <p>We only use cookies that sign-in and account security need: no tracking, no adverts, no analytics. The full list, and what the site keeps in your browser, is on the <a href="/cookies">Cookies</a> page.</p>
+
+  <h2>Your rights under UK GDPR</h2>
+  <p>You can ask us to:</p>
+  <ul>
+   <li><b>see</b> the data we hold about you and get a copy (access);</li>
+   <li><b>correct</b> anything that's wrong (correction);</li>
+   <li><b>delete</b> it (deletion);</li>
+   <li><b>stop or limit</b> how we use it, including anything we do for our legitimate interests (objection and restriction);</li>
+   <li>give you a copy in a form you can take elsewhere (portability);</li>
+   <li>take back your consent to the opening-day email at any time.</li>
+  </ul>
+  <p>Deleting your account removes your username, email, password hash, linked Steam ID and sessions. We may keep a ban record, with the hashed identifiers it covers, so a ban can't be dodged by deleting the account. You can also ask what "possible alt" notes or screenshots exist about you, and object to them.</p>
+  <p>If you're unhappy with how we handle your data, you can complain to the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/" rel="noopener">ico.org.uk</a>. We'd like the chance to put it right first.</p>
+
+  <h2>How to ask</h2>
+  <p>Open a ticket in <code>#open-a-ticket</code> on our Discord (see <a href="/contact">Contact</a>). It's free, and we'll reply within one month. We may ask you to show the account is yours, for example by signing in to it.</p>
+
+  <h2>Children</h2>
+  <p>You must be <b>13 or older</b> to create an account. If you think a child under 13 has given us their data, tell us and we'll delete it.</p>
+
+  <h2>Changes to this notice</h2>
+  <p>If we change what we collect or how we use it, we'll update this page and the date at the top. Big changes will be announced on the site and on Discord.</p>
+ </article>
+</main>
+<!--#footer-->
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "serverId": "__SERVER_ID__",
+  "port": 28090,
+  "dataFile": "__ROOT__/data/identities.json",
+  "pluginKeyFile": "__ROOT__/secrets/plugin.key",
+  "controlKeyFile": "__ROOT__/secrets/control.key",
+  "namespace": {"base": "90000000000000000", "size": "1000000"},
+  "steamGroupWhitelisted": false
+}

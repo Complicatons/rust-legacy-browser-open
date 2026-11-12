@@ -1,0 +1,37 @@
+# The owner's test set (2026-10-24), from the plugins that load (report.py builds bundle-shortlist/ and shortlist.md
+# from this). Format: Category | file | why. Plugins they reference are added automatically; patches/<file>.diff is
+# applied to that plugin and presets/ is copied over the bundle's oxide/ folder.
+Gameplay | Kits.cs | Starter, VIP and admin-only kits (/kit; create one with /kit add "name" "description" -admin)
+Gameplay | RemoverTool.cs | Players remove their own building parts, with optional refund
+Gameplay | SetHome.cs | /home on your own or shared buildings; preset to 4 homes each
+Gameplay | TPR.cs | Teleport requests between players (/tpr, /tpa)
+Gameplay | DeathMessages.cs | Kill messages in chat
+Gameplay | SkipNightVote.cs | Players vote to skip the night
+Gameplay | WipeTimer.cs | /wipe shows the next wipe
+Server tuning | ResourceManager.cs | Admin config only: where resource nodes and animals spawn and how many
+Server tuning | LootSpawnLists.cs | Admin config only: what crates, supply drops and mutant animals drop
+Server tuning | AutoSackRemover.cs | Removes loot sacks after a set time (less clutter, less lag)
+Server tuning | CleanDeployables.cs | Admin cleanup of deployables and sacks
+Anti-cheat | AntiCheat.cs | Reneb's speed/fly/wall/autoloot checks; preset to report to admins only (no kicks or bans) while testing
+Admin | KickBan.cs | /kick, /ban, /unban by user ID
+Admin | Jail.cs | Jail rule breakers
+Admin | Freeze.cs | Freeze a player in place
+Admin | AdminTeleportation.cs | Teleport to players and positions
+Admin | AdminDoor.cs | Doors open for admins
+Admin | AdminAirdrop.cs | Call and control airdrops
+Admin | Prod.cs | Shows who owns a structure or deployable
+Admin | HouseLocations.cs | Finds a player's buildings
+Admin | CopyPaste.cs | Copy and paste buildings
+Admin | ItemGiver.cs | Give items to yourself or others
+Admin | SecureAdmin.cs | Admin commands only with permission
+Admin | Logger.cs | Logs chat, commands and connections
+Admin | AdminChatroom.cs | Private admin chat
+Admin | Casper.cs | /casper: invisible and silent to other players (ported to this Oxide; patches/Casper.cs.diff)
+Chat | EasyChat.cs | Colours chat by rank, no tags (preset); Legacy's chat window can't colour the name itself
+Chat | Announcer.cs | Join/leave messages, rules and timed broadcasts
+Chat | HelpText.cs | /help collects every plugin's help
+Chat | PrivateMessages.cs | /pm and /r
+Chat | OfflineMail.cs | Messages delivered on the player's next login
+Chat | NoobMessages.cs | Message on a player's first join
+Events | ArenaMiniGames.cs | Arena mini-games (uses ZoneManager zones)
+Events | MiniEvents.cs | Automatic lottery (by number or by player) and maths quiz with item prizes

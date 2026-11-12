@@ -1,0 +1,12 @@
+{
+  "listen": {"host": "127.0.0.1", "port": 8080},
+  "publicUrl": "http://127.0.0.1:8080/",
+  "allowInsecure": true,
+  "database": "__STATE_DIR__/central.db",
+  "signingKeys": ["__SIGNING_KEY__"],
+  "allowedOrigins": ["http://127.0.0.1:8080"],
+  "steam": {"enabled": true},
+  "mail": {"transport": "console"},
+  "serveGame": true,
+  "playUrl": null
+}

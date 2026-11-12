@@ -1,0 +1,129 @@
+# Shipped-data judgments that the export evidence cannot decide by itself:  Key|Status|What it is|Port pointer or reason
+# Sections: @prefab (key = bundle container path), @sound (clip name), @item (datablock name), @convar (client.cfg name,
+# "input.bind <Button>" for bindings), @ui (window name). Prefabs/items/sounds found in the recovered exports are Ported
+# automatically; unreached prefabs are N/A automatically (tools/port-coverage/build-ledger.mjs).
+@prefab
+content/item/huntingbow/arrowpickup|N|Arrow pickup left by a missed arrow|server: only BowWeaponDataBlock.CreateDroppedArrow spawns it and nothing calls that; a miss just removes the arrow in flight
+rust/ui/infoprefab/basiclabel|P|Tooltip/info label prefab|tools/export_rpos.py, browser/tooltip.mjs
+content/effect/blooddecal|P|Blood decal left by tracers on flesh|tools/export_deployables.py, browser/tracer-effects.mjs
+rust/ui/crafting/categoryplaque|P|Blueprint list category header (221x14 plaque)|tools/export_rpos.py, browser/inventory-ui.mjs
+rust/ui/mainmenu/options/controls-line|P|One key-binding row in the options window|browser/front-end.mjs, browser/key-bindings.mjs
+rust/effects/decals/decal|P|Bullet hole decal|tools/export_deployables.py, browser/tracer-effects.mjs
+rust/player/default character controller totemic figure|P|Totem pole capsule figure|tools/export_physics.py, browser/motor.mjs
+rust/player/default character totem pole|P|Player totem pole|tools/export_physics.py, browser/motor.mjs
+rust/effects/particles/legacy particles/explosion|N|Legacy explosion particles|only "matched" by the damage-type name "Explosion"; nothing instantiates this prefab (explosions use Explosion1)
+rust/effects/particles/fire/fire1|N|Fire particles|only "matched" by the input button name "Fire1" in a debug script; nothing instantiates this prefab
+rust/ui/skin/rustskin/fontawesome (dynamic)|P|FontAwesome dynamic font (popup/voice icons)|tools/export_frontend.py, browser/notices.mjs, browser/voice.mjs
+content/debug/gridcell|N|Network cull grid debug cell|debug: the server spawns it only in a cull-grid testing mode
+content/debug/mdl/gridcell|N|Grid cell debug model|debug:
+rust/ui/infoprefab/infotitleprefab|P|Tooltip title prefab|tools/export_rpos.py, browser/tooltip.mjs
+rust/ui/crafting/ingredientplaque|P|Crafting ingredient plaque|tools/export_rpos.py, browser/inventory-ui.mjs
+rust/ui/infoprefab/itemdescriptionprefab|P|Tooltip description prefab|tools/export_rpos.py, browser/tooltip.mjs
+rust/ui/crafting/itemplaque|P|Blueprint list row|tools/export_rpos.py, browser/rpos-sounds.mjs
+rust/ui/options/options|P|Options window|tools/export_frontend.py, browser/front-end.mjs
+content/resourceobjects/ore_death|P|Ore depletion effect (rock_break sound) spawned when an ore node changes model|browser/main.mjs, tools/export_deployables.py
+rust/ui/pagination/pagnationbutton|P|Server list page button|tools/export_frontend.py, browser/server-list.mjs
+rust/ui/pagination/pagnationspacer|P|Server list page spacer|tools/export_frontend.py, browser/server-list.mjs
+content/character/male/playercamera|P|Player camera (CameraFX, HeadBob, LazyCam, AdaptiveNearPlane)|tools/export_headbob.py, browser/adaptive-near-plane.mjs, browser/head-bob.mjs
+content/network/playerclient|N|Network PlayerClient object|engine: the gateway carries the player client state (bridge/game-bridge.mjs)
+rust/ui/hud/pnlchatline|P|Chat line|tools/export_chat.py, browser/chat.mjs
+rust/ui/hud/popups/popupnotice|P|Notice popup|tools/export_popup.py, browser/popup-ui.mjs
+rust/ui/gametooltips/prefabtooltip|P|Name-tag tooltip label|browser/name-tags.mjs
+rust/ui/skin/fonts/profont|P|ProFont bitmap font|tools/export_hud.py, browser/rpos.mjs
+rust/ui/skin/fonts/profont_outlined|P|Outlined ProFont bitmap font|tools/export_hud.py, browser/hud.mjs
+rust/ui/infoprefab/progressstatprefab|P|Tooltip progress stat bar|tools/export_rpos.py, browser/tooltip.mjs
+rust/ui/skin/rustskin/roboto condensed (dynamic)|P|Roboto Condensed dynamic font|tools/export_frontend.py, browser/name-tags.mjs
+rust/ui/skin/rustskin/roboto condensed bold (dynamic)|P|Roboto Condensed Bold dynamic font|tools/export_frontend.py, browser/dfgui.mjs
+rust/ui/skin/fonts/robotocondensed24|P|Roboto Condensed 24 bitmap font|tools/export_frontend.py, browser/dfgui.mjs
+rust/ui/rposbumperbuttonprefab|P|RPOS bumper button|tools/export_rpos.py, browser/rpos-layout.mjs
+rust/ui/rposfirecontentswindow|P|Campfire/furnace contents window|tools/export_rpos.py, browser/rpos-layout.mjs
+rust/ui/rposinfowindow|N|Item info window|RPOS.OpenInfoWindow is empty in this build, so it never opens
+rust/ui/rposinventorycellprefab|P|Inventory cell prefab|tools/export_rpos.py, browser/rpos.mjs
+rust/ui/rposlootwindow|P|Loot window|tools/export_rpos.py, browser/inventory-ui.mjs
+rust/ui/rposrepairbenchwindow|P|Repair bench window|tools/export_rpos.py, browser/repair.mjs
+rust/ui/rposworkbenchwindow|N|Workbench work window|opened only by WorkBench, which no shipped prefab carries
+rust/ui/skin/rustpro/rustpro|P|RustPro NGUI atlas|tools/export_rpos.py, tools/export_hud.py
+rust/ui/infoprefab/sectiontitleprefab|P|Tooltip section title|tools/export_rpos.py, browser/tooltip.mjs
+rust/ui/mainmenu/serverbrowser/serveritem 1|P|Server browser row|tools/export_frontend.py, browser/server-list.mjs
+content/network/servermanagement|P|Server management network object|browser/online.mjs
+content/item/mod/mdl/silencer|N|Silencer model import root (its mesh is used by VM-MOD-Silencer)|
+content/structures/structuremasterprefab|P|Building master object|browser/structures.mjs, browser/server-buildings.mjs
+rust/military/supplydrop/mdl/supplycrate|N|Supply crate model import root (used through SupplyCrate)|
+rust/military/supplydrop/supplyimpactsmoke|P|Supply crate landing smoke|tools/export_airdrop.py, browser/airdrops.mjs
+rust/effects/particles/smoke/signalsmokegreen|P|Supply signal green smoke|tools/export_deployables.py, browser/main.mjs:showExplosion
+content/item/huntingbow/uberworldarrow|N|Admin "uber" bow arrow|server: only the server's own datablock bundle names it; the client ships no datablock for the uber items, so it cannot appear on clients
+content/item/hatchet/uhatchet.irp|N|Admin "uber" hatchet representation|server: only the server's own datablock bundle names it; the client ships no datablock for the uber items
+content/item/mod/vm-mod-flashlight100|P|Flashlight mod view model (light)|tools/export_item_mods.py, browser/item-mods.mjs
+content/item/mod/vm-mod-flashlight15|P|Flashlight mod view model (light)|tools/export_item_mods.py, browser/item-mods.mjs
+content/item/mod/vm-mod-lasersightr_1st|P|Laser sight view model beam|tools/export_item_mods.py, browser/weapon-mod-effects.mjs
+content/item/mod/vm-mod-lasersightr_3rd|P|Laser sight third-person beam|tools/export_item_mods.py, browser/weapon-mod-effects.mjs
+content/item/mod/vm-mod-silencer|P|Silencer view model attachment|tools/export_item_mods.py, browser/item-mods.mjs
+content/resourceobjects/woodpile_death|P|Wood pile depletion effect spawned when a wood pile changes model|browser/main.mjs, tools/export_deployables.py
+@sound
+rock_break|P|Ore depletion sound (on Ore_Death)|browser/main.mjs, tools/export_deployables.py
+Session 05 - Drums 01|N|Play-on-awake music on the admin uber hatchet representation|server: uber items have no client datablock
+Session 05 - Marimba 02|N|Play-on-awake music on the admin uber arrow|server: uber items have no client datablock
+workbench_start|N|Workbench window start sound|the workbench window never opens (no shipped WorkBench)
+@convar
+gfx.ssaa|P|Anti-aliasing post effect|browser/convars.mjs, browser/quality.mjs
+gfx.bloom|P|Bloom|browser/convars.mjs, browser/quality.mjs
+gfx.grain|P|Film grain|browser/convars.mjs, browser/quality.mjs
+gfx.ssao|N|SSAO toggle|the only SSAOEffect is on the never-spawned First Person Controller, so gfx.ssao finds nothing; browser/convars.mjs keeps the convar and value
+gfx.tonemap|N|Tonemapping toggle|the only Tonemapping is on the never-spawned First Person Controller, so gfx.tonemap finds nothing; browser/convars.mjs keeps the convar and value
+gfx.shafts|P|Sun shafts|browser/convars.mjs, browser/post-chain.mjs
+gfx.damage|P|Damage overlay|browser/convars.mjs, browser/combat-feedback.mjs
+grass.on|P|Grass on/off|browser/convars.mjs, browser/grass.mjs
+grass.forceredraw|P|Grass redraw every frame|browser/convars.mjs, browser/grass.mjs
+grass.displacement|P|Grass displacement|browser/convars.mjs, browser/grass.mjs
+grass.disp_trail_seconds|P|Grass displacement trail length|browser/convars.mjs, browser/grass.mjs
+grass.shadowcast|P|Grass casts shadows|browser/convars.mjs, browser/grass.mjs
+grass.shadowreceive|P|Grass receives shadows|browser/convars.mjs, browser/grass.mjs
+input.mousespeed|P|Mouse sensitivity|browser/convars.mjs, browser/main.mjs
+input.flipy|P|Invert mouse Y|browser/convars.mjs, browser/main.mjs
+input.bind Left|P|Strafe left (A)|browser/key-bindings.mjs
+input.bind Right|P|Strafe right (D)|browser/key-bindings.mjs
+input.bind Up|P|Forward (W)|browser/key-bindings.mjs
+input.bind Down|P|Back (S)|browser/key-bindings.mjs
+input.bind Jump|P|Jump (Space)|browser/key-bindings.mjs
+input.bind Duck|P|Crouch (LeftControl)|browser/key-bindings.mjs
+input.bind Sprint|P|Sprint (LeftShift)|browser/key-bindings.mjs
+input.bind Fire|P|Fire (Mouse0)|browser/key-bindings.mjs
+input.bind AltFire|P|Aim / alt fire (Mouse1)|browser/key-bindings.mjs
+input.bind Reload|P|Reload (R)|browser/key-bindings.mjs
+input.bind Use|P|Use (E)|browser/key-bindings.mjs
+input.bind Inventory|P|Inventory (Tab)|browser/key-bindings.mjs
+input.bind Flashlight|P|Flashlight mod (F)|browser/key-bindings.mjs
+input.bind Laser|P|Laser mod (G)|browser/key-bindings.mjs
+input.bind Voice|P|Push to talk (V)|browser/key-bindings.mjs, browser/voice.mjs
+input.bind Chat|P|Chat (Return / T)|browser/key-bindings.mjs, browser/chat.mjs
+render.frames|P|Frame rate cap|browser/convars.mjs, browser/render-convars.mjs
+@ui
+Main menu|P|Menu screen: play, servers, options, exit, background|browser/front-end.mjs, browser/menu-background.mjs
+Options window|P|Video/audio/controls options with convar bindings|browser/front-end.mjs, browser/convars.mjs
+Server browser|P|Categories, list, pagination, favourites|browser/server-list.mjs, browser/front-end.mjs
+Loading screen|P|Loading text and progress|browser/front-end.mjs
+Death screen|P|You are dead, respawn / at a camp|browser/death-screen.mjs
+Console window|P|F1 console|browser/console-window.mjs
+Lock entry|P|Code lock entry dialog|browser/lock-entry.mjs
+Chat|P|Chat input and lines|browser/chat.mjs
+Popups|P|Notice and item gained/lost popups|browser/popup-ui.mjs, browser/notices.mjs
+HUD vitals and belt|P|Health/food/rads bars, belt, plaques|browser/hud.mjs, browser/inventory-ui.mjs
+Hit indicator and directional damage|P|HUD hit marker and damage direction|browser/combat-feedback.mjs
+Name tags|P|GameTip name tags|browser/name-tags.mjs
+Voice icon|P|Voice chat speaker icon|browser/voice.mjs
+Branding version|P|Version label|browser/front-end.mjs
+Context menu|P|Hold-E context menu (ContextUI)|browser/context-ui.mjs
+Context sprites|P|World use-hint sprites|browser/context-sprites.mjs
+Use hover text|P|Text label naming the use action ("Open", "Search", "Use"...) at the object's ContextTextPoint|browser/use-hover.mjs, tools/export_hud.py
+RPOS inventory|P|Bag grid, belt, armour slots|browser/rpos.mjs, browser/inventory-ui.mjs
+RPOS armour window|P|Armour cells and protection values|browser/rpos.mjs
+RPOS crafting window|P|Blueprint list, ingredients, amount, progress|browser/inventory-ui.mjs, browser/crafting.mjs
+RPOS loot window|P|Loot cells with Take All|browser/inventory-ui.mjs
+RPOS fire contents window|P|Campfire/furnace cells and on/off|browser/rpos-layout.mjs, browser/deployables.mjs
+RPOS repair bench window|P|Repair cell, costs, repair button|browser/repair.mjs
+RPOS workbench window|N|Workbench work window|never opened: no shipped WorkBench component
+RPOS info window|N|Item info window|RPOS.OpenInfoWindow is empty in this build
+RPOS bumper|P|Inventory/Armor/Crafting bar|browser/rpos-layout.mjs
+Item right-click menu|P|Use/split/study/unload menu|browser/item-menu.mjs
+Item tooltip|P|Item tooltip window|browser/tooltip.mjs
+Drag icon|P|Item icon carried while dragging between cells|browser/held-item.mjs, browser/inventory-interactions.mjs

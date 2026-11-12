@@ -1,0 +1,35 @@
+{
+  "_comment": "Firewall-locked test of the original server on the owner's own PC (owner decision 2026-10-21, SERVER-TESTING-PLAN.md section 10). Read by deploy/host-test/scripts/*.ps1. No secrets here: they are generated into <root>\\secrets, which only the owner and administrators can read.",
+  "root": "C:\\RLB-host",
+  "account": "rlbserver",
+  "firewallGroup": "RLB host test",
+  "ports": {
+    "central": 8080,
+    "gateway": 28443,
+    "sidecar": 28090,
+    "server": 29015
+  },
+  "server": {
+    "zipName": "RustLegacyServer.zip",
+    "zipSha256": "98D7BD5C88DFB0D9D36EDEF99B17872B78E7CA803EB0D22673375A90A9FB3A15",
+    "zipBytes": 543636040,
+    "exe": "rust_server.exe",
+    "exeSha256": "7D80D881AD9B7D458C2BCA85D550167609369CC35D213A69D6F4B5C828E307B7",
+    "assemblyCSharpSha256": "CE0DD83271472454FC27CE137A9FA9D042B3A5F12FB26F1C7A67D61EEA3ACFBB",
+    "exeNote": "Unity 4.5.5f1 win32_nondevelopment player_win.exe from Unity's signed installer, identical except the icon images (docs/server-file-scans.md).",
+    "args": ["-batchmode", "-cfg", "cfg/server.cfg", "-maxplayers", "100", "-port", "29015", "-datadir", "rust_server_Data/", "-nographics"],
+    "argsSource": "Run Server.bat shipped in the zip",
+    "removeFromTestCopy": ["VAC2.dll"],
+    "removeNote": "VAC2.dll carries a Valve signature that no longer matches (modified after signing; its code is encrypted, so the change cannot be read). LumaEmu's steamclient.dll loads it for VAC; the test copy runs without it.",
+    "lumaEmu": {
+      "SteamStatus": {"Offline": "1"},
+      "MasterServer": {"Master": "0"},
+      "DLC": {"UnlockDLC": "2"}
+    },
+    "lumaEmuNote": "Shipped values Offline=0, Master=1 (Valve master server heartbeats), UnlockDLC=1 (fetches DLC app IDs from the internet). The test copy turns all three off; the firewall blocks them anyway."
+  },
+  "procmon": {
+    "exe": "%ProgramFiles%\\Sysinternals\\Procmon64.exe",
+    "note": "Download Process Monitor from learn.microsoft.com/sysinternals (Microsoft-signed) and pass -ProcmonExe if it lives elsewhere."
+  }
+}

@@ -1,0 +1,51 @@
+/* Leaderboards and player profiles. */
+.lb{padding-top:18px;padding-bottom:56px}
+.lb ol{list-style:none;margin:0;padding:0}
+.lb-hero{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 28px;padding:22px 0 24px}
+/* 9vw keeps LEADERBOARD on one line on a phone; long usernames may still wrap. */
+.lb-hero .h{font-size:clamp(30px,9vw,72px);overflow-wrap:anywhere}
+.lb-hero p{margin:10px 0 0}
+.lb-stats{display:flex;border:1px solid var(--line)}
+.lb-stats .stat{min-width:120px}
+.lb-stats .stat b{font-size:34px}
+.lb-boards{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.lb-board{padding:12px 14px;border:0;border-bottom:2px solid transparent;background:none;color:var(--w3);font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.lb-board:hover{color:var(--w)}
+.lb-board[aria-selected=true]{color:var(--w);border-bottom-color:var(--or)}
+.lb-filters{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:16px 0}
+.lb-server{min-height:34px;padding:0 10px;background:var(--k1);border:1px solid var(--line2);color:var(--w);font-size:14px;max-width:100%}
+.lb-server:focus{outline:2px solid var(--w);outline-offset:0}
+.lb-species{padding-bottom:16px}
+.lb-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:16px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.lb-row:hover{background:var(--k1)}
+.lb-row.top{padding:16px 4px}
+.lb-row.top .lb-rank{color:var(--or-h);font-size:18px}
+.lb-row.top .lb-name{font:900 22px/1.05 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.lb-rank{color:var(--w3);font-size:14px;text-align:right}
+.lb-name{color:var(--w);text-decoration:none;font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+a.lb-name:hover{color:var(--or-h)}
+.lb-value{display:flex;align-items:baseline;gap:8px}
+.lb-value b{font:900 26px/1 var(--heavy);font-stretch:125%;font-variant-numeric:tabular-nums}
+.lb-value .mono{color:var(--w3);font-size:11px}
+.lb>#lb-main>.pending{margin-top:24px}
+/* Profile */
+.lb-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.lb-tiles .stat{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lb-tiles .stat+.stat{border-left:0}
+.lb-breaks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:28px}
+.lb-break h2{margin:0 0 10px;color:var(--w3);font-size:12px}
+.lb-break dl{margin:0;border-top:1px solid var(--line)}
+.lb-break dl div{display:flex;justify-content:space-between;gap:12px;padding:10px 4px;border-bottom:1px solid var(--line)}
+.lb-break dd{margin:0}
+@media (max-width:760px){
+ .lb-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lb-row{grid-template-columns:36px minmax(0,1fr) auto;gap:10px}
+ .lb-row.top .lb-name{font-size:18px}
+ .lb-value b{font-size:20px}
+ .lb-board{padding:10px 9px;font-size:11px}
+}
+/* Chips (the wiki's, for pages without wiki.css) */
+.lb .chips{display:flex;gap:6px;flex-wrap:wrap}
+.lb .chip{height:34px;padding:0 12px;border:1px solid var(--line2);background:transparent;color:var(--w2);font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.lb .chip:hover{color:var(--w);border-color:var(--w3)}
+.lb .chip[aria-pressed=true]{background:var(--w);border-color:var(--w);color:var(--k)}

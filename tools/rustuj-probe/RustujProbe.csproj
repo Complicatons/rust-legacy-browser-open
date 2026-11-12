@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Read-only survey tool for OFFSHOOT-COMPATIBILITY-PLAN.md work item 1 (Rustuj's server framework still
+       unconfirmed). Run: dotnet run, arguments <directory>, or the published exe with the directory as its one
+       argument. Scans every .dll/.exe under that directory with Mono.Cecil metadata/IL reads only, never loads or
+       executes anything, same convention as tools/vanilla-patcher. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mono.Cecil" Version="0.11.6" />
+  </ItemGroup>
+</Project>

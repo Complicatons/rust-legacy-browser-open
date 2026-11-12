@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Builds the vanilla-server adapter assembly against the operator's own server assemblies. Usage:
+       dotnet build adapter/vanilla -c Release -p:RefDir=<rust_server_Data/Managed>
+       then copy bin/Release/net35/RustLegacyBrowser.Vanilla.dll into that Managed folder and run tools/vanilla-patcher. -->
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>RustLegacyBrowser.Vanilla</AssemblyName>
+    <LangVersion>5</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="RustLegacyBrowserVanilla.cs" />
+    <Compile Include="RustLegacyBrowserVanilla.Evidence.cs" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net35" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="Assembly-CSharp"><HintPath>$(RefDir)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="uLink"><HintPath>$(RefDir)/uLink.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(RefDir)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Facepunch.ID"><HintPath>$(RefDir)/Facepunch.ID.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Facepunch.HitBox"><HintPath>$(RefDir)/Facepunch.HitBox.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Facepunch.Utility"><HintPath>$(RefDir)/Facepunch.Utility.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="LitJSON"><HintPath>$(RefDir)/LitJSON.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

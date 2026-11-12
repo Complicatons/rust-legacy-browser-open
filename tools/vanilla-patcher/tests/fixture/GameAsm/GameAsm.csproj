@@ -1,0 +1,14 @@
+<!-- Synthetic stand-in for Assembly-CSharp.dll: only the member shapes tools/vanilla-patcher's 21 hook sites touch
+     (analysis/decompiled/server/Assembly-CSharp), written from scratch against public member names, no original
+     bytes or logic. ConnectionAcceptor.uLink_OnPlayerApproval has two bodies behind a FOUGERITE_SHAPE build flag
+     (see its own file), so the fixture can be built both ways to prove the fix patches either one. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../ULink/ULink.csproj" />
+  </ItemGroup>
+</Project>

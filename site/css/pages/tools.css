@@ -1,0 +1,184 @@
+/* Server owner tools and the admin console. */
+.tools{max-width:1200px;margin:0 auto;padding:28px var(--gutter) 64px;display:grid;gap:22px;align-content:start}
+.tools a{text-decoration:none}
+.tools-hero{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 22px}
+.tools-hero .h{font-size:clamp(40px,6vw,72px);margin:0}
+.tools-hero .count{margin:0;color:var(--or);font-size:22px}
+.tools .panel{padding:0}
+.tools .panel>h2{margin:0;padding:12px 16px;border-bottom:1px solid var(--line);font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.tools .panel>:not(h2):not(.panel-h):not(.table-wrap):not(ul):not(ol){margin-left:16px;margin-right:16px}
+.tools .panel>:last-child:not(.table-wrap):not(ul){margin-bottom:16px}
+.tools .panel>.table-wrap{border:0}
+.tools-sec .muted.empty{padding:18px 0;margin:0}
+/* Owner: steps */
+.how{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.how li{display:flex;flex-direction:column;gap:8px;padding:18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how b{color:var(--or);font-size:14px}
+.how h2{margin:0;font:900 20px/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.how p{margin:0;color:var(--w2)}
+/* Owner: servers */
+.owned{list-style:none;margin:0;padding:0}
+.owned-row{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,2fr);gap:14px 22px;align-items:center;padding:16px;border-bottom:1px solid var(--line)}
+.owned-row:last-child{border-bottom:0}
+.owned-main{display:flex;align-items:center;gap:10px;min-width:0}
+.owned-main b{font-weight:600;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.owned-main .mono{font-size:11px;letter-spacing:.1em}
+.owned-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0}
+.owned-stats dt{color:var(--w3);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.owned-stats dd{margin:4px 0 0;font:700 14px var(--mono)}
+.owned-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.enrol{display:flex;align-items:flex-start;gap:12px;padding:16px}
+.enrol pre{flex:1;margin:0;padding:14px;background:var(--k1);border:1px dashed var(--or);font:500 13px/1.6 var(--mono);white-space:pre-wrap;word-break:break-all}
+.reg-form{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:0 16px;padding:18px 16px 4px}
+.reg-form .wide{grid-column:1/-1}
+.reg-form .btn-play{margin-bottom:14px}
+/* Admin console (site/js/admin.mjs class names) */
+.admin #console{display:grid;gap:22px}
+.admin .hint,.admin .meta{color:var(--w3);font-size:14px}
+.admin code{font:500 12px var(--mono);color:var(--w2)}
+.admin .notice{margin:0;padding:12px 16px;border:1px solid var(--line2);background:var(--k1)}
+.admin .notice[data-kind=error]{border-color:var(--red);color:var(--red-text)}
+.admin .toolbar{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding:14px 16px!important}
+.admin .toolbar>*{margin:0!important}
+.admin .pick{display:flex;gap:10px;align-items:center;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w2)}
+.admin .badge{padding:4px 10px;border:1px solid var(--or);color:var(--or-h);font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.admin select,.admin input{min-height:38px;padding:6px 10px;background:var(--k1);border:1px solid var(--line2);color:var(--w);font:inherit;font-size:15px}
+.admin select:focus,.admin input:focus{outline:2px solid var(--w);outline-offset:0}
+.admin label{display:grid;gap:6px;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w2)}
+.admin .stack{display:grid;gap:14px;max-width:460px;padding:16px 0}
+.admin .inline{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding:16px 0}
+.admin .inline label{flex:1 1 220px}
+.admin .actions{display:flex;flex-wrap:wrap;gap:8px}
+.admin button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border:1px solid var(--or-fill);background:var(--or-fill);color:#fff;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.admin button:hover{background:var(--or-fill-h)}
+.admin button.secondary{background:transparent;border-color:var(--line2);color:var(--w)}
+.admin button.secondary:hover{border-color:var(--w3)}
+.admin button.small{min-height:32px;padding:0 10px;font-size:11px}
+.admin button:disabled{opacity:.5;cursor:not-allowed}
+.admin .servers{list-style:none;margin:0;padding:0}
+.admin .server{padding:12px 16px;border-bottom:1px solid var(--line)}
+.admin table.grid{width:100%;border-collapse:collapse;font-size:14px}
+.admin .grid th{padding:10px 14px;text-align:left;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w3);border-bottom:1px solid var(--line2);white-space:nowrap}
+.admin .grid td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.admin .grid tr.review td{background:rgba(198,47,36,.14)}
+.admin .row-actions{flex-wrap:nowrap}
+.admin .flags{display:grid;gap:12px;padding:16px 16px 0 36px}
+.admin .flags pre{font:500 12px var(--mono);background:var(--k1);border:1px solid var(--line);padding:8px;white-space:pre-wrap;word-break:break-all}
+.admin .replay{display:grid;gap:6px;max-width:320px}
+.admin .plot{width:100%;height:auto;background:var(--k1);border:1px solid var(--line)}
+.admin .plot polyline{fill:none;stroke:var(--or);stroke-width:2}
+.admin #evidence>button{margin:16px}
+@media (max-width:900px){
+ .owned-row{grid-template-columns:1fr}
+ .owned-actions{justify-content:flex-start}
+ .owned-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .reg-form{grid-template-columns:1fr}
+ .enrol{flex-direction:column}
+}
+.admin label.check{display:flex;flex-direction:row;gap:8px;align-items:center}
+.admin label.check input{width:auto}
+/* Launch sign-ups (staff) */
+.su-stats{margin-bottom:18px;border:1px solid var(--line);max-width:560px}
+.su-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.su-table td:first-child{overflow-wrap:anywhere}
+.su-mail{margin-bottom:18px}
+.su-mail .panel-h h2{margin:0;font-size:12px}
+.su-mail-off{padding:16px;color:var(--w2);line-height:1.5}
+.su-mail-off b{color:var(--w)}
+.su-mail-form{padding:16px 16px 0}
+.su-mail-form textarea{resize:vertical;font:inherit;line-height:1.5}
+.su-mail-form .err{margin:0 0 12px;color:var(--red-text)}
+.su-mail .table-wrap{border-top:1px solid var(--line)}
+/* Admin: screenshots, alt links, extended join policy */
+.admin .sub{margin:18px 16px 6px;font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.admin .shots{list-style:none;margin:0;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.admin .shot{display:grid;gap:6px;padding:10px;border:1px solid var(--line);background:var(--k1);min-width:0}
+.admin .shot img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#000;display:block}
+.admin .shot .tags{display:flex;flex-wrap:wrap;gap:6px}
+.admin .tag{padding:2px 7px;border:1px solid var(--line2);font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--w2)}
+.admin .tag.warn{border-color:var(--amber);color:var(--amber)}
+.admin .tag.bad{border-color:var(--red);color:var(--red-text)}
+.admin .tag.ok{border-color:var(--teal);color:var(--teal)}
+.admin fieldset{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:0;padding:12px;border:1px solid var(--line)}
+.admin fieldset legend{padding:0 6px;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w3)}
+.admin fieldset label{flex:1 1 180px}
+.admin fieldset[disabled]{opacity:.5}
+@media (max-width:600px){.admin .shots{grid-template-columns:1fr;padding:0 12px}.admin .row-actions{flex-wrap:wrap}}
+/* Grid items may shrink below their tables' width, so wide tables scroll inside .table-wrap instead of the page. */
+.tools>*,.admin #console>*{min-width:0}
+/* Server console (site/js/console.mjs) */
+.console #con{display:grid;gap:22px}
+.console #con>*,.con-grid>*{min-width:0}
+.con-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:22px}
+.console .badge[data-state=off]{border-color:var(--line2);color:var(--w3)}
+.con-steps{margin:16px 16px 8px 36px!important;padding:0;display:grid;gap:8px;color:var(--w2)}
+.con-steps b{color:var(--w)}
+.con-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0!important;border-top:0}
+.con-tile{padding:16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.con-tile:nth-child(2n){border-right:0}
+.con-tile dt{color:var(--w3);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.con-tile dd{margin:6px 0 0;font:900 24px/1.1 var(--heavy);font-stretch:110%}
+.con-tile.ok dd{color:var(--teal)}.con-tile.warn dd{color:var(--amber)}.con-tile.bad dd{color:var(--red-text)}
+.con-state{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--w2)}
+.con-state[data-state=running],.con-state[data-state=done]{color:var(--teal)}
+.con-state[data-state=failed],.con-state[data-state=crashed]{color:var(--red-text)}
+.con-state[data-state=starting],.con-state[data-state=stopping],.con-state[data-state=backoff],.con-state[data-state=queued],.con-state[data-state=sent]{color:var(--amber)}
+.con-all{padding:14px 0 0}
+.con-log-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 16px!important;margin:0!important;border-bottom:1px solid var(--line)}
+.con-sources{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto}
+.con-sources .chip{min-height:30px;padding:0 10px;border:1px solid var(--line2);background:transparent;color:var(--w2);font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.con-sources .chip:hover{background:var(--k2);color:var(--w)}
+.con-sources .chip[aria-pressed=true]{border-color:var(--or);color:var(--w);background:var(--k2)}
+.console .con-find{flex:0 1 260px}
+.console .con-find input{width:100%}
+.con-log{height:min(60vh,560px);overflow:auto;margin:0!important;padding:8px 0;background:#070707;font:500 12.5px/1.55 var(--mono)}
+.con-log:focus-visible{outline:2px solid var(--w);outline-offset:-2px}
+.con-line{display:grid;grid-template-columns:72px 76px minmax(0,1fr);gap:10px;padding:1px 16px}
+.con-line:hover{background:var(--k1)}
+.con-t{color:var(--w4)}
+.con-src{color:var(--w3);overflow:hidden;text-overflow:ellipsis}
+.con-x{color:var(--w2);white-space:pre-wrap;overflow-wrap:anywhere}
+.con-line[data-level=warn] .con-x{color:var(--amber)}
+.con-line[data-level=error] .con-x{color:var(--red-text)}
+.con-backup,.con-cmd{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;justify-content:space-between}
+@media (max-width:900px){.con-grid{grid-template-columns:1fr}}
+@media (max-width:600px){.con-line{grid-template-columns:58px minmax(0,1fr)}.con-src{display:none}.con-tile dd{font-size:20px}}
+/* Site staff panel (site/js/staff.mjs) */
+.staff #st{display:grid;gap:22px}
+.staff #st>*{min-width:0}
+.st-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.st-tile{display:flex;flex-direction:column-reverse;gap:6px;padding:18px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.st-tile dd{margin:0;font:900 clamp(28px,3.4vw,44px)/1 var(--heavy);font-stretch:110%}
+.st-tile dt{color:var(--w3);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.st-tile.warn dd{color:var(--amber)}
+.st-queue{list-style:none;margin:0;padding:0}
+.st-req{display:grid;gap:8px;padding:16px;border-bottom:1px solid var(--line)}
+.st-req:last-child{border-bottom:0}
+.st-req p{margin:0;color:var(--w2);overflow-wrap:anywhere}
+.st-req-head b{font-size:17px}
+.st-req-tags{display:flex;flex-wrap:wrap;gap:6px}
+.st-filter{padding:12px 0 4px!important}
+.admin .st-sort{all:unset;cursor:pointer;font:inherit;letter-spacing:inherit;color:inherit}
+.admin .st-sort:hover,.admin .st-sort:focus-visible{color:var(--w);background:none}
+.admin .st-sort:focus-visible{outline:2px solid var(--w);outline-offset:2px}
+th[aria-sort=ascending] .st-sort::after{content:" ▲"}
+th[aria-sort=descending] .st-sort::after{content:" ▼"}
+.st-table td.st-warn{color:var(--amber);font-weight:700}
+.st-table tr.st-suspended td{opacity:.7}
+@media (max-width:1000px){.st-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:520px){.st-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Owner: help links and the server list entry form */
+.owner-help{margin:0;color:var(--w3);font-size:14px}
+.owner-help a{color:var(--w2);text-decoration:underline}
+.listing-state{margin:16px 16px 0;padding:12px 14px;border:1px solid var(--line2);background:var(--k1);color:var(--w2)}
+.listing-state[data-state=approved]{border-color:var(--teal)}
+.listing-state[data-state=pending]{border-color:var(--amber)}
+.listing-state[data-state=rejected]{border-color:var(--red)}
+.listing-state:empty{display:none}
+.reg-form .check{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--w2)}
+.reg-form .check input{width:20px;height:20px;min-height:20px;margin:2px 0 0;flex:none;accent-color:var(--or)}
+.reg-form .check a{color:var(--w);text-decoration:underline}
+.reg-form textarea{resize:vertical;font:inherit;line-height:1.5}
+@media (max-width:600px){.con-parts-wide{display:none}}
+.enrol-alt{margin:0 16px 16px;padding:12px 14px;background:var(--k1);border:1px solid var(--line2);font:500 12px/1.6 var(--mono);color:var(--w2);white-space:pre-wrap;word-break:break-all}
+#enrolment .muted{margin:0 16px 10px}

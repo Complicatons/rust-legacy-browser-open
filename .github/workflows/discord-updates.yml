@@ -1,0 +1,74 @@
+# Posts to the Discord #updates channel from GitHub:
+#   - each new website update (site/content/updates/<slug>.md) as a "PATCH NOTES" card (tools/discord-patch-notes.mjs)
+#   - each new roadmap entry (site/content/roadmap/<slug>.md) as a "ROADMAP" card (tools/discord-roadmap.mjs)
+# Runs only on pushes to main, the default branch every session's work reaches, so work merged from master later is not
+# posted twice. Editing a file later does not repost it. "Run workflow" posts one file by hand (an update or a roadmap entry).
+#   secret   DISCORD_UPDATES_WEBHOOK_URL  the #updates channel webhook (Edit Channel → Integrations → Webhooks)
+#   variable DISCORD_UPDATES_ROLE_ID      optional: the role to ping (the Patch Notes role)
+#   variable SITE_URL                     optional: https://your-site/ so cards link to /updates/<slug> and /roadmap#<slug>
+name: Discord updates
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/content/updates/**.md', 'site/content/roadmap/**.md']
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'File to post: site/content/updates/<slug>.md or site/content/roadmap/<slug>.md'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: discord-updates
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Post to Discord
+        env:
+          DISCORD_UPDATES_WEBHOOK_URL: ${{ secrets.DISCORD_UPDATES_WEBHOOK_URL }}
+          DISCORD_UPDATES_ROLE_ID: ${{ vars.DISCORD_UPDATES_ROLE_ID }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          FILE: ${{ inputs.file }}
+        run: |
+          set -euo pipefail
+          if [ -z "${DISCORD_UPDATES_WEBHOOK_URL:-}" ]; then
+            echo "::warning::The DISCORD_UPDATES_WEBHOOK_URL secret is not set, so nothing was posted."
+            exit 0
+          fi
+          if [ -n "${FILE:-}" ]; then
+            # Manual run: one update file or one roadmap entry.
+            if printf '%s' "$FILE" | grep -Eq '^site/content/roadmap/[a-z0-9-]+\.md$' && [ -f "$FILE" ]; then
+              node tools/discord-roadmap.mjs "$FILE"; exit 0
+            fi
+            if ! printf '%s' "$FILE" | grep -Eq '^site/content/updates/[A-Za-z0-9._-]+\.md$' || [ ! -f "$FILE" ]; then
+              echo "::error::Not an update file or a roadmap entry: $FILE"; exit 1
+            fi
+            node tools/discord-patch-notes.mjs "$FILE"; exit 0
+          fi
+          if [ -z "${BEFORE:-}" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "First push of the branch: nothing to compare against."; exit 0
+          fi
+          # Patch notes: only update files added by this push (editing one later does not repost it), oldest first.
+          for f in $(git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- 'site/content/updates/*.md' | sort); do
+            echo "Posting $f"
+            node tools/discord-patch-notes.mjs "$f"
+          done
+          # Roadmap: entry files added by this push, in date order (the What's coming file is skipped by the script).
+          for f in $(git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- 'site/content/roadmap/*.md' | sort); do
+            echo "Posting $f"
+            node tools/discord-roadmap.mjs "$f"
+          done

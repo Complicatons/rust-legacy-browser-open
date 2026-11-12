@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finish your account · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/auth-pages.mjs"></script>
+</head>
+<body data-page="welcome">
+<!--#header-->
+<main id="main" class="auth-split">
+ <aside class="auth-art" aria-hidden="true"><div><div class="h">One last<br>step</div><span class="sub">Choose your name</span><span class="mono">The original island · in your browser · preview</span></div></aside>
+ <section class="auth-form"><div>
+  <h1 class="h">Choose a username</h1>
+  <p class="badge ok" id="provider-badge" hidden></p>
+  <p class="lede" id="welcome-lede">This is your name in game and on the site.</p>
+  <div class="notice" id="expired" hidden><h2>Sign-up expired</h2><p>It has been more than 15 minutes. Start again with Steam.</p></div>
+  <form id="welcome-form" novalidate hidden>
+   <div class="field" data-field="username">
+    <label for="f-username">Username</label>
+    <input id="f-username" name="username" type="text" autocomplete="username" required maxlength="20" spellcheck="false" aria-describedby="f-username-help">
+    <p class="help" id="f-username-help">3–20 letters, numbers, _ or -.</p>
+    <p class="ok status-line" id="f-username-status" aria-live="polite"></p>
+    <p class="err" id="f-username-err" hidden></p>
+   </div>
+   <div class="field" data-field="email" id="email-field">
+    <label for="f-email">Email <span class="muted">(optional)</span></label>
+    <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" inputmode="email" aria-describedby="f-email-help">
+    <p class="help" id="f-email-help">Lets you add a password later and recover your account.</p>
+    <p class="err" id="f-email-err" hidden></p>
+   </div>
+   <p class="agree">By creating an account you agree to the <a href="/terms">Terms of use</a> and <a href="/privacy">Privacy notice</a>. You must be 13 or older.</p>
+   <button class="btn-play" type="submit"><span>Create account</span><span class="key">Enter</span></button>
+  </form>
+  <div class="providers provider-block" id="restart" hidden></div>
+ </div></section>
+</main>
+<!--#footer-->
+</body>
+</html>

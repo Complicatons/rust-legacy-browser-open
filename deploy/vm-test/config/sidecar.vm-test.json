@@ -1,0 +1,9 @@
+{
+  "serverId": "__SERVER_ID__",
+  "port": 28090,
+  "dataFile": "C:/RLB/data/identities.json",
+  "pluginKeyFile": "C:/RLB/secrets/plugin.key",
+  "controlKeyFile": "C:/RLB/secrets/control.key",
+  "namespace": {"base": "90000000000000000", "size": "1000000"},
+  "steamGroupWhitelisted": false
+}

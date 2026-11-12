@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch sign-ups · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/tools.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/signups.mjs"></script>
+</head>
+<body data-page="signups">
+<!--#header-->
+<main id="main" class="tools">
+ <header class="tools-hero"><h1 class="h">Sign-ups</h1><p class="count mono" id="su-count"></p></header>
+ <div class="pending" id="su-gate" hidden><b>Staff only</b><span>Launch sign-ups are visible to platform staff.</span><a class="btn small" href="/signin?next=/signups">Sign in</a></div>
+ <div id="su-tools" hidden>
+  <div class="stats su-stats" id="su-stats"></div>
+  <div class="su-actions"><button class="btn-play" type="button" id="su-csv">Download CSV</button><button class="btn" type="button" id="su-copy">Copy all emails</button><a class="btn" href="/launch">Open the sign-up page</a></div>
+  <section class="panel tools-sec su-mail" aria-labelledby="su-mail-h">
+   <div class="panel-h mono"><h2 id="su-mail-h" class="mono">Opening-day email</h2><span id="su-from"></span></div>
+   <div class="su-mail-off" id="su-mail-off" hidden><b>Email isn't connected yet.</b> Once the domain and a mail provider are set up, add the <code>mail</code> block to the central config (HANDOFF.md, Launch sign-ups) and this sends the email for you. Until then, use Download CSV.</div>
+   <form class="su-mail-form" id="su-mail-form" novalidate hidden>
+    <div class="field"><label for="su-subject">Subject</label><input id="su-subject" maxlength="150" required placeholder="The servers are open"></div>
+    <div class="field"><label for="su-text">Message</label><textarea id="su-text" rows="9" maxlength="20000" required placeholder="Write the announcement: the date, how to join, the Discord."></textarea>
+     <p class="help">Plain text. Every email ends with why they're getting it and their own unsubscribe link.</p></div>
+    <p class="err" id="su-mail-err" role="alert" hidden></p>
+    <div class="su-actions"><button class="btn" type="button" id="su-test">Send a test to me</button><button class="btn-play" type="submit" id="su-send">Send to everyone</button></div>
+   </form>
+   <div class="table-wrap" id="su-mailings-wrap" hidden><table class="wtable su-table"><thead><tr><th>Sent mailings</th><th>Started</th><th class="num">Reached</th><th class="num">Failed</th><th></th></tr></thead><tbody id="su-mailings"></tbody></table></div>
+  </section>
+  <section class="panel tools-sec">
+   <div class="panel-h mono">Emails · newest first</div>
+   <div class="table-wrap"><table class="wtable su-table"><thead><tr><th>Email</th><th>Signed up</th><th></th></tr></thead><tbody id="su-rows"></tbody></table></div>
+   <p class="muted empty" id="su-empty" hidden>No sign-ups yet.</p>
+  </section>
+ </div>
+</main>
+<!--#footer-->
+</body>
+</html>

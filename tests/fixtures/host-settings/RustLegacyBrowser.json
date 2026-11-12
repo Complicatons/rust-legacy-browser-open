@@ -1,0 +1,5 @@
+{
+  "SidecarUrl": "http://127.0.0.1:28090/plugin",
+  "PluginKeyHex": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+  "LauncherOnly": false
+}

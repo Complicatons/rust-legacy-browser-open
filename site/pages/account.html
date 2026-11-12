@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Account · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/account.mjs"></script>
+</head>
+<body data-page="account">
+<!--#header-->
+<main id="main" class="wrap account">
+ <div class="page-head"><h1 class="h">Account</h1><p>Your profile, sign-in methods and sessions.</p></div>
+ <p class="staff-links mono" id="staff-links" hidden>Site staff: <a href="/staff">Staff panel</a> · <a href="/signups">Launch sign-ups</a> · <a href="/admin">Server admin</a></p>
+ <div id="account-root" aria-busy="true">
+  <section class="acc-section" aria-labelledby="acc-profile"><h2 id="acc-profile">Profile</h2>
+   <dl>
+    <div class="acc-row"><dt>Username</dt><dd id="acc-username" class="skeleton">loading</dd><span></span></div>
+    <div class="acc-row"><dt>Email</dt><dd><span id="acc-email" class="skeleton">loading</span> <span class="badge" id="acc-verified" hidden></span></dd><button class="btn small" type="button" id="email-edit">Change</button></div>
+   </dl>
+   <form class="acc-form" id="email-form" novalidate hidden>
+   <div class="field" data-field="email">
+    <label for="f-email">New email</label>
+    <input id="f-email" name="email" type="email" autocomplete="email" required inputmode="email" maxlength="254">
+    <p class="err" id="f-email-err" hidden></p>
+   </div>
+   <div class="field" data-field="current" id="email-current-field">
+    <label for="f-email-current">Current password</label>
+    <input id="f-email-current" name="current" type="password" autocomplete="current-password" maxlength="128">
+    <p class="err" id="f-email-current-err" hidden></p>
+   </div>
+    <div class="row"><button class="btn" type="submit">Save email</button><button class="btn" type="button" data-cancel>Cancel</button></div>
+   </form>
+  </section>
+  <section class="acc-section" aria-labelledby="acc-methods"><h2 id="acc-methods">Sign-in methods</h2>
+   <dl>
+    <div class="acc-row"><dt>Password</dt><dd id="acc-password">—</dd><button class="btn small" type="button" id="password-edit">Set</button></div>
+    <div class="acc-row" data-provider="steam"><dt>Steam</dt><dd class="state">—</dd><button class="btn small" type="button" data-link="steam">Link</button></div>
+   </dl>
+   <form class="acc-form" id="password-form" novalidate hidden>
+   <div class="field" data-field="current">
+    <label for="f-current">Current password</label>
+    <input id="f-current" name="current" type="password" autocomplete="current-password" maxlength="128">
+    <p class="err" id="f-current-err" hidden></p>
+   </div>
+   <div class="field" data-field="password">
+    <label for="f-password">New password</label>
+    <div class="input-row"><input id="f-password" name="password" type="password" autocomplete="new-password" required maxlength="128" aria-describedby="f-password-help"><button class="btn pw-toggle" type="button" aria-pressed="false" aria-controls="f-password">Show</button></div>
+    <div class="meter" aria-hidden="true"><i></i></div>
+    <p class="help" id="f-password-help">At least 8 characters.</p>
+    <p class="err" id="f-password-err" hidden></p>
+   </div>
+    <div class="row"><button class="btn" type="submit">Save password</button><button class="btn" type="button" data-cancel>Cancel</button></div>
+   </form>
+  </section>
+  <section class="acc-section" id="phone" aria-labelledby="acc-phone" hidden><h2 id="acc-phone">Phone</h2>
+   <dl>
+    <div class="acc-row"><dt>Phone</dt><dd id="acc-phone-state" class="muted">Not verified</dd><button class="btn small" type="button" id="phone-edit">Verify</button></div>
+   </dl>
+   <p class="acc-note muted">Only servers that ask for it need this. We keep a one-way hash of the number, never the number.</p>
+   <form class="acc-form" id="phone-form" novalidate hidden>
+   <div class="field" data-field="phone">
+    <label for="f-phone">Mobile number, with country code</label>
+    <input id="f-phone" name="phone" type="tel" autocomplete="tel" required inputmode="tel" maxlength="20" placeholder="+44 7700 900123">
+    <p class="err" id="f-phone-err" hidden></p>
+   </div>
+    <div class="row"><button class="btn" type="submit">Send code</button><button class="btn" type="button" data-cancel>Cancel</button></div>
+   </form>
+   <form class="acc-form" id="phone-code-form" novalidate hidden>
+   <div class="field" data-field="code">
+    <label for="f-phone-code">Code from the text message</label>
+    <input id="f-phone-code" name="code" required inputmode="numeric" autocomplete="one-time-code" maxlength="8">
+    <p class="err" id="f-phone-code-err" hidden></p>
+   </div>
+    <div class="row"><button class="btn" type="submit">Verify</button><button class="btn" type="button" data-cancel>Cancel</button></div>
+   </form>
+  </section>
+  <section class="acc-section" aria-labelledby="acc-sessions"><h2 id="acc-sessions">Sessions</h2>
+   <dl>
+    <div class="acc-row"><dt>This device</dt><dd class="muted">Signed in</dd><button class="btn small" type="button" id="sign-out">Sign out</button></div>
+    <div class="acc-row"><dt>Other devices</dt><dd class="muted">Sign out everywhere else</dd><button class="btn small danger" type="button" id="revoke">Sign out others</button></div>
+   </dl>
+  </section>
+  <section class="acc-section" aria-labelledby="acc-leaderboard"><h2 id="acc-leaderboard">Leaderboards</h2>
+   <dl>
+    <div class="acc-row"><dt>Leaderboards</dt><dd id="acc-board-state" class="muted">Shown</dd><button class="btn small" type="button" id="board-toggle" aria-pressed="false">Hide me</button></div>
+   </dl>
+   <p class="acc-note muted">Hidden: your name and profile leave every <a href="/leaderboard">leaderboard</a>. Your counts are still kept.</p>
+  </section>
+  <section class="acc-section" id="launchers" aria-labelledby="acc-launchers"><h2 id="acc-launchers">Desktop launchers</h2>
+   <dl class="acc-launchers" id="launcher-list"></dl>
+   <p class="acc-note muted">Steam account? Sign a launcher in with its code on <a href="/desktop/approve">this page</a>.</p>
+  </section>
+ </div>
+</main>
+<!--#footer-->
+</body>
+</html>

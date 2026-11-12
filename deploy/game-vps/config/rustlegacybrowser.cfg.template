@@ -1,0 +1,5 @@
+# Rust Legacy browser adapter (game-vps, public eu1). Written by deploy/host-test/scripts/10-Patch-TestCopy.ps1 into <server copy>/rust_server_Data/cfg/
+# LauncherOnly: only players admitted through our website (browser) or launcher may join; plain native logins get "Authorization failed".
+SidecarUrl=http://127.0.0.1:28090/plugin
+PluginKeyHex=__PLUGIN_KEY_HEX__
+LauncherOnly=true

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The island · Rust Legacy Browser</title>
+<meta name="description" content="Maps of the original Rust Legacy island: the classic community map, an aerial render and a modern map built from the game's own data.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/island.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/island.mjs"></script>
+</head>
+<body data-page="island">
+<!--#header-->
+<main id="main" class="island">
+ <aside class="side" aria-label="Places">
+  <h1 class="h">The island</h1>
+  <p class="muted lede">Built from the original terrain, roads, forests, buildings and radiation zones.</p>
+  <dl class="stats island-stats" id="island-stats"></dl>
+  <label class="search"><span class="sr-only">Search places</span>
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+   <input id="place-q" type="search" placeholder="Search places" autocomplete="off">
+  </label>
+  <div class="place-card panel" id="place-card" hidden aria-live="polite"></div>
+  <nav class="place-list" id="place-list" aria-label="Places on the island"></nav>
+ </aside>
+ <section class="map-area" aria-label="Map">
+  <div class="map-controls">
+   <div class="seg-ctl" role="group" aria-label="Map layer" id="layer-ctl">
+    <button type="button" data-layer="classic">Classic</button><button type="button" data-layer="aerial">Aerial</button><button type="button" data-layer="modern">Modern</button>
+   </div>
+   <label class="check"><input type="checkbox" id="compare"> Compare</label>
+   <div class="toggles" role="group" aria-label="Show on map">
+    <label class="check"><input type="checkbox" data-overlay="labels" checked> Labels</label>
+    <label class="check"><input type="checkbox" data-overlay="rad" checked><i class="sw rad"></i> Radiation</label>
+    <label class="check"><input type="checkbox" data-overlay="crates" checked><i class="sw crates"></i> Crates</label>
+    <label class="check"><input type="checkbox" data-overlay="mutants" checked><i class="sw mutants"></i> Mutants</label>
+    <label class="check"><input type="checkbox" data-overlay="animals"><i class="sw animals"></i> Animals</label>
+    <label class="check"><input type="checkbox" data-overlay="resources"><i class="sw resources"></i> Resources</label>
+    <label class="check"><input type="checkbox" data-overlay="nobuild"><i class="sw nobuild"></i> No-build</label>
+    <label class="check"><input type="checkbox" data-overlay="elevation"><i class="sw elevation"></i> Elevation</label>
+    <label class="check"><input type="checkbox" data-overlay="spawns"><i class="sw spawns"></i> Spawns</label>
+    <label class="check"><input type="checkbox" data-overlay="grid"> Grid</label>
+   </div>
+  </div>
+  <div class="map" id="map"></div>
+ </section>
+</main>
+</body>
+</html>

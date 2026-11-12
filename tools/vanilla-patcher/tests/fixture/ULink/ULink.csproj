@@ -1,0 +1,11 @@
+<!-- Synthetic stand-in for uLink.dll: only the shapes tools/vanilla-patcher's admission-hook fix touches
+     (NetworkPlayerApproval.loginData, BitStream's public read API). Never the real uLink; written from scratch
+     against its public member names only (analysis/decompiled/server/uLink), no original bytes. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>uLink</AssemblyName>
+    <RootNamespace>uLink</RootNamespace>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+</Project>

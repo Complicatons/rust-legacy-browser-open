@@ -1,0 +1,619 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rust Legacy Host</title>
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/host.css">
+<link rel="stylesheet" href="/tools.css">
+<link rel="stylesheet" href="/vendor/xterm.css" nonce="__STYLE_NONCE__">
+<link rel="stylesheet" href="/frame.css">
+<script type="module" src="/host.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<section class="signin" id="signin" hidden aria-labelledby="signin-h">
+ <form class="signin-card" id="signin-form">
+  <p class="logo"><i></i>Rust Legacy Host</p>
+  <h1 class="h" id="signin-h">Sign in</h1>
+  <p class="muted" id="signin-help">Open the sign-in link the host printed when it started, or paste the owner token from <code>owner.token</code> in its data folder.</p>
+  <div class="field">
+   <label for="token">Owner token</label>
+   <input id="token" name="token" type="password" autocomplete="off" spellcheck="false" required>
+   <p class="err" id="signin-err" role="alert" hidden></p>
+  </div>
+  <button class="btn primary" type="submit">Sign in</button>
+ </form>
+</section>
+
+<div class="app" id="app" hidden>
+ <nav class="rail" aria-label="Sections">
+  <p class="logo"><i></i><span>Rust Legacy<br>Host</span></p>
+  <ul>
+   <li><a href="#overview" data-view="overview">Overview</a></li>
+   <li><a href="#logs" data-view="logs">Logs<span class="count" id="nav-errors" hidden></span></a></li>
+   <li><a href="#accounts" data-view="accounts">Accounts</a></li>
+   <li><a href="#setup" data-view="setup">Setup</a></li>
+   <li><a href="#players" data-view="players">Players</a></li>
+   <li><a href="#anticheat" data-view="anticheat">Anti-cheat</a></li>
+   <li><a href="#backups" data-view="backups">Backups</a></li>
+   <li><a href="#schedule" data-view="schedule">Schedule</a></li>
+   <li><a href="#updates" data-view="updates">Updates</a></li>
+   <li><a href="#plugins" data-view="plugins">Plugins</a></li>
+   <li><a href="#health" data-view="health">Health</a></li>
+   <li><a href="#settings" data-view="settings">Settings</a></li>
+  </ul>
+  <div class="rail-foot">
+   <p class="link-state" id="link-state" data-link-state><span class="beacon" data-state="starting"></span><span>Connecting</span></p>
+   <button class="btn ghost small" id="signout" type="button">Sign out</button>
+  </div>
+ </nav>
+
+ <main id="main" tabindex="-1">
+  <!-- Overview -->
+  <section class="view" data-view="overview" aria-labelledby="ov-h">
+   <header class="hero">
+    <div class="hero-id">
+     <p class="eyebrow" id="server-kind">Game server</p>
+     <h1 class="h hero-title" id="ov-h">Game server</h1>
+     <p class="state-line"><span class="beacon" id="server-beacon" data-state="stopped"></span><b id="server-state" aria-live="polite">Stopped</b><span class="muted" id="server-msg"></span></p>
+    </div>
+    <div class="hero-actions" data-target="server">
+     <button class="btn primary" data-action="start" type="button">Start</button>
+     <button class="btn" data-action="restart" type="button">Restart</button>
+     <button class="btn danger" data-action="stop" type="button">Stop</button>
+    </div>
+   </header>
+
+   <div class="stats" id="stats">
+    <div class="stat"><b id="st-uptime">–</b><span>uptime</span></div>
+    <div class="stat"><b id="st-players">–</b><span>players in game</span></div>
+    <div class="stat"><b id="st-restarts">0</b><span>restarts</span></div>
+    <div class="stat"><b id="st-save">–</b><span>since last good save</span></div>
+    <div class="stat"><b id="st-rate">0</b><span>log lines / min</span></div>
+   </div>
+
+   <section class="panel vitals" aria-labelledby="vitals-h">
+    <header class="panel-h">
+     <h2 class="mono" id="vitals-h">Vital signs</h2>
+     <p class="verdict" id="verdict" data-state="idle" aria-live="polite">Server stopped</p>
+    </header>
+    <div class="vitals-body">
+     <ul class="lanes" aria-hidden="true">
+      <li><span class="mono">Log lines</span><b id="age-log">–</b></li>
+      <li><span class="mono">UDP replies</span><b id="age-udp">–</b></li>
+      <li><span class="mono">CPU</span><b id="age-cpu">–</b></li>
+     </ul>
+     <canvas id="strip" role="img" aria-label="Server activity over the last two minutes"></canvas>
+    </div>
+    <footer class="vitals-foot">
+     <p class="vitals-note muted" id="vitals-note">The watchdog restarts the server when all three go quiet at once, and puts the last good save back first.</p>
+     <div class="row" data-target="server" id="freeze-row" hidden><button class="btn small" data-action="freeze" type="button">Simulate the freeze</button></div>
+    </footer>
+   </section>
+
+   <section class="panel hc" id="health-card" aria-labelledby="hc-h"></section>
+
+   <section class="components" aria-labelledby="comp-h">
+    <header class="section-h">
+     <h2 class="mono" id="comp-h">Components</h2>
+     <div class="row" data-target="all">
+      <button class="btn small" data-action="start" type="button">Start all</button>
+      <button class="btn small danger" data-action="stop" type="button">Stop all</button>
+     </div>
+    </header>
+    <div class="cards" id="cards"></div>
+   </section>
+
+   <section class="panel events" aria-labelledby="events-h">
+    <header class="panel-h"><h2 class="mono" id="events-h">Host events</h2><a class="mono small-link" href="#logs" data-source="host">All host lines</a></header>
+    <ol class="event-list" id="event-list"></ol>
+   </section>
+  </section>
+
+  <!-- Logs -->
+  <section class="view logs-view" data-view="logs" aria-labelledby="logs-h" hidden>
+   <header class="logs-head">
+    <h1 class="h" id="logs-h">Logs</h1>
+    <div class="chips" id="chips" role="group" aria-label="Sources"></div>
+    <div class="log-tools">
+     <label class="sr-only" for="level">Level</label>
+     <select id="level"><option value="all">All levels</option><option value="warn">Warnings and errors</option><option value="error">Errors only</option></select>
+     <label class="sr-only" for="search">Search</label>
+     <input id="search" type="search" placeholder="Search lines" spellcheck="false">
+     <button class="btn small" id="follow" type="button" aria-pressed="true">Following</button>
+    </div>
+   </header>
+   <div class="log-wrap">
+    <div class="log" id="log" role="log" aria-label="Live log" aria-live="off" tabindex="0"></div>
+    <button class="btn small jump" id="jump" type="button" hidden>Show newest</button>
+   </div>
+  </section>
+
+  <!-- Later slices -->
+  <!-- Accounts -->
+  <section class="view accounts-view" data-view="accounts" aria-labelledby="acc-h" hidden>
+   <header class="page-head">
+    <p class="eyebrow">Website accounts on this server</p>
+    <h1 class="h" id="acc-h">Accounts</h1>
+   </header>
+   <div class="stats" id="acc-stats">
+    <div class="stat"><b id="acc-linked">–</b><span>linked accounts</span></div>
+    <div class="stat"><b id="acc-online">–</b><span>online now</span></div>
+    <div class="stat"><b id="acc-desktop">–</b><span>desktop links</span></div>
+    <div class="stat"><b id="acc-reserved">–</b><span>links in progress</span></div>
+   </div>
+   <section class="panel connect" id="acc-connect" hidden aria-labelledby="connect-h">
+    <header class="panel-h"><h2 class="mono" id="connect-h">Connect to your website</h2></header>
+    <form class="connect-body" id="acc-key-form">
+     <p>On your website's Owner page, click <b>New host app key</b> next to this server, then paste the key here. It lets this app read account names, link history and the audit log, as you.</p>
+     <div class="field"><label for="acc-key">Host app key</label><input id="acc-key" type="password" autocomplete="off" spellcheck="false" placeholder="rlbh_…" required></div>
+     <p class="err" id="acc-key-err" role="alert" hidden></p>
+     <button class="btn primary" type="submit">Save key</button>
+    </form>
+   </section>
+   <div class="acc-grid">
+    <section class="panel" aria-labelledby="accl-h">
+     <header class="panel-h"><h2 class="mono" id="accl-h">Linked accounts</h2><p class="mono muted" id="acc-source"></p></header>
+     <div class="table-wrap"><table class="table" id="acc-table">
+      <thead><tr><th scope="col">Account</th><th scope="col">Kind</th><th scope="col">Character</th><th scope="col">State</th><th scope="col">Last played</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+      <tbody></tbody>
+     </table></div>
+     <p class="empty muted" id="acc-empty" hidden>No accounts yet. A website account appears here after it plays on this server, or after its owner links a desktop character with a code from <code>/browserlink</code>.</p>
+    </section>
+    <aside class="acc-side">
+     <section class="panel" aria-labelledby="adapter-h">
+      <header class="panel-h"><h2 class="mono" id="adapter-h">Identity adapter</h2><p class="verdict" id="adapter-state" data-state="idle">–</p></header>
+      <dl class="facts" id="adapter-facts"></dl>
+     </section>
+     <section class="panel" aria-labelledby="flow-h">
+      <header class="panel-h"><h2 class="mono" id="flow-h">Desktop links</h2></header>
+      <ol class="flow" id="flow"></ol>
+     </section>
+     <section class="panel" aria-labelledby="accaudit-h">
+      <header class="panel-h"><h2 class="mono" id="accaudit-h">Link audit</h2></header>
+      <ol class="event-list" id="acc-audit"></ol>
+     </section>
+    </aside>
+   </div>
+  </section>
+  <!-- Setup (setup.mjs) -->
+  <section class="view" data-view="setup" aria-labelledby="su-h" hidden>
+   <header class="page-head"><p class="eyebrow">The setup scripts, one step at a time</p><h1 class="h" id="su-h">Setup</h1></header>
+   <div class="stats" id="su-stats" hidden>
+    <div class="stat"><b id="su-done">–</b><span>passed</span></div>
+    <div class="stat"><b id="su-warn">–</b><span>passed with warnings</span></div>
+    <div class="stat"><b id="su-fail">–</b><span>failed</span></div>
+    <div class="stat"><b id="su-todo">–</b><span>still to do</span></div>
+   </div>
+   <p class="note" id="su-note" hidden></p>
+   <fieldset class="modes" id="su-modes"></fieldset>
+   <p class="empty muted" id="su-empty">Choose where this server runs to see its steps. Each step shows what it will change before anything runs, and you can run any step again.</p>
+   <ol class="stepper" id="su-steps"></ol>
+   <!-- Finish (host/wizard.mjs finish()): once the scripts have written central/sidecar/gateway/server.test, add them
+        to host.json; shown only once there is something to add that is not there already. -->
+   <div class="panel su-finish" id="su-finish" hidden>
+    <p id="su-finish-text"></p>
+    <button class="btn" type="button" id="su-finish-btn">Add to host.json</button>
+   </div>
+   <!-- An existing server, as it is (attach.mjs, host/setup.mjs): shown when that is the chosen mode -->
+   <div class="attach" id="at" hidden>
+   <div class="stats">
+    <div class="stat"><b id="at-done">–</b><span>of 5 steps done</span></div>
+    <div class="stat"><b id="at-framework">–</b><span>server build</span></div>
+    <div class="stat"><b id="at-site">–</b><span>website</span></div>
+   </div>
+   <p class="note" id="at-note" hidden></p>
+   <ol class="steps-list">
+    <li class="panel step" id="at-server" data-step="server">
+     <header class="panel-h"><h2 class="mono"><span class="n">1</span>Your server</h2><p class="verdict" data-state="idle">–</p></header>
+     <div class="step-body">
+      <p>Point the host app at <b>your own copy</b> of the Legacy server: the folder with <code>rust_server.exe</code>. It checks the file's SHA-256 against the verified build. We never supply or change the game's own server files except the adapter in step 2.</p>
+      <dl class="facts" id="at-server-facts"></dl>
+      <form class="inline-form" id="at-server-form">
+       <div class="field grow"><label for="at-dir">Server folder</label><input id="at-dir" autocomplete="off" spellcheck="false" placeholder="C:\RustServer" required></div>
+       <button class="btn" type="submit">Check</button>
+      </form>
+      <div id="at-check" hidden>
+       <dl class="facts" id="at-check-facts"></dl>
+       <label class="check" id="at-accept-f" hidden><input type="checkbox" id="at-accept"> This is my own build: run it even though it is not the verified one, and record its SHA-256</label>
+       <div class="row"><button class="btn primary" type="button" id="at-use">Use this server</button></div>
+      </div>
+      <p class="err" id="at-server-err" role="alert" hidden></p>
+     </div>
+    </li>
+    <li class="panel step" id="at-ready" data-step="browserReady">
+     <header class="panel-h"><h2 class="mono"><span class="n">2</span>Browser ready</h2><p class="verdict" data-state="idle">–</p></header>
+     <div class="step-body">
+      <p id="at-ready-text">Adds our adapter so players who signed in on the website can join. Your own players keep joining as before.</p>
+      <ul class="files" id="at-ready-files"></ul>
+      <label class="check"><input type="checkbox" id="at-launcher"> Only players who signed in on the website may join (LauncherOnly). Leave it off to keep your existing players.</label>
+      <div class="row"><button class="btn primary" type="button" id="at-ready-go">Make browser ready</button><button class="btn danger" type="button" id="at-ready-undo" hidden>Undo</button></div>
+      <p class="err" id="at-ready-err" role="alert" hidden></p>
+     </div>
+    </li>
+    <li class="panel step" id="at-site-step" data-step="website">
+     <header class="panel-h"><h2 class="mono"><span class="n">3</span>Connect to the website</h2><p class="verdict" data-state="idle">–</p></header>
+     <div class="step-body">
+      <p>On <a id="at-owner-link" href="https://your-domain.example/owner" target="_blank" rel="noopener">Your servers</a>, register this server (or press <b>New enrolment code</b> on it) and paste the code here. One code links the gateway and lets you manage the server from the website's console. It lasts 15 minutes and works once.</p>
+      <dl class="facts" id="at-site-facts"></dl>
+      <form class="inline-form" id="at-site-form">
+       <div class="field grow"><label for="at-code">Enrolment code</label><input id="at-code" type="password" autocomplete="off" spellcheck="false" required></div>
+       <button class="btn primary" type="submit">Connect</button>
+      </form>
+      <p class="err" id="at-site-err" role="alert" hidden></p>
+     </div>
+    </li>
+    <li class="panel step" id="at-addr" data-step="address">
+     <header class="panel-h"><h2 class="mono"><span class="n">4</span>Public address</h2><p class="verdict" data-state="idle">–</p></header>
+     <div class="step-body">
+      <p>Browsers join through the gateway at the <code>wss://</code> address you registered on the website. They need HTTPS with a real certificate.</p>
+      <form id="at-addr-form">
+       <fieldset class="choices">
+        <legend class="sr-only">How browsers reach the gateway</legend>
+        <label class="check"><input type="radio" name="mode" value="none"> Not yet: the gateway reports in, nobody can join</label>
+        <label class="check"><input type="radio" name="mode" value="proxy"> Behind my own HTTPS proxy or tunnel on this machine (Caddy, IIS, Cloudflare Tunnel)</label>
+        <label class="check"><input type="radio" name="mode" value="certificate"> With my certificate, on a public port</label>
+       </fieldset>
+       <div class="addr-fields" id="at-addr-port-f" hidden><div class="field"><label for="at-port">Port</label><input id="at-port" type="number" min="1" max="65535"></div>
+        <label class="check"><input type="checkbox" id="at-cloudflare"> The address goes through Cloudflare's proxy</label></div>
+       <div class="addr-fields" id="at-addr-cert-f" hidden>
+        <div class="field"><label for="at-pfx">Certificate (.pfx), or certificate and key (.pem)</label><input id="at-pfx" type="file" accept=".pfx,.p12,.pem,.crt,.key" multiple></div>
+        <div class="field"><label for="at-pass">.pfx password</label><input id="at-pass" type="password" autocomplete="off"></div>
+       </div>
+       <div class="row"><button class="btn primary" type="submit">Save address</button></div>
+      </form>
+      <p class="err" id="at-addr-err" role="alert" hidden></p>
+     </div>
+    </li>
+    <li class="panel step" id="at-run" data-step="run">
+     <header class="panel-h"><h2 class="mono"><span class="n">5</span>Run</h2><p class="verdict" data-state="idle">–</p></header>
+     <div class="step-body">
+      <p>The host app starts your server only after you agree here. It runs under the app's own Windows account (no password, not an administrator), and the watchdog restarts it with the last good save if it freezes.</p>
+      <label class="check"><input type="checkbox" id="at-confirm"> I start my original Legacy server from this dashboard</label>
+      <div class="row"><button class="btn primary" type="button" id="at-run-go">Save</button><a class="btn" href="#overview">Go to Overview</a></div>
+      <p class="err" id="at-run-err" role="alert" hidden></p>
+     </div>
+    </li>
+   </ol>
+   </div>
+  </section>
+  <!-- Players -->
+  <section class="view" data-view="players" aria-labelledby="pl-h" hidden>
+   <header class="page-head"><p class="eyebrow">Live on this server</p><h1 class="h" id="pl-h">Players</h1></header>
+   <div class="stats">
+    <div class="stat"><b id="pl-browser">–</b><span>browser players</span></div>
+    <div class="stat"><b id="pl-desktop">–</b><span>desktop players</span></div>
+    <div class="stat"><b id="pl-review">–</b><span>under review</span></div>
+    <div class="stat"><b id="pl-bans-n">–</b><span>active bans</span></div>
+   </div>
+   <p class="note" id="pl-note" hidden></p>
+   <section class="panel block" aria-labelledby="plb-h">
+    <header class="panel-h"><h2 class="mono" id="plb-h">In the browser</h2><p class="mono muted" id="pl-reported"></p></header>
+    <div class="table-wrap"><table class="table" id="pl-table"><thead><tr><th scope="col">Player</th><th scope="col">Connected</th><th scope="col">Score</th><th scope="col">Flags</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table></div>
+    <p class="empty muted" id="pl-empty" hidden>No one is playing in the browser right now.</p>
+   </section>
+   <section class="panel block" aria-labelledby="pld-h">
+    <header class="panel-h"><h2 class="mono" id="pld-h">On the desktop game</h2></header>
+    <div class="table-wrap"><table class="table" id="pl-desk"><thead><tr><th scope="col">Player</th><th scope="col">Website account</th><th scope="col">Score</th><th scope="col">Flags</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table></div>
+    <p class="empty muted" id="pl-desk-empty" hidden>No desktop players right now. The server plugin lists them about every 10 seconds.</p>
+   </section>
+   <section class="panel block" aria-labelledby="plr-h">
+    <header class="panel-h"><h2 class="mono" id="plr-h">Recent players</h2><p class="mono muted">select a name for their history</p></header>
+    <div class="table-wrap"><table class="table" id="pl-recent"><thead><tr><th scope="col">Player</th><th scope="col">Kind</th><th scope="col">Last seen</th><th scope="col">Play time</th><th scope="col">Flags</th></tr></thead><tbody></tbody></table></div>
+    <p class="empty muted" id="pl-recent-empty" hidden>Nobody has played on this server yet.</p>
+   </section>
+   <div class="acc-grid">
+    <section class="panel" aria-labelledby="plban-h">
+     <header class="panel-h"><h2 class="mono" id="plban-h">Bans</h2></header>
+     <div class="table-wrap"><table class="table" id="pl-bans"><thead><tr><th scope="col">Account</th><th scope="col">Reason</th><th scope="col">Until</th><th scope="col">State</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table></div>
+     <p class="empty muted" id="pl-bans-empty" hidden>No bans on this server.</p>
+    </section>
+    <aside class="acc-side">
+     <section class="panel" aria-labelledby="plcmd-h">
+      <header class="panel-h"><h2 class="mono" id="plcmd-h">In-game actions</h2></header>
+      <ol class="event-list" id="pl-cmds"></ol>
+     </section>
+    </aside>
+   </div>
+  </section>
+  <!-- Anti-cheat -->
+  <section class="view" data-view="anticheat" aria-labelledby="ac-h" hidden>
+   <header class="page-head"><p class="eyebrow">Checked by the gateway and the server</p><h1 class="h" id="ac-h">Anti-cheat</h1></header>
+   <div class="stats">
+    <div class="stat"><b id="ac-day">–</b><span>flags in 24 h</span></div>
+    <div class="stat"><b id="ac-players">–</b><span>players flagged</span></div>
+    <div class="stat"><b id="ac-review">–</b><span>under review now</span></div>
+    <div class="stat"><b id="ac-open">–</b><span>open reports</span></div>
+   </div>
+   <p class="note" id="ac-note" hidden></p>
+   <div class="ac-grid">
+    <section class="panel" aria-labelledby="acf-h">
+     <header class="panel-h"><h2 class="mono" id="acf-h">Recent flags</h2><p class="mono muted">select one for the evidence</p></header>
+     <div class="table-wrap"><table class="table pick" id="ac-flags"><thead><tr><th scope="col">When</th><th scope="col">Player</th><th scope="col">Check</th><th scope="col">Severity</th></tr></thead><tbody></tbody></table></div>
+     <p class="empty muted" id="ac-empty" hidden>No flags yet. Flags appear when a player does something the original game would not allow: too fast, through a wall, firing too quickly.</p>
+    </section>
+    <section class="panel evidence" aria-labelledby="ace-h" aria-live="polite">
+     <header class="panel-h"><h2 class="mono" id="ace-h">Evidence</h2><div class="row" id="ac-actions"></div></header>
+     <div id="ac-evidence"><p class="empty muted">Select a flag to see that player's evidence: every flag with its measurements, the replay path and screenshots.</p></div>
+    </section>
+   </div>
+   <section class="panel block" aria-labelledby="acr-h">
+    <header class="panel-h"><h2 class="mono" id="acr-h">Player reports</h2></header>
+    <ol class="reports" id="ac-reports"></ol>
+   </section>
+  </section>
+  <!-- Backups -->
+  <section class="view" data-view="backups" aria-labelledby="bk-h" hidden>
+   <header class="page-head"><p class="eyebrow">World saves</p><h1 class="h" id="bk-h">Backups</h1></header>
+   <div class="stats">
+    <div class="stat"><b id="bk-auto">–</b><span>kept by the watchdog</span></div>
+    <div class="stat"><b id="bk-own">–</b><span>kept by you</span></div>
+    <div class="stat"><b id="bk-newest">–</b><span>since the newest copy</span></div>
+    <div class="stat"><b id="bk-aside">–</b><span>saves set aside</span></div>
+   </div>
+   <p class="note" id="bk-note" hidden></p>
+   <div class="acc-grid">
+    <section class="panel" aria-labelledby="bkc-h">
+     <header class="panel-h"><h2 class="mono" id="bkc-h">Copies</h2><p class="mono muted">the watchdog keeps the newest 6 completed saves; yours are never removed</p></header>
+     <div class="table-wrap"><table class="table" id="bk-table"><thead><tr><th scope="col">Saved</th><th scope="col">Kept by</th><th scope="col">Size</th><th scope="col">Objects</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table></div>
+     <p class="empty muted" id="bk-empty" hidden>No copies yet. The watchdog keeps one after every completed autosave (every 10 minutes on the original server), or keep one now.</p>
+    </section>
+    <aside class="acc-side">
+     <section class="panel" aria-labelledby="bkn-h">
+      <header class="panel-h"><h2 class="mono" id="bkn-h">Current save</h2></header>
+      <dl class="facts" id="bk-current"></dl>
+      <form class="connect-body" id="bk-keep">
+       <div class="field"><label for="bk-label">Label (optional)</label><input id="bk-label" maxlength="80" autocomplete="off" placeholder="Before the wipe vote"></div>
+       <button class="btn primary" type="submit">Keep a copy now</button>
+      </form>
+     </section>
+     <section class="panel" aria-labelledby="bkr-h">
+      <header class="panel-h"><h2 class="mono" id="bkr-h">The server's own copies</h2></header>
+      <ol class="event-list" id="bk-rotation"></ol>
+     </section>
+     <section class="panel" aria-labelledby="bka-h">
+      <header class="panel-h"><h2 class="mono" id="bka-h">Set aside</h2></header>
+      <ol class="event-list" id="bk-setaside"></ol>
+     </section>
+    </aside>
+   </div>
+   <!-- Off-site backups (host/offsite.mjs, dashboard offsite.mjs) -->
+   <section class="offsite" id="offsite" aria-labelledby="os-h">
+    <header class="sub-head"><h2 class="h" id="os-h">Off-site</h2><p>Copies in another place, so a dead disk or a lost VPS does not take the world with it. Each set holds the world save, the player folder and the account links, which only work together.</p></header>
+    <div class="stats">
+     <div class="stat"><b id="os-since">–</b><span>since the last upload</span></div>
+     <div class="stat"><b id="os-count">–</b><span>sets stored</span></div>
+     <div class="stat"><b id="os-next">–</b><span>until the next run</span></div>
+     <div class="stat"><b id="os-size">–</b><span>newest set</span></div>
+    </div>
+    <p class="note" id="os-note" hidden></p>
+    <div class="acc-grid">
+     <section class="panel" aria-labelledby="oss-h">
+      <header class="panel-h"><h2 class="mono" id="oss-h">Stored sets</h2><button class="btn small primary" type="button" id="os-run">Back up now</button></header>
+      <p class="mono muted os-busy" id="os-busy" aria-live="polite" hidden></p>
+      <div class="table-wrap"><table class="table" id="os-table"><thead><tr><th scope="col">Made</th><th scope="col">Holds</th><th scope="col">Size</th><th scope="col">From</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table></div>
+      <p class="empty muted" id="os-empty">No sets yet.</p>
+     </section>
+     <aside class="acc-side">
+      <section class="panel" aria-labelledby="osl-h">
+       <header class="panel-h"><h2 class="mono" id="osl-h">Last upload</h2></header>
+       <dl class="facts" id="os-last"></dl>
+      </section>
+      <section class="panel" aria-labelledby="osf-h">
+       <header class="panel-h"><h2 class="mono" id="osf-h">Where and when</h2></header>
+       <form class="connect-body" id="os-form">
+        <div class="field"><label for="os-target">Send sets to</label><select id="os-target"><option value="off">Nowhere (off)</option><option value="folder">A folder</option><option value="s3">S3-compatible storage</option></select></div>
+        <p class="os-folder" id="os-folder"></p>
+        <fieldset class="os-s3" id="os-s3">
+         <legend class="sr-only">S3 storage</legend>
+         <div class="field"><label for="os-endpoint">Endpoint</label><input id="os-endpoint" autocomplete="off" spellcheck="false" placeholder="https://s3.us-east-1.amazonaws.com"></div>
+         <div class="field-pair">
+          <div class="field"><label for="os-region">Region</label><input id="os-region" autocomplete="off" spellcheck="false" placeholder="us-east-1 (R2: auto)"></div>
+          <div class="field"><label for="os-bucket">Bucket</label><input id="os-bucket" autocomplete="off" spellcheck="false"></div>
+         </div>
+         <div class="field"><label for="os-prefix">Folder in the bucket</label><input id="os-prefix" autocomplete="off" spellcheck="false" placeholder="rust-legacy-host/"></div>
+         <div class="field"><label for="os-keyid">Access key ID</label><input id="os-keyid" autocomplete="off" spellcheck="false"></div>
+         <div class="field"><label for="os-secret">Secret key</label><input id="os-secret" type="password" autocomplete="new-password" spellcheck="false"></div>
+         <label class="check"><input type="checkbox" id="os-pathstyle"> Path-style addresses (B2, R2, MinIO; AWS works either way)</label>
+        </fieldset>
+        <div class="field-pair">
+         <div class="field"><label for="os-every">Every (hours, 0 off)</label><input id="os-every" type="number" min="0" max="168" step="1"></div>
+         <div class="field"><label for="os-daily">And daily at</label><select id="os-daily"></select></div>
+        </div>
+        <div class="field-pair">
+         <div class="field"><label for="os-recent">Keep newest</label><input id="os-recent" type="number" min="1" max="1000" step="1"></div>
+         <div class="field"><label for="os-days">One a day for (days)</label><input id="os-days" type="number" min="0" max="3650" step="1"></div>
+        </div>
+        <label class="check"><input type="checkbox" id="os-encrypt"> Encrypt with a passphrase (recommended for cloud storage)</label>
+        <div class="field" id="os-pass-f"><label for="os-pass">Passphrase</label><input id="os-pass" type="password" autocomplete="new-password" minlength="10" maxlength="200"></div>
+        <p class="os-warn" id="os-pass-warn">Without the passphrase, encrypted sets cannot be restored. Keep a copy somewhere other than this machine.</p>
+        <button class="btn primary" type="submit">Save</button>
+       </form>
+      </section>
+     </aside>
+    </div>
+   </section>
+  </section>
+  <!-- Health (host/dashboard/health.mjs) -->
+  <section class="view" data-view="health" aria-labelledby="hl-h" hidden>
+   <header class="page-head"><p class="eyebrow" id="hl-eyebrow">Last 24 hours</p><h1 class="h" id="hl-h">Health</h1></header>
+   <div class="range" role="group" aria-label="Time range"><button class="chip" type="button" data-range="24h" aria-pressed="true">24 hours</button><button class="chip" type="button" data-range="7d" aria-pressed="false">7 days</button></div>
+   <div class="stats">
+    <div class="stat"><b id="hl-peak">–</b><span id="hl-peak-l">peak players</span></div>
+    <div class="stat"><b id="hl-up">–</b><span>server uptime</span></div>
+    <div class="stat"><b id="hl-freezes">–</b><span>freezes</span></div>
+    <div class="stat"><b id="hl-restarts">–</b><span>restarts</span></div>
+    <div class="stat"><b id="hl-errors">–</b><span>error lines</span></div>
+   </div>
+   <p class="note" id="hl-note" hidden></p>
+   <p class="marker-key mono" id="hl-key"><span class="mk freeze" aria-hidden="true"></span>freeze <span class="mk restart" aria-hidden="true"></span>restart</p>
+   <div class="charts" id="hl-charts"></div>
+   <details class="panel table-view"><summary class="mono">Show as a table</summary><div class="table-wrap"><table class="table" id="hl-table"><thead></thead><tbody></tbody></table></div></details>
+  </section>
+  <!-- Schedule (built by schedule.mjs) -->
+  <section class="view" data-view="schedule" aria-labelledby="sch-h" hidden></section>
+  <!-- Updates -->
+  <section class="view" data-view="updates" aria-labelledby="up-h" hidden>
+   <header class="page-head"><p class="eyebrow">Gateway, website and browser files</p><h1 class="h" id="up-h">Updates</h1></header>
+   <div class="stats">
+    <div class="stat"><b id="up-staged">–</b><span>waiting to install</span></div>
+    <div class="stat"><b id="up-installed">–</b><span>installed</span></div>
+    <div class="stat"><b id="up-last">–</b><span>since the last install</span></div>
+   </div>
+   <div class="acc-grid">
+    <div class="acc-side">
+     <section class="panel" aria-labelledby="ups-h">
+      <header class="panel-h"><h2 class="mono" id="ups-h">Ready to install</h2><p class="mono muted" id="up-app"></p></header>
+      <ol class="updates" id="up-staged-list"></ol>
+     </section>
+     <!-- Signed release feed (host/release-feed.mjs, dashboard release-feed.mjs) -->
+     <section class="panel" aria-labelledby="fr-h">
+      <header class="panel-h"><h2 class="mono" id="fr-h">Releases</h2><p class="mono muted" id="feed-published"></p></header>
+      <ol class="updates" id="feed-releases"></ol>
+     </section>
+    </div>
+    <aside class="acc-side">
+     <section class="panel" aria-labelledby="feed-h">
+      <header class="panel-h"><h2 class="mono" id="feed-h">Release feed</h2></header>
+      <dl class="facts" id="feed-facts"></dl>
+      <form class="connect-body" id="feed-form">
+       <p id="feed-off" hidden>No feed is set up. When the project publishes one, add its address and public key to <code>host.json</code> (<code>releaseFeed</code>); until then, add update files by hand below.</p>
+       <div class="field"><label for="feed-channel">Channel</label><select id="feed-channel"><option value="stable">Stable</option><option value="beta">Beta (also gets stable)</option></select></div>
+       <label class="check"><input type="checkbox" id="feed-auto"> Install automatically when the server is empty</label>
+       <div class="row"><button class="btn" type="submit">Save</button><button class="btn primary" type="button" id="feed-check">Check for updates</button></div>
+      </form>
+     </section>
+     <section class="panel" aria-labelledby="upa-h">
+      <header class="panel-h"><h2 class="mono" id="upa-h">Add an update</h2></header>
+      <form class="connect-body" id="up-form">
+       <p>An update is a <code>.tar</code> file made with <code>Publish-Kit.ps1</code> or <code>tools/build-kit-update.mjs</code>. Compare its SHA-256 with the <code>.sha256</code> file made beside it before you install.</p>
+       <div class="field"><label for="up-file">Update file</label><input id="up-file" type="file" accept=".tar" required></div>
+       <button class="btn primary" type="submit">Add update</button>
+      </form>
+     </section>
+     <section class="panel" aria-labelledby="uph-h">
+      <header class="panel-h"><h2 class="mono" id="uph-h">Installed</h2></header>
+      <ol class="updates" id="up-history"></ol>
+     </section>
+    </aside>
+   </div>
+  </section>
+  <!-- Plugins -->
+  <section class="view" data-view="plugins" aria-labelledby="pg-h" hidden>
+   <header class="page-head"><p class="eyebrow">Oxide plugins on this server</p><h1 class="h" id="pg-h">Plugins</h1></header>
+   <div class="stats">
+    <div class="stat"><b id="pg-on">–</b><span>on</span></div>
+    <div class="stat"><b id="pg-off">–</b><span>turned off</span></div>
+    <div class="stat"><b id="pg-removed">–</b><span>removed</span></div>
+   </div>
+   <p class="note" id="pg-note" hidden></p>
+   <p class="note">Plugins from other people run inside your game server, with full access to it and to your players. Add only plugins you trust: they are your responsibility. Our own adapter is listed here but is managed by the setup and the Updates page.</p>
+   <div class="acc-grid">
+    <section class="panel" aria-labelledby="pgl-h">
+     <header class="panel-h"><h2 class="mono" id="pgl-h">Plugins</h2><p class="mono muted" id="pg-dir"></p></header>
+     <div class="table-wrap"><table class="table" id="pg-table"><thead><tr><th scope="col">Plugin</th><th scope="col">Version</th><th scope="col">State</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table></div>
+     <p class="empty muted" id="pg-empty" hidden>No plugins in the folder yet.</p>
+     <p class="set-help pad" id="pg-reload-note"></p>
+    </section>
+    <aside class="acc-side">
+     <section class="panel" aria-labelledby="pga-h">
+      <header class="panel-h"><h2 class="mono" id="pga-h">Add a plugin</h2></header>
+      <form class="connect-body" id="pg-form">
+       <p>A plugin is one <code>.cs</code> file named after its class, like <code>Kits.cs</code>, up to 512 KB. A file with the same name replaces the old one, which is kept in the removed list.</p>
+       <div class="field"><label for="pg-file">Plugin file</label><input id="pg-file" type="file" accept=".cs" required></div>
+       <button class="btn primary" type="submit">Add plugin</button>
+      </form>
+     </section>
+     <section class="panel" aria-labelledby="pgr-h">
+      <header class="panel-h"><h2 class="mono" id="pgr-h">Removed</h2></header>
+      <ol class="event-list" id="pg-removed-list"></ol>
+     </section>
+    </aside>
+   </div>
+  </section>
+  <!-- Settings: its sections mount here (settings.mjs) -->
+  <section class="view" data-view="settings" aria-labelledby="set-h" hidden>
+   <header class="page-head"><p class="eyebrow">This server and this app</p><h1 class="h" id="set-h">Settings</h1><nav class="chips set-nav" id="settings-nav" aria-label="Settings sections" hidden></nav></header>
+   <div class="settings" id="settings-sections"></div>
+  </section>
+ </main>
+
+ <!-- Terminal panel (terminal.mjs): Host commands everywhere; PowerShell and CMD tabs only in the desktop app. -->
+ <aside class="term" id="term" aria-label="Terminal" hidden></aside>
+
+ <footer class="statusbar" aria-label="Status">
+  <p class="sb-item sb-main"><span class="beacon" id="sb-beacon" data-state="stopped"></span><span class="sb-k" id="sb-name">Game server</span><b id="sb-state" aria-live="polite">–</b></p>
+  <p class="sb-item"><span class="sb-k">Players</span><b id="sb-players">–</b></p>
+  <p class="sb-item sb-opt"><span class="sb-k">Up</span><b id="sb-up">–</b></p>
+  <p class="sb-item sb-opt"><span class="beacon" id="sb-web-beacon" data-state="stopped"></span><span class="sb-k">Website</span><b id="sb-web">–</b></p>
+  <p class="sb-item sb-opt" data-link-state><span class="beacon" data-state="starting"></span><span>Connecting</span></p>
+  <button class="sb-term" id="term-toggle" type="button" aria-controls="term" aria-expanded="false" aria-keyshortcuts="Control+`"><span class="sb-term-i" aria-hidden="true">&gt;_</span>Terminal<kbd>Ctrl+`</kbd></button>
+ </footer>
+</div>
+
+<dialog class="confirm" id="act" aria-labelledby="act-h">
+ <form method="dialog" id="act-form">
+  <h2 class="h" id="act-h"></h2>
+  <p id="act-text"></p>
+  <div class="field" id="act-msg-f"><label for="act-msg">Message (only this player sees it)</label><input id="act-msg" maxlength="200" autocomplete="off"></div>
+  <div class="field" id="act-reason-f"><label for="act-reason">Reason (goes in the audit log)</label><input id="act-reason" maxlength="200" autocomplete="off"></div>
+  <div class="field" id="act-dur-f"><label for="act-dur">How long</label><select id="act-dur"><option value="60">1 hour</option><option value="1440">1 day</option><option value="10080">7 days</option><option value="43200">30 days</option><option value="">Permanent</option></select></div>
+  <label class="check" id="act-native-f"><input type="checkbox" id="act-native"> Also put the character on the game server's own ban list</label>
+  <div class="row end">
+   <button class="btn" value="cancel" type="submit" formnovalidate>Cancel</button>
+   <button class="btn danger" value="ok" type="submit" id="act-ok"></button>
+  </div>
+ </form>
+</dialog>
+
+<dialog class="confirm" id="unlink" aria-labelledby="unlink-h">
+ <form method="dialog" id="unlink-form">
+  <h2 class="h" id="unlink-h">Unlink this account?</h2>
+  <p id="unlink-text"></p>
+  <div class="field"><label for="unlink-reason">Reason (goes in the audit log)</label><input id="unlink-reason" required minlength="3" maxlength="200" autocomplete="off"></div>
+  <p class="err" id="unlink-err" role="alert" hidden></p>
+  <div class="row end">
+   <button class="btn" value="cancel" type="submit" formnovalidate>Keep the link</button>
+   <button class="btn danger" value="ok" type="submit">Unlink</button>
+  </div>
+ </form>
+</dialog>
+
+<dialog class="confirm" id="os-restore" aria-labelledby="osr-h">
+ <form method="dialog" id="osr-form">
+  <h2 class="h" id="osr-h">Restore this set?</h2>
+  <p id="osr-text"></p>
+  <div class="field" id="osr-pass-f"><label for="osr-pass">Passphrase (leave empty to use the saved one)</label><input id="osr-pass" type="password" autocomplete="off" maxlength="200"></div>
+  <div class="row end">
+   <button class="btn" value="cancel" type="submit" formnovalidate>Cancel</button>
+   <button class="btn danger" value="ok" type="submit">Download and restore</button>
+  </div>
+ </form>
+</dialog>
+
+<dialog class="confirm" id="confirm" aria-labelledby="confirm-h">
+ <form method="dialog">
+  <h2 class="h" id="confirm-h">Stop the game server?</h2>
+  <p id="confirm-text"></p>
+  <div class="row end">
+   <button class="btn" value="cancel" type="submit">Keep it running</button>
+   <button class="btn danger" value="ok" type="submit" id="confirm-ok">Stop</button>
+  </div>
+ </form>
+</dialog>
+
+<dialog class="drawer" id="history" aria-labelledby="hi-h">
+ <div class="drawer-h">
+  <div><p class="eyebrow" id="hi-kind">Player history</p><h2 class="h" id="hi-h">Player</h2></div>
+  <button class="btn small" type="button" id="hi-close">Close</button>
+ </div>
+ <div id="hi-body" aria-live="polite"></div>
+</dialog>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookies · Rust Legacy Browser</title>
+<meta name="description" content="The few cookies and browser settings Rust Legacy Browser uses: no tracking, no adverts, no analytics.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/legal.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+</head>
+<body data-page="cookies">
+<!--#header-->
+<main id="main" class="wrap legal">
+ <div class="page-head"><h1 class="h">Cookies</h1><p class="mono updated">Last updated 22 October 2026</p></div>
+ <article class="prose">
+  <p><b>No tracking, no adverts, no analytics.</b> We only use cookies that sign-in and account security need, so there's no cookie banner to click through: the law doesn't ask for consent for these. Everything else the site remembers stays in your own browser.</p>
+
+  <h2>Cookies</h2>
+  <table>
+   <thead><tr><th>Name</th><th>What it's for</th><th>How long</th></tr></thead>
+   <tbody>
+    <tr><td><code>rlb_session</code></td><td>Keeps you signed in.</td><td>7 days, or until you sign out</td></tr>
+    <tr><td><code>rlb_login</code></td><td>Protects a Steam sign-in while you're away on their site.</td><td>10 minutes</td></tr>
+    <tr><td><code>rlb_signup</code></td><td>Remembers a new Steam sign-up while you pick a username.</td><td>15 minutes</td></tr>
+    <tr><td><code>rlb_device</code></td><td>Recognises this browser so banned players can't simply make a new account (set once you're signed in; we store only a hash of it). See the <a href="/privacy">Privacy notice</a>.</td><td>2 years</td></tr>
+   </tbody>
+  </table>
+  <p>All four are first-party, can't be read by scripts on the page, and are only sent over HTTPS. Cloudflare, which protects the site, may set its own security cookie when it needs to check a visitor is human.</p>
+
+  <h2>Settings kept in your browser</h2>
+  <p>These never leave your computer (they're in your browser's local storage, not sent to us):</p>
+  <ul>
+   <li>Your game options: graphics and sound settings, key bindings, console settings and quality presets.</li>
+   <li>Server browser favourites and history, and the server you're joining.</li>
+   <li>Single-player saves on the offline island.</li>
+   <li>Small website choices: menu music on or off, the live title-screen background, and dismissed notices.</li>
+  </ul>
+  <p>One exception is sent to us: a copy of the <code>rlb_device</code> token (<code>rlb-device</code>), so a browser that cleared its cookies is still recognised, and when it was last sent.</p>
+  <p>Clearing your browser's site data removes all of these and signs you out.</p>
+
+  <h2>More</h2>
+  <p>What we store about you on our side is in the <a href="/privacy">Privacy notice</a>.</p>
+ </article>
+</main>
+<!--#footer-->
+</body>
+</html>

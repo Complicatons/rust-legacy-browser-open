@@ -1,0 +1,33 @@
+# Runs the unit/integration suite (npm test) on every push to main and on every pull request; a failure shows as a red
+# check on the commit or PR. The coordinator's VM auto-deploy only takes commits whose run of this file is green, so keep
+# the file name (test.yml) and the workflow name (Tests) as they are.
+#
+# The recovered game data and the other private inputs (browser/assets/recovered, analysis/, site/generated,
+# build/vm-test/adapter) are git-ignored and never reach this runner; the tests that need them skip with "no recovered
+# assets" (tests/helpers/assets.mjs). Nothing here uploads artifacts or reads secrets.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: npm
+      - run: npm ci
+      - run: npm test

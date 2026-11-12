@@ -1,0 +1,92 @@
+/* The Island: sidebar of places and a full-height map viewer. */
+.island{display:grid;grid-template-columns:340px minmax(0,1fr);height:calc(100vh - var(--bar-h));min-height:560px}
+.island .side{display:flex;flex-direction:column;gap:14px;padding:22px 20px;border-right:1px solid var(--line);overflow:auto;background:var(--k)}
+.island .side .h{font-size:40px}
+.island .lede{margin:0;font-size:15px}
+.island-stats{border:1px solid var(--line);grid-template-columns:1fr 1fr;margin:0}
+.island-stats .stat{padding:10px 12px}
+.island-stats .stat b{font-size:26px}
+.island-stats .stat span{white-space:nowrap;letter-spacing:.08em}
+.island-stats .stat:nth-child(2n){border-left:1px solid var(--line)}
+.island-stats .stat:nth-child(n+3){border-top:1px solid var(--line)}
+.search{position:relative}
+.search input{width:100%;height:40px;padding:0 12px 0 34px;background:var(--k1);border:1px solid var(--line2);color:var(--w)}
+.search input:focus{outline:2px solid var(--w);outline-offset:0}
+.search svg{position:absolute;left:10px;top:11px;width:16px;height:16px;color:var(--w3)}
+.place-list h2{margin:14px 0 6px;font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--w3)}
+.place-list button{display:grid;grid-template-columns:1fr auto;gap:10px;width:100%;padding:9px 10px;background:none;border:0;border-left:3px solid transparent;color:var(--w);font:inherit;text-align:left;cursor:pointer}
+.place-list button:hover,.place-list button[aria-current=true]{background:var(--k1)}
+.place-list button[aria-current=true]{border-left-color:var(--or)}
+.place-list .n{font:700 11px var(--mono);color:var(--w3)}
+.place-list .n.hot{color:var(--red-text)}
+.place-card{padding:16px}
+.place-card h2{margin:0 0 6px;font:900 24px/1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.place-card .features{color:var(--w2);font-size:14px;margin:0 0 12px}
+.place-card dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 12px}
+.place-card dt{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w3)}
+.place-card dd{margin:0;font:700 13px var(--mono)}
+.map-area{position:relative;display:flex;flex-direction:column;min-width:0}
+.map-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--k)}
+.seg-ctl{display:flex;border:1px solid var(--line2)}
+.seg-ctl button{height:34px;padding:0 14px;background:none;border:0;border-left:1px solid var(--line2);color:var(--w2);font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.seg-ctl button:first-child{border-left:0}
+.seg-ctl button:hover{color:var(--w)}
+.seg-ctl button[aria-pressed=true]{background:var(--w);color:var(--k)}
+.toggles{display:flex;flex-wrap:wrap;gap:6px 14px}
+.check{display:inline-flex;align-items:center;gap:7px;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w2);cursor:pointer}
+.check input{width:15px;height:15px;accent-color:var(--or)}
+.map{position:relative;flex:1;min-height:0}
+/* Viewer */
+.mapview{position:relative;overflow:hidden;background:#0e1a20;cursor:grab;touch-action:none;user-select:none;outline-offset:-3px}
+.mapview.dragging{cursor:grabbing}
+.map-stack{position:absolute;inset:0;overflow:hidden}
+.map-stack img{position:absolute;left:0;top:0;transform-origin:0 0;image-rendering:auto;pointer-events:none}
+.map-stack img.classic{max-width:none}
+.map-stack .credit{position:absolute;right:8px;bottom:34px;background:rgba(10,10,10,.8);padding:3px 8px;color:var(--w2);font-size:10px}
+.map-stack .pending,.map>.map-missing{position:absolute;inset:24px;min-height:0;align-content:center;justify-items:center;text-align:center}
+.map-vector{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+.map-vector .rad circle{fill:rgba(198,47,36,.14);stroke:#e2533a;stroke-width:calc(2px * var(--px));stroke-dasharray:calc(6px * var(--px)) calc(5px * var(--px))}
+.map-vector .spawns circle{fill:#7fe0c8;stroke:#0a0a0a;stroke-width:calc(1.5px * var(--px));r:calc(4px * var(--px))}
+.map-vector .crates rect{fill:#e8a93a;stroke:#0a0a0a;stroke-width:calc(1.5px * var(--px));width:calc(8px * var(--px));height:calc(8px * var(--px));transform:translate(calc(-4px * var(--px)),calc(-4px * var(--px)))}
+.map-vector .mutants circle{fill:rgba(170,90,215,.16);stroke:#c27ae6;stroke-width:calc(2px * var(--px));stroke-dasharray:calc(3px * var(--px)) calc(4px * var(--px))}
+.map-vector .animals circle{fill:rgba(95,169,160,.09);stroke:#5fa9a0;stroke-width:calc(1.5px * var(--px));stroke-dasharray:calc(8px * var(--px)) calc(5px * var(--px))}
+.map-vector .resources circle{fill:rgba(232,169,58,.06);stroke:#d9a24a;stroke-width:calc(1.5px * var(--px));stroke-dasharray:calc(2px * var(--px)) calc(5px * var(--px))}
+.map-vector .nobuild circle{fill:rgba(242,239,233,.14);stroke:#f2efe9;stroke-width:calc(1.5px * var(--px))}
+.map-vector .contours path{fill:none;stroke:rgba(242,239,233,.22);stroke-width:calc(1px * var(--px))}
+.map-vector .contours path.major{stroke:rgba(242,239,233,.45);stroke-width:calc(1.4px * var(--px))}
+.map-vector .contours path.coast{stroke:#7fb6d6;stroke-width:calc(1.8px * var(--px))}
+.map-vector .grid line{stroke:rgba(242,239,233,.28);stroke-width:calc(1px * var(--px))}
+.map-labels{position:absolute;inset:0;pointer-events:none}
+.place{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px 0 4px;background:rgba(10,10,10,.82);border:1px solid rgba(242,239,233,.18);color:var(--w);font:700 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;pointer-events:auto;cursor:pointer}
+.place i{display:grid;place-items:center;min-width:16px;height:16px;padding:0 3px;background:var(--w);color:var(--k);font-style:normal;font-size:9px}
+.place:hover,.place.selected{border-color:var(--or)}
+.place.selected i{background:var(--or-fill);color:#fff}
+.swipe{position:absolute;top:0;bottom:0;width:4px;margin-left:-2px;background:var(--w);cursor:ew-resize;z-index:3}
+.swipe::after{content:"◀ ▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:6px 8px;background:var(--w);color:var(--k);font:700 10px var(--mono);white-space:nowrap}
+.map-hud{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:16px;padding:6px 10px;background:linear-gradient(0deg,rgba(10,10,10,.85),rgba(10,10,10,0));pointer-events:none}
+.map-hud .readout{color:var(--w2);min-width:200px}
+.map-hud .scale{display:flex;white-space:nowrap;align-items:center;gap:8px;color:var(--w2)}
+.map-hud .scale i{display:block;height:6px;border:2px solid var(--w2);border-top:0}
+.map-hud .north{margin-left:auto;text-align:center;color:var(--w);line-height:1}
+.map-tip{position:absolute;left:0;top:0;z-index:5;max-width:280px;padding:7px 10px;background:rgba(10,10,10,.92);border:1px solid var(--line2);border-left:3px solid var(--or);pointer-events:none;will-change:transform}
+.map-tip b{display:block;font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--w)}
+.map-tip span{display:block;margin-top:3px;font-size:13px;line-height:1.4;color:var(--w2);white-space:pre-line}
+@media (max-width:900px){
+ .island{grid-template-columns:1fr;grid-template-rows:auto minmax(420px,70vh);height:auto}
+ .island .side{border-right:0;border-bottom:1px solid var(--line);max-height:none}
+ .place-list{max-height:260px;overflow:auto}
+ .map-area{min-height:420px}
+}
+.check .sw{display:inline-block;width:12px;height:12px;flex:none;border:1.5px solid currentColor}
+.sw.rad{color:#e2533a;border-style:dashed;border-radius:50%;background:rgba(198,47,36,.2)}
+.sw.crates{color:#0a0a0a;background:#e8a93a}
+.sw.mutants{color:#c27ae6;border-style:dotted;border-radius:50%;background:rgba(170,90,215,.25)}
+.sw.animals{color:#5fa9a0;border-style:dashed;border-radius:50%}
+.sw.resources{color:#d9a24a;border-style:dotted;border-radius:50%}
+.sw.nobuild{color:#f2efe9;border-radius:50%;background:rgba(242,239,233,.2)}
+.sw.elevation{color:rgba(242,239,233,.6);border-width:0 0 0 0;background:repeating-linear-gradient(0deg,transparent 0 3px,currentColor 3px 4px)}
+.sw.spawns{color:#0a0a0a;border-radius:50%;background:#7fe0c8;width:9px;height:9px}
+.place-card .odds{display:grid;gap:6px;margin:0 0 12px}
+.place-card .odds div{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font:700 12px var(--mono)}
+.place-card .odds i{display:block;grid-column:1/-1;height:4px;background:var(--line)}
+.place-card .odds i b{display:block;height:100%;background:#e8a93a}

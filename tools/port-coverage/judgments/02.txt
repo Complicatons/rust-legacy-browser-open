@@ -1,0 +1,128 @@
+@Assembly-CSharp
+CharacterArmorTrait|P|Trait: default armour model group|tools/unity_armor.py
+CharacterBody|N|Sample character body script|
+CharacterCCMotorTrait|P|Trait: motor settings/prefab and motor message flags|tools/recover_player.py, browser/motor.mjs
+CharacterContextProbeTrait|P|Trait: use-probe ray length|browser/context-ui.mjs, browser/main.mjs
+CharacterCrouchTrait|P|Trait: crouch curve, speed fraction and in/out speeds|tools/recover_player.py, browser/motor.mjs
+CharacterDeathDropPrefabTrait|P|Trait: prefab dropped on death (loot sack)|browser/death-drop.mjs
+CharacterDeathSignal|P|Death callback delegate|with: browser/main.mjs (death flow)
+CharacterDeathSignalReason|P|Death signal reason enum|with: browser/main.mjs
+CharacterFootstepTrait|P|Trait: footstep clips, stride and audio distances|browser/audio.mjs, tools/export_audio.py
+CharacterImpactTrait|N|Trait marker for fleshy/no impact (no fields, never read)|empty:
+CharacterInterpolatorBase|P|Remote-character snapshot buffer: sorted Push, capacity, sync at Interpolation.time|browser/player-motion.mjs:pushSnapshot, browser/player-view.mjs
+CharacterInterpolatorBase#2|P|Typed snapshot buffer for character interpolators|browser/player-motion.mjs:pushSnapshot
+CharacterInterpolatorTrait|P|Trait: interpolator component (HumanInterpolator -> CharacterStateInterpolator), buffer size, extrapolation off, allowable time span 0.1|browser/player-motion.mjs:samplePlayer
+CharacterItemAttachmentTrait|P|Trait: held-item attachment socket|tools/export_players.py
+CharacterItemDropPrefabTrait|P|Trait: dropped-item prefab|tools/export_deployables.py, browser/dropped-items.mjs
+CharacterLoadoutTrait|P|Trait: starting loadout (read by the server's InventoryHolder)|with: browser/inventory.mjs (default loadout)
+CharacterMeleeTrait|N|Trait: NPC melee damage range|empty: data never read by client or server code
+CharacterMetabolismTrait|P|Trait: metabolism tick rate and hunger damage|browser/survival.mjs, browser/main.mjs
+CharacterNavAgentTrait|P|Trait: NavMeshAgent settings for wildlife|browser/nav-crowd.mjs, tools/export_animals.py
+CharacterNPCHealthTrait|N|Trait: NPC initial health|empty: data never read by client or server code
+CharacterOverlayTrait|P|Trait: damage overlays and take-damage/melee bob|tools/export_feedback.py, browser/combat-feedback.mjs
+CharacterPrefabFieldAttribute|N|Editor lookup attribute|editor:
+CharacterPrefab|P|NetMainPrefab for characters with a trait map|tools/recover_player.py, tools/export_animals.py
+CharacterRagdollTrait|P|Trait: ragdoll prefab|tools/export_ragdoll.py, browser/ragdoll-death.mjs
+CharacterRoamingTrait|N|Trait: NPC roam/flee distances|empty: data never read by client or server code
+CharacterSleepingAvatarTrait|N|Trait: sleeper prefab and placement|server: the server's SleepingAvatar creates sleepers; remote sleepers render in browser/player-view.mjs
+CharacterSoundsTrait|P|Trait: character attack/alert/idle/death sounds|tools/export_audio.py
+CharacterStateFlags|P|Packed character state bits (crouch, sprint, aim, attack, airborne...)|browser/net-client.mjs, bridge/ulink/rust.mjs
+CharacterStateFlagsExtenders|N|BitStream helpers for state flags|
+CharacterStateInterpolator|P|Remote player interpolator (added by type name from HumanInterpolator): capped-gap lerp, angle and state-flag merge, no extrapolation|browser/player-motion.mjs:samplePlayer, browser/player-view.mjs
+CharacterStateInterpolatorData|P|Origin/eye-angles/state sample for interpolation|with: browser/player-motion.mjs
+CharacterStateSignal|P|State-change callback delegate|with: browser/main.mjs
+CharacterTOETrait|N|Trait: NPC attack/seek distances|empty: data never read by client or server code
+CharacterTrait|P|Base trait class|with: tools/recover_player.py
+CharacterTraitMap|P|Map of traits per character type|tools/recover_player.py, tools/export_animals.py
+CharacterTransformInterpolator|N|Transform-only character interpolator (not reached)|
+CharacterTransformInterpolatorData|N|Data for the transform interpolator|
+CharacterWalkSpeedTrait|N|Trait: walk/jog/run speeds|empty: data never read by client or server code
+chat|P|Console system chat.add / chat.enabled|browser/chat.mjs, browser/console-route.mjs
+ChatLine|P|One chat line (name + text labels)|browser/chat.mjs
+ChatUI|P|Chat window: open/close, input, lines, layout|browser/chat.mjs
+ChickenAI|P|Chicken AI: gender material, move animation|browser/animals.mjs, browser/animal-view.mjs
+ChildControlEventHandler|P|dfGUI child-control event delegate|engine: DOM events in browser/dfgui.mjs
+ClearFirstFrame|P|Clears the screen on the first rendered frame|browser/quality.mjs
+ClientConnect|P|Connect flow: Steam auth ticket, uLink connect, level load, failures|browser/front-end.mjs, bridge/gateway.mjs, bridge/ulink/ulink.mjs
+ClientInit|P|Client startup: config load, console, disconnect handling|browser/front-end.mjs
+ClientStreamLevelLoader|N|Streaming level loader|
+ClientVitalsSync|P|Local health/bleed sync and HUD damage prefab|browser/server-vitals.mjs, browser/hud.mjs, browser/combat-feedback.mjs
+ClusterServer|N|Empty cluster server stub|
+CombineChildren|N|Combines a structure's child meshes into one|engine: the port draws structures with instancing (browser/structures.mjs)
+CompassRenderProxy|N|Compass needle renderer (only on the Compass prefab, which nothing spawns)|
+conditionloss|P|Console system: condition loss multipliers|browser/item-condition.mjs, browser/console-route.mjs
+config|P|Console system config.save / config.load|browser/client-commands.mjs, browser/convars.mjs
+ConnectionAcceptor|N|Empty marker component|empty:
+ConsoleNetworker|P|Console command forwarding to the server and CL_ConsoleMessage/Command replies|browser/console-route.mjs, browser/online.mjs
+ConsoleSystem|P|Convar/command registry, parsing, run, save/load|browser/convars.mjs, browser/console-route.mjs, browser/client-commands.mjs
+ConsoleWindow|P|F1 console window|browser/console-window.mjs
+ConsumableDataBlock|P|Food/drink: calories, water, rads, heal, poison, cooking|browser/item-ops.mjs, browser/item-menu.mjs, browser/survival.mjs
+ConsumableItem|P|Consumable inventory item (cookable info)|browser/deployables.mjs
+Context|P|Use/context system: query, menus, quick tap, RPCs|browser/context-ui.mjs, browser/online.mjs
+ContextActionPrototype|P|Context menu option prototype|with: browser/context-ui.mjs
+ContextActivator|N|Context requestable that forwards to an Activatable (not on shipped prefabs)|
+ContextClientStage|P|Client-side context menu stage|with: browser/context-ui.mjs
+ContextClientStageMenuItem|P|Context menu item|with: browser/context-ui.mjs
+ContextClientState|P|Context client state enum|browser/context-ui.mjs
+ContextClientWorkingCallback|P|Context working-state callback|with: browser/context-ui.mjs
+ContextExecution|P|Quick/menu execution flags|browser/context-ui.mjs
+ContextMenuData|P|Serialized context menu options|bridge/ulink/rust.mjs, browser/context-ui.mjs
+ContextMenuItemData|P|One serialized context option|with: bridge/ulink/rust.mjs
+ContextMessenger|N|Context requestable that sends messages|
+ContextProbe|P|Use probe: raycast, highlight and E-use check|browser/context-ui.mjs, browser/main.mjs
+ContextRequestable|P|Helpers forwarding context requests to Useable|with: browser/context-ui.mjs
+ContextResponse|P|Context response enum|with: browser/context-ui.mjs
+ContextSprite|P|World context hint sprites with fading|browser/context-sprites.mjs
+ContextStatus|N|Context status sprite helper|
+ContextStatusFlags|P|Context sprite status flags|with: browser/context-sprites.mjs
+ContextTest|N|Test context script|debug:
+Contextual|P|Component-interface driver for context requestables|with: browser/context-ui.mjs
+ContextUI|P|Context menu GUI (OnGUI box, options, selection)|browser/context-ui.mjs
+ControlConfiguration|P|Trait: control configuration base|browser/motor.mjs
+Controllable|P|Control chain: who controls a character (local/remote/AI), enter/exit/promote|with: browser/online.mjs, bridge/game-bridge.mjs
+ControllableCallstackException|N|Exception for control-chain misuse|
+ControllablePrefab|P|Character prefab with vessel/controller settings|tools/recover_player.py
+ControllablePrefabFieldAttribute|N|Editor lookup attribute|editor:
+Controller|P|Controller addon base: local input frames, pre-render, control enter/exit|with: browser/main.mjs (local HumanController path)
+ControllerClass|P|Controller class configuration (local/remote player/AI component names)|with: browser/online.mjs
+ControllerClassesConfigurations|P|Controller class names per role|with: browser/online.mjs
+ControlMultiTouchEventHandler|N|dfGUI multitouch delegate|engine: DOM events
+ConVar|P|Typed convar accessors|browser/convars.mjs
+ConvarBinding|P|Options-menu control bound to a convar|browser/convars.mjs, browser/front-end.mjs
+CountedSet|N|Reference-counted set|
+CraftingInventory|P|Crafting: requirements, workbench, start/cancel, CRFU/CRFC/CRFS RPCs|browser/crafting.mjs, browser/inventory.mjs
+CraftingSession|P|Crafting job state (progress, duration, amount)|with: browser/crafting.mjs
+CraterMaker|N|Crater decal maker (unused by shipped content)|
+CRC32|N|CRC32 hash|
+CreateCraterOnImpact|N|Crater on collision (unused by shipped content)|
+Crouchable|P|Crouch state, smoothing and eye offset|browser/motor.mjs
+CullCell|N|Network culling cell debug object (OnGUI, height cast) on the GridCell prefab|engine: uLink scoping is the server's job; the gateway forwards what the server sends
+CullGrid|N|Network culling grid maths (cell/group IDs) for uLink scoping|engine: server-side network scoping; nothing visible client-side
+CullGridSetup|N|Cull grid dimensions|engine: server-side network scoping
+CurveUtility|P|EvaluateClampedTime and curve start/end|browser/viewmodel.mjs
+CustomInstantiationArgs|P|Network instantiation arguments|with: bridge/ulink/rust.mjs, browser/online.mjs
+CustomMeshMaker|N|ScriptableObject mesh container (CenteredContext asset, nothing reads it)|empty: nothing reads the CenteredContext asset
+DamageBeing|P|Attacker/victim identity in damage events|with: browser/take-damage.mjs
+DamageEvent|P|Damage event (attacker, victim, types, amount, body part)|browser/take-damage.mjs
+DamageTypeFlags|P|Damage type bit flags|with: browser/take-damage.mjs
+DamageTypeIndex|P|Damage type indices|with: browser/combat.mjs
+DamageTypeList|P|Per-type damage/armour values|browser/combat.mjs, browser/item-condition.mjs
+DamageTypeNames|N|Damage type name conversion|
+Datablock|P|Base datablock: unique ID, hashing|browser/tooltip.mjs, tools/export_items.py
+DatablockDictionary|P|All datablocks by name/ID, loot spawn lists|tools/export_items.py, tools/export_loot.py
+DeathScreen|P|Death screen: description, respawn buttons|browser/death-screen.mjs
+deathscreen|P|Console system deathscreen.show / reason|browser/death-screen.mjs, browser/client-commands.mjs
+DeathTransfer|P|Local death: ragdoll creation, killed-by messages, death shot|browser/ragdoll-death.mjs, browser/death-screen.mjs
+DebugInput|P|Input wrapper used by HumanController|engine: browser keyboard input (browser/key-bindings.mjs)
+DefaultTalkController|P|Voice push-to-talk controller|browser/voice.mjs
+DeployableCorpse|P|Destroyed deployable corpse with lifetime|browser/deployables.mjs
+DeployableInventoryDataBlock|P|Deployable with an inventory (initial items)|browser/deployables.mjs, browser/tooltip.mjs
+DeployableItem|P|Held deployable: preview render, placement checks, place|browser/placement-preview.mjs, browser/main.mjs
+DeployableItemDataBlock|P|Deployable item: placement rules, fit requirements, gizmo|browser/deployables.mjs, tools/export_deployables.py
+DeployableObject|P|Placed deployable: owner, decay, carrier, death|browser/deployables.mjs
+DeployableOrientationMode|P|Deployable orientation enum|browser/deployables.mjs
+DeployedObjectInfo|P|Owner info of a deployed object|with: browser/deployables.mjs
+DeployedRespawn|P|Respawn deployable (bed/bag) cooldown and spawn pose|browser/deployables.mjs
+DestroyGameObjectOnAwake|N|Destroys its object on Awake|
+DestroysOnDisconnect|P|Objects destroyed when the client disconnects|with: browser/online.mjs (session teardown)
+DeviceTime|N|Device clock component|

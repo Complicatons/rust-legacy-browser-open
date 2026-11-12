@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose a new password · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/auth-pages.mjs"></script>
+</head>
+<body data-page="reset">
+<!--#header-->
+<main id="main" class="auth-split">
+ <aside class="auth-art" aria-hidden="true"><div><div class="h">New<br>password</div><span class="sub">Almost there</span><span class="mono">The original island · in your browser · preview</span></div></aside>
+ <section class="auth-form"><div>
+  <h1 class="h">New password</h1>
+  <p class="lede">Choosing a new password signs you out everywhere.</p>
+  <div class="notice" id="done" hidden><h2>Password changed</h2><p><a href="/signin">Sign in</a> with your new password.</p></div>
+  <div class="notice" id="bad-link" hidden><h2>Link not valid</h2><p>It has expired or was already used. <a href="/forgot">Request a new link</a>.</p></div>
+  <form id="reset-form" novalidate>
+   <div class="field" data-field="password">
+    <label for="f-password">New password</label>
+    <div class="input-row"><input id="f-password" name="password" type="password" autocomplete="new-password" required maxlength="128"><button class="btn pw-toggle" type="button" aria-pressed="false" aria-controls="f-password">Show</button></div>
+    <div class="meter" aria-hidden="true"><i></i></div>
+    <p class="err" id="f-password-err" hidden></p>
+   </div>
+   <button class="btn-play" type="submit"><span>Save password</span><span class="key">Enter</span></button>
+  </form>
+ </div></section>
+</main>
+<!--#footer-->
+</body>
+</html>

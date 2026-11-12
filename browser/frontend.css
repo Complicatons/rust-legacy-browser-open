@@ -1,0 +1,72 @@
+.legacy-front{font-family:RobotoCondensed-Regular,Arial,sans-serif;color:#ddd;background:#252525;border:8px solid transparent;border-image:var(--legacy-window-background) 8 fill / 8px;border-radius:0;box-shadow:0 4px 20px #0009}
+.legacy-front h2{font-family:RobotoCondensed-Bold,Arial,sans-serif;font-size:30px;font-weight:normal;margin:0 0 22px;text-transform:lowercase}
+.legacy-settings{width:620px;max-width:none;padding:28px}
+.legacy-settings::backdrop{background:#0005}
+.legacy-setting-row{display:grid;grid-template-columns:160px 1fr 45px;gap:14px;align-items:center;margin:24px 0}
+.legacy-setting-row label{font-size:20px}.legacy-setting-row span{grid-column:2/4;color:#999;font-size:14px}
+.legacy-front input[type=range]{width:100%;accent-color:#a93320}.legacy-front input[type=checkbox]{width:22px;height:22px;accent-color:#a93320}
+.legacy-front button{background:#383838 var(--legacy-button-normal) center/100% 100%;color:#ddd;font:18px RobotoCondensed-Bold,Arial,sans-serif;border:1px solid #161616;border-radius:0;padding:10px 22px;cursor:pointer}
+.legacy-front button:hover{background-image:var(--legacy-button-hover)}.legacy-front button:active{background-image:var(--legacy-button-down)}
+.legacy-controls-status{min-height:20px;color:#bbb}
+#world.mouse-captured{cursor:none}#mouse-capture-status{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:1100;margin:0;padding:8px 14px;background:#222e;color:#eee;font:16px RobotoCondensed-Regular,Arial,sans-serif;pointer-events:none}
+/* Owner playtest (2026-10-29): a one-time, dismissible tip on join — Chromium never lets a page cancel Ctrl+W/T outside
+   fullscreen (browser-shortcuts.mjs), so this points players at the two real options instead of pretending to fix it. */
+#join-controls-tip{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:1100;margin:0;padding:10px 16px;background:#222e;color:#eee;font:15px RobotoCondensed-Regular,Arial,sans-serif;display:flex;align-items:center;gap:12px;max-width:min(520px,calc(100vw - 32px));pointer-events:auto}
+#join-controls-tip button{flex:none;background:none;border:none;color:#bbb;font:18px/1 RobotoCondensed-Bold,Arial,sans-serif;cursor:pointer;padding:2px 6px}
+#join-controls-tip button:hover{color:#fff}
+.legacy-bitmap{font-size:0;line-height:0}.legacy-bitmap canvas{position:static;width:auto;height:auto;display:block;image-rendering:pixelated}
+.legacy-front select{background:#222;color:#ddd;border:1px solid #111;border-radius:0;font:16px RobotoCondensed-Regular,Arial,sans-serif;padding:6px}
+/* Original front end (front-end.mjs / dfgui.mjs): absolutely positioned dfControls in screen pixels (pixel-perfect GameUI). */
+#front-end{position:fixed;inset:0;z-index:2000;pointer-events:none;overflow:hidden}
+#front-end .df-layer{position:absolute;inset:0;pointer-events:none}
+#front-end .df-loading{z-index:2}#front-end .df-popups{z-index:3}
+#front-end .df-instance{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
+#front-end .df{position:absolute;box-sizing:border-box;margin:0;padding:0}
+#front-end .df[hidden]{display:none}
+#front-end .df>canvas.df-bg{position:absolute;inset:0;left:0;top:0;width:100%;height:100%;max-width:none;transform:none;filter:none;display:block;pointer-events:none;image-rendering:auto}
+#front-end .df>canvas.df-bg[hidden]{display:none}
+#front-end .df-text{position:absolute;inset:0;display:flex;box-sizing:border-box;overflow:visible;color:#fff;pointer-events:none;user-select:none;-webkit-user-select:none}
+#front-end .df-text canvas{position:static;inset:auto;width:auto;height:auto;max-width:none;transform:none;filter:none;display:block;image-rendering:pixelated}
+#front-end .df-text a{color:inherit;pointer-events:auto;text-decoration:underline}
+#front-end .df-scroll{overflow-x:hidden;overflow-y:auto;scrollbar-width:none}#front-end .df-scroll::-webkit-scrollbar{display:none}
+#front-end .df-dfButton,#front-end .df-dfCheckbox,#front-end .df-dfSlider{cursor:default}
+#front-end .df-inert{filter:brightness(.55)}
+/* Normal (player) entry: the developer explorer UI only exists behind ?dev. */
+body.rlb-player>header,body.rlb-player>aside{display:none}
+#menu-background{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+/* MainMenu.Show: BlurCamera blurs what the cameras drew; HudEnabled.Disable hides the HUD. */
+body.rlb-menu-open #world,body.rlb-menu-open #menu-background{filter:blur(var(--menu-blur,9px))}
+body.rlb-menu-open #game-hud,body.rlb-menu-open #belt,body.rlb-menu-open #use-hint,body.rlb-menu-open #use-hover,body.rlb-menu-open #notices,body.rlb-menu-open #popup-ui{visibility:hidden}
+body.rlb-player #vitals{display:none}
+/* dfGUI layers outside #front-end (.df-host: F1 ConsoleWindow, in-game PopupUI notices); same rules as #front-end. */
+.df-host canvas{position:absolute;inset:auto;width:auto;height:auto;max-width:none;transform:none;filter:none}
+.df-host .df-layer{position:absolute;inset:0;pointer-events:none}
+.df-host .df-instance{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;isolation:isolate} /* one stacking context per instance: a later popup (BringToFront) covers an earlier one whole */
+.df-host .df{position:absolute;box-sizing:border-box;margin:0;padding:0}
+.df-host .df[hidden]{display:none}
+.df-host .df>canvas.df-bg{position:absolute;inset:0;left:0;top:0;width:100%;height:100%;display:block;pointer-events:none}
+.df-host .df>canvas.df-bg[hidden]{display:none}
+.df-host .df-text{position:absolute;inset:0;display:flex;box-sizing:border-box;overflow:visible;color:#fff;pointer-events:none;user-select:none;-webkit-user-select:none}
+.df-host .df-text canvas{position:static;display:block;image-rendering:pixelated}
+/* F1 ConsoleWindow (console-window.mjs): dfPanel.BringToFront puts it over the rest of the GameUI. */
+#game-console{position:fixed;inset:0;z-index:2100;pointer-events:none;overflow:hidden}
+#game-console[hidden]{display:none}
+#game-console .console-log{position:absolute;left:0;top:0;width:100%;pointer-events:none}
+#game-console .console-log p{position:relative;margin:0;padding:0}
+#game-console .console-log canvas{position:static;display:block;image-rendering:pixelated}
+#game-console .console-plain{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:pre}
+#game-console .console-form{position:absolute;inset:0;margin:0}
+#game-console #console-input{position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;margin:0;padding:4px;border:0;border-radius:0;background:transparent;color:transparent;caret-color:transparent;font:11px monospace;outline:none}
+#game-console #console-input::selection{background:transparent;color:transparent}
+#game-console .console-input-text{position:absolute;overflow:hidden;pointer-events:none}
+#game-console .console-input-text>*{position:absolute;left:0;top:0}
+#game-console .console-input-text>i{height:100%}
+#game-console .console-input-text>canvas.console-input-glyphs{position:absolute;left:0;top:0}
+/* Original LockEntry panel (lock-entry.mjs): GameUI dfGUI layer above the HUD, popups and the use menu, below the main menu. */
+#lock-entry{position:fixed;inset:0;z-index:7;pointer-events:none;overflow:hidden}
+#lock-entry[hidden]{display:none}
+#lock-entry #lock-code{position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:transparent;caret-color:transparent;font:16px monospace;outline:none;pointer-events:auto}
+#lock-entry #lock-code::selection{background:transparent;color:transparent}
+#lock-entry .lock-input-text{position:absolute;overflow:visible;pointer-events:none}
+#lock-entry .lock-input-text>*{position:absolute;left:0;top:0}
+#lock-entry .lock-text{white-space:pre}

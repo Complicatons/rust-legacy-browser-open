@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in a launcher · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/auth.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/desktop-approve.mjs"></script>
+</head>
+<body data-page="desktop-approve">
+<!--#header-->
+<main id="main" class="wrap account">
+ <div class="page-head"><h1 class="h">Sign in a launcher</h1><p>For accounts that sign in with Steam.</p></div>
+ <section class="acc-section" aria-labelledby="da-code"><h2 id="da-code">Code from your launcher</h2>
+  <form class="acc-form da-form" id="approve-form" novalidate>
+   <p class="lede">Type the code your desktop launcher shows on this PC. Only enter a code you started yourself: approving it signs that launcher in as you.</p>
+   <div class="field" data-field="code">
+    <label for="f-code">Code</label>
+    <input id="f-code" name="code" type="text" autocomplete="off" spellcheck="false" autocapitalize="characters" required maxlength="9" placeholder="XXXX-XXXX" class="mono da-code">
+    <p class="err" id="f-code-err" hidden></p>
+   </div>
+   <div class="row"><button class="btn" type="submit">Sign in the launcher</button></div>
+  </form>
+  <div class="da-done" id="approved" hidden>
+   <p class="badge ok">Signed in</p>
+   <p class="lede"><b id="approved-device"></b> is now signed in. Go back to the launcher; it continues by itself.</p>
+   <p class="muted">Changed your mind? Sign it out on your <a href="/account#launchers">account page</a>.</p>
+  </div>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

@@ -1,0 +1,19 @@
+/* Privacy, terms, cookies and contact: plain reading pages in the site's prose style. */
+.legal{padding-bottom:72px}
+.legal .updated{margin:6px 0 0;color:var(--w3);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.legal .prose h2{margin-top:1.6em}
+.legal .prose li{margin-bottom:.35em}
+.legal .prose code{font:600 .9em var(--mono);color:var(--w)}
+.legal .prose table{width:100%;border-collapse:collapse;font-size:15px}
+.legal .prose th,.legal .prose td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}
+.legal .prose th{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w2);background:var(--k1)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;max-width:760px;margin:0 0 32px}
+.contact-card{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--k1);border:1px solid var(--line2);color:var(--w);text-decoration:none;transition:border-color .15s,background .15s}
+.contact-card:hover{border-color:var(--w3);background:var(--k2)}
+.contact-card svg{flex:none;width:34px;height:34px;fill:currentColor}
+.contact-card b{display:block;font:900 20px/1.1 var(--heavy);font-stretch:125%;text-transform:uppercase}
+.contact-card small{display:block;margin-top:4px;color:var(--w2);font-size:14px;line-height:1.4}
+.contact-card.discord{background:#5865f2;border-color:#5865f2}
+.contact-card.discord:hover{background:#4752c4;border-color:#4752c4}
+.contact-card.discord small,.contact-card.discord code{color:#fff}
+.contact-card code{font:600 .95em var(--mono)}

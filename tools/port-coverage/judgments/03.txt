@@ -1,0 +1,169 @@
+@Assembly-CSharp
+dfAbortRenderingException|N|dfGUI render-abort exception|engine: DOM/canvas rendering in browser/dfgui.mjs
+dfAnchorMargins|P|dfGUI anchor margins|with: browser/dfgui.mjs (anchor layout of exported trees)
+dfAnchorStyle|P|dfGUI anchor flags|browser/dfgui.mjs
+dfAnimatedColor|N|dfGUI animated colour value|
+dfAnimatedColor32|N|dfGUI animated colour32 value|
+dfAnimatedFloat|N|dfGUI animated float|
+dfAnimatedInt|N|dfGUI animated int|
+dfAnimatedQuaternion|N|dfGUI animated quaternion|
+dfAnimatedValue|N|dfGUI animated value base|
+dfAnimatedVector2|N|dfGUI animated Vector2|
+dfAnimatedVector3|N|dfGUI animated Vector3|
+dfAnimatedVector4|N|dfGUI animated Vector4|
+dfAnimationClip|N|dfGUI sprite animation clip|
+dfAtlas|P|dfGUI texture atlas and sprite table|tools/export_frontend.py, browser/frontend-skin.mjs
+dfButton|P|dfGUI button: states, sprites, text, click/hover|browser/dfgui.mjs, browser/front-end.mjs, browser/death-screen.mjs
+dfCheckbox|P|dfGUI checkbox|browser/dfgui.mjs, browser/front-end.mjs
+dfChecksumUtil|N|dfGUI render-data checksum|engine: DOM/canvas rendering
+dfClipboardHelper|N|System clipboard access for text boxes|engine: browser clipboard
+dfClippingUtil|N|Triangle clipping for dfGUI render data|engine: CSS overflow clipping
+dfComponentMemberInfo|P|Reflection member reference used by bindings|with: browser/dfgui.mjs (bindings resolved at export)
+dfControl|P|dfGUI control base: layout, anchors, visibility, events, z-order|browser/dfgui.mjs
+dfControlEventArgs|P|dfGUI event args|engine: DOM events in browser/dfgui.mjs
+dfControlKeyBinding|P|dfGUI key binding to a control method (chat Return, lock entry Escape...)|browser/chat.mjs, browser/lock-entry.mjs, tools/export_frontend.py
+dfControlOrientation|P|Horizontal/vertical orientation enum|with: browser/dfgui.mjs
+dfDataObjectProxy|N|dfGUI data proxy binding|
+dfDragDropState|N|dfGUI drag-drop state enum (no shipped drag-drop targets)|engine: DOM events
+dfDragEventArgs|N|dfGUI drag event args|engine: DOM events
+dfDragHandle|P|Draggable window title bar|browser/console-window.mjs, browser/dfgui.mjs
+dfDropdown|N|dfGUI dropdown (no shipped instance; options use sliders/checkboxes)|no shipped instance (the options use sliders and checkboxes)
+dfDynamicFont|P|dfGUI dynamic TrueType font rendering|tools/export_frontend.py, browser/dfgui.mjs
+dfEasingFunctions|P|Tween easing functions|with: browser/dfgui.mjs, browser/death-screen.mjs
+dfEasingType|P|Easing type enum|with: browser/dfgui.mjs
+dfEventBinding|P|Binds a control event to a component method (menu buttons)|browser/front-end.mjs, browser/chat.mjs, browser/lock-entry.mjs
+dfEventCategoryAttribute|N|Editor attribute|editor:
+dfEventProxyAttribute|N|Marks event proxy methods|engine: DOM events
+dfExpressionPropertyBinding|N|Expression binding|
+dfFillDirection|P|Sprite fill direction enum|with: browser/dfgui.mjs
+dfFloatExtensions|N|Float quantise helpers|
+dfFocusEventArgs|N|Focus event args|engine: DOM focus events
+dfFont|P|dfGUI bitmap font|tools/export_frontend.py, browser/dfgui.mjs
+dfFontBase|P|Font base class|with: browser/dfgui.mjs
+dfFontRendererBase|N|Font renderer base (mesh building)|engine: canvas text drawing in browser/dfgui.mjs
+dfGUICamera|N|Sets up the dfGUI camera|engine: DOM overlay
+dfGUIManager|P|dfGUI root: UI scale, fixed size, render order, modal stack|browser/dfgui.mjs
+dfInputManager|N|dfGUI mouse/keyboard/touch dispatch to controls|engine: DOM input events (browser/dfgui.mjs, browser/front-end.mjs)
+dfInteractiveBase|P|Interactive control base: focus and background sprites|with: browser/dfgui.mjs
+dfIntersectionType|N|Clipping intersection enum|engine: CSS clipping
+dfKeyEventArgs|N|Key event args|engine: DOM key events
+dfLabel|P|dfGUI label: text, alignment, colours, autosize|browser/dfgui.mjs
+dfLanguageCode|N|Localisation language codes (no language file shipped)|no language file or dfLanguageManager instance ships
+dfLanguageManager|N|Localisation manager (no shipped instance)|no shipped instance
+dfList|N|Pooled list collection|engine: JS arrays
+dfListbox|N|dfGUI list box (no shipped instance)|no shipped instance
+dfMarkupAttribute|P|Rich-text markup attribute|with: browser/chat.mjs (markup runs), browser/dfgui.mjs
+dfMarkupBorders|P|Rich-text box borders|with: browser/dfgui.mjs
+dfMarkupBox|P|Rich-text layout box|with: browser/dfgui.mjs
+dfMarkupBoxSprite|N|Rich-text sprite box|
+dfMarkupBoxText|P|Rich-text text box|with: browser/dfgui.mjs
+dfMarkupBoxTexture|N|Rich-text texture box|
+dfMarkupDisplayType|P|Rich-text display enum|with: browser/dfgui.mjs
+dfMarkupElement|P|Rich-text element base|with: browser/dfgui.mjs
+dfMarkupEntity|P|HTML entity replacement in markup|with: browser/chat.mjs
+dfMarkupImageCache|N|Rich-text image cache|
+dfMarkupParser|P|Rich-text markup parser|with: browser/chat.mjs, browser/dfgui.mjs
+dfMarkupString|P|Rich-text string run|with: browser/dfgui.mjs
+dfMarkupStyle|P|Rich-text style (font, colour, align)|browser/chat.mjs
+dfMarkupTag|P|Rich-text tag|with: browser/dfgui.mjs
+dfMarkupTagAnchor|P|Rich-text anchor tag|with: browser/dfgui.mjs
+dfMarkupTagBold|N|Bold tag|
+dfMarkupTagBr|N|Line break tag|
+dfMarkupTagFont|N|Font tag|
+dfMarkupTagHeading|N|Heading tag|
+dfMarkupTagImg|N|Image tag|
+dfMarkupTagInfoAttribute|P|Tag registration attribute|with: browser/dfgui.mjs
+dfMarkupTagItalic|N|Italic tag|
+dfMarkupTagList|N|List tag|
+dfMarkupTagListItem|N|List item tag|
+dfMarkupTagParagraph|N|Paragraph tag|
+dfMarkupTagPre|N|Preformatted tag|
+dfMarkupTagSpan|P|Span tag (colour runs in chat/console)|with: browser/chat.mjs
+dfMarkupTextAlign|P|Text alignment enum|browser/dfgui.mjs
+dfMarkupTextDecoration|P|Text decoration enum|with: browser/dfgui.mjs
+dfMarkupToken|P|Markup token|with: browser/chat.mjs
+dfMarkupTokenAttribute|P|Markup token attribute|with: browser/chat.mjs
+dfMarkupTokenizer|P|Colour-tag tokenizer for dynamic-font text|browser/chat.mjs
+dfMarkupTokenType|P|Token type enum|with: browser/chat.mjs
+dfMarkupVerticalAlign|P|Vertical align enum|with: browser/dfgui.mjs
+dfMobileKeyboardTrigger|N|Mobile keyboard trigger enum|engine: desktop browser
+dfMouseButtons|P|Mouse button flags|with: browser/dfgui.mjs
+dfMouseButtonsExtensions|N|Mouse button helpers|
+dfMouseEventArgs|N|Mouse event args|engine: DOM mouse events
+dfObservableProperty|P|Reflective property access for tweens/bindings|with: browser/dfgui.mjs
+dfPanel|P|dfGUI panel with background sprite|browser/dfgui.mjs
+dfPanelFlowLayout|N|Flow layout panel|
+dfPivotExtensions|N|Pivot helpers|
+dfPivotPoint|P|Pivot enum|with: browser/dfgui.mjs
+dfPlainTextTokenizer|P|Plain-text tokenizer for fonts|with: browser/dfgui.mjs
+dfProgressBar|N|dfGUI progress bar|
+dfProgressFillMode|P|Slider fill mode enum|with: browser/dfgui.mjs
+dfPropertyBinding|N|Property binding|
+dfProxyPropertyBinding|N|Proxy property binding|
+dfRadialSprite|N|Radial sprite|
+dfRenderData|N|dfGUI render buffers|engine: DOM/canvas rendering
+dfResizeHandle|P|Console window resize handle|browser/console-window.mjs
+dfRichTextLabel|P|Rich-text label (menus, console, loading text)|browser/dfgui.mjs, browser/front-end.mjs
+dfRichTextTokenizer|N|Rich-text tokenizer|
+dfScrollbar|P|dfGUI scrollbar|browser/dfgui.mjs, browser/console-window.mjs
+dfScrollPanel|P|dfGUI scroll panel|browser/dfgui.mjs, browser/console-window.mjs
+dfSlicedSprite|P|Nine-sliced sprite|browser/dfgui.mjs, browser/front-end.mjs
+dfSlider|P|dfGUI slider (options)|browser/dfgui.mjs, browser/front-end.mjs
+dfSprite|P|dfGUI sprite|browser/dfgui.mjs
+dfSpriteAnimation|N|Sprite animation|
+dfSpriteFlip|P|Sprite flip enum|with: browser/dfgui.mjs
+dfSpriteFlipExtensions|N|Flip helpers|
+dfStringExtensions|N|String helpers|
+dfTabContainer|N|Tab container (no shipped instance)|no shipped instance
+dfTabstrip|N|Tab strip (no shipped instance)|no shipped instance
+dfTextbox|P|Text input (console, chat, lock code, server search)|browser/console-window.mjs, browser/chat.mjs, browser/lock-entry.mjs
+dfTextScaleMode|P|Text scale mode|with: browser/dfgui.mjs
+dfTextureSprite|P|Texture sprite (loading screen, menu art)|browser/dfgui.mjs, browser/frontend-skin.mjs
+dfTiledSprite|N|Tiled sprite|
+dfTouchEventArgs|N|Touch event args|engine: desktop browser
+dfTweenColor|N|Colour tween|
+dfTweenColor32|P|Colour32 tween (menu fades, death screen)|browser/death-screen.mjs, browser/dfgui.mjs
+dfTweenComponent|P|Typed tween component|browser/popup-ui.mjs, browser/dfgui.mjs
+dfTweenComponentBase|P|Tween base: easing, curve, loop, events|with: browser/dfgui.mjs
+dfTweenEventBinding|P|Starts/stops tweens from control events|browser/dfgui.mjs, tools/export_frontend.py
+dfTweenFloat|N|Float tween|
+dfTweenGroup|N|Tween group|
+dfTweenLoopType|P|Tween loop enum|with: browser/dfgui.mjs
+dfTweenPlayableBase|P|Playable tween base|with: browser/dfgui.mjs
+dfTweenRotation|N|Rotation tween|
+dfTweenVector2|N|Vector2 tween|
+dfTweenVector3|P|Vector3 tween (popup notices slide)|browser/popup-ui.mjs
+dfTweenVector4|N|Vector4 tween|
+dfVerticalAlignment|P|Vertical alignment enum|browser/dfgui.mjs
+dfWebSprite|N|Web-downloaded sprite|
+DictionaryMultiValue|N|Multi-value dictionary|
+DigitEntryRestrictions|P|Lock-code text box digits-only filter|browser/lock-entry.mjs
+DisableOnConnectedState|P|Hides menu items when connected/disconnected|browser/front-end.mjs
+DisplayRenderBounds|N|Gizmo for render bounds|editor:
+DisposeCallbackList|P|Disposal callbacks for network instances|engine: JS object lifetimes (browser/online.mjs)
+DisposeCallbackList#2|N|Typed disposal callbacks|engine: JS object lifetimes
+dmg|N|Empty console system|empty:
+DragEventHandler|N|dfGUI drag delegate|engine: DOM events
+DragEventKind|P|NGUI drag event kind|with: browser/inventory-interactions.mjs
+DropHelper|N|Empty helper|empty:
+DropNotification|P|NGUI drag notification rules (drag-land on a cell, land outside = toss; alt-land calls the empty RPOS.ItemCellAltClicked)|browser/inventory-interactions.mjs, browser/item-ops.mjs
+DropNotificationFlags|P|Drag/alt/middle drop-land flags|with: browser/inventory-interactions.mjs
+DroppedLootContainer|N|Dropped loot container script|
+DummyHelper|N|Gizmo helper on RoadTown/DummyTransform|editor: gizmos only
+EasyRoads3DTerrainID|N|EasyRoads3D terrain id (editor road tool)|editor: roads are baked into the scene
+EdConnector|N|Editor connector marker|editor:
+EditorActorRigged|N|Editor interface|editor:
+EditorActorRigWorker|N|Editor interface|editor:
+EditorHooks|N|Editor dirty hooks|editor:
+EditorHooksPrivate.Hooks|N|Editor hooks|editor:
+EditorHooksPrivate.VoidCallObject|N|Editor delegate|editor:
+EffectSoundPlayer|P|Plays a random sound when an impact effect spawns|browser/melee-effects.mjs, browser/tracer-effects.mjs
+EmptyArray|N|Shared empty arrays|engine: JS
+EndAllTextSolution|N|Debug text GUI|
+EngineSoundLoop|N|Vehicle engine sound (no vehicles)|
+EngineSoundLoopPlayer|N|Vehicle engine sound player|
+EnumerableToArray|N|Collection helper|
+env|P|Console system env.daylength / nightlength / time|browser/tod.mjs, browser/console-route.mjs
+EnvDecay|P|Deployable/structure ambient decay|browser/decay.mjs
+EnvHelper|N|Empty helper|empty:
+EnvironmentControlCenter|P|Game clock, sky state sync (CL_UpdateSkyState), night check|browser/tod.mjs, browser/online.mjs

@@ -1,0 +1,11 @@
+{
+  "listen": {"host": "127.0.0.1", "port": 8443},
+  "publicUrl": "https://play.example.com/",
+  "database": "/var/lib/rlb-central/central.db",
+  "signingKeys": ["/etc/rlb-central/keys/signing-REPLACE-WITH-KID.pem"],
+  "allowedOrigins": ["https://play.example.com"],
+  "steam": {"enabled": true, "apiKeyFile": "/etc/rlb-central/steam-api-key"},
+  "serveGame": true,
+  "playUrl": null,
+  "trustedProxies": ["loopback"]
+}

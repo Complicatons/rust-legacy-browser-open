@@ -1,0 +1,37 @@
+node_modules/
+.tools/
+analysis/
+analysis.zip
+browser/assets/recovered/
+browser/assets/recovered.zip
+tools/StaticIl/bin/
+tools/StaticIl/obj/
+__pycache__/
+*.log
+launcher/host/bin/
+launcher/host/obj/
+host/desktop/bin/
+host/desktop/obj/
+launcher/host/test/bin/
+launcher/host/test/obj/
+adapter/vanilla/bin/
+adapter/vanilla/obj/
+adapter/compile-check/bin/
+adapter/compile-check/obj/
+tools/vanilla-patcher/bin/
+tools/vanilla-patcher/obj/
+tools/rustuj-probe/bin/
+tools/rustuj-probe/obj/
+tools/vanilla-patcher/tests/fixture/*/bin/
+tools/vanilla-patcher/tests/fixture/*/obj/
+tools/vanilla-patcher/tests/fixture/out-fougerite/
+site/generated/
+.discord-status.json
+.discord-status.json.tmp
+
+# vm-test ISO staging/output and owner-supplied installers (tools/build-vm-iso.mjs)
+build/
+
+# Oxide plugin checker (tools/oxide-plugin-check/run.sh writes to analysis/)
+tools/oxide-plugin-check/*/bin/
+tools/oxide-plugin-check/*/obj/

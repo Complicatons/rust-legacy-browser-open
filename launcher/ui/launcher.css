@@ -1,0 +1,139 @@
+/* Desktop launcher window (DESKTOP-LAUNCHER-PLAN.md). Tokens follow the website's site/css/tokens.css.
+   Signature: the seam on the left links Account → Server → Game. Current runs down it as each step completes, and a
+   pulse travels it on every heartbeat while the game is running. */
+@font-face{font-family:"Archivo RLB";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(fonts/archivo-wdth.woff2) format("woff2-variations"),url(fonts/archivo-wdth.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono RLB";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/jetbrains-mono-500.woff2) format("woff2")}
+:root{
+ --k:#0a0a0a;--k1:#111111;--k2:#181818;--k3:#222222;
+ --line:#262626;--line2:#363636;
+ --w:#f2efe9;--w2:#b9b5ae;--w3:#7f7b75;--w4:#55524e;
+ --or:#cd5a28;--or-h:#e0672f;--teal:#5fa9a0;--amber:#e8a93a;--red-text:#ef6b5f;
+ --heavy:"Archivo RLB","Arial Black","Segoe UI Black",sans-serif;
+ --mono:"JetBrains Mono RLB","Cascadia Mono",Consolas,ui-monospace,monospace;
+ --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+ --ease:cubic-bezier(.2,.7,.2,1);--seam-x:27px;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important} /* form and .row set display, which would beat the hidden attribute */
+html,body{margin:0;height:100%;background:var(--k);color:var(--w);font:14px/1.45 var(--ui);-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.01em}
+
+.window{position:relative;min-height:100%;max-width:520px;margin:0 auto;display:flex;flex-direction:column;
+ background:radial-gradient(120% 60% at 0% 0%,#1a1410 0%,transparent 55%),var(--k)}
+.bar{display:flex;align-items:baseline;gap:10px;padding:18px 22px 6px var(--seam-x);user-select:none;-webkit-app-region:drag}
+.brand{font:900 21px/1 var(--heavy);font-stretch:68%;text-transform:uppercase;letter-spacing:.02em}
+.brand-sub{font:500 11px/1 var(--mono);color:var(--w3);text-transform:uppercase;letter-spacing:.14em}
+/* Heartbeat lamp: grey until connected; teal and breathing on each beat. */
+.beat{margin-left:auto;align-self:center;width:8px;height:8px;border-radius:50%;background:var(--w4);transition:background .4s}
+.window[data-live] .beat{background:var(--teal);box-shadow:0 0 0 0 rgba(95,169,160,.6)}
+.window[data-beat] .beat{animation:lamp 1.2s var(--ease)}
+@keyframes lamp{0%{box-shadow:0 0 0 0 rgba(95,169,160,.7)}100%{box-shadow:0 0 0 10px rgba(95,169,160,0)}}
+
+/* Steps and the seam */
+.steps{position:relative;flex:none;padding:14px 22px 22px calc(var(--seam-x) + 26px)}
+.seam{position:absolute;left:var(--seam-x);top:30px;bottom:48px;width:2px;background:var(--line2)}
+.seam-live{position:absolute;inset:0;background:var(--or);transform-origin:top;transform:scaleY(var(--fill,0));transition:transform .9s var(--ease)}
+/* The spark: current travelling down the seam. Once when a step completes, and on every heartbeat while in game. */
+.spark{position:absolute;left:-3px;top:0;width:8px;height:22px;border-radius:4px;opacity:0;background:radial-gradient(closest-side,#ffd2b8,var(--or-h) 60%,transparent);filter:blur(.5px)}
+.window[data-spark] .spark{animation:spark 1.1s var(--ease)}
+@keyframes spark{0%{opacity:0;top:0}15%{opacity:1}85%{opacity:1}100%{opacity:0;top:calc(var(--fill,0)*100% - 22px)}}
+
+.step{position:relative;padding:4px 0 18px}
+.node{position:absolute;left:calc(-26px - 5px);top:9px;width:12px;height:12px;border-radius:50%;background:var(--k);border:2px solid var(--line2);transition:border-color .4s,background .4s,transform .4s var(--ease)}
+.step[data-state=active] .node{border-color:var(--or);transform:scale(1.15)}
+.step[data-state=done] .node{border-color:var(--or);background:var(--or)}
+.step[data-state=busy] .node{border-color:var(--or);animation:node-busy 1s ease-in-out infinite}
+@keyframes node-busy{50%{box-shadow:0 0 0 6px rgba(205,90,40,.18)}}
+.step-head{display:flex;align-items:baseline;gap:12px;min-height:28px}
+h2{margin:0;font:800 15px/1.9 var(--heavy);font-stretch:75%;letter-spacing:.12em;text-transform:uppercase;color:var(--w3);transition:color .3s}
+.step[data-state=active] h2,.step[data-state=busy] h2{color:var(--w)}
+.step[data-state=done] h2{color:var(--w2)}
+.summary{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--w);font-weight:600}
+.summary small{color:var(--w3);font:500 11px var(--mono);margin-left:6px}
+/* Only the active step opens; finished ones collapse to their summary line. */
+.step-body{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s var(--ease),opacity .3s,translate .45s var(--ease);translate:0 -6px}
+.step-body>*{min-height:0;overflow:hidden;display:grid;align-content:start} /* one wrapper per body, so 0fr collapses it fully */
+.step-body>*>*{margin-inline:2px} /* room for focus rings inside the clipped wrapper */
+.step[data-open] .step-body{grid-template-rows:1fr;opacity:1;translate:0 0}
+.step-body>*>:first-child{margin-top:10px}
+
+form{display:grid;gap:12px;margin-top:12px}
+label{display:grid;gap:5px;color:var(--w2);font-size:12px;font-weight:600}
+input:not([type=checkbox]){height:40px;padding:0 12px;border-radius:4px;border:1px solid var(--line2);background:var(--k1);transition:border-color .2s,background .2s}
+input:not([type=checkbox]):hover{border-color:#474747}
+input:not([type=checkbox]):focus{outline:none;border-color:var(--or);background:var(--k2)}
+/* Sign in / Create account switch: two halves of one control, the chosen one filled. */
+.mode{display:grid;grid-template-columns:1fr 1fr;padding:3px;border:1px solid var(--line2);border-radius:4px;background:var(--k1)}
+.mode button{height:32px;border-radius:3px;color:var(--w3);font-weight:600;font-size:13px;transition:color .2s,background .2s}
+.mode button:hover{color:var(--w)}
+.mode button[aria-pressed=true]{background:var(--k3);color:var(--w)}
+.mode button:disabled{cursor:progress}
+.field{display:grid;gap:5px}
+.help{margin:0;color:var(--w3);font-size:12px}
+input[aria-invalid=true]:not([type=checkbox]){border-color:var(--red-text)}
+.checks{display:grid;gap:8px}
+.agree{margin:0;color:var(--w3);font-size:12px}
+.agree a{color:var(--w2);text-underline-offset:2px}
+.agree a:hover{color:var(--w)}
+label.check{display:flex;align-items:center;gap:8px;font-weight:500;color:var(--w2);cursor:pointer}
+label.check input{accent-color:var(--or);width:15px;height:15px;margin:0}
+form[data-shake]{animation:shake .4s}
+@keyframes shake{20%,60%{translate:-6px 0}40%,80%{translate:6px 0}}
+
+button{cursor:pointer;border:0;background:none}
+button:disabled{cursor:not-allowed}
+:focus-visible{outline:2px solid var(--or-h);outline-offset:2px}
+.primary{position:relative;overflow:hidden;height:44px;border-radius:4px;background:var(--or);color:#160903;font:800 14px/1 var(--heavy);font-stretch:85%;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,transform .12s,opacity .2s}
+.primary:hover:not(:disabled){background:var(--or-h)}
+.primary:active:not(:disabled){transform:translateY(1px)}
+.primary:disabled{opacity:.35}
+.primary span{position:relative}
+/* Working: a bright band sweeps across the button. */
+.primary[data-busy]{cursor:progress}
+.primary[data-busy]::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);translate:-100% 0;animation:sweep 1.1s linear infinite}
+@keyframes sweep{to{translate:100% 0}}
+.secondary{height:38px;padding:0 14px;border-radius:4px;border:1px solid var(--line2);color:var(--w);font-weight:600;transition:border-color .2s,background .2s}
+.secondary:hover{border-color:var(--w3);background:var(--k2)}
+.link{color:var(--w3);font-size:12px;font-weight:600;padding:2px 0;transition:color .2s}
+.link:hover{color:var(--w)}
+.link.quiet{justify-self:start}
+.row{display:flex;align-items:center;gap:14px}
+.lede{margin:0 0 8px;color:var(--w2)}
+.hint{margin:8px 0 0;color:var(--w3);font-size:12px}
+.launch{width:100%;height:52px;font-size:16px}
+
+.code{display:block;margin:4px 0 2px;font:700 34px/1.1 var(--mono);letter-spacing:.14em;color:var(--w)}
+
+/* Server list */
+.servers{list-style:none;margin:10px 0 12px;padding:0;display:grid;gap:6px;max-height:228px;overflow:auto}
+.server{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;padding:10px 12px;border-radius:4px;border:1px solid var(--line);background:var(--k1);cursor:pointer;transition:border-color .2s,background .2s;animation:rise .35s var(--ease) backwards;animation-delay:calc(var(--i)*50ms)}
+.server:hover{border-color:var(--line2);background:var(--k2)}
+.server[aria-selected=true]{border-color:var(--or);background:#1d130e}
+.server[aria-disabled=true]{opacity:.45;cursor:not-allowed}
+.server b{font-weight:650}
+.server .meta{grid-column:1;color:var(--w3);font:500 11px var(--mono)}
+.server .pop{grid-row:1/3;grid-column:2;font:500 12px var(--mono);color:var(--w2);text-align:right}
+.server .pop i{display:inline-block;width:6px;height:6px;margin-right:6px;border-radius:50%;background:var(--teal);vertical-align:1px}
+.server[aria-disabled=true] .pop i{background:var(--w4)}
+.servers .empty{padding:14px 0;color:var(--w3)}
+@keyframes rise{from{opacity:0;translate:0 6px}}
+
+/* In game */
+.ingame{border-top:1px solid var(--line);margin-top:4px}
+.readout{display:grid;gap:6px;margin:0}
+.readout div{display:flex;justify-content:space-between;gap:12px}
+.readout dt{color:var(--w3)}
+.readout dd{margin:0;color:var(--w)}
+
+.toast{position:sticky;bottom:0;margin:0;padding:12px 22px 14px calc(var(--seam-x) + 26px);font-size:13px;color:var(--w2);background:linear-gradient(transparent,var(--k) 30%);min-height:42px;opacity:0;translate:0 8px;transition:opacity .3s,translate .3s var(--ease)}
+.toast[data-show]{opacity:1;translate:0 0}
+/* Browser preview (?demo): the window as a window-sized card on the page, not stretched across it. */
+html[data-demo] body{display:grid;place-items:start center;padding:40px 16px;box-sizing:border-box}
+html[data-demo] .window{width:420px;max-width:100%;min-height:0;margin:0;border:1px solid var(--line2);border-radius:8px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.toast[data-kind=error]{color:var(--red-text)}
+
+@media (prefers-reduced-motion:reduce){
+ *,*::before{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
+}

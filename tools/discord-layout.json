@@ -1,0 +1,490 @@
+{
+  "everyone": { "permissions": ["VIEW_CHANNEL", "READ_MESSAGE_HISTORY", "USE_APPLICATION_COMMANDS"] },
+  "roles": [
+    { "name": "Quarantine", "external": "Wick" },
+    { "name": "Founder", "color": "#ce422b", "hoist": true, "permissions": [] },
+    {
+      "name": "Admin",
+      "color": "#e8692c",
+      "hoist": true,
+      "permissions": [
+        "MANAGE_GUILD",
+        "MANAGE_ROLES",
+        "MANAGE_CHANNELS",
+        "MANAGE_WEBHOOKS",
+        "MANAGE_GUILD_EXPRESSIONS",
+        "MANAGE_EVENTS",
+        "CREATE_EVENTS",
+        "VIEW_AUDIT_LOG",
+        "VIEW_GUILD_INSIGHTS",
+        "BAN_MEMBERS",
+        "KICK_MEMBERS",
+        "MODERATE_MEMBERS",
+        "MANAGE_MESSAGES",
+        "MANAGE_THREADS",
+        "MANAGE_NICKNAMES",
+        "MENTION_EVERYONE",
+        "MUTE_MEMBERS",
+        "DEAFEN_MEMBERS",
+        "MOVE_MEMBERS",
+        "PRIORITY_SPEAKER",
+        "CREATE_INSTANT_INVITE"
+      ]
+    },
+    {
+      "name": "Developer",
+      "color": "#f2b632",
+      "hoist": true,
+      "permissions": ["MANAGE_THREADS", "CREATE_EVENTS", "PRIORITY_SPEAKER", "CREATE_INSTANT_INVITE"]
+    },
+    {
+      "name": "Moderator",
+      "color": "#3fb950",
+      "hoist": true,
+      "permissions": [
+        "KICK_MEMBERS",
+        "MODERATE_MEMBERS",
+        "MANAGE_MESSAGES",
+        "MANAGE_THREADS",
+        "MANAGE_NICKNAMES",
+        "VIEW_AUDIT_LOG",
+        "MUTE_MEMBERS",
+        "MOVE_MEMBERS",
+        "CREATE_INSTANT_INVITE"
+      ]
+    },
+    { "name": "Wiki Editor", "color": "#2bb5a0", "hoist": true, "permissions": [] },
+    {
+      "name": "Bots",
+      "color": "#8b949e",
+      "hoist": true,
+      "permissions": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "EMBED_LINKS", "ATTACH_FILES", "ADD_REACTIONS", "USE_EXTERNAL_EMOJIS"]
+    },
+    { "name": "Server Owner", "color": "#4493f8", "hoist": true, "permissions": [] },
+    { "name": "Content Creator", "color": "#a371f7", "hoist": true, "permissions": ["CREATE_INSTANT_INVITE"] },
+    { "name": "Tester", "color": "#db61a2", "hoist": true, "permissions": [] },
+    { "name": "Server Booster", "booster": true, "color": "#f47fff", "hoist": true, "permissions": ["USE_EXTERNAL_SOUNDS", "SEND_POLLS"] },
+    { "name": "Legend (Lv 50)", "color": "#ffc83d", "permissions": [] },
+    { "name": "Veteran (Lv 35)", "color": "#e0763a", "permissions": [] },
+    { "name": "Raider (Lv 20)", "color": "#c9a36b", "permissions": [] },
+    { "name": "Builder (Lv 10)", "color": "#9c7a54", "permissions": [] },
+    { "name": "Survivor (Lv 5)", "color": "#9aa39a", "permissions": [] },
+    { "name": "Linked", "color": "#6e7781", "permissions": [] },
+    {
+      "name": "Member",
+      "permissions": [
+        "SEND_MESSAGES",
+        "SEND_MESSAGES_IN_THREADS",
+        "CREATE_PUBLIC_THREADS",
+        "ADD_REACTIONS",
+        "EMBED_LINKS",
+        "ATTACH_FILES",
+        "USE_EXTERNAL_EMOJIS",
+        "USE_EXTERNAL_STICKERS",
+        "SEND_VOICE_MESSAGES",
+        "CONNECT",
+        "SPEAK",
+        "USE_VAD",
+        "STREAM",
+        "USE_SOUNDBOARD",
+        "CHANGE_NICKNAME"
+      ]
+    },
+    { "name": "Patch Notes", "permissions": [] },
+    { "name": "Wipe Alerts", "permissions": [] },
+    { "name": "Events", "permissions": [] },
+    { "name": "EU", "permissions": [] },
+    { "name": "NA", "permissions": [] },
+    { "name": "OCE", "permissions": [] },
+    { "name": "ASIA", "permissions": [] }
+  ],
+  "botsRole": "Bots",
+  "settings": {
+    "verification_level": 2,
+    "explicit_content_filter": 2,
+    "default_message_notifications": 1,
+    "afk_timeout": 900,
+    "system_channel_flags": 60,
+    "description": "Rust Legacy, rebuilt to run in your web browser. News, help, bug reports and players to team up with."
+  },
+  "channelSettings": { "system_channel_id": "welcome", "afk_channel_id": "AFK", "safety_alerts_channel_id": "mod-log" },
+  "community": { "rulesChannel": "rules", "updatesChannel": "admin-chat" },
+  "welcomeScreen": {
+    "description": "Rust Legacy, rebuilt for your browser. Start here:",
+    "channels": [
+      { "channel": "rules", "emoji": "📜", "description": "Read the rules first" },
+      { "channel": "verify", "emoji": "✅", "description": "Verify to unlock the server" },
+      { "channel": "faq", "emoji": "❓", "description": "Common questions" },
+      { "channel": "announcements", "emoji": "📢", "description": "News and updates" }
+    ]
+  },
+  "retiredRoles": ["🎨 Red", "🎨 Orange", "🎨 Yellow", "🎨 Green", "🎨 Cyan", "🎨 Blue", "🎨 Purple", "🎨 Pink"],
+  "retiredCategories": ["Text channels", "Voice channels"],
+  "categories": [
+    {
+      "name": "📌 START HERE",
+      "overwrites": [
+        { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS", "CREATE_PRIVATE_THREADS"] },
+        { "role": "Admin", "allow": ["SEND_MESSAGES"] }
+      ],
+      "channels": [
+        {
+          "name": "welcome",
+          "type": "text",
+          "topic": "Start here.",
+          "message": "**Welcome to Rust Legacy Browser**\nRust Legacy, rebuilt to run in your web browser.\n\n**1.** Read {#rules}\n**2.** Verify in {#verify} to unlock the server\n**3.** Pick your pings and region in {#get-roles}\n\nThen: news in {#announcements} and {#updates}, chat in {#general}, questions in {#help} and {#faq}, bugs in {#bug-reports}.\n\nNew members appear below as they join."
+        },
+        {
+          "name": "rules",
+          "type": "text",
+          "topic": "Read these before you post.",
+          "message": "**Rules**\n1. Be decent. No harassment, hate speech or slurs.\n2. No cheating, cheat selling or sharing exploits. Report cheaters in {#open-a-ticket}, not in public.\n3. No sharing game files, extracted assets or links to them.\n4. No spam or advertising, and no invite links to other servers.\n5. Use the right channel: bugs in {#bug-reports}, ideas in {#suggestions}, questions in {#help}.\n6. Keep it SFW.\n7. Moderators have the final say. Appeals go through {#open-a-ticket}. Using an alt account to dodge a ban gets every account banned.\n\nRust Legacy Browser is a fan project. Not affiliated with Facepunch Studios."
+        },
+        {
+          "name": "verify",
+          "type": "text",
+          "topic": "Verify here to unlock the server.",
+          "overwrites": [{ "role": "Member", "deny": ["VIEW_CHANNEL"] }, { "role": ["Admin", "Moderator", "Bots"], "allow": ["VIEW_CHANNEL"] }],
+          "message": "**Verify to get in**\nPress **Verify** on the panel below and solve the captcha. You'll get the **Member** role and the rest of the server opens up.\n\nStuck? Send a direct message to a Moderator."
+        },
+        { "name": "announcements", "type": "announcement", "topic": "Big news. Follow this channel to get it in your own server." },
+        {
+          "name": "get-roles",
+          "type": "text",
+          "topic": "Pick your pings and region.",
+          "overwrites": [{ "role": "@everyone", "deny": ["VIEW_CHANNEL"] }, { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] }],
+          "message": "**Pick your roles**\nReact below to choose what you get pinged about and where you play from. Remove your reaction to drop the role."
+        },
+        {
+          "name": "faq",
+          "type": "text",
+          "topic": "Common questions.",
+          "messages": [
+            "**FAQ**\n\n**What is Rust Legacy Browser?**\nA fan-made port of Rust Legacy, the original version of Rust, that runs in your web browser. No download, launcher or extension.\n\n**What do I need to play?**\nA desktop or laptop with a keyboard and mouse, and a browser with WebGL 2 (a current Chrome, Edge, Firefox or Safari). Phones can browse the website, register and read the wiki, but can't play.\n\n**How do I start?**\nMake an account on the website (email, Steam or Discord), open **Servers**, pick one and press **Join**. The website's **How to play** page covers the controls and your first night.\n\n**Is this official?**\nNo. It's a fan project, not affiliated with Facepunch Studios.\n\n**Can I bring my desktop character?**\nOn servers that support it, you can link your desktop Rust Legacy character from the server's page on the website once you're signed in. It's optional.",
+            "**When do servers wipe?**\nEach server's page on the website shows its last wipe. Planned wipes go in {#wipe-schedule}.\n\n**Found a bug or have an idea?**\nPost it in {#bug-reports} or {#suggestions}, one per post.\n\n**Someone is cheating.**\nOpen a ticket in {#open-a-ticket} with a clip or screenshot. Don't name them in public channels.\n\n**How do levels work?**\nChatting earns XP. Level roles come at 5, 10, 20, 35 and 50, each with its own name colour. See {#level-ups}.\n\n**Why are names different colours?**\nStaff and special roles show their colour first, then Server Booster pink, then your level colour.\n\n**I want to run a server.**\nThe website has server owner tools in your account menu. Once your server is verified you get the **Server Owner** role and the owners' channels."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "📰 UPDATES",
+      "overwrites": [
+        { "role": "@everyone", "deny": ["VIEW_CHANNEL"] },
+        { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] },
+        { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS", "CREATE_PRIVATE_THREADS"] },
+        { "role": ["Admin", "Developer"], "allow": ["SEND_MESSAGES", "MENTION_EVERYONE"] }
+      ],
+      "channels": [
+        { "name": "updates", "oldNames": ["patch-notes", "roadmap-patch-notes"], "type": "announcement", "topic": "Roadmap changes and patch notes. Follow this channel to get them in your own server." },
+        { "name": "wipe-schedule", "type": "announcement", "topic": "When each server wipes." },
+        { "name": "server-status", "type": "text", "topic": "Live server list." }
+      ]
+    },
+    {
+      "name": "💬 COMMUNITY",
+      "overwrites": [{ "role": "@everyone", "deny": ["VIEW_CHANNEL"] }, { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] }],
+      "channels": [
+        { "name": "general", "type": "text", "slowmode": 2, "topic": "General chat about Rust Legacy." },
+        { "name": "clips-and-screenshots", "type": "text", "slowmode": 10, "topic": "Clips and screenshots from your games." },
+        {
+          "name": "lfg",
+          "type": "forum",
+          "slowmode": 600,
+          "topic": "Looking for a group? Post your region, when you play and what you're after. One post every 10 minutes.",
+          "tags": [
+            { "name": "EU" },
+            { "name": "NA" },
+            { "name": "OCE" },
+            { "name": "ASIA" },
+            { "name": "Duo" },
+            { "name": "Group" },
+            { "name": "Clan recruiting" }
+          ]
+        },
+        { "name": "off-topic", "type": "text", "topic": "Anything else." },
+        {
+          "name": "level-ups",
+          "type": "text",
+          "topic": "Level-up announcements.",
+          "overwrites": [{ "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS", "CREATE_PRIVATE_THREADS"] }],
+          "message": "**Levels**\nChatting earns XP; spamming doesn't earn any extra. Level-ups are announced here.\n\n**Lv 5** Survivor\n**Lv 10** Builder\n**Lv 20** Raider\n**Lv 35** Veteran\n**Lv 50** Legend\n\nEach level role colours your name and replaces the one before."
+        }
+      ]
+    },
+    {
+      "name": "🎮 GAMEPLAY",
+      "overwrites": [{ "role": "@everyone", "deny": ["VIEW_CHANNEL"] }, { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] }],
+      "channels": [
+        {
+          "name": "help",
+          "type": "forum",
+          "requireTag": true,
+          "topic": "One question per post. Pick a tag, and add Solved when you're sorted.",
+          "tags": [
+            { "name": "Controls" },
+            { "name": "WebGL / graphics" },
+            { "name": "Account" },
+            { "name": "Gameplay" },
+            { "name": "Servers" },
+            { "name": "Solved", "emoji": "✅" },
+            { "name": "Guide", "moderated": true }
+          ]
+        },
+        { "name": "raids-and-stories", "type": "text", "topic": "Raids, wipes and the stories behind them." },
+        { "name": "base-designs", "type": "text", "topic": "Show off your builds." }
+      ]
+    },
+    {
+      "name": "🐛 FEEDBACK",
+      "overwrites": [{ "role": "@everyone", "deny": ["VIEW_CHANNEL"] }, { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] }],
+      "channels": [
+        {
+          "name": "bug-reports",
+          "type": "forum",
+          "requireTag": true,
+          "slowmode": 60,
+          "topic": "One bug per post. Include your browser and version, what you did, what you expected, what happened, and a screenshot or clip if you can.",
+          "tags": [
+            { "name": "Rendering" },
+            { "name": "Audio" },
+            { "name": "Netcode" },
+            { "name": "Crash" },
+            { "name": "Performance" },
+            { "name": "UI" },
+            { "name": "Chrome" },
+            { "name": "Firefox" },
+            { "name": "Safari" },
+            { "name": "Edge" },
+            { "name": "Confirmed", "moderated": true },
+            { "name": "Fixed", "moderated": true, "emoji": "✅" },
+            { "name": "Guide", "moderated": true }
+          ]
+        },
+        {
+          "name": "suggestions",
+          "type": "forum",
+          "slowmode": 300,
+          "topic": "One idea per post. Search first; if it's already there, react to it instead.",
+          "tags": [
+            { "name": "Gameplay" },
+            { "name": "Website" },
+            { "name": "Discord" },
+            { "name": "Planned", "moderated": true },
+            { "name": "Declined", "moderated": true },
+            { "name": "Done", "moderated": true, "emoji": "✅" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🛡️ SUPPORT",
+      "overwrites": [
+        { "role": "@everyone", "deny": ["VIEW_CHANNEL"] },
+        { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] },
+        { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS", "CREATE_PRIVATE_THREADS"] },
+        { "role": "Admin", "allow": ["SEND_MESSAGES"] }
+      ],
+      "channels": [
+        {
+          "name": "open-a-ticket",
+          "type": "text",
+          "topic": "Cheater reports, ban appeals and account help.",
+          "message": "**Need staff?**\nUse the **Create ticket** button below for cheater reports, ban appeals or account problems. A private channel opens that only you and the staff can see.\n\nPlease don't name suspected cheaters in public channels."
+        }
+      ]
+    },
+    {
+      "name": "🏠 SERVER OWNERS",
+      "overwrites": [
+        { "role": "@everyone", "deny": ["VIEW_CHANNEL"] },
+        { "role": ["Server Owner", "Admin", "Developer", "Moderator"], "allow": ["VIEW_CHANNEL"] }
+      ],
+      "channels": [
+        {
+          "name": "owner-announcements",
+          "type": "announcement",
+          "topic": "News for people running a server.",
+          "overwrites": [
+            { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS", "CREATE_PRIVATE_THREADS"] },
+            { "role": ["Admin", "Developer"], "allow": ["SEND_MESSAGES"] }
+          ]
+        },
+        {
+          "name": "owners-chat",
+          "type": "text",
+          "topic": "Help and chat for server owners.",
+          "message": "**Welcome, server owners**\nThis is your space for help with running a server: setup, wipes, players and the owner tools on the website. News for owners goes in {#owner-announcements}.\n\nTell us your wipe plans here and we'll add them to {#wipe-schedule}."
+        }
+      ]
+    },
+    {
+      "name": "🧪 TESTING",
+      "overwrites": [
+        { "role": "@everyone", "deny": ["VIEW_CHANNEL"] },
+        { "role": ["Tester", "Developer", "Admin", "Moderator"], "allow": ["VIEW_CHANNEL"] }
+      ],
+      "channels": [
+        {
+          "name": "test-builds",
+          "type": "text",
+          "topic": "What to test in each build.",
+          "overwrites": [
+            { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS", "CREATE_PRIVATE_THREADS"] },
+            { "role": ["Developer", "Admin"], "allow": ["SEND_MESSAGES"] }
+          ]
+        },
+        {
+          "name": "test-feedback",
+          "type": "text",
+          "topic": "What you found.",
+          "message": "**How to report**\nOne message per issue: build or date, browser and version, what you did, what you expected and what happened. Add a clip or screenshot if you can. Confirmed bugs move to {#bug-reports}."
+        }
+      ]
+    },
+    {
+      "name": "🔒 STAFF",
+      "overwrites": [
+        { "role": "@everyone", "deny": ["VIEW_CHANNEL"] },
+        { "role": ["Admin", "Moderator", "Developer", "Wiki Editor"], "allow": ["VIEW_CHANNEL"] }
+      ],
+      "channels": [
+        {
+          "name": "staff-chat",
+          "type": "text",
+          "topic": "All staff: admins, moderators, developers and wiki editors.",
+          "message": "**Staff guide**\n• {#staff-chat}: all staff\n• {#mod-chat}: moderators and admins (reports, bans, appeals)\n• {#admin-chat}: admins only; Discord's own notices land here\n• {#mod-log}: AutoMod alerts, message logs and ticket transcripts\n• {#wiki-staff}: wiki planning\n• {#dev-log}: commits, builds and deploys\n\nEveryone on staff also needs the **Member** role. Handle player problems in tickets rather than DMs, so there's a record."
+        },
+        {
+          "name": "mod-chat",
+          "type": "text",
+          "topic": "Moderators and admins: reports, bans, appeals.",
+          "overwrites": [{ "role": ["Developer", "Wiki Editor"], "deny": ["VIEW_CHANNEL"] }],
+          "message": "**Moderation guide**\n**Ladder** (skip steps for serious cases):\n1. Warn in the channel or by DM\n2. Timeout for 10 minutes\n3. Timeout for 1 day\n4. Kick\n5. Ban: admins only, so post the case here\n\n**Ban straight away:** cheat sellers, doxxing, NSFW, raids, and alt accounts dodging a ban.\n\n**Cheater reports** come in through tickets. Ask for a clip or screenshot, and never accuse anyone in public.\n\n**Give every action a reason**, so the audit log and {#mod-log} make sense later. If you're part of an argument, let another moderator handle it."
+        },
+        {
+          "name": "admin-chat",
+          "type": "text",
+          "topic": "Admins only. Discord's own notices for the server also arrive here.",
+          "overwrites": [{ "role": ["Moderator", "Developer", "Wiki Editor"], "deny": ["VIEW_CHANNEL"] }]
+        },
+        {
+          "name": "mod-log",
+          "type": "text",
+          "topic": "AutoMod alerts and bot logs. Moderators and admins.",
+          "overwrites": [
+            { "role": ["Developer", "Wiki Editor"], "deny": ["VIEW_CHANNEL"] },
+            { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS"] },
+            { "role": "Bots", "allow": ["VIEW_CHANNEL", "SEND_MESSAGES"] }
+          ]
+        },
+        {
+          "name": "wiki-staff",
+          "type": "text",
+          "topic": "Planning and reviewing wiki articles. Wiki editors, developers and admins.",
+          "overwrites": [{ "role": "Moderator", "deny": ["VIEW_CHANNEL"] }]
+        },
+        {
+          "name": "dev-log",
+          "type": "text",
+          "topic": "Commits, builds and deploys. Developers and admins.",
+          "overwrites": [
+            { "role": ["Moderator", "Wiki Editor"], "deny": ["VIEW_CHANNEL"] },
+            { "role": "Member", "deny": ["SEND_MESSAGES", "SEND_MESSAGES_IN_THREADS", "CREATE_PUBLIC_THREADS"] },
+            { "role": ["Developer", "Bots"], "allow": ["VIEW_CHANNEL", "SEND_MESSAGES"] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🔊 VOICE",
+      "overwrites": [{ "role": "@everyone", "deny": ["VIEW_CHANNEL"] }, { "role": ["Member", "Bots"], "allow": ["VIEW_CHANNEL"] }],
+      "channels": [
+        { "name": "General", "type": "voice" },
+        { "name": "Squad 1", "type": "voice", "userLimit": 4 },
+        { "name": "Squad 2", "type": "voice", "userLimit": 4 },
+        { "name": "Squad 3", "type": "voice", "userLimit": 4 },
+        { "name": "Squad 4", "type": "voice", "userLimit": 4 },
+        {
+          "name": "Staff",
+          "type": "voice",
+          "overwrites": [
+            { "role": ["Member", "Bots"], "deny": ["VIEW_CHANNEL"] },
+            { "role": ["Admin", "Moderator", "Developer", "Wiki Editor"], "allow": ["VIEW_CHANNEL"] }
+          ]
+        },
+        { "name": "AFK", "type": "voice" }
+      ]
+    }
+  ],
+  "automod": [
+    { "name": "Spam", "trigger": "spam", "block": true, "alert": "mod-log", "exemptRoles": ["Admin", "Moderator", "Developer", "Bots"] },
+    {
+      "name": "Mention spam",
+      "trigger": "mention_spam",
+      "metadata": { "mention_total_limit": 5, "mention_raid_protection_enabled": true },
+      "block": true,
+      "alert": "mod-log",
+      "timeout": 600,
+      "exemptRoles": ["Admin", "Moderator", "Developer", "Bots"]
+    },
+    {
+      "name": "Slurs and sexual content",
+      "trigger": "keyword_preset",
+      "metadata": { "presets": ["SEXUAL_CONTENT", "SLURS"] },
+      "block": true,
+      "alert": "mod-log",
+      "exemptRoles": ["Admin", "Moderator", "Developer", "Bots"]
+    },
+    {
+      "name": "Invite links",
+      "trigger": "keyword",
+      "metadata": { "regex_patterns": ["(discord\\.gg|discord(app)?\\.com/invite|dsc\\.gg)/[a-z0-9-]+"] },
+      "block": true,
+      "blockMessage": "Invite links to other servers aren't allowed here.",
+      "alert": "mod-log",
+      "exemptRoles": ["Admin", "Moderator", "Developer", "Bots"]
+    },
+    {
+      "name": "Cheat selling (alert only)",
+      "trigger": "keyword",
+      "metadata": {
+        "keyword_filter": [
+          "*aimbot*",
+          "*wallhack*",
+          "*esp hack*",
+          "*hwid spoof*",
+          "*undetected cheat*",
+          "*cheats for sale*",
+          "*selling cheats*",
+          "*buy cheats*",
+          "*cheat provider*"
+        ]
+      },
+      "alert": "mod-log",
+      "exemptRoles": ["Admin", "Moderator", "Developer", "Bots"]
+    }
+  ],
+  "audiences": [
+    { "name": "Unverified", "roles": [] },
+    { "name": "Member", "roles": ["Member"] },
+    { "name": "Tester", "roles": ["Member", "Tester"] },
+    { "name": "SrvOwner", "roles": ["Member", "Server Owner"] },
+    { "name": "Wiki", "roles": ["Member", "Wiki Editor"] },
+    { "name": "Dev", "roles": ["Member", "Developer"] },
+    { "name": "Mod", "roles": ["Member", "Moderator"] },
+    { "name": "Admin", "roles": ["Member", "Admin"] },
+    { "name": "Bot", "roles": ["Bots"] }
+  ],
+  "checklist": [
+    "Server Settings → Safety Setup: require 2FA for moderator actions (only the owner can switch this on).",
+    "Give yourself and every staff member, tester and server owner the Member role too. Staff roles only add access on top of Member.",
+    "After adding a bot, run this script again: it gives the bot the Bots role (or it can't see the members-only channels) and moves its role above Member and the level roles, because a bot can only hand out roles below its own.",
+    "Wick (verification): add the setup bot to Wick's whitelist first, or its anti-nuke may punish the script. Run w!setup (it creates Quarantine), then w!statics @Member ?add 5 (the role Wick gives when someone passes), w!verification 1 ?on, w!v all ?set 3, w!v captcha ?set 6 and w!s #verify ?set 12. Not Double Counter: it was breached in October 2026 and Discord blocked new installs.",
+    "Arcane (levels): send level-up messages to #level-ups and add role rewards Survivor (Lv 5) at level 5, Builder (Lv 10) at 10, Raider (Lv 20) at 20, Veteran (Lv 35) at 35 and Legend (Lv 50) at 50, with the previous reward removed.",
+    "Carl-bot (self roles): in #get-roles, one menu for Patch Notes / Wipe Alerts / Events and one for EU / NA / OCE / ASIA (unique: one at a time).",
+    "After your first boost Discord creates the Server Booster role. Run this script again then to colour it pink and list boosters separately.",
+    "Add a ticket bot (for example Ticket Tool) to #open-a-ticket for cheater reports, ban appeals and account help.",
+    "Delete the default categories and channels listed above if you don't want them.",
+    "Take Administrator away from the setup bot, or kick it."
+  ]
+}

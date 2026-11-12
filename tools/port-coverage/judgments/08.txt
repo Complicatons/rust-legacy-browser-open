@@ -1,0 +1,126 @@
+@Assembly-CSharp
+ServerBrowser|P|Server browser: categories, list, refresh, filters|browser/server-list.mjs, browser/front-end.mjs
+ServerCategory|P|Server category tab with count|browser/server-list.mjs, browser/front-end.mjs
+serverfavourite|P|Console system serverfavourite.add/remove/save/load|browser/client-commands.mjs, browser/server-list.mjs
+ServerFileSystem|N|Empty|empty:
+ServerHelper|N|Server setup helper|server:
+ServerInit|N|Server init|server:
+ServerItem|P|One server row: name, players, ping, favourite, connect|browser/server-list.mjs, browser/front-end.mjs
+ServerListConfig|P|Bad/official server lists from GameConfig|browser/server-list.mjs
+ServerManagement|P|Player client list, respawn requests, kick reasons, unstick|browser/online.mjs, browser/net-error.mjs
+ServerQuitResponder|N|Server level change|server:
+ServerSave|N|Server save registration of scene objects|server: save system
+ServerSaveManager|N|Server save manager|server:
+ShaderMod|N|Shader tool asset|editor:
+ShaderModUtility|N|Shader tool helpers|editor:
+SharedCameraMode|P|Camera mode enum|with: browser/main.mjs
+ShotgunDataBlock|P|Shotgun: pellets and spread|browser/combat.mjs
+sideObjectScript|N|EasyRoads3D side object|editor:
+SightModRep|N|Sight mod rep (not reached)|
+SignalGrenade|P|Supply signal: fuse, smoke, bounce sound|browser/airdrops.mjs, browser/server-rigid.mjs
+SilencerModRep|N|Silencer mod rep (not reached)|
+SimpleHitbox|N|Simple hit box (not reached)|
+SleepingAvatar|P|Sleeper: armour config, live character, ragdoll on death|browser/player-view.mjs, browser/armor.mjs
+SleepingBag|P|Sleeping bag: context, respawn, pick up|browser/deployables.mjs, browser/context-ui.mjs
+SlowSpawn|P|Rock collider instances spawned over frames|browser/rock-colliders.mjs, tools/export_rocks.py
+Socket|P|Named sockets (attach points, camera-space conversion) on models and view models|browser/viewmodel.mjs, browser/camera-sway.mjs
+SocketProxy|P|Socket proxy component|with: browser/viewmodel.mjs
+SocketUtility|N|Socket lookup helpers (not reached)|
+sound|P|Console system sound.music|browser/audio.mjs, browser/convars.mjs
+SoundEffect|N|Sound effect asset (not reached)|
+SoundPool|P|3D/2D one-shot sound pool (volume, pitch, rolloff, attach)|browser/audio.mjs, browser/world-audio.mjs
+SoundPoolFilter|P|Pumps the sound pool before culling|browser/audio.mjs
+SoundPoolTest|N|Test script|debug:
+SpawnInArea|N|Spawn helper|server:
+SpawnManager|N|Player spawn points|server: offline respawn in browser/main.mjs
+SpeakerMode|P|USpeak speaker mode|browser/uspeak.mjs, browser/voice.mjs
+SpikeWall|P|Spike wall damage on touch|browser/world-rules.mjs, browser/repair.mjs
+SpringPanel|P|NGUI panel spring (draggable panel restrict)|browser/rpos-scroll.mjs
+SpringPosition|N|NGUI position spring (only UIDragObject on unused window templates)|used only by UIDragObject, which sits on unused window templates
+StagAI|P|Stag AI animation|browser/animals.mjs
+StateInterpolator|P|Timestamped state buffer|browser/airdrops.mjs
+StateInterpolator#2|P|Typed timestamped state buffer: push, goals|browser/airdrops.mjs
+SteamClient|N|Steam client init/auth/advertise|engine: Steam is replaced by the port's accounts (central/) and the gateway's handshake
+StrikeGunDataBlock|P|Hand cannon: strike durations and sounds|browser/combat.mjs
+StrikeGunItem|P|Hand cannon firing sequence|browser/combat.mjs
+StringEx|N|String helpers|
+StructureComponent|P|Building piece: type, material, health, kill, master link|browser/structures.mjs, browser/server-buildings.mjs
+StructureComponentDataBlock|P|Building item: piece to place, override material|browser/structures.mjs, tools/export_placement.py
+StructureComponentItem|P|Held building piece: placement helpers, validity, rotation, place|browser/structures.mjs, browser/placement-preview.mjs
+StructureComponentKey|P|Grid key of a building piece|browser/structures.mjs
+StructureComponentTakeDamage|N|Structure damage (not reached)|
+StructureMaster|P|Building: grid, foundations, weight links, decay, bounds|browser/structures.mjs, browser/decay.mjs
+SupplyCrate|P|Airdrop crate: interpolation, landing, loot|browser/airdrops.mjs
+SupplyDropPlane|P|C130 plane path and drop|browser/airdrops.mjs
+SupplyDropTimer|P|Airdrop schedule|browser/airdrops.mjs
+SupplyDropZone|N|Drop zone gizmo (not reached)|
+SupplyParachute|P|Parachute scale and landing|browser/airdrops.mjs
+SurfaceInfo|P|Surface type of a collider (impacts, footsteps)|browser/surface-routing.mjs, browser/melee-effects.mjs
+SurfaceInfoObject|P|Surface asset: bullet/melee effects and footstep clips|browser/audio.mjs, browser/melee-effects.mjs, tools/export_audio.py
+SurfaceInfoTerrain|P|Terrain surfaces by splat|browser/surface-routing.mjs
+SurfaceScript|N|EasyRoads3D surface marker (inactive in the scene)|editor:
+SurveillanceCamera|N|Surveillance camera (not reached)|
+SurveillanceMonitor|N|Surveillance monitor (not reached)|
+TakeDamage|P|Health, hurt/heal/kill, damage types, hit notifications|browser/take-damage.mjs
+teleport|N|Empty console system|empty:
+TempList|N|Pooled temp list|engine: JS arrays
+TempList#2|N|Temp list helper|engine: JS arrays
+terrain|P|Console system terrain.* (reassign, flush, idleinterval)|browser/client-commands.mjs
+TerrainControl|P|Terrain settings (basemap distance, tree/detail settings, material)|browser/render-convars.mjs, browser/terrain.mjs
+TerrainHack|P|Tree texture refresh after terrain change|browser/trees.mjs
+TerrainMap|N|Terrain map GUID asset (nothing reads it)|empty: data never read
+TerrainQualitySettings|N|Terrain quality component (not reached)|
+TerrainTextureGenerator|N|Empty class|empty:
+TerrainTextureHelper|P|Terrain splat lookup for footsteps|browser/surface-routing.mjs, browser/audio.mjs
+TerrainToolkit|N|Terrain generation tool|editor:
+TestFlagsScript|N|Test script|debug:
+TestSaveable|N|Test script|debug:
+TestTransformFind|N|Test script|debug:
+TextEntryRestrictions|N|Text entry filter (not reached)|
+TextureMaterial|N|Icon material cache for cells|engine: DOM images
+ThreeDMode|P|USpeak 3D mode enum|with: browser/voice.mjs
+ThrottledTask|P|Frame-budgeted task base (SlowSpawn)|engine: browser/rock-colliders.mjs builds colliders at load
+ThrowableItem|P|Held throwable: hold back, release timing|browser/combat.mjs
+ThrowableItemDataBlock|P|Throwable: prefab and throw strength|browser/combat.mjs, browser/thrown-physics.mjs
+TimedExplosive|P|Explosive charge: fuse, tick sound, explosion|browser/combat.mjs, browser/main.mjs
+TimedGrenade|P|Grenade: fuse, bounce sound, explosion|browser/combat.mjs, browser/server-rigid.mjs
+TimedLockable|N|Timed lockable (server backpack lock)|server:
+TimeGate|N|Time gate helper (not reached)|
+TimeStamped|P|Timestamped value for interpolation buffers|with: browser/airdrops.mjs
+TimeStringFormatter|N|Time string formatter (not reached)|
+TOD_Animation|P|Cloud/wind animation|browser/sky.mjs
+TOD_AtmosphereParameters|P|Atmosphere parameters|browser/sky-model.mjs, tools/export_sky.py
+TOD_Camera|P|Sky dome follows the camera|browser/sky.mjs
+TOD_CloudParameters|P|Cloud parameters|browser/sky-model.mjs, tools/export_sky.py
+TOD_Components|P|Sky component references|tools/export_sky.py
+TOD_CycleParameters|P|Date/time and location|browser/tod.mjs
+TOD_DayParameters|P|Day colours and intensities|browser/sky-model.mjs, browser/tod.mjs
+TOD_LightParameters|P|Light colouring parameters|browser/sky-model.mjs
+TOD_NightParameters|P|Night colours and intensities|browser/sky-model.mjs, browser/tod.mjs
+TOD_PostEffectsBase|P|Post effect base for sun shafts|browser/post-chain.mjs
+TOD_Resources|P|Sky meshes|tools/export_sky.py
+TOD_Sky|P|Sky scattering, sun/moon, light, fog, quality|browser/sky-model.mjs, browser/sky.mjs, browser/tod.mjs
+TOD_StarParameters|P|Star parameters|browser/sky-model.mjs
+TOD_SunShafts|P|Sun shafts image effect|browser/post-chain.mjs
+TOD_Time|N|Sky time progression (only on the Sky Dome prefab copy; the game clock is EnvironmentControlCenter)|only on the Sky Dome prefab copy; the game clock is EnvironmentControlCenter (browser/tod.mjs)
+TOD_Weather|P|Cloud/fog weather blending|tools/export_sky.py, browser/sky.mjs
+TOD_WorldParameters|P|World ambient/fog parameters|browser/sky-model.mjs
+ToolDataBlock|P|Tool item: work duration, complete work|browser/tooltip.mjs, browser/crafting.mjs
+ToolItem|P|Tool item work state|with: browser/crafting.mjs
+TorchItem|P|Held flare: ignite, throw, extinguish|browser/offline-flare.mjs, browser/main.mjs
+TorchItemDataBlock|P|Flare definition: lights, strike sound|browser/offline-flare.mjs, browser/server-held.mjs
+TorchItemRep|P|Remote flare representation|browser/server-held.mjs
+Tracer|P|Bullet tracer flight, impacts, decals|browser/tracer-flight.mjs, browser/tracer-effects.mjs
+TraitKey|P|Trait key asset base|with: tools/recover_player.py
+TraitMap|P|Trait map|tools/recover_player.py
+TraitMap#2|P|Typed trait map lookup|tools/recover_player.py
+TraitMap#3|P|Trait map registry by name|tools/recover_player.py
+TransCarrier|P|Carries deployables on structures (drop when removed)|browser/deployables.mjs, browser/combat.mjs
+TransformHelpers|P|Ground info, look rotation forced up, child iteration|browser/animals.mjs, browser/collision.mjs
+TransformInterpolator|P|Transform interpolation (wildlife, plane, chicken hit boxes): capacity 32, allowDifference 0.1, no extrapolation|browser/airdrops.mjs:PosRotInterpolator, browser/animal-view.mjs
+TransformInterpolatorEarly|N|Early transform interpolator (not reached)|
+TransformLerpTest|N|Test script|debug:
+TransformTest|N|Test script|debug:
+TransitionFunction|P|Camera transition function enum|with: browser/main.mjs
+TransitionFunction#2|P|Transition function parameters|with: browser/main.mjs
+TransitionFunctions|P|Transition easing maths|with: browser/main.mjs

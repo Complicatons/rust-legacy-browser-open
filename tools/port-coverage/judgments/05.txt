@@ -1,0 +1,147 @@
+@Assembly-CSharp
+HumanController|P|Local player controller: input sampling, belt keys, sprint, crouch, motor step, send to server|browser/main.mjs, browser/motor.mjs, browser/net-client.mjs
+IActivatable|P|Activatable interface|with: browser/doors.mjs
+IActivatableFill|N|Activatable fill interface (no implementer shipped)|no shipped implementer
+IActivatableInfo|N|Activatable info interface (no implementer shipped)|no shipped implementer
+IActivatableToggle|P|Toggle-activatable interface|with: browser/doors.mjs, browser/deployables.mjs
+IAmmoItem|P|Ammo item interface|with: browser/inventory.mjs
+IArmorItem|P|Armour item interface|with: browser/armor.mjs
+IBandageItem|N|Bandage item interface (unused class)|
+IBasicHealthKit|P|Health kit interface|with: browser/item-ops.mjs
+IBasicTorchItem|P|Torch item interface|with: browser/main.mjs
+IBloodDrawItem|P|Blood draw interface|with: browser/item-ops.mjs
+IBlueprintItem|P|Blueprint interface|with: browser/crafting.mjs
+IBowWeaponItem|P|Bow interface|with: browser/combat.mjs
+IBulletWeaponItem|P|Gun interface|with: browser/combat.mjs
+ICameraFX|P|Camera effect interface (HeadBob, LazyCam)|with: browser/head-bob.mjs, browser/camera-sway.mjs
+ICarriableTrans|P|Carrier attachment interface|with: browser/deployables.mjs
+IComponentInterface|N|Component-interface marker|engine: plain JS objects
+IComponentInterface#2|N|Typed component interface|engine: plain JS objects
+IComponentInterface#3|N|Typed component interface|engine: plain JS objects
+IComponentInterface#4|N|Typed component interface with driver|engine: plain JS objects
+IComponentInterfaceDriver|N|Component-interface driver|engine: plain JS objects
+IConsumableItem|P|Consumable interface|with: browser/item-ops.mjs
+IContextRequestable|P|Context requestable interface|with: browser/context-ui.mjs
+IContextRequestableClientIntercept|N|Client intercept interface (no implementer)|
+IContextRequestableMenu|P|Context menu interface|with: browser/context-ui.mjs
+IContextRequestableMenuQuickRouter|N|Menu/quick router interface (no implementer)|
+IContextRequestablePointText|P|Point-text interface|with: browser/context-ui.mjs
+IContextRequestableQuick|P|Quick-use interface|browser/main.mjs, browser/context-ui.mjs
+IContextRequestableSoleAccess|P|Sole-access interface|with: browser/context-ui.mjs
+IContextRequestableStatus|P|Context status interface|browser/context-sprites.mjs
+IContextRequestableText|P|Context text interface|with: browser/context-ui.mjs
+IContextRequestableUpdatingText|P|Updating-text interface|with: browser/context-ui.mjs
+IContextRequestableVisibility|P|Context sprite visibility interface|with: browser/context-sprites.mjs
+ICookableItem|P|Cookable interface|with: browser/deployables.mjs
+IDataBindingComponent|P|dfGUI binding interface|with: browser/dfgui.mjs
+IDeployableItem|P|Deployable item interface|with: browser/deployables.mjs
+IDeployedObjectMain|P|Deployed object interface|with: browser/deployables.mjs
+IDFMultiRender|N|dfGUI multi-render interface|engine: DOM/canvas rendering
+IDLocalCharacter|P|Character component base: eyes, control, traits, line of sight|with: browser/main.mjs, browser/player-view.mjs
+IDLocalCharacterAddon|P|Character addon lifecycle|with: browser/main.mjs
+IDLocalCharacterIdleControl|N|Character idle control base (no shipped character carries one)|no shipped character carries an idle-control component
+IDRemoteDefault|N|Default remote ID component|engine: JS object identity
+IEquipmentItem|P|Equipment interface|with: browser/armor.mjs
+IFlammableItem|P|Fuel interface|with: browser/deployables.mjs
+IFPGrassAsset|P|Grass asset interface|with: browser/grass.mjs
+IgnoreColliders|P|Ragdoll collider ignore pairs|browser/ragdoll-physics.mjs, tools/export_ragdoll.py
+IgnoreTimeScale|P|Real-time delta for NGUI tweens|browser/rpos-scroll.mjs
+IGunpowderItem|P|Gunpowder interface|with: browser/inventory.mjs
+IHandGrenadeItem|P|Grenade interface|with: browser/combat.mjs
+IHeldItem|P|Held item interface|with: browser/combat.mjs
+IIDLocalInterpolator|P|Interpolator interface|with: browser/player-motion.mjs
+IInputAdapter|N|dfGUI input adapter|engine: DOM input
+IInterpTimedEventReceiver|P|Receiver of interpolation-timed events|browser/airdrops.mjs, browser/server-wildlife.mjs
+IInventoryItem|P|Inventory item interface|browser/inventory.mjs
+IItemModItem|P|Item mod interface|with: browser/item-mods.mjs
+ILockpickItem|N|Lockpick interface (lockpicks have no client behaviour)|lockpicks have no client behaviour beyond the datablock
+IMagazineItem|N|Magazine interface (no magazine items shipped)|no magazine items ship
+ImageEffectManager|P|Enables/disables image effects by convar|browser/post-chain.mjs, browser/quality.mjs
+IMeleeWeaponItem|P|Melee interface|with: browser/combat.mjs
+IngredientList|P|Ingredient list hash seed|with: browser/crafting.mjs
+IngredientList#2|P|Sorted ingredient list for combine/craft matching|with: browser/crafting.mjs
+input|P|Console system input.bind / mousespeed / flipy / keys|browser/key-bindings.mjs, browser/client-commands.mjs
+InstantiateControllableException|N|Exception|empty: exception type
+InterfaceDriverComponentAttribute|N|Editor attribute|editor:
+InterfaceSearchRoute|N|Interface search enum|
+interp|P|Console system interp.* (admin)|browser/client-commands.mjs
+Interpolation|P|Interpolation timing (BindTiming: ceil(1000 x 1.5 / sendRate) + 20 ms) for players, wildlife, airdrops and timed events|browser/airdrops.mjs:interpolationDelay, browser/player-view.mjs, browser/animal-view.mjs
+Interpolator|P|Generic interpolator component base (goals, sync)|with: browser/player-motion.mjs, browser/airdrops.mjs
+InterpTimedEvent|P|Events delayed to the interpolation time|browser/airdrops.mjs, browser/server-wildlife.mjs
+InterpTimedEventSyncronizer|P|Pumps interpolation-timed events each frame|with: browser/airdrops.mjs
+inv|N|Empty console system|empty:
+Inventory|P|Inventory: slots, add/remove/move/merge, RPCs, active item|browser/inventory.mjs, browser/item-ops.mjs, browser/server-inventory.mjs
+InventoryExtensions.inventory_helper|N|BitStream inventory int helpers|
+InventoryHolder|P|Player inventory holder: belt use, toss, item rep, item frame hooks|browser/main.mjs, browser/inventory-ui.mjs
+InventoryItem|P|Item instance: uses, condition, menu options|browser/item-condition.mjs, browser/item-ops.mjs
+InventoryItem#2|P|Typed item: serialization, stack/combine|browser/item-ops.mjs, bridge/ulink/rust.mjs
+IObservableValue|P|Observable value interface|with: browser/dfgui.mjs
+IPrefabCustomInstantiate|P|Custom instantiate interface|with: browser/online.mjs
+IResearchToolItem|P|Research kit interface|with: browser/crafting.mjs
+IResourceTypeItem|P|Resource item interface|with: browser/inventory.mjs
+IRustLoaderTasks|N|Loader tasks interface|
+IServerSaveable|N|Server save interface|server:
+IServerSaveNotify|N|Server save notify interface|server:
+IslandHello|N|Test script|debug:
+IStateInterpolator|P|State interpolator interface|with: browser/airdrops.mjs
+IStateInterpolatorSampler|P|Interpolator sampler interface|with: browser/airdrops.mjs
+IStateInterpolatorWithAngularVelocity|N|Angular velocity interface (no implementer reached)|
+IStateInterpolatorWithLinearVelocity|P|Linear velocity interface|with: browser/airdrops.mjs
+IStateInterpolatorWithVelocity|N|Velocity interface (no implementer reached)|
+IStrikeGunItem|P|Strike gun interface|with: browser/combat.mjs
+IStructureComponentItem|P|Structure item interface|with: browser/structures.mjs
+ItemDataBlock|P|Item definition: icon, uses, condition, splitting, menu, description|browser/inventory.mjs, browser/item-menu.mjs, tools/export_items.py
+ItemModDataBlock|P|Item mod: mod flags, on/off sounds, representations|browser/item-mods.mjs, browser/weapon-mod-effects.mjs
+ItemModFlags|P|Mod flags (sight, silencer, laser, light)|with: browser/item-mods.mjs
+ItemModItem|P|Mod inventory item: stack/combine rules|browser/item-ops.mjs
+ItemModRepresentation|P|Mod on a remote item representation (lights/lasers per state flags)|browser/weapon-mod-effects.mjs, browser/remote-weapon.mjs
+ItemPickup|P|Dropped item pickup: info RPCs, context text|browser/dropped-items.mjs, browser/context-ui.mjs
+ItemRepresentation|P|Remote held item: parenting, world animation, mods, actions|browser/server-held.mjs, browser/remote-weapon.mjs
+ItemToolTip|P|Item tooltip window|browser/tooltip.mjs
+IThrowableItem|P|Throwable interface|with: browser/combat.mjs
+IToolItem|P|Tool interface|with: browser/crafting.mjs
+ITorchItem|P|Torch interface|with: browser/main.mjs
+IUseable|P|Useable interface|with: browser/context-ui.mjs, browser/loot.mjs
+IUseableAwake|P|Useable awake interface|with: browser/loot.mjs
+IUseableChecked|P|Useable checked interface|with: browser/loot.mjs
+IUseableNotifyDecline|P|Useable decline interface|with: browser/loot.mjs
+IUseableUpdated|P|Useable update interface|with: browser/loot.mjs
+IVisHandler|N|Vis handler interface|server: VisNode is destroyed on clients
+IVoiceCom|P|Voice interface|with: browser/voice.mjs
+IWeaponItem|P|Weapon interface|with: browser/combat.mjs
+JetCameraMode|N|Unused camera enum|
+JPGEncoder|N|JPEG encoder (screenshots)|
+JSON.Array|N|JSON array (config parsing)|engine: JSON.parse
+JSON.Extensions|N|JSON helpers|engine: JSON.parse
+JSON.Object|N|JSON object parser|engine: JSON.parse
+JSON.Value|N|JSON value|engine: JSON.parse
+JSON.ValueType|N|JSON value type|engine: JSON.parse
+KeyPressHandler|N|dfGUI key delegate|engine: DOM key events
+KillZone|P|Supply crate landing kill zone|browser/airdrops.mjs
+KindOfCamera|P|Camera mount kind enum|with: browser/main.mjs
+LampModRep|N|Flashlight mod rep (no lamp mod shipped)|
+LanguageSelection|N|Language picker|
+LaserBeam|P|Laser sight beam settings|browser/weapon-mod-effects.mjs, tools/export_item_mods.py
+LaserFilter|P|Camera hook rendering lasers|browser/weapon-mod-effects.mjs
+LaserGraphics|P|Laser beam/dot mesh rendering|browser/weapon-mod-effects.mjs
+LaserModRep|N|Laser mod rep (not reached)|
+LazyCam|P|Lazy aim camera sway|browser/camera-sway.mjs
+LevelSharedPrefab|N|Level shared prefab marker|
+LibRust|N|Empty|empty:
+LifeStatus|P|Alive/dead status enum|browser/take-damage.mjs
+LightStyle|P|Animated light style (flicker strings/curves)|browser/light-style.mjs, tools/export_fx.py
+LightStyleCurve|N|Curve light style (none shipped)|
+LightStyleDefault|P|Default light style|browser/light-style.mjs
+LightStyleTest|N|Test script|debug:
+LightStylist|P|Plays/cross-fades light styles on lights|browser/light-style.mjs
+LightSwitch|N|Light switch (not on shipped content)|
+LoadingScreen|P|Loading screen with progress|browser/front-end.mjs
+Loadout|P|Default loadout (inventory, belt, wearables, blueprints)|tools/export_items.py, browser/inventory.mjs
+LocalDamageDisplay|P|Local damage overlay and impact flash|browser/combat-feedback.mjs
+Localization|N|NGUI localisation (not reached)|
+LocalPrefs|N|Local preferences|
+LocalRadiationEffect|P|Geiger sounds by radiation level|browser/audio.mjs
+LockableObject|P|Lockable object base|browser/locks.mjs
+LockedList|N|Read-only list wrapper|engine: JS arrays
+LockEntry|P|Code lock entry dialog|browser/lock-entry.mjs
+lockentry|P|Console system lockentry.show/hide|browser/lock-entry.mjs

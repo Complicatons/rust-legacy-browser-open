@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>List your server · Rust Legacy Browser</title>
+<meta name="description" content="Put your Rust Legacy server on the Rust Legacy Browser server list, and run it from the website: live logs, restarts, backups, players and anti-cheat.">
+<meta property="og:title" content="List your server · Rust Legacy Browser">
+<meta property="og:description" content="Put your Rust Legacy server on the server list and run it from the website.">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/content.css">
+<link rel="stylesheet" href="/site/css/pages/docs.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/list-server.mjs"></script>
+</head>
+<body data-page="list-server">
+<!--#header-->
+<main id="main" class="content">
+ <header class="ls-hero">
+  <p class="mono eyebrow">For server owners</p>
+  <h1 class="h">List your server</h1>
+  <p>Run a Rust Legacy server? Put it on the server list, so players can join it from their browser, and run it from this website.</p>
+  <div class="actions"><a class="btn-play" href="/owner" id="ls-start"><span>Start</span></a><a class="btn" href="/docs/list-your-server">Read the guide</a></div>
+ </header>
+
+ <dl class="ls-figures" aria-label="At a glance">
+  <div><dd>4</dd><dt>Steps</dt></div>
+  <div><dd>2 s</dd><dt>Live log refresh</dt></div>
+  <div><dd>0</dd><dt>Ports to open for it</dt></div>
+  <div><dd>3</dd><dt>Team roles</dt></div>
+ </dl>
+
+ <section class="ls-sec" aria-labelledby="ls-steps-h">
+  <h2 id="ls-steps-h">How it works</h2>
+  <ol class="ls-steps">
+   <li><b>01</b><h3>Register</h3><p>Sign in and add your server: its name, region and the address players' browsers connect to.</p><a href="/docs/list-your-server">Registering</a></li>
+   <li><b>02</b><h3>Connect</h3><p>Install the host app on your server machine. It runs the gateway that lets browser players in, and links the server to your account.</p><a href="/docs/install-the-host-app">The host app</a></li>
+   <li><b>03</b><h3>Send the listing</h3><p>Describe the server, add tags, your Discord and wipe days. The Rust Legacy team checks every new server, then it's listed.</p><a href="/docs/listing-rules">Listing rules</a></li>
+   <li><b>04</b><h3>Run it</h3><p>Logs, restarts and backups in the console. Players, anti-cheat, bans and reports in Server admin, with your own team.</p><a href="/docs/manage-from-the-website">Managing it</a></li>
+  </ol>
+ </section>
+
+ <section class="ls-sec" aria-labelledby="ls-features-h">
+  <h2 id="ls-features-h">Run it from the website</h2>
+  <div class="ls-features">
+   <div><h3>Live log</h3><p>Every line from the game server, gateway and host app, filtered by part and searchable.</p></div>
+   <div><h3>Start, stop, restart</h3><p>Each part on its own or all at once. The watchdog restarts a frozen server with its last good save.</p></div>
+   <div><h3>Backups</h3><p>Keep a copy before a wipe and restore one with the server stopped.</p></div>
+   <div><h3>Players and anti-cheat</h3><p>Who is online, suspicion scores, flags with the evidence behind them, and screenshots.</p></div>
+   <div><h3>Bans and reports</h3><p>Kick, timed or permanent bans, player reports, and rules for who may join.</p></div>
+   <div><h3>Your team</h3><p>Give people the server admin or moderator role. Everything they do goes in the audit log.</p></div>
+  </div>
+ </section>
+
+ <section class="ls-sec" aria-labelledby="ls-need-h">
+  <h2 id="ls-need-h">What you need</h2>
+  <ul class="ls-need">
+   <li><b>An account</b> on this website. It owns the server.</li>
+   <li><b>Your own copy of the Legacy server</b> on a Windows PC or VPS. We never supply or run the game's server files.</li>
+   <li><b>An HTTPS address</b> for the gateway (wss://), for example a subdomain pointed at your machine.</li>
+   <li><b>The host app</b>, which is being tested with the first server owners now. Ask in our <a href="https://discord.gg/your-invite" rel="noopener">Discord</a> to take part.</li>
+  </ul>
+ </section>
+
+ <section class="ls-cta" aria-labelledby="ls-cta-h">
+  <div><h2 id="ls-cta-h">Ready?</h2><p>Register your server, then send its listing.</p></div>
+  <div class="actions"><a class="btn-play" href="/owner"><span>Your servers</span></a><a class="btn" href="/docs">All help</a></div>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Server admin · Rust Legacy Browser</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/site/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site/css/tokens.css">
+<link rel="stylesheet" href="/site/css/base.css">
+<link rel="stylesheet" href="/site/css/components.css">
+<link rel="stylesheet" href="/site/css/pages/tools.css">
+<script type="module" src="/site/js/shell.mjs"></script>
+<script type="module" src="/site/js/admin.mjs"></script>
+</head>
+<body data-page="admin">
+<!--#header-->
+<main id="main" class="tools admin">
+ <header class="tools-hero"><h1 class="h">Server admin</h1></header>
+ <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+
+ <section id="no-access" class="panel" hidden>
+  <h2>No server to manage</h2>
+  <p>Sign in with an account that owns a server or is on its server team. Your account id: <code id="my-id"></code></p>
+  <a class="btn small" href="/signin?next=/admin">Sign in</a> <a class="btn small" href="/owner">Your servers</a>
+ </section>
+
+ <section id="console" hidden>
+  <div class="panel toolbar">
+   <label class="pick">Server <select id="server"></select></label>
+   <span id="role" class="badge"></span>
+   <span id="roster-state" class="meta"></span>
+   <span class="meta">Your account id: <code id="my-id-2"></code></span>
+  </div>
+
+  <section class="panel" aria-labelledby="players-title">
+   <h2 id="players-title">Live players</h2>
+   <p class="hint">Scores decay over time. Highlighted rows have reached the review score. Flags are evidence for a human decision, not proof.</p>
+   <div class="table-wrap"><table class="grid" id="players">
+    <thead><tr><th>Player</th><th>Score</th><th>Flags</th><th>Online since</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+   <p id="no-players" class="meta" hidden>No players online (or the gateway has not reported in the last 30 seconds).</p>
+  </section>
+
+  <section class="panel" aria-labelledby="desktop-title">
+   <h2 id="desktop-title">Desktop players</h2>
+   <p class="hint">Desktop players connect straight to the game server. Their movement is scored from server-side positions every 2 seconds (speed, teleport, fly); shots and hits are not checked for them. The server's own TruthDetector also applies.</p>
+   <div class="table-wrap"><table class="grid" id="desktop">
+    <thead><tr><th>Player</th><th>Website account</th><th>Score</th><th>Flags</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+   <p id="no-desktop" class="meta" hidden>No desktop players listed (or the server plugin has not reported in the last 30 seconds).</p>
+  </section>
+
+  <section id="action" class="panel" hidden aria-labelledby="action-title">
+   <h2 id="action-title">Action</h2>
+   <form id="action-form" class="stack">
+    <p>Target: <strong id="action-target"></strong></p>
+    <label>Action
+     <select name="kind">
+      <option value="kick">Kick</option>
+      <option value="ban">Ban</option>
+      <option value="teleport-to">Teleport me to them (in-game)</option>
+      <option value="bring" data-min="admin">Bring them to me (in-game)</option>
+      <option value="message">Private message (in-game)</option>
+     </select>
+    </label>
+    <p class="hint desktop-only">Desktop player: kick and ban use the game server itself. A ban goes on the server's own ban list until you lift it under In-game actions.</p>
+    <label class="ban-only account-only">Duration
+     <select name="minutes">
+      <option value="60">1 hour</option>
+      <option value="1440">24 hours</option>
+      <option value="10080" data-min="admin">7 days</option>
+      <option value="43200" data-min="admin">30 days</option>
+      <option value="" data-min="admin">Permanent</option>
+     </select>
+    </label>
+    <label class="ban-only account-only">Scope
+     <select name="scope">
+      <option value="server">This server</option>
+      <option value="global" data-min="staff">Every server (network ban)</option>
+     </select>
+    </label>
+    <label class="ban-only account-only check"><input type="checkbox" name="native"> Also add to the game server's own ban list (blocks a linked desktop character)</label>
+    <label class="ban-only account-only check"><input type="checkbox" name="banIps" data-min="admin"> Also ban the IP addresses this account played from on this server (last 30 days)</label>
+    <label class="message-only">Message <input name="message" maxlength="200" autocomplete="off"></label>
+    <p class="hint in-game-only">In-game actions need your own character online on this server, linked to this account.</p>
+    <label class="reason-field">Reason (recorded in the audit log) <input name="reason" maxlength="200" autocomplete="off"></label>
+    <div class="actions"><button>Confirm</button><button type="button" class="secondary" id="action-cancel">Cancel</button></div>
+   </form>
+  </section>
+
+  <section id="evidence" class="panel" hidden aria-labelledby="evidence-title">
+   <h2 id="evidence-title">Evidence</h2>
+   <p class="meta" id="evidence-who"></p>
+   <ol id="flags" class="flags"></ol>
+   <h3 class="sub">Possible alts</h3>
+   <p class="hint">Accounts that share a device, browser signals with an IP, a login, or traded items while new. Stored as hashes; this is a lead for a human decision, never an automatic ban. Looking is recorded in the audit log.</p>
+   <p id="alt-networks" class="meta" hidden></p>
+   <ul id="alts" class="servers"></ul>
+   <h3 class="sub">Screenshots</h3>
+   <ul id="evidence-shots" class="shots"></ul>
+   <h3>Item transfers</h3>
+   <ul id="evidence-transfers" class="servers"></ul>
+   <div id="evidence-ip-block" hidden>
+    <h3>IP addresses</h3>
+    <p class="hint">Where this player's game connected from on this server (site staff also see website visits and other servers). Kept for 90 days. Server owners, server admins and site staff only.</p>
+    <ul id="evidence-ips" class="servers"></ul>
+   </div>
+   <button type="button" class="secondary" id="evidence-close">Close</button>
+  </section>
+
+  <section class="panel" aria-labelledby="shots-title">
+   <h2 id="shots-title">Screenshots</h2>
+   <p class="hint">What the player's game showed: the next frame with the HUD drawn over it. The player is not told. Anti-cheat asks automatically at the severity set under Join policy. The page that takes it runs on the player's computer, so treat it as evidence, not proof: check the position match and the notes. Kept for <b id="shot-retention">30</b> days, then deleted.</p>
+   <ul id="shots" class="shots"></ul>
+   <p id="no-shots" class="meta" hidden>No screenshots yet.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="holds-title">
+   <h2 id="holds-title">Linked-account holds</h2>
+   <p class="hint">Accounts that share a login, phone or hardware ID with a banned account are refused; sharing only a browser device holds them until reviewed. Clearing lets that account join again. Lifting the ban clears them all.</p>
+   <ul id="holds" class="servers"></ul>
+   <p id="no-holds" class="meta" hidden>No holds.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="commands-title">
+   <h2 id="commands-title">In-game actions</h2>
+   <div class="table-wrap"><table class="grid" id="commands">
+    <thead><tr><th>When</th><th>By</th><th>Action</th><th>Player</th><th>Status</th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+   <p id="no-commands" class="meta" hidden>No in-game actions yet.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="transfers-title">
+   <h2 id="transfers-title">Item transfers</h2>
+   <p class="hint">Items one player's character left in a box, on the ground, in a death sack or on a sleeper that another player then took, as the game server saw them. A lead for alts and item feeding, not proof.</p>
+   <div class="table-wrap"><table class="grid" id="transfers">
+    <thead><tr><th>When</th><th>From</th><th>To</th><th>Item</th><th>Via</th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+   <p id="no-transfers" class="meta" hidden>No item transfers seen yet.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="policy-title">
+   <h2 id="policy-title">Join policy</h2>
+   <p class="hint">Everyone can play by default, with or without Steam. Turn on what this server needs to make ban evasion with a fresh account harder. Applies to browser and launcher joins; existing sessions are not affected. Players see these on the server list.</p>
+   <form id="policy-form" class="inline">
+    <label>Minimum account age (hours) <input name="hours" type="number" min="0" max="720" step="1" required></label>
+    <label class="check"><input type="checkbox" name="phone"> Require a verified phone</label>
+    <label class="check"><input type="checkbox" name="steam"> Require a linked Steam sign-in</label>
+    <fieldset class="steam-only">
+     <legend>Steam account checks (with Steam required)</legend>
+     <label>Steam account age (days) <input name="steamMinAgeDays" type="number" min="0" max="3650" step="1"></label>
+     <label>Minimum Steam level <input name="steamMinLevel" type="number" min="0" max="500" step="1"></label>
+     <label>Most VAC bans allowed (blank = any) <input name="steamMaxVacBans" type="number" min="0" max="100" step="1"></label>
+     <label>Most game bans allowed (blank = any) <input name="steamMaxGameBans" type="number" min="0" max="100" step="1"></label>
+     <label>Days since the last ban <input name="steamMinDaysSinceBan" type="number" min="0" max="3650" step="1"></label>
+    </fieldset>
+    <label>Auto screenshot from flag severity (0 = off) <input name="shotSeverity" type="number" min="0" max="100" step="1"></label>
+    <button>Save policy</button>
+   </form>
+  </section>
+
+  <section class="panel" aria-labelledby="reports-title">
+   <h2 id="reports-title">Open player reports</h2>
+   <ul id="reports" class="servers"></ul>
+   <p id="no-reports" class="meta" hidden>No open reports.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="bans-title">
+   <h2 id="bans-title">Bans</h2>
+   <div class="table-wrap"><table class="grid" id="bans">
+    <thead><tr><th>Player</th><th>Scope</th><th>Reason</th><th>Issued</th><th>Expires</th><th>State</th><th></th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+  </section>
+
+  <section id="ip-bans-panel" class="panel" hidden aria-labelledby="ip-bans-title">
+   <h2 id="ip-bans-title">IP bans</h2>
+   <p class="hint">Refuses joins from an address or range (IPv4 /16 or smaller, IPv6 /32 or smaller) and kicks anyone already playing from it. Private and local addresses can't be banned: browser players reach the server through the gateway's own address. People on a shared connection (a household, a school, a mobile network) are banned with the cheater, so prefer short bans for ranges.</p>
+   <form id="ip-ban-form" class="inline">
+    <label>Address or range <input name="ip" required maxlength="49" autocomplete="off" placeholder="203.0.113.7 or 203.0.113.0/24"></label>
+    <label>Duration
+     <select name="minutes">
+      <option value="1440">24 hours</option>
+      <option value="10080">7 days</option>
+      <option value="43200">30 days</option>
+      <option value="">Permanent</option>
+     </select>
+    </label>
+    <label>Scope
+     <select name="scope">
+      <option value="server">This server</option>
+      <option value="global" data-min="staff">Every server (network ban)</option>
+     </select>
+    </label>
+    <label>Reason <input name="reason" required maxlength="200" autocomplete="off"></label>
+    <button>Ban</button>
+   </form>
+   <form id="ip-lookup-form" class="inline">
+    <label>Who used this address? <input name="ip" required maxlength="45" autocomplete="off" placeholder="203.0.113.7"></label>
+    <button class="secondary">Look up</button>
+   </form>
+   <ul id="ip-lookup" class="servers"></ul>
+   <div class="table-wrap"><table class="grid" id="ip-bans">
+    <thead><tr><th>Address</th><th>Scope</th><th>Reason</th><th>Issued</th><th>Expires</th><th>State</th><th></th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+  </section>
+
+  <section id="roles-panel" class="panel" hidden aria-labelledby="roles-title">
+   <h2 id="roles-title">Server team</h2>
+   <p class="hint">People who help run this server. Server admins and moderators act on this server only; site staff (the Rust Legacy team) can act on every server.</p>
+   <ul id="roles" class="servers"></ul>
+   <form id="role-form" class="inline">
+    <label>Account id <input name="player" required pattern="[0-9a-f\-]{36}" autocomplete="off"></label>
+    <label>Role
+     <select name="grant">
+      <option value="moderator">Moderator</option>
+      <option value="admin" data-min="owner">Server admin</option>
+     </select>
+    </label>
+    <button>Grant</button>
+   </form>
+  </section>
+
+  <section id="domains-panel" class="panel" hidden aria-labelledby="domains-title">
+   <h2 id="domains-title">Throwaway email domains (site staff)</h2>
+   <p class="hint">Refused at sign-up and on email change, on top of the list file on the server. Subdomains are covered.</p>
+   <ul id="domains" class="servers"></ul>
+   <form id="domain-form" class="inline">
+    <label>Domain <input name="domain" required maxlength="253" autocomplete="off" placeholder="example-throwaway.com"></label>
+    <button>Block</button>
+   </form>
+  </section>
+
+  <section id="audit-panel" class="panel" hidden aria-labelledby="audit-title">
+   <h2 id="audit-title">Audit log</h2>
+   <div class="table-wrap"><table class="grid" id="audit">
+    <thead><tr><th>When</th><th>Who</th><th>Action</th><th>Details</th></tr></thead>
+    <tbody></tbody>
+   </table></div>
+  </section>
+ </section>
+</main>
+<!--#footer-->
+</body>
+</html>

@@ -1,0 +1,20 @@
+/* Design tokens (spec §3.1). Fonts are copied into site/generated/fonts by `npm run build:site`. */
+@font-face{font-family:"Archivo RLB";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(/site/generated/fonts/archivo-wdth.woff2) format("woff2-variations"),url(/site/generated/fonts/archivo-wdth.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono RLB";font-style:normal;font-weight:500;font-display:swap;src:url(/site/generated/fonts/jetbrains-mono-500.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono RLB";font-style:normal;font-weight:700;font-display:swap;src:url(/site/generated/fonts/jetbrains-mono-700.woff2) format("woff2")}
+:root{
+ --k:#0a0a0a;--k1:#111111;--k2:#181818;--k3:#222222;
+ --line:#262626;--line2:#363636;
+ --w:#f2efe9;--w2:#b9b5ae;--w3:#7f7b75;--w4:#55524e;
+ --or:#cd5a28;--or-h:#e0672f;
+ /* Filled orange controls with white text: 4.76:1 (and 5.24:1 on hover) instead of 4.13:1 on --or (WCAG AA 4.5). */
+ --or-fill:#c0501e;--or-fill-h:#b8491a;
+ --teal:#5fa9a0;--amber:#e8a93a;--red:#c62f24;--red-text:#ef6b5f;
+ --steam:#1b2838;--steam-edge:#66c0f4;
+ --heavy:"Archivo RLB","Arial Black","Segoe UI Black",sans-serif;
+ --mono:"JetBrains Mono RLB","Cascadia Mono",Consolas,ui-monospace,monospace;
+ --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+ --bar-h:60px;--gutter:clamp(16px,4vw,56px);
+ --ease:cubic-bezier(.2,.7,.2,1);
+ color-scheme:dark;
+}
