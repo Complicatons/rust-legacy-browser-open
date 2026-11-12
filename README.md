@@ -14,7 +14,7 @@ The recovered day/night cycle now controls lighting and night cold. Cold burns e
 
 ## GitHub and publication
 
-This repository holds the project source only. Original game packages, decompiled source, recovered assets, credentials and player data are not included and must never be committed; you need your own copy of the original game files to regenerate the recovered data (below).
+This repository holds the project source only. Original game packages, decompiled source, recovered assets, credentials and player data are not included and must never be committed; you need your own copy of the original game files to regenerate the recovered data (below). Taking over the project? Start with [MAINTAINER-SETUP.md](MAINTAINER-SETUP.md): the keys, domains and accounts you need.
 
 ## Regenerate recovered data
 
